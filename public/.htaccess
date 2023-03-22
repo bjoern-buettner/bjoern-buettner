@@ -8,5 +8,5 @@
 </IfModule>
 AuthType Basic
 AuthName "Bjoern-Buettner.me - Private"
-AuthUserFile .htpasswd
+AuthUserFile /var/bjoern-buettner.me/public.htpasswd
 require valid-user
