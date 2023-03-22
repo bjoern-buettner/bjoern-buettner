@@ -2,7 +2,7 @@
 <h1>{{ content.title }}</h1>
 <p>{{ content.linkedin }}</p>
 <p>{{ content.open_source }}</p>
-<form method="post">
+<form method="post" action="/sent/{{ lang }}">
     <label for="request">{{ content.topic }}</label>
     <select name="request" required id="request">
         <option value="">{{ content.please_choose }}</option>
