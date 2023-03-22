@@ -30,26 +30,12 @@ class OfferList
                         'en' => 'Dockerfile configuration',
                     ],
                     'description' => [
-                        'de' => 'Auf Basis von @idrinth/api-bench für Rest-APIs.',
-                        'en' => 'Based on @idrinth/api-bench for REST-APIs.',
+                        'de' => 'Erstellen, Erweitern oder Optimieren.',
+                        'en' => 'Create, modify or optimise.',
                     ],
                     'price' => [
-                        'de' => '60€/25 Webrequests',
-                        'en' => '60€/25 Webrequests',
-                    ],
-                ],
-                [
-                    'title' => [
-                        'de' => 'Open-API Dokumentation',
-                        'en' => 'Open-API documentation',
-                    ],
-                    'description' => [
-                        'de' => 'Erstellung anhand von Quellcode.',
-                        'en' => 'Creation based on sourcecode.',
-                    ],
-                    'price' => [
-                        'de' => '120€/Stunde',
-                        'en' => '120€/hour',
+                        'de' => '90€/Stunde',
+                        'en' => '90€/hour',
                     ],
                 ],
                 [

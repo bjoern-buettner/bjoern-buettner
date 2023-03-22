@@ -17,14 +17,14 @@ class Sent
             'text' => $_POST['content'] ?? '',
         ];
         if (!$request['topic'] || !$request['name'] || !$request['email'] || !$request['text']) {
-            header('location /contact/' . $lang, true, 303);
+            header('Location: /contact/' . $lang, true, 303);
             return '';
         }
         $mailer = new PHPMailer();
         $mailer->setFrom('no-reply@bjoern-buettner.me', 'No Reply (bjoern-buettner)');
         $mailer->addAddress('service@bjoern-buettner.me', 'Björn Büttner (bjoern-buettner)');
         if (!$mailer->addReplyTo($request['email'], $request['name'])) {
-            header('location /contact/' . $lang, true, 303);
+            header('Location: /contact/' . $lang, true, 303);
             return '';
         }
         $mailer->Host = 'mail.jrvs.info';
@@ -39,18 +39,18 @@ class Sent
         $mailer->Body = $twig->render('mail.twig', $request);
         $mailer->SMTPAuth = true;
         if (!$mailer->smtpConnect()) {
-            error_log('Mailer failed smtp connect.');
-            header('location /contact/' . $lang, true, 303);
+            error_log('Mailer failed smtp connect. ' . $mailer->ErrorInfo);
+            header('Location: /contact/' . $lang, true, 303);
             return '';
         }
         if (!$mailer->send()) {
-            error_log('Mailer failed sending mail.');
-            header('location /contact/' . $lang, true, 303);
+            error_log('Mailer failed sending mail. ' . $mailer->ErrorInfo);
+            header('Location: /contact/' . $lang, true, 303);
             return '';
         }
         switch ($lang) {
             case 'en':
-                return $twig->render('contact.twig', [
+                return $twig->render('sent.twig', [
                     'title' => 'Contact',
                     'active' => '/contact',
                     'lang' => 'en',
@@ -67,7 +67,7 @@ class Sent
                     'request' => $request,
                 ]);
             case 'de':
-                return $twig->render('contact.twig', [
+                return $twig->render('sent.twig', [
                     'title' => 'Kontakt',
                     'active' => '/contact',
                     'description' => 'Anfrage an Björn Büttner senden',
