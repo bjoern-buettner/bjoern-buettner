@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+    <head>
+        <title>{{ title }} | Björn Büttner</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="/styles.css"/>
+        <meta name="author" content="Björn Büttner"/>
+        <meta name="description" content="{{ description }}"/>
+    </head>
+    <body>
+        <div id="header" class="bar" style="display: flex;">
+            <a href="/{{ lang }}">
+                <img src="/logo.png" alt="Logo"/>
+            </a>
+            <strong>Björn Büttner</strong>
+            {% if lang != 'de' %}
+                <a href="/de" title="Deutsch">
+                    <img class="small" src="/de.jpg" alt="Deutsch"/>
+                </a>
+            {% endif %}
+            {% if lang != 'en' %}
+                <a href="/en" title="English">
+                    <img class="small" src="/en.jpg" alt="English"/>
+                </a>
+            {% endif %}
+        </div>
+        <nav class="bar">
+            <ul>
+                <li><a {% if active=='/' %}class="active" {% endif %}href="/{{ lang }}">{{ menu.home }}</a></li>
+                <li><a {% if active=='/prices' %}class="active" {% endif %} href="/prices/{{ lang }}">{{ menu.prices }}</a></li>
+                <li><a {% if active=='/contact' %}class="active" {% endif %} href="/contact/{{ lang }}">{{ menu.contact }}</a></li>
+                <li><a {% if active=='/imprint' %}class="active" {% endif %} href="/imprint/{{ lang }}">{{ menu.imprint }}</a></li>
+                <li><a href="https://www.linkedin.com/in/bjoern-idrinth-buettner/" target="_blank">Linkedin</a></li>
+            </ul>
+        </nav>
+        <div id="body">

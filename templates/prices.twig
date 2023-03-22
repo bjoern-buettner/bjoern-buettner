@@ -1,0 +1,21 @@
+{% include 'header.twig' %}
+<h1>{{ content.title }}</h1>
+<p>{{ content.reasoning }}</p>
+<p>{{ content.prices }}</p>
+<ul>
+    {% for offergroup in offers %}
+        <li>
+            <h3 onclick="this.parentNode.classList.toggle('active');">{{ offergroup[lang] }}</h3>
+            <ul>
+                {% for task in offergroup.tasks %}
+                    <li>
+                        <h4>{{ task.title[lang] }}</h4>
+                        <p>{{ task.description[lang] }}</p>
+                        <em>{{ task.price[lang] }}</em>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
+{% include 'footer.twig' %}

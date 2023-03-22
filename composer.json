@@ -1,0 +1,20 @@
+{
+    "name": "idrinth/bjoern-buettner",
+    "description": "My freelancing website.",
+    "authors": [
+        {
+            "name": "Björn Büttner",
+            "email": "service@bjoern-buettner.me"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.5.1",
+        "nikic/fast-route": "^1.3.0",
+        "zonuexe/http-accept-language": "^0.4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Me\\BjoernBuettner\\": "src"
+        }
+    }
+}
