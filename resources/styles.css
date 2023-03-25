@@ -3,6 +3,7 @@
 }
 body, html {
     background: #f0f9f0;
+    color: #111;
     padding: 0;
     margin: 0;
 }
@@ -41,6 +42,7 @@ ul ul > li {
     border: 1px solid #ccc;
     border-radius: 0.25em;
     box-shadow: 3px 3px 5px #ccc;
+    margin: 0.25em;
 }
 #body a {
     color: darkblue;
@@ -65,7 +67,7 @@ footer {
     padding: 1.25%;
     float: left;
 }
-h3 {
+li h3 {
     cursor: pointer;
     background-color: rgba(0,125,0,0.025);
     border-radius: 2em;
@@ -123,7 +125,7 @@ input, button, select, textarea {
     margin: 1em auto 3em;
     background: #eee;
     box-shadow: 3px 3px 5px #ccc;
-  padding: 2em 1em;
+    padding: 2em 1em;
 }
 footer.bar {
     position: fixed;
@@ -146,4 +148,50 @@ footer.bar {
 #header strong {
     font-size: 125%;
     padding: 1.5em;
+}
+.small:last-of-type {
+    margin-left: -60px;
+    margin-bottom: -4px;
+}
+#header {
+    background-color: #f0f9f0;
+    color: #111;
+}
+@media screen and (max-width:700px) {
+    div > div {
+        padding: 0.25em 0.5em;
+    }
+    .bar {
+        padding: 0% 7.5%;
+    }
+}
+@media screen and (max-width:500px) {
+    div > div {
+        padding: 0 0.5em;
+    }
+    .bar {
+        padding: 0% 5%;
+    }
+    li.active ul {
+        grid-template-columns: 1fr;
+    }
+    footer.bar {
+        position: static;
+    }
+    nav > ul {
+        grid-template-columns: 1fr;
+    }
+    form {
+        grid-template-columns: 1fr;
+    }
+}
+@media screen and (max-width:400px) {
+    .bar {
+        padding: 0;
+    }
+}
+@media print {
+    li ul {
+        display: grid;
+    }
 }

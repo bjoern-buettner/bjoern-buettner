@@ -5,7 +5,6 @@ namespace Me\BjoernBuettner;
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
 use Teto\HTTP\AcceptLanguage;
-use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use function FastRoute\simpleDispatcher;
 
@@ -70,7 +69,7 @@ class Application
                 header('', true, 405);
                 return "405 METHOD NOT ALLOWED";
             case Dispatcher::FOUND:
-                $twig = new Environment(new FilesystemLoader(dirname(__DIR__) . '/templates'));
+                $twig = new TwigWrapper(new FilesystemLoader(dirname(__DIR__) . '/templates'));
                 $handler = $routeInfo[1];
                 return $handler($twig, $routeInfo[2]['lang'] ?? '');
         }

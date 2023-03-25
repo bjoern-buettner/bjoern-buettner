@@ -20,8 +20,8 @@ class OfferList
                         'en' => 'Based on @idrinth/api-bench for REST-APIs.',
                     ],
                     'price' => [
-                        'de' => '60€/25 Webrequests',
-                        'en' => '60€/25 Webrequests',
+                        'de' => '110€/Stunde',
+                        'en' => '110€/hour',
                     ],
                 ],
                 [
@@ -174,8 +174,8 @@ class OfferList
                         'de' => 'Eine Domain nach Wunsch und Verfügbarkeit zusätzlich zu einer der anderen Dienstleistungen im Hostingbereich.',
                     ],
                     'price' => [
-                        'en' => 'base price + management fee/month',
-                        'de' => 'Basispreis + Verwaltungsaufwand/Monat',
+                        'en' => 'base price + 2€/month',
+                        'de' => 'Basispreis + 2€/Monat',
                     ],
                 ],
                 [
@@ -188,14 +188,14 @@ class OfferList
                         'de' => 'Hosting eines Secrets Vaults auf Basis von idrinth/walled-secrets. Eine Domain ist zu stellen.',
                     ],
                     'price' => [
-                        'en' => '11€/5 persons/month',
-                        'de' => '11€/5 Personen/Monat',
+                        'en' => '2€/person/month',
+                        'de' => '2€/Person/Monat',
                     ],
                 ],
             ],
         ],
         [
-            'de' => 'Beratungg',
+            'de' => 'Beratung',
             'en' => 'Consulting',
             'chooseable' => true,
             'tasks' => [
@@ -463,6 +463,48 @@ class OfferList
                     'price' => [
                         'en' => '10€/hour',
                         'de' => '10€/Stunde',
+                    ],
+                ],
+                [
+                    'title' => [
+                        'en' => '5 Secret Persons',
+                        'de' => '5 Geheime Personen',
+                    ],
+                    'description' => [
+                        'en' => 'For above or exactly 5 persons for a secret vault instance.',
+                        'de' => 'Bei über oder genau 5 Personen für eine Secret-Vault-Instanz.',
+                    ],
+                    'price' => [
+                        'en' => '1€/month',
+                        'de' => '1€/Monat',
+                    ],
+                ],
+                [
+                    'title' => [
+                        'en' => '25 Secret Persons',
+                        'de' => '25 Geheime Personen',
+                    ],
+                    'description' => [
+                        'en' => 'For above or exactly 25 persons for a secret vault instance.',
+                        'de' => 'Bei über oder genau 25 Personen für eine Secret-Vault-Instanz.',
+                    ],
+                    'price' => [
+                        'en' => '1€/month',
+                        'de' => '1€/Monat',
+                    ],
+                ],
+                [
+                    'title' => [
+                        'en' => '125 Secret Persons',
+                        'de' => '125 Geheime Personen',
+                    ],
+                    'description' => [
+                        'en' => 'For above or exactly 125 persons for a secret vault instance.',
+                        'de' => 'Bei über oder genau 125 Personen für eine Secret-Vault-Instanz.',
+                    ],
+                    'price' => [
+                        'en' => '1€/month',
+                        'de' => '1€/Monat',
                     ],
                 ],
             ],
