@@ -29,7 +29,7 @@ class Contact
                         'linkedin' => 'If your request is not business related, please use Linkedin for contacting me instead.',
                         'open_source' => 'If the request is related to one of my open-source projects and can be posted publicly, please use an issue in the related github repository for free support.'
                     ],
-                    'offers' => OfferList::$offers,
+                    'offers' => OfferList::get(),
                 ]);
             case 'de':
                 return $twig->render('contact.twig', [
@@ -49,7 +49,7 @@ class Contact
                         'linkedin' => 'Sollte sich Ihre Anfrage nicht um gewerbliche Themen drehen, so nutzen Sie bitte Linkedin für die Kontaktaufnahme.',
                         'open_source' => 'Handelt es sich um öffentlich postbare Supportanfragen für Open-Source-Projekte von mir, so nutzen Sie bitte das entsprechende Github-Repository für kostenlosen Support.',
                     ],
-                    'offers' => OfferList::$offers,
+                    'offers' => OfferList::get(),
                 ]);
         }
     }

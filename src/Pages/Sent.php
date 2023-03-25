@@ -21,16 +21,16 @@ class Sent
             return '';
         }
         $mailer = new PHPMailer();
-        $mailer->setFrom('no-reply@bjoern-buettner.me', 'No Reply (bjoern-buettner)');
-        $mailer->addAddress('service@bjoern-buettner.me', 'Björn Büttner (bjoern-buettner)');
+        $mailer->setFrom($_ENV['MAIL_FROM'], $_ENV['MAIL_FROM_NAME']);
+        $mailer->addAddress($_ENV['MAIL_TO'], $_ENV['MAIL_TO_NAME']);
         if (!$mailer->addReplyTo($request['email'], $request['name'])) {
             header('Location: /contact/' . $lang, true, 303);
             return '';
         }
-        $mailer->Host = 'mail.jrvs.info';
-        $mailer->Username = 'no-reply@bjoern-buettner.me';
-        $mailer->Password = 'JcxW3dOLTbMPX6daDpezzeC73cibb1kM4va1GS5MFPIqn6uyhBHSw4aRrdlMILI9rGegkSbFrSP1QjaqOwNvywR7E7Ihz4NmlzfT5ATCubVtMAIIZa1ipdX4LzWG9ifCr7UB69qiMfunkYpf6fa0RVcOua4RA2pzzDIozww2hK6SP0cD4bziqZZHWz3qL9KiCht0IKAhB295QU8rDk2z4KI3MiAaUHzLxTekeDmHHoIRjWZZXyxXTQSTZ1CoSW3Y';
-        $mailer->Port = 587;
+        $mailer->Host = $_ENV['MAIL_HOST'];
+        $mailer->Username = $_ENV['MAIL_USERNAME'];
+        $mailer->Password = $_ENV['MAIL_PASSWORD'];
+        $mailer->Port = intval($_ENV['MAIL_PORT'], 10);
         $mailer->CharSet = 'utf-8';
         $mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mailer->Timeout = 60;

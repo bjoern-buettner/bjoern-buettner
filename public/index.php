@@ -1,5 +1,6 @@
 <?php
 
+use Dotenv\Dotenv;
 use Me\BjoernBuettner\Application;
 use Me\BjoernBuettner\Pages\Contact;
 use Me\BjoernBuettner\Pages\Home;
@@ -8,6 +9,8 @@ use Me\BjoernBuettner\Pages\Prices;
 use Me\BjoernBuettner\Pages\Sent;
 
 require_once (__DIR__ . '/../vendor/autoload.php');
+
+Dotenv::createImmutable(dirname(__DIR__));
 
 echo (new Application())
     ->res('/styles.css', function (): string {
