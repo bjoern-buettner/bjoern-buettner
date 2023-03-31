@@ -2,7 +2,6 @@
 
 namespace Me\BjoernBuettner\Pages;
 
-use Me\BjoernBuettner\MenuList;
 use Me\BjoernBuettner\OfferList;
 use Twig\Environment;
 
@@ -15,9 +14,7 @@ class Prices
                 return $twig->render('prices.twig', [
                     'title' => 'Offers',
                     'active' => '/prices',
-                    'lang' => 'en',
                     'description' => 'Offers by Björn Büttner',
-                    'menu' => MenuList::$en,
                     'content' => [
                         'title' => 'My offers and prices',
                         'reasoning' => 'The prices are primarily based on my interest and the relative effort of the tasks. Individual prices will be provided on request.',
@@ -30,8 +27,6 @@ class Prices
                     'title' => 'Leistungen',
                     'active' => '/prices',
                     'description' => 'Leistungen von Björn Büttner',
-                    'lang' => 'de',
-                    'menu' => MenuList::$de,
                     'content' => [
                         'title' => 'Meine Leistungen & Preise',
                         'reasoning' => 'Die Preise orientieren sich primär an meinem Interesse und dem relativen Aufwand der Tätigkeiten. Individuelle Angebote erhalten Sie auf Anfrage.',

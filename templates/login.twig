@@ -1,0 +1,12 @@
+{% include 'header.twig' %}
+<h1>{{ content.title }}</h1>
+<p>{{ content.registration }}</p>
+<form method="post">
+    <label for="email">{{ content.email }}</label>
+    <input type="email" placeholder="max.mustermann@example.de" required name="email" id="email"/>
+    <label for="content">{{ content.password }}</label>
+    <input type="password" required name="password" id="password"/>
+    <span></span>
+    <button type="submit">{{ content.submit }}</button>
+</form>
+{% include 'footer.twig' %}

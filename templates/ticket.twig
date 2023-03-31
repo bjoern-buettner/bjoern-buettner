@@ -1,0 +1,36 @@
+{% include 'header.twig' %}
+<h1>{{ ticket.subject }}</h1>
+<h2>#{{ ticket.aid}} {{ ticket.created }}{% if ticket.closed is not null %} - {{ ticket.closed }}{% endif %}</h2>
+<h3>{{ content.comments }}</h3>
+<ul>
+{% for comment in comments %}
+    <li>
+        <strong>{{ comment.first_name }} {{ comment.last_name }}</strong>
+        <em>{{ comment.created }}</em>
+        <p>{{ comment.content }}</p>
+    </li>
+{% endfor %}
+</ul>
+<form method="post">
+    <label for="content">{{ content.comment }}</label>
+    <textarea id="content" name="content" required></textarea>
+        <span></span>
+        <button type="submit">{{ content.add }}</button>
+</form>
+<h3>{{ content.tasks }}</h3>
+<ul>
+{% for task in tasks %}
+    <li>
+        <strong>{{ task.day }}</strong>
+        <em>{% if lang=='en' %}{{ task.amount|number_format(2) }}{% if task.fee_type=='hourly' %}hours{% else %}x{% endif %}{% else %}{{ task.amount|number_format(2,'.',',') }}{% if task.fee_type=='hourly' %}Stunden{% else %}x{% endif %}{% endif %} {% if lang=='en' %}{{ task.name_en }}{% else %}{{ task.name_de }}{% endif %}</em>
+        <span>{% if task.free=='1' %}0{% else %}{% if lang=='en' %}{{ task.amount * task.price|number_format(2) }}{% else %}{{ task.amount * task.price|number_format(2,'.',',') }}{% endif %}{% endif %}€</span>
+        <span>
+            {% if lang=='en' and task.invoiced is null %}Not Invoiced
+            {% elseif lang=='de' and task.invoiced is null %}Nicht Abgerechnet
+            {% elseif lang=='en' and task.invoiced is not null %}Invoiced
+            {% elseif lang=='de' and task.invoiced is not null %}Abgerechnet
+        {% endif %}</span>
+    </li>
+{% endfor %}
+</ul>
+{% include 'footer.twig' %}

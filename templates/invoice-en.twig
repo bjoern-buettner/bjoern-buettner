@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Invoice {{ year }}/{{ invoicenumber }}</title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <h1>Invoice</h1>
+        <table style="width: 100%;padding: 1em;">
+            <tr>
+                <td>Björn Büttner<br/>
+Böllerts Höfe 4<br/>
+45479 Mülheim an der Ruhr<br/>
+Germany<br/>
+Tax-Number: 0000000000000000<br/>
+Value-Added-Tax-ID: DExxxx<br/>
+<a href="https://bjoern-buettner.me">bjoern-buettner.me</a><br/>
+<a href="mailto:service@bjoern-buettner.me">service@bjoern-buettner.me</a></td>
+                <td style="text-align: right"><img src="https://bjoern-buettner.me/logo.png"/></td>
+            </tr>
+        </table>
+        <table style="width: 100%;background:#e0e9e0;padding: 1em;">
+            <tr>
+                <td>Invoice number: {{ year }}/{{ invoicenumber }}<br/>
+Created: {{ created }}<br/>
+Due: {{ due }}</td>
+                <td style="width: 33%">
+                    <img src="data:image/png;base64,{{ qrcode }}"/><br/>
+                    <a href="https://www.paypal.com/invoice/s/pay/{{ id }}">www.paypal.com/invoice/s/pay/{{ id }}</a>
+                </td>
+                <td style="text-align: right">
+                    Amount due<br/>
+                    <strong style="font-size: 200%;">{{ total|number_format(2) }}€<strong>
+                </td>
+            </tr>
+        </table>
+        <h2>Invoice to</h2>
+        <table style="width: 100%;padding: 1em;">
+            <tr>
+                <td>{% if customer.company_name %}{{ customer.company_name }}{% else %}{{ customer.first_name }} {{ customer.last_name }}{% endif %}<br/>
+                    {{ customer.address|nl2br }}<br/>
+                    {{ customer.zip }} {{ customer.city }}<br/>
+                    {{ customer.country }}<br/>
+<a href="{{ customer.email }}">{{ customer.email }}</a>
+                </td>
+            </tr>
+        </table>
+        <h2>Services</h2>
+        <table style="width: 100%;padding: 1em;text-align:right">
+            <tr>
+                <th style="border-bottom: 1px solid #010"></th>
+                <th style="border-bottom: 1px solid #010">Date</th>
+                <th style="border-bottom: 1px solid #010">Ticket</th>
+                <th style="border-bottom: 1px solid #010">Name</th>
+                <th style="border-bottom: 1px solid #010">Description</th>
+                <th style="border-bottom: 1px solid #010">Amount</th>
+                <th style="border-bottom: 1px solid #010">Price</th>
+                <th style="border-bottom: 1px solid #010">Total</th>
+            </tr>
+            {% for item in items %}
+                <tr>
+                    <th style="border-bottom: 1px solid #010">1</th>
+                    <td style="border-bottom: 1px solid #010">{{ item.day }}</td>
+                    <td style="border-bottom: 1px solid #010">{% if item.ticket %}<a href="https://bjoern-buettner.me/tickets/{{ item.ticket }}">#{{ item.ticket }}</a>{% endif %}</td>
+                    <td style="border-bottom: 1px solid #010">{{ item.name }}</td>
+                    <td style="border-bottom: 1px solid #010">{{ item.description }}</td>
+                    <td style="border-bottom: 1px solid #010">{{ item.amount|number_format(2) }}{% if item.fee_type=='hourly' %}hour(s){% elseif item.fee_type=='monthly' %}month(s){% endif %}</td>
+                    <td style="border-bottom: 1px solid #010">{{ item.price|number_format(2) }}€</td>
+                    <td style="border-bottom: 1px solid #010">{{ item.amount * item.price|number_format(2) }}€</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="8"></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #010;font-size: 150%">
+                <th colspan="7">Sum</th>
+                <td>{{ total|number_format(2) }}€</td>
+            </tr>
+        </table>
+        <p>Note: As a small business within the meaning of Section 19 (1) UStG, VAT is not charged.</p>
+    </body>
+</html>

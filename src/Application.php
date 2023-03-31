@@ -49,6 +49,14 @@ class Application
     }
     public function run(): string
     {
+        session_set_cookie_params([
+            'path' => '/',
+            'domain' => $_ENV['SYSTEM_HOSTNAME'],
+            'secure' => true,
+            'httponly' => true,
+            'samesite' => 'Strict',
+        ]);
+        session_start();
         $dispatcher = simpleDispatcher(function(RouteCollector $r) {
             foreach ($this->routes as $method => $routes) {
                 foreach ($routes as $route => $func) {
@@ -69,9 +77,9 @@ class Application
                 header('', true, 405);
                 return "405 METHOD NOT ALLOWED";
             case Dispatcher::FOUND:
-                $twig = new TwigWrapper(new FilesystemLoader(dirname(__DIR__) . '/templates'));
+                $twig = new TwigWrapper(new FilesystemLoader(dirname(__DIR__) . '/templates'), $routeInfo[2]['lang'] ?? '');
                 $handler = $routeInfo[1];
-                return $handler($twig, $routeInfo[2]['lang'] ?? '');
+                return call_user_func($handler, $twig, $routeInfo[2]['lang'] ?? '', $routeInfo[2]);
         }
     }
 }

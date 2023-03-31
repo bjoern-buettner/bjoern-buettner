@@ -14,7 +14,9 @@
         "phpmailer/phpmailer": "^6.7.1",
         "voku/html-min": "^4.5.0",
         "mpdf/mpdf": "^8.1.4",
-        "vlucas/phpdotenv": "^5.5.0"
+        "vlucas/phpdotenv": "^5.5.0",
+        "php-curl-class/php-curl-class": "^9.14.3",
+        "php-imap/php-imap": "^5.0.1"
     },
     "autoload": {
         "psr-4": {

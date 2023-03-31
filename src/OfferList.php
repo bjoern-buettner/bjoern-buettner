@@ -9,12 +9,7 @@ class OfferList
     public static function get(): array
     {
         $data = [];
-        $database = new PDO(
-            'mysql:host=' . $_ENV['DATABASE_HOST'] . ';dbname=' . $_ENV['DATABASE_DATABASE'],
-            $_ENV['DATABASE_USER'],
-            $_ENV['DATABASE_PASSWORD'],
-            [PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING]
-        );
+        $database = Database::get();
         foreach ($database->query('SELECT * FROM category')->fetchAll(PDO::FETCH_ASSOC) as $category) {
             $cat = [
                 'de' => $category['de'],

@@ -2,7 +2,6 @@
 
 namespace Me\BjoernBuettner\Pages;
 
-use Me\BjoernBuettner\MenuList;
 use Me\BjoernBuettner\OfferList;
 use Twig\Environment;
 
@@ -15,9 +14,7 @@ class Contact
                 return $twig->render('contact.twig', [
                     'title' => 'Contact',
                     'active' => '/contact',
-                    'lang' => 'en',
                     'description' => 'Contact Björn Büttner',
-                    'menu' => MenuList::$en,
                     'content' => [
                         'title' => 'Contact me',
                         'topic' => 'Request topic',
@@ -36,8 +33,6 @@ class Contact
                     'title' => 'Kontakt',
                     'active' => '/contact',
                     'description' => 'Anfrage an Björn Büttner senden',
-                    'lang' => 'de',
-                    'menu' => MenuList::$de,
                     'content' => [
                         'title' => 'Anfrage stellen',
                         'topic' => 'Anfragethema',

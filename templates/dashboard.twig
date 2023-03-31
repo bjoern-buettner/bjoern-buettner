@@ -1,0 +1,55 @@
+{% include 'header.twig' %}
+<h1>{{ content.title }}</h1>
+{% if user.customer is not null or tickets is not empty %}
+    <h2>{{ content.tickets }}</h2>
+{% endif %}
+{% if tickets is not empty %}
+    <ul>
+        {% for ticket in tickets %}
+            <li><a href="/tickets/{{ ticket.aid }}/{{ lang }}">#{{ ticket.aid }}</a> {{ ticket.subject }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% if user.customer is not null %}
+    <h3>{{ content.create_ticket }}</h3>
+    <form method="post" action="/tickets/{{ lang }}">
+        <label for="subject">{{ content.subject }}</label>
+        <input type="text" required name="subject" id="subject"/>
+        <label for="description">{{ content.description }}</label>
+        <textarea name="description" id="description"></textarea>
+        <span></span>
+        <button type="submit">{{ content.create }}</button>
+    </form>
+{% endif %}
+{% if contracts is not empty %}
+    <h2>{{ content.contracts }}</h2>
+    <ul>
+        {% for contract in contracts %}
+            <li>
+                <h3 onclick="this.parentNode.classList.toggle('active');">#{{ contract.aid }} {{ contract.start }} - {% if contract.end %}{{ contract.end }}{% else %}9999-99-99{% endif %}{% if user.customer is null %} {{ contract.customer.email }}{% endif %}</h3>
+                <ul>
+                {% for item in contract.items %}
+                    <li title="{{ item.description }}">{{ item.name }} {%if lang=='en' %}{{ item.price | number_format(2) }}€/month{% else %}{{ item.price | number_format(2, '.', ',') }}€/Monat{% endif %}</li>
+                {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% if invoices is not empty %}
+    <h2>{{ content.invoices }}</h2>
+    <ul>
+        {% for invoice in invoices %}
+            <li{% if invoice.payed is null %} style="color: red;"{% endif %}><a href="/invoices/{{ lang }}/{{ invoice.aid }}">{{ invoice.year }}/{{ invoice.id }}</a> {{ invoice.created }} {%if lang=='en' %}{{ invoice.total | number_format(2) }}€{% else %}{{ invoice.total | number_format(2, '.', ',') }}€{% endif %}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% if members is not empty %}
+    <h2>{{ content.members }}</h2>
+    <ul>
+        {% for member in members %}
+            <li>{{ member.role|replace({'Provider-':'','Customer-':''}) }}: <a href="mailto:{{ member.email }}">{{ member.first_name }} {{ member.last_name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% include 'footer.twig' %}

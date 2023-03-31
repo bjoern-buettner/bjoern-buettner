@@ -2,7 +2,6 @@
 
 namespace Me\BjoernBuettner\Pages;
 
-use Me\BjoernBuettner\MenuList;
 use Twig\Environment;
 
 class Imprint
@@ -14,17 +13,13 @@ class Imprint
                 return $twig->render('imprint-en.twig', [
                     'title' => 'Imprint',
                     'active' => '/imprint',
-                    'lang' => 'en',
                     'description' => 'Björn Büttner\'s imprint',
-                    'menu' => MenuList::$en,
                 ]);
             case 'de':
                 return $twig->render('imprint-de.twig', [
                     'title' => 'Impressum',
                     'active' => '/imprint',
                     'description' => 'Björn Büttners Impressum',
-                    'lang' => 'de',
-                    'menu' => MenuList::$de,
                 ]);
         }
     }

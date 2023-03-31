@@ -2,7 +2,6 @@
 
 namespace Me\BjoernBuettner\Pages;
 
-use Me\BjoernBuettner\MenuList;
 use PHPMailer\PHPMailer\PHPMailer;
 use Twig\Environment;
 
@@ -53,9 +52,7 @@ class Sent
                 return $twig->render('sent.twig', [
                     'title' => 'Contact',
                     'active' => '/contact',
-                    'lang' => 'en',
                     'description' => 'Contact Björn Büttner',
-                    'menu' => MenuList::$en,
                     'content' => [
                         'title' => 'Request sent',
                         'topic' => 'Request topic',
@@ -71,8 +68,6 @@ class Sent
                     'title' => 'Kontakt',
                     'active' => '/contact',
                     'description' => 'Anfrage an Björn Büttner senden',
-                    'lang' => 'de',
-                    'menu' => MenuList::$de,
                     'content' => [
                         'title' => 'Anfrage gestellt',
                         'topic' => 'Anfragethema',

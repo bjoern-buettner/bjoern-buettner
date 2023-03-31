@@ -11,7 +11,11 @@
                     <li>
                         <h4>{{ task.title[lang] }}</h4>
                         <p>{{ task.description[lang] }}</p>
-                        <em>{{ task.price[lang] }}</em>
+                        {% if lang=='en' %}
+                            <em>{{ task.price | number_format(2, '.', ',') }}€{% if task.fee_type=='hourly' %}/hour{% elseif task.fee_type=='monthly' %}/month{% elseif task.fee_type=='item' %} each{% endif %}</em>
+                        {% else %}
+                            <em>{{ task.price | number_format(2, ',', '.') }}€{% if task.fee_type=='hourly' %}/Stunde{% elseif task.fee_type=='monthly' %}/Monat{% elseif task.fee_type=='item' %} jeweils{% endif %}</em>
+                        {% endif %}
                     </li>
                 {% endfor %}
             </ul>
