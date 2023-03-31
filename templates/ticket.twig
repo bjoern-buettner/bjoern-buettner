@@ -14,8 +14,20 @@
 <form method="post">
     <label for="content">{{ content.comment }}</label>
     <textarea id="content" name="content" required></textarea>
-        <span></span>
-        <button type="submit">{{ content.add }}</button>
+    <span></span>
+    <button type="submit">{{ content.add }}</button>
+</form>
+<h3>{{ content.attachments }}</h3>
+<ul>
+{% for attachment in attachments %}
+    <li title="{{ content.uploaded }} {{ attachment.uploaded }}"><a href="/attachments/{{ attachment.aid }}" taeget="_blank">{{ attachment.name }}</a></li>
+{% endfor %}
+</ul>
+<form method="post" enctype="multipart/form-data">
+    <label for="file">{{ content.comment }}</label>
+    <input type="file" id="file" name="file" required/>
+    <span></span>
+    <button type="submit">{{ content.add }}</button>
 </form>
 <h3>{{ content.tasks }}</h3>
 <ul>

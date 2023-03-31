@@ -40,7 +40,7 @@
     <h2>{{ content.invoices }}</h2>
     <ul>
         {% for invoice in invoices %}
-            <li{% if invoice.payed is null %} style="color: red;"{% endif %}><a href="/invoices/{{ lang }}/{{ invoice.aid }}">{{ invoice.year }}/{{ invoice.id }}</a> {{ invoice.created }} {%if lang=='en' %}{{ invoice.total | number_format(2) }}€{% else %}{{ invoice.total | number_format(2, '.', ',') }}€{% endif %}</li>
+            <li{% if invoice.payed is null %} style="color: red;"{% endif %}><a target="_blank" href="/invoices/{{ invoice.aid }}/{{ lang }}">{{ invoice.year }}/{{ invoice.id }}</a> {{ invoice.created }} {%if lang=='en' %}{{ invoice.total | number_format(2) }}€{% else %}{{ invoice.total | number_format(2, '.', ',') }}€{% endif %}</li>
         {% endfor %}
     </ul>
 {% endif %}
@@ -51,5 +51,31 @@
             <li>{{ member.role|replace({'Provider-':'','Customer-':''}) }}: <a href="mailto:{{ member.email }}">{{ member.first_name }} {{ member.last_name }}</a></li>
         {% endfor %}
     </ul>
+{% endif %}
+{% if user.role == 'Customer-Administrator' or user.role == 'Provider-Administrator' %}
+    <h3>{{ content.new_member }}</h3>
+    <form method="post">
+        <label for="email">{{ content.email }}</label>
+        <input type="email" required name="email" id="email" placeholder="max.mustermann@example.com"/>
+        <label for="first">{{ content.first_name }}</label>
+        <input type="text" required name="first" id="first" placeholder="Max"/>
+        <label for="last">{{ content.last_name }}</label>
+        <input type="text" required name="last" id="last" placeholder="Mustermann"/>
+        <label for="role">{{ content.role }}</label>
+        <select id="role" required name="role">
+            <option value="">{{ content.choose }}</option>
+            {% if user.role == 'Customer-Administrator' %}
+                <option value="Customer-Technician">Technician</option>
+                <option value="Customer-Accounting">Accounting</option>
+                <option value="Customer-Administrator">Administrator</option>
+            {% else %}
+                <option value="Provider-Technician">Support</option>
+                <option value="Provider-Accounting">Accounting</option>
+                <option value="Provider-Administrator">Administrator</option>
+            {% endif %}
+        </select>
+        <span></span>
+        <button type="submit">{{ content.invite }}</button>
+    </form>
 {% endif %}
 {% include 'footer.twig' %}

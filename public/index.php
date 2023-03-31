@@ -2,10 +2,12 @@
 
 use Dotenv\Dotenv;
 use Me\BjoernBuettner\Application;
+use Me\BjoernBuettner\Pages\Attachments;
 use Me\BjoernBuettner\Pages\Contact;
 use Me\BjoernBuettner\Pages\Dashboard;
 use Me\BjoernBuettner\Pages\Home;
 use Me\BjoernBuettner\Pages\Imprint;
+use Me\BjoernBuettner\Pages\Invoices;
 use Me\BjoernBuettner\Pages\Login;
 use Me\BjoernBuettner\Pages\Prices;
 use Me\BjoernBuettner\Pages\Sent;
@@ -44,6 +46,8 @@ echo (new Application())
     ->post('/tickets', [Tickets::class, 'post'])
     ->get('/tickets/{id}', [Tickets::class, 'get'])
     ->post('/tickets/{id}', [Tickets::class, 'detail'])
+    ->get('/invoices/{id}', [Invoices::class, 'get'])
+    ->res('/attachments/{id}', [Attachments::class, 'get'])
     ->get('/login', [Login::class, 'get'])
     ->post('/login', [Login::class, 'post'])
     ->post('/sent', [Sent::class, 'post'])

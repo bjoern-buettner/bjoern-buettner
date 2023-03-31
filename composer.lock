@@ -4,8 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2a515d7ee733309b5195ef11ad1b0a6a",
+    "content-hash": "d2d0002ce9ff11a21176f360d4a75246",
     "packages": [
+        {
+            "name": "appwrite/php-clamav",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/appwrite/php-clamav.git",
+                "reference": "61d00f24f9e7766fbba233e7b8d09c5475388073"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/appwrite/php-clamav/zipball/61d00f24f9e7766fbba233e7b8d09c5475388073",
+                "reference": "61d00f24f9e7766fbba233e7b8d09c5475388073",
+                "shasum": ""
+            },
+            "require": {
+                "ext-sockets": "*",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Appwrite\\ClamAV\\": "src/ClamAV"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eldad Fux",
+                    "email": "eldad@appwrite.io"
+                }
+            ],
+            "description": "ClamAV network and pipe client for PHP",
+            "keywords": [
+                "anti virus",
+                "appwrite",
+                "clamav",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/appwrite/php-clamav/issues",
+                "source": "https://github.com/appwrite/php-clamav/tree/1.1.0"
+            },
+            "time": "2020-10-02T05:23:46+00:00"
+        },
         {
             "name": "graham-campbell/result-type",
             "version": "v1.1.1",

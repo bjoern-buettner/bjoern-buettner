@@ -16,7 +16,8 @@
         "mpdf/mpdf": "^8.1.4",
         "vlucas/phpdotenv": "^5.5.0",
         "php-curl-class/php-curl-class": "^9.14.3",
-        "php-imap/php-imap": "^5.0.1"
+        "php-imap/php-imap": "^5.0.1",
+        "appwrite/php-clamav": "^1.1.0"
     },
     "autoload": {
         "psr-4": {

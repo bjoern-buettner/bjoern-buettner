@@ -1,6 +1,7 @@
 <?php
 
 use Dotenv\Dotenv;
+use Me\BjoernBuettner\Antivirus;
 use Me\BjoernBuettner\Database;
 use PhpImap\Exceptions\ConnectionException;
 use PhpImap\IncomingMail;
@@ -10,6 +11,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 require_once (__DIR__ . '/../vendor/autoload.php');
 
 Dotenv::createImmutable(dirname(__DIR__))->load();
+
+$antivirus = new Antivirus();
 
 $mailbox = $mailbox = new Mailbox(
     '{' . $_ENV['TICKET_MAIL_HOST'] . ':' . $_ENV['TICKET_MAIL_PORT_IMAP'] . '/imap/ssl}INBOX',
@@ -31,13 +34,17 @@ try {
                 $mailbox->deleteMail($mailId);
                 continue;
             }
+            if ($mail->textPlain ?? $mail->textHtml === null || $mail->textPlain ?? $mail->textHtml === '') {
+                $mailbox->deleteMail($mailId);
+                continue;
+            }
             $stmt = $database->prepare('SELECT * FROM `user` WHERE email=:email');
             $stmt->execute([':email' => $mail->fromAddress]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             if (!$user) {
                 $mailer = new PHPMailer();
                 $mailer->setFrom($_ENV['TICKET_MAIL_FROM'], $_ENV['TICKET_MAIL_FROM_NAME']);
-                $mailer->addAddress($mail->senderAddress, $mail->senderName);
+                $mailer->addAddress($mail->senderAddress, $mail->senderName ?? '');
                 $mailer->Host = $_ENV['TICKET_MAIL_HOST'];
                 $mailer->Username = $_ENV['TICKET_MAIL_USER'];
                 $mailer->Password = $_ENV['TICKET_MAIL_PASSWORD'];
@@ -69,7 +76,7 @@ try {
                     if ($user['organisation']!==null && $ticket['customer'] !== $user['organisation']) {
                         $mailer = new PHPMailer();
                         $mailer->setFrom($_ENV['TICKET_MAIL_FROM'], $_ENV['TICKET_MAIL_FROM_NAME']);
-                        $mailer->addAddress($mail->senderAddress, $mail->senderName);
+                        $mailer->addAddress($mail->senderAddress, $mail->senderName ?? '');
                         $mailer->Host = $_ENV['TICKET_MAIL_HOST'];
                         $mailer->Username = $_ENV['TICKET_MAIL_USER'];
                         $mailer->Password = $_ENV['TICKET_MAIL_PASSWORD'];
@@ -93,13 +100,36 @@ try {
                         continue;
                     }
                     $database
-                        ->prepare($statement)
+                        ->prepare('INSERT INTO ticket_comment (`ticket`,`raw_mail`,`creator`,`content`) VALUES (:ticket,:raw_mail,:creator,:content)')
                         ->execute([
                             ':ticket' => $id,
                             ':content' => $mail->textPlain ?? $mail->textHtml ?? 'Empty mail.',
                             ':creator' => $user['aid'],
                             ':raw_mail' => $mail->headersRaw ?? '',
                         ]);
+                    $database
+                        ->prepare('INSERT IGNORE INTO ticket_watcher (`ticket`,`watcher`) VALUES (:ticket,:watcher)')
+                        ->execute([':ticket' => $id, ':watcher' => $user['aid']]);
+                    $database
+                        ->prepare('INSERT IGNORE INTO ticket_watcher (`ticket`,`watcher`) VALUES (:ticket,:watcher)')
+                        ->execute([':ticket' => $id, ':watcher' => 1]);
+                    if ($mail->hasAttachments()) {
+                        foreach ($mail->getAttachments() as $attachment) {
+                            $content = $attachment->getContents();
+                            if ($antivirus->sclean($content)) {
+                                $database
+                                    ->prepare('INSERT IGNORE INTO ticket_attachment (`name`,`ticket`,`uploader`,`hash`,`data`,`mime`) VALUES(:name,:ticket,:uploader,:hash,:data,:mime)')
+                                    ->execute([
+                                        ':name' => $attachment->name ?? 'unknown',
+                                        ':ticket' => $id,
+                                        ':uploader' => $user['aid'],
+                                        ':hash' => md5($content),
+                                        ':data' => $content,
+                                        ':mime' => $attachment->mime ?? 'application/octet-stream'
+                                    ]);
+                            }
+                        }
+                    }
                     $mailbox->deleteMail($mailId);
                     continue;
                 }
@@ -116,6 +146,29 @@ try {
                     ':creator' => $user['aid'],
                     ':content' => $mail->textPlain ?? $mail->textHtml ?? 'Empty mail.',
                 ]);
+            $database
+                ->prepare('INSERT IGNORE INTO ticket_watcher (`ticket`,`watcher`) VALUES (:ticket,:watcher)')
+                ->execute([':ticket' => $ticket, ':watcher' => $user['aid']]);
+            $database
+                ->prepare('INSERT IGNORE INTO ticket_watcher (`ticket`,`watcher`) VALUES (:ticket,:watcher)')
+                ->execute([':ticket' => $ticket, ':watcher' => 1]);
+            if ($mail->hasAttachments()) {
+                foreach ($mail->getAttachments() as $attachment) {
+                    $content = $attachment->getContents();
+                    if ($antivirus->sclean($content)) {
+                        $database
+                            ->prepare('INSERT IGNORE INTO ticket_attachment (`name`,`ticket`,`uploader`,`hash`,`data`,`mime`) VALUES(:name,:ticket,:uploader,:hash,:data,:mime)')
+                            ->execute([
+                                ':name' => $attachment->name ?? 'unknown',
+                                ':ticket' => $ticket,
+                                ':uploader' => $user['aid'],
+                                ':hash' => md5($content),
+                                ':data' => $content,
+                                ':mime' => $attachment->mime ?? 'application/octet-stream'
+                            ]);
+                    }
+                }
+            }
             $mailbox->deleteMail($mailId);
         }
     }
