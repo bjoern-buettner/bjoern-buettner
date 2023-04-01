@@ -9,6 +9,7 @@ use Me\BjoernBuettner\Pages\Home;
 use Me\BjoernBuettner\Pages\Imprint;
 use Me\BjoernBuettner\Pages\Invoices;
 use Me\BjoernBuettner\Pages\Login;
+use Me\BjoernBuettner\Pages\Ping;
 use Me\BjoernBuettner\Pages\Prices;
 use Me\BjoernBuettner\Pages\Sent;
 use Me\BjoernBuettner\Pages\Tickets;
@@ -38,6 +39,10 @@ echo (new Application())
         header('Content-Type: image/png', true);
         return file_get_contents(__DIR__ . '/../resources/logo.png');
     })
+    ->res('/ping.js', function (): string {
+        header('Content-Type: application/javascript', true);
+        return file_get_contents(__DIR__ . '/../resources/ping.js');
+    })
     ->get('/', [Home::class, 'get'])
     ->get('/contact', [Contact::class, 'get'])
     ->get('/imprint', [Imprint::class, 'get'])
@@ -48,6 +53,7 @@ echo (new Application())
     ->post('/tickets/{id}', [Tickets::class, 'detail'])
     ->get('/invoices/{id}', [Invoices::class, 'get'])
     ->res('/attachments/{id}', [Attachments::class, 'get'])
+    ->res('/ping', [Ping::class, 'get'])
     ->get('/login', [Login::class, 'get'])
     ->post('/login', [Login::class, 'post'])
     ->post('/sent', [Sent::class, 'post'])

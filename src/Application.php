@@ -57,6 +57,7 @@ class Application
             'samesite' => 'Strict',
         ]);
         session_start();
+        $_SESSION['_time'] = microtime();
         $dispatcher = simpleDispatcher(function(RouteCollector $r) {
             foreach ($this->routes as $method => $routes) {
                 foreach ($routes as $route => $func) {
