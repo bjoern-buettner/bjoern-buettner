@@ -1,5 +1,42 @@
 {% include 'header.twig' %}
 <h1>{{ content.title }}</h1>
+{% if user.customer is not null or user.role=='Customer-Administrator' %}
+    <h2>{{ content.invoice_data }}</h2>
+    <table>
+        <tr>
+            <th>{{ content.name }}</th>
+            <td>{% if customer.company_name %}{{ customer.company_name }}{% else %}{{ customer.first_name }} {{ customer.last_name }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>{{ content.email }}</th>
+            <td>{{ customer.email }}</td>
+        </tr>
+        <tr>
+            <th>{{ content.language }}</th>
+            <td>{{ customer.lang }}</td>
+        </tr>
+        <tr>
+            <th>{{ content.country }}</th>
+            <td>{{ customer.country }} ({{ customer.country_code }})</td>
+        </tr>
+        <tr>
+            <th>{{ content.address }}</th>
+            <td>{{ customer.address|nl2br }}</td>
+        </tr>
+        <tr>
+            <th>{{ content.province }}</th>
+            <td>{{ customer.province }}</td>
+        </tr>
+        <tr>
+            <th>{{ content.zip }}</th>
+            <td>{{ customer.zip }}</td>
+        </tr>
+        <tr>
+            <th>{{ content.city }}</th>
+            <td>{{ customer.city }}</td>
+        </tr>
+    </table>
+{% endif %}
 {% if user.customer is not null or tickets is not empty %}
     <h2>{{ content.tickets }}</h2>
 {% endif %}

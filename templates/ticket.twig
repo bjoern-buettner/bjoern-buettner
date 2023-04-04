@@ -11,38 +11,46 @@
     </li>
 {% endfor %}
 </ul>
-<form method="post">
-    <label for="content">{{ content.comment }}</label>
-    <textarea id="content" name="content" required></textarea>
-    <span></span>
-    <button type="submit">{{ content.add }}</button>
-</form>
+{% if ticket.closed is null %}
+    <form method="post">
+        <label for="content">{{ content.comment }}</label>
+        <textarea id="content" name="content" required></textarea>
+        <label for="done">{{ content.done }}</label>
+        <input type="hidden" name="done" value="0"/>
+        <input type="checkbox" id="done" name="done" value="1"/>
+        <span></span>
+        <button type="submit">{{ content.add }}</button>
+    </form>
+{% endif %}
 <h3>{{ content.attachments }}</h3>
 <ul>
 {% for attachment in attachments %}
     <li title="{{ content.uploaded }} {{ attachment.uploaded }}"><a href="/attachments/{{ attachment.aid }}" taeget="_blank">{{ attachment.name }}</a></li>
 {% endfor %}
 </ul>
-<form method="post" enctype="multipart/form-data">
-    <label for="file">{{ content.comment }}</label>
-    <input type="file" id="file" name="file" required/>
-    <span></span>
-    <button type="submit">{{ content.add }}</button>
-</form>
+{% if ticket.closed is null %}
+    <form method="post" enctype="multipart/form-data">
+        <label for="file">{{ content.file }}</label>
+        <input type="file" id="file" name="file" required/>
+        <span></span>
+        <button type="submit">{{ content.add }}</button>
+    </form>
+{% endif %}
 <h3>{{ content.tasks }}</h3>
-<ul>
+<table>
 {% for task in tasks %}
-    <li>
-        <strong>{{ task.day }}</strong>
-        <em>{% if lang=='en' %}{{ task.amount|number_format(2) }}{% if task.fee_type=='hourly' %}hours{% else %}x{% endif %}{% else %}{{ task.amount|number_format(2,'.',',') }}{% if task.fee_type=='hourly' %}Stunden{% else %}x{% endif %}{% endif %} {% if lang=='en' %}{{ task.name_en }}{% else %}{{ task.name_de }}{% endif %}</em>
-        <span>{% if task.free=='1' %}0{% else %}{% if lang=='en' %}{{ task.amount * task.price|number_format(2) }}{% else %}{{ task.amount * task.price|number_format(2,'.',',') }}{% endif %}{% endif %}€</span>
-        <span>
+    <tr>
+        <th>{{ task.day }}</th>
+        <td>{% if lang=='en' %}{{ task.amount|number_format(2) }}{% if task.fee_type=='hourly' %}hours{% else %}x{% endif %}{% else %}{{ task.amount|number_format(2,'.',',') }}{% if task.fee_type=='hourly' %}Stunden{% else %}x{% endif %}{% endif %} {% if lang=='en' %}{{ task.name_en }}{% else %}{{ task.name_de }}{% endif %}</td>
+        <td title="{% if lang=='en' %}{{ task.en_description }}{% else %}{{ task.de_description }}{% endif %}">{% if lang=='en' %}{{ task.en_name }}{% else %}{{ task.de_name }}{% endif %}</td>
+        <td>{% if task.free=='1' %}0{% else %}{% if lang=='en' %}{{ task.amount * task.price|number_format(2) }}{% else %}{{ task.amount * task.price|number_format(2,'.',',') }}{% endif %}{% endif %}€</td>
+        <td>
             {% if lang=='en' and task.invoiced is null %}Not Invoiced
             {% elseif lang=='de' and task.invoiced is null %}Nicht Abgerechnet
             {% elseif lang=='en' and task.invoiced is not null %}Invoiced
             {% elseif lang=='de' and task.invoiced is not null %}Abgerechnet
-        {% endif %}</span>
-    </li>
+        {% endif %}</td>
+    </tr>
 {% endfor %}
-</ul>
+</table>
 {% include 'footer.twig' %}

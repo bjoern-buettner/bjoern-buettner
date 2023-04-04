@@ -1,5 +1,26 @@
         </div>
         <footer class="bar">&copy; Björn Büttner</footer>
         {% if loggedIn %}<script src="/ping.js"></script>{% endif %}
+        <!-- Matomo -->
+        <script>
+            var _paq = window._paq = window._paq || [];
+            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+            _paq.push(['setCustomDimension', 1, {{ loggedInUser.aid }}]);
+            _paq.push(['setCustomDimension', 2, {{ loggedInUser.customer }}]);
+            _paq.push(['setCustomDimension', 3, '{{ loggedInUser.role }}']);
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function () {
+                var u = "https://tracking.bjoern-buettner.me/";
+                _paq.push(['setTrackerUrl', u + 'matomo.php']);
+                _paq.push(['setSiteId', '1']);
+                var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+                g.async = true;
+                g.src = u + 'matomo.js';
+                s.parentNode.insertBefore(g, s);
+            })();
+        </script>
+        <noscript><img src="https://tracking.bjoern-buettner.me/matomo.php?idsite=1&amp;rec=1&dimension1={{ loggedInUser.aid }}&dimension2={{ loggedInUser.customer }}&dimension3={{ loggedInUser.role }}" style="border:0;" alt="" /></noscript>
+        <!-- End Matomo Code -->
     </body>
 </html>

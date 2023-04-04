@@ -27,6 +27,7 @@ class Dashboard
         $invoices = [];
         $contracts = [];
         $members = [];
+        $customer = [];
         if (null === $user['customer']) {
             $tickets = $database->query('SELECT * FROM ticket')->fetchAll(PDO::FETCH_ASSOC);
             $members = $database->query('SELECT * FROM `user` WHERE ISNULL(customer)')->fetchAll(PDO::FETCH_ASSOC);
@@ -61,6 +62,9 @@ class Dashboard
                     $stmt->execute([':contract' => $contract['aid']]);
                     $contract['items'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 }
+                $stmt = $database->prepare('SELECT * FROM customer WHERE aid=:aid');
+                $stmt->execute([':aid' => $user['customer']]);
+                $customer = $stmt->fetch(PDO::FETCH_ASSOC);
             }
         }
         switch ($lang) {
@@ -81,6 +85,7 @@ class Dashboard
                     'invoices' => $invoices,
                     'tickets' => $tickets,
                     'user' => $user,
+                    'customer' => $customer,
                 ]);
             case 'de':
                 return $twig->render('dashboard.twig', [
@@ -99,6 +104,7 @@ class Dashboard
                     'invoices' => $invoices,
                     'tickets' => $tickets,
                     'user' => $user,
+                    'customer' => $customer,
                 ]);
         }
     }

@@ -99,6 +99,32 @@ try {
                         $mailbox->deleteMail($mailId);
                         continue;
                     }
+                    if ($ticket['closed'] !== null) {
+                        $mailer = new PHPMailer();
+                        $mailer->setFrom($_ENV['TICKET_MAIL_FROM'], $_ENV['TICKET_MAIL_FROM_NAME']);
+                        $mailer->addAddress($mail->senderAddress, $mail->senderName ?? '');
+                        $mailer->Host = $_ENV['TICKET_MAIL_HOST'];
+                        $mailer->Username = $_ENV['TICKET_MAIL_USER'];
+                        $mailer->Password = $_ENV['TICKET_MAIL_PASSWORD'];
+                        $mailer->Port = intval($_ENV['TICKET_MAIL_PORT_IMAP'], 10);
+                        $mailer->CharSet = 'utf-8';
+                        $mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                        $mailer->Timeout = 60;
+                        $mailer->Mailer ='smtp';
+                        $mailer->Subject = 'RE: '.$mail->subject;
+                        $mailer->Body = 'The ticket has already been closed, please open a new one.';
+                        $mailer->SMTPAuth = true;
+                        if (!$mailer->smtpConnect()) {
+                            error_log('Mailer failed smtp connect. ' . $mailer->ErrorInfo);
+                            continue;
+                        }
+                        if (!$mailer->send()) {
+                            error_log('Mailer failed sending mail. ' . $mailer->ErrorInfo);
+                            continue;
+                        }
+                        $mailbox->deleteMail($mailId);
+                        continue;
+                    }
                     $database
                         ->prepare('INSERT INTO ticket_comment (`ticket`,`raw_mail`,`creator`,`content`) VALUES (:ticket,:raw_mail,:creator,:content)')
                         ->execute([
@@ -128,6 +154,29 @@ try {
                                         ':mime' => $attachment->mime ?? 'application/octet-stream'
                                     ]);
                             }
+                        }
+                    }
+                    $stmt = $database->prepare('SELECT `user`.email,`user`.first_name,`user`.last_name FROM ticket_watcher INNER JOIN `user` ON `user`.aid=ticket_watcher.watcher WHERE ticket_watcher.ticket=:ticket');
+                    $stmt->execute([':ticket' => $ticket['aid']]);
+                    foreach ($stmt->fetchAll() as $watcher) {
+                        $mailer = new PHPMailer();
+                        $mailer->setFrom($_ENV['TICKET_MAIL_FROM'], $_ENV['TICKET_MAIL_FROM_NAME']);
+                        $mailer->addAddress($watcher['email'], $watcher['first_name'].' '.$watcher['last_name']);
+                        $mailer->Host = $_ENV['TICKET_MAIL_HOST'];
+                        $mailer->Username = $_ENV['TICKET_MAIL_USER'];
+                        $mailer->Password = $_ENV['TICKET_MAIL_PASSWORD'];
+                        $mailer->Port = intval($_ENV['TICKET_MAIL_PORT_IMAP'], 10);
+                        $mailer->CharSet = 'utf-8';
+                        $mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                        $mailer->Timeout = 60;
+                        $mailer->Mailer ='smtp';
+                        $mailer->Subject = 'BBTicket #'.$ticket.' updated';
+                        $mailer->Body = 'The ticket with subject "' . $ticket['subject'] . '" has been updated at https://bjoern-buettner.me/tickets/' . $ticket['aid'] . ' .';
+                        $mailer->SMTPAuth = true;
+                        if (!$mailer->smtpConnect()) {
+                            error_log('Mailer failed smtp connect. ' . $mailer->ErrorInfo);
+                        } elseif (!$mailer->send()) {
+                            error_log('Mailer failed sending mail. ' . $mailer->ErrorInfo);
                         }
                     }
                     $mailbox->deleteMail($mailId);
@@ -167,6 +216,29 @@ try {
                                 ':mime' => $attachment->mime ?? 'application/octet-stream'
                             ]);
                     }
+                }
+            }
+            $stmt = $database->prepare('SELECT `user`.email,`user`.first_name,`user`.last_name FROM ticket_watcher INNER JOIN `user` ON `user`.aid=ticket_watcher.watcher WHERE ticket_watcher.ticket=:ticket');
+            $stmt->execute([':ticket' => $ticket]);
+            foreach ($stmt->fetchAll() as $watcher) {
+                $mailer = new PHPMailer();
+                $mailer->setFrom($_ENV['TICKET_MAIL_FROM'], $_ENV['TICKET_MAIL_FROM_NAME']);
+                $mailer->addAddress($watcher['email'], $watcher['first_name'].' '.$watcher['last_name']);
+                $mailer->Host = $_ENV['TICKET_MAIL_HOST'];
+                $mailer->Username = $_ENV['TICKET_MAIL_USER'];
+                $mailer->Password = $_ENV['TICKET_MAIL_PASSWORD'];
+                $mailer->Port = intval($_ENV['TICKET_MAIL_PORT_IMAP'], 10);
+                $mailer->CharSet = 'utf-8';
+                $mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                $mailer->Timeout = 60;
+                $mailer->Mailer ='smtp';
+                $mailer->Subject = 'BBTicket #'.$ticket.' created';
+                $mailer->Body = 'A new ticket with subject "' . $mail->subject . '" has been created at https://bjoern-buettner.me/tickets/' . $ticket . ' .';
+                $mailer->SMTPAuth = true;
+                if (!$mailer->smtpConnect()) {
+                    error_log('Mailer failed smtp connect. ' . $mailer->ErrorInfo);
+                } elseif (!$mailer->send()) {
+                    error_log('Mailer failed sending mail. ' . $mailer->ErrorInfo);
                 }
             }
             $mailbox->deleteMail($mailId);

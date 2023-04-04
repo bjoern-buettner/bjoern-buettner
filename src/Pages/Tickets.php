@@ -2,8 +2,10 @@
 
 namespace Me\BjoernBuettner\Pages;
 
+use Me\BjoernBuettner\Antivirus;
 use Me\BjoernBuettner\Database;
 use PDO;
+use PHPMailer\PHPMailer\PHPMailer;
 use Twig\Environment;
 
 class Tickets
@@ -30,7 +32,7 @@ class Tickets
             header('Location: /dashboard/'.$lang, true, 303);
             return '';
         }
-        if ($user['organisation']!==null && $user['organisation']!==$ticket['customer']) {
+        if ($user['customer']!==null && $user['customer']!==$ticket['customer']) {
             header('Location: /dashboard/'.$lang, true, 303);
             return '';
         }
@@ -38,18 +40,46 @@ class Tickets
             header('Location: /tickets/'.$params['id'].'/'.$lang, true, 303);
             return '';
         }
+        $database
+            ->prepare('INSERT IGNORE INTO ticket_watcher (`ticket`,`watcher`) VALUES (:ticket,:watcher)')
+            ->execute([':ticket' => $params['id'], ':watcher' => $user['aid']]);
+        $stmt = $database->prepare('SELECT `user`.email,`user`.first_name,`user`.last_name FROM ticket_watcher INNER JOIN `user` ON `user`.aid=ticket_watcher.watcher WHERE ticket_watcher.ticket=:ticket');
+        $stmt->execute([':ticket' => $ticket['aid']]);
+        foreach ($stmt->fetchAll() as $watcher) {
+            $mailer = new PHPMailer();
+            $mailer->setFrom($_ENV['TICKET_MAIL_FROM'], $_ENV['TICKET_MAIL_FROM_NAME']);
+            $mailer->addAddress($watcher['email'], $watcher['first_name'].' '.$watcher['last_name']);
+            $mailer->Host = $_ENV['TICKET_MAIL_HOST'];
+            $mailer->Username = $_ENV['TICKET_MAIL_USER'];
+            $mailer->Password = $_ENV['TICKET_MAIL_PASSWORD'];
+            $mailer->Port = intval($_ENV['TICKET_MAIL_PORT_IMAP'], 10);
+            $mailer->CharSet = 'utf-8';
+            $mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mailer->Timeout = 60;
+            $mailer->Mailer ='smtp';
+            $mailer->Subject = 'BBTicket #'.$ticket.' updated';
+            $mailer->Body = 'The ticket with subject "' . $ticket['subject'] . '" has been updated at https://bjoern-buettner.me/tickets/' . $ticket['aid'] . ' .';
+            $mailer->SMTPAuth = true;
+            if (!$mailer->smtpConnect()) {
+                error_log('Mailer failed smtp connect. ' . $mailer->ErrorInfo);
+            } elseif (!$mailer->send()) {
+                error_log('Mailer failed sending mail. ' . $mailer->ErrorInfo);
+            }
+        }
         if (isset($_FILES['file'])) {
             $content = file_get_contents($_FILES['file']['tmp_name']);
-            $database
-                ->prepare('INSERT IGNORE INTO ticket_attachment (`name`,`ticket`,`uploader`,`hash`,`data`,`mime`) VALUES(:name,:ticket,:uploader,:hash,:data,:mime)')
-                ->execute([
-                    ':name' => $_FILES['file']['name'],
-                    ':ticket' => $params['id'],
-                    ':uploader' => $user['aid'],
-                    ':hash' => md5($content),
-                    ':data' => $content,
-                    ':mime' => $_FILES['file']['type'] ?? 'application/octet-stream'
-                ]);
+            if ((new Antivirus())->sclean($content)) {
+                $database
+                    ->prepare('INSERT IGNORE INTO ticket_attachment (`name`,`ticket`,`uploader`,`hash`,`data`,`mime`) VALUES(:name,:ticket,:uploader,:hash,:data,:mime)')
+                    ->execute([
+                        ':name' => $_FILES['file']['name'],
+                        ':ticket' => $params['id'],
+                        ':uploader' => $user['aid'],
+                        ':hash' => md5($content),
+                        ':data' => $content,
+                        ':mime' => $_FILES['file']['type'] ?? 'application/octet-stream'
+                    ]);
+            }
             header('Location: /tickets/'.$params['id'].'/'.$lang, true, 303);
             return '';
         }
@@ -61,6 +91,11 @@ class Tickets
                 ':creator' => $user['aid'],
                 ':content' => $_POST['content'],
             ]);
+        if ($_POST['done'] === '1') {
+            $database
+                ->prepare('UPDATE ticket SET closed=NOW() WHERE aid=:aid')
+                ->execute([':aid' => $ticket['aid']]);
+        }
         header('Location: /tickets/'.$params['id'].'/'.$lang, true, 303);
         return '';
     }
@@ -87,7 +122,7 @@ class Tickets
             header('Location: /dashboard/'.$lang, true, 303);
             return '';
         }
-        if ($user['organisation']!==null && $user['organisation']!==$ticket['customer']) {
+        if ($user['customer']!==null && $user['customer']!==$ticket['customer']) {
             header('Location: /dashboard/'.$lang, true, 303);
             return '';
         }
@@ -109,9 +144,11 @@ class Tickets
                     'content' => [
                         'tasks' => 'Work done',
                         'comment' => 'Comment',
+                        'file' => 'Attachment',
                         'add' => 'Add',
                         'attachments' => 'Attachments',
                         'uploaded' => 'Uploaded',
+                        'done' => 'Mark as done',
                     ],
                     'comments' => $comments,
                     'tasks' => $tasks,
@@ -127,9 +164,11 @@ class Tickets
                     'content' => [
                         'tasks' => 'Geleistete Arbeit',
                         'comment' => 'Kommentar',
+                        'file' => 'Anhang',
                         'add' => 'Hinzufügen',
                         'attachments' => 'Anhänge',
                         'uploaded' => 'Hochgeladen',
+                        'done' => 'Markiere als erledigt',
                     ],
                     'comments' => $comments,
                     'tasks' => $tasks,
@@ -171,6 +210,12 @@ class Tickets
                 ':creator' => $user['aid'],
                 ':content' => $_POST['decription'],
             ]);
+        $database
+            ->prepare('INSERT IGNORE INTO ticket_watcher (`ticket`,`watcher`) VALUES (:ticket,:watcher)')
+            ->execute([':ticket' => $ticket, ':watcher' => $user['aid']]);
+        $database
+            ->prepare('INSERT IGNORE INTO ticket_watcher (`ticket`,`watcher`) VALUES (:ticket,:watcher)')
+            ->execute([':ticket' => $ticket, ':watcher' => 1]);
         $mailer = new PHPMailer();
         $mailer->setFrom($_ENV['TICKET_MAIL_FROM'], $_ENV['TICKET_MAIL_FROM_NAME']);
         $mailer->addAddress($_ENV['MAIL_TO'], $_ENV['MAIL_TO_NAME']);
@@ -182,7 +227,7 @@ class Tickets
         $mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mailer->Timeout = 60;
         $mailer->Mailer ='smtp';
-        $mailer->Subject = 'BBTicket '.$ticket.': '.$_POST['subject'];
+        $mailer->Subject = 'BBTicket #'.$ticket.' created: '.$_POST['subject'];
         $mailer->Body = $_POST['description'];
         $mailer->SMTPAuth = true;
         if (!$mailer->smtpConnect()) {

@@ -18,7 +18,7 @@ class Antivirus
         if (empty($data)) {
             return true;
         }
-        $tmp = dirname(__DIR__, 2) . '/cache/clamav-' . microtime(true) . md5($data);
+        $tmp = dirname(__DIR__) . '/cache/clamav-' . microtime(true) . md5($data);
         if (!file_put_contents($tmp, $data)) {
             error_log('Couldn\'t set data for ClamAV.');
             return false;
@@ -33,7 +33,7 @@ class Antivirus
         if (!is_file($file)) {
             return true;
         }
-        $tmp = dirname(__DIR__, 2) . '/cache/clamav-' . microtime(true) . md5($file);
+        $tmp = dirname(__DIR__) . '/cache/clamav-' . microtime(true) . md5($file);
         if (!copy($file, $tmp)) {
             error_log('Couldn\'t set data for ClamAV.');
             return false;
