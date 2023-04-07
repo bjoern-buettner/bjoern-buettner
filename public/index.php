@@ -5,12 +5,14 @@ use Me\BjoernBuettner\Application;
 use Me\BjoernBuettner\Pages\Attachments;
 use Me\BjoernBuettner\Pages\Contact;
 use Me\BjoernBuettner\Pages\Dashboard;
+use Me\BjoernBuettner\Pages\ForgotPassword;
 use Me\BjoernBuettner\Pages\Home;
 use Me\BjoernBuettner\Pages\Imprint;
 use Me\BjoernBuettner\Pages\Invoices;
 use Me\BjoernBuettner\Pages\Login;
 use Me\BjoernBuettner\Pages\Ping;
 use Me\BjoernBuettner\Pages\Prices;
+use Me\BjoernBuettner\Pages\ResetPassword;
 use Me\BjoernBuettner\Pages\Sent;
 use Me\BjoernBuettner\Pages\Tickets;
 
@@ -43,6 +45,18 @@ echo (new Application())
         header('Content-Type: application/javascript', true);
         return file_get_contents(__DIR__ . '/../resources/ping.js');
     })
+    ->res('/cookieinfo.js', function (): string {
+        header('Content-Type: application/javascript', true);
+        return file_get_contents(__DIR__ . '/../resources/cookieinfo.js');
+    })
+    ->res('/sitemap.xml', function (): string {
+        header('Content-Type: text/xml', true);
+        return file_get_contents(__DIR__ . '/../resources/sitemap.xml');
+    })
+    ->res('/robots.xml', function (): string {
+        header('Content-Type: text/plain', true);
+        return file_get_contents(__DIR__ . '/../resources/robots.txt');
+    })
     ->get('/', [Home::class, 'get'])
     ->get('/contact', [Contact::class, 'get'])
     ->get('/imprint', [Imprint::class, 'get'])
@@ -57,4 +71,8 @@ echo (new Application())
     ->get('/login', [Login::class, 'get'])
     ->post('/login', [Login::class, 'post'])
     ->post('/sent', [Sent::class, 'post'])
+    ->get('/forgot-password', [ForgotPassword::class, 'get'])
+    ->post('/forgot-password', [ForgotPassword::class, 'post'])
+    ->get('/reset-password/{hash}/{key}', [ResetPassword::class, 'get'])
+    ->post('/reset-password/{hash}/{key}', [ResetPassword::class, 'post'])
     ->run();

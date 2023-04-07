@@ -47,6 +47,7 @@ class Login
                         'email' => 'eMail',
                         'password' => 'Password',
                         'submit' => 'Sign in',
+                        'forgot' => 'Forgot your password?',
                     ],
                 ]);
             case 'de':
@@ -60,6 +61,7 @@ class Login
                         'email' => 'eMail',
                         'password' => 'Passwort',
                         'submit' => 'Anmelden',
+                        'forgot' => 'Passwort vergessen?',
                     ],
                 ]);
         }

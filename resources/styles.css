@@ -64,6 +64,7 @@ footer {
 .me {
     border-radius: 1.25em;
     width: 12.5%;
+    min-width: 200px;
     padding: 1.25%;
     float: left;
 }
@@ -180,6 +181,9 @@ footer.bar {
     }
     nav > ul {
         grid-template-columns: 1fr;
+    }
+    nav li {
+        margin: 0.75em;
     }
     form {
         grid-template-columns: 1fr;

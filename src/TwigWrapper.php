@@ -22,6 +22,7 @@ class TwigWrapper extends Environment
         $context['loggedIn'] = isset($_SESSION['aid']);
         $context['lang'] = $this->lang;
         $context['menu'] = $this->lang === 'en' ? MenuList::$en : MenuList::$de;
+        $context['google_site_verification'] = $_ENV['GOOGLE_SITE_VERIFICATION'];
         $context['loggedInUser'] = ['aid' => 0, 'customer' => 0, 'role' => 'Anonymous'];
         if ($context['loggedIn']) {
             $database = Database::get();

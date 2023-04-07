@@ -17,10 +17,21 @@
                 var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
                 g.async = true;
                 g.src = u + 'matomo.js';
+                g.onerror = () => {
+                    var i = d.createElement('img');
+                    i.setAttribute('src', 'https://tracking.bjoern-buettner.me/matomo.php?idsite=1&amp;rec=1&dimension1={{ loggedInUser.aid }}&dimension2={{ loggedInUser.customer }}&dimension3={{ loggedInUser.role }}');
+                    i.setAttribute('alt', '');
+                    i.setAttribute('style', 'border:0');
+                    document.body.appendChild(i);
+                };
                 s.parentNode.insertBefore(g, s);
             })();
         </script>
         <noscript><img src="https://tracking.bjoern-buettner.me/matomo.php?idsite=1&amp;rec=1&dimension1={{ loggedInUser.aid }}&dimension2={{ loggedInUser.customer }}&dimension3={{ loggedInUser.role }}" style="border:0;" alt="" /></noscript>
         <!-- End Matomo Code -->
+        <script src="/cookieinfo.js"></script>
+        <script>
+            notifyAboutCookies("{% if lang=='en' %}We are using cookies to provide this site's functionality and improve the user experience.{% elseif lang=='de' %}Wir nutzen Cookies um die Funktionalität dieser Seite bereitzustellen und die Nutzererfahrung zu verbessern.{% endif %}");
+        </script>
     </body>
 </html>
