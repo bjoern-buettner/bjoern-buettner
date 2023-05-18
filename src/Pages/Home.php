@@ -22,7 +22,7 @@ class Home
                             'If my favourite topic is not available, I spend time on quite a few other topics. NodeJS, Java, Browser-Extensions and Userscripts are among the projects I work on.',
                             'During that open source applications and libraries start their existance and sometimes some smaller tasks in software engineering and web-hosting are achieved.',
                             'I value and choose projects on their challenge and my interest in them, since this is just a side-job.',
-                            'Obviously I don\'t do tasks that are in the same general sphere as my employer\'s, the HMM Deutschland GmbH, business. I am not competing with my employer, please respect that in your inquieries.',
+                            'Obviously I don\'t do tasks that are in the same general sphere as my employer\'s, the JTL Software GmbH, business. I am not competing with my employer, please respect that in your inquieries.',
                         ],
                     ]
                 ]);
@@ -39,7 +39,7 @@ class Home
                             'Sollte mein Lieblingsthema gerade nicht verfügbar sein, so beschäftige ich mich auch mit diversen anderen Themen. NodeJS, Java, Browser-Extensions und Userscripts sind nur einige der Projekte mit denen ich mich befasse.',
                             'Dabei entstehen sowohl Open-Source Anwendungen und Bibliotheken, als auch kleinere Dienstleistungen im Bereich Webhosting und Softwareentwicklung.',
                             'Projekte bewerte ich primär nach meinem Interesse an der jeweiligen Herausforderung, da es sich hierbei nur um eine Nebentätigkeit handelt.',
-                            'Selbstverständlich trete ich nicht mit meinem derzeitigen Arbeitgeber, der HMM Deutschland GmbH, in Konkurenz, bitte beachten Sie dies bei Anfragen.',
+                            'Selbstverständlich trete ich nicht mit meinem derzeitigen Arbeitgeber, der JTL Software GmbH, in Konkurenz, bitte beachten Sie dies bei Anfragen.',
                         ],
                     ]
                 ]);

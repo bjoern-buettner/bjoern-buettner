@@ -235,6 +235,7 @@ AND ISNULL(ticket_time.invoiced)');
         foreach ($stmt->fetchAll() as $contact) {
             $mailer->addCC($contact['email'], $customer['first_name'].' '.$customer['last_name']);
         }
+        $mailer->addBCC($_ENV['MAIL_TO'], $_ENV['MAIL_TO_NAME']);
         $mailer->Host = $_ENV['MAIL_HOST'];
         $mailer->Username = $_ENV['MAIL_USERNAME'];
         $mailer->Password = $_ENV['MAIL_PASSWORD'];

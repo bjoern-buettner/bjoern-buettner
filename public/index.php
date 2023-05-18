@@ -45,6 +45,10 @@ echo (new Application())
         header('Content-Type: application/javascript', true);
         return file_get_contents(__DIR__ . '/../resources/ping.js');
     })
+    ->res('/favicon.ico', function (): string {
+        header('Content-Type: image/x-icon', true);
+        return file_get_contents(__DIR__ . '/../favicon.ico');
+    })
     ->res('/cookieinfo.js', function (): string {
         header('Content-Type: application/javascript', true);
         return file_get_contents(__DIR__ . '/../resources/cookieinfo.js');
