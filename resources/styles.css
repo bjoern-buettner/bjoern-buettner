@@ -194,6 +194,9 @@ footer.bar {
     .bar {
         padding: 0;
     }
+    .me {
+        float: none;
+    }
 }
 @media print {
     li ul {
