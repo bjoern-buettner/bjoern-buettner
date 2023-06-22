@@ -102,6 +102,7 @@ nav > ul {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     text-align: center;
+    padding: 0.25em 0;
 }
 input, button, select, textarea {
     border-radius: 0.2em;
@@ -193,6 +194,9 @@ footer.bar {
 @media screen and (max-width:400px) {
     .bar {
         padding: 0;
+    }
+    .me {
+        float: none;
     }
 }
 @media print {

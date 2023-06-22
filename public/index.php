@@ -50,8 +50,8 @@ echo (new Application())
         return file_get_contents(__DIR__ . '/../resources/ping.js');
     })
     ->res('/favicon.ico', function (): string {
-        header('Content-Type: image/vnd.microsoft.icon', true);
-        return file_get_contents(__DIR__ . '/../favicon.ico');
+        header('Content-Type: image/x-icon', true);
+        return file_get_contents(__DIR__ . '/../resources/favicon.ico');
     })
     ->res('/cookieinfo.js', function (): string {
         header('Content-Type: application/javascript', true);
