@@ -41,12 +41,16 @@ echo (new Application())
         header('Content-Type: image/png', true);
         return file_get_contents(__DIR__ . '/../resources/logo.png');
     })
+    ->res('/icon.png', function (): string {
+        header('Content-Type: image/png', true);
+        return file_get_contents(__DIR__ . '/../resources/icon.png');
+    })
     ->res('/ping.js', function (): string {
         header('Content-Type: application/javascript', true);
         return file_get_contents(__DIR__ . '/../resources/ping.js');
     })
     ->res('/favicon.ico', function (): string {
-        header('Content-Type: image/x-icon', true);
+        header('Content-Type: image/vnd.microsoft.icon', true);
         return file_get_contents(__DIR__ . '/../favicon.ico');
     })
     ->res('/cookieinfo.js', function (): string {
@@ -62,7 +66,6 @@ echo (new Application())
         return file_get_contents(__DIR__ . '/../resources/robots.txt');
     })
     ->get('/', [Home::class, 'get'])
-    ->get('/contact', [Contact::class, 'get'])
     ->get('/imprint', [Imprint::class, 'get'])
     ->get('/prices', [Prices::class, 'get'])
     ->get('/dashboard', [Dashboard::class, 'get'])
@@ -71,10 +74,6 @@ echo (new Application())
     ->post('/tickets/{id}', [Tickets::class, 'detail'])
     ->get('/invoices/{id}', [Invoices::class, 'get'])
     ->res('/attachments/{id}', [Attachments::class, 'get'])
-    ->res('/ping', [Ping::class, 'get'])
-    ->get('/login', [Login::class, 'get'])
-    ->post('/login', [Login::class, 'post'])
-    ->post('/sent', [Sent::class, 'post'])
     ->get('/forgot-password', [ForgotPassword::class, 'get'])
     ->post('/forgot-password', [ForgotPassword::class, 'post'])
     ->get('/reset-password/{hash}/{key}', [ResetPassword::class, 'get'])

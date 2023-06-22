@@ -30,14 +30,10 @@
             <ul>
                 <li><a {% if active=='/' %}class="active" {% endif %}href="/{{ lang }}">{{ menu.home }}</a></li>
                 <li><a {% if active=='/prices' %}class="active" {% endif %} href="/prices/{{ lang }}">{{ menu.prices }}</a></li>
-                <li><a {% if active=='/contact' %}class="active" {% endif %} href="/contact/{{ lang }}">{{ menu.contact }}</a></li>
                 <li><a {% if active=='/imprint' %}class="active" {% endif %} href="/imprint/{{ lang }}">{{ menu.imprint }}</a></li>
-                {% if loggedIn %}
-                    <li><a {% if active=='/dashboard' %}class="active" {% endif %} href="/dashboard/{{ lang }}">{{ menu.dashboard }}</a></li>
-                {% else %}
-                    <li><a {% if active=='/login' %}class="active" {% endif %} href="/login/{{ lang }}">{{ menu.login }}</a></li>
-                {% endif %}
                 <li><a href="https://www.linkedin.com/in/bjoern-idrinth-buettner/" target="_blank">Linkedin</a></li>
+                <li><a href="https://github.com/idrinth" target="_blank">Github</a></li>
+                <li><a href="https://outlook.office365.com/owa/calendar/BjrnBttner@bjoern-buettner.me/bookings/" target="_blank">Linkedin</a></li>
             </ul>
         </nav>
         <div id="body">
