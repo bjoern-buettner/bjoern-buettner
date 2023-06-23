@@ -53,7 +53,7 @@ input, textarea {
     background-color: #f0f0f0;
 }
 .bar {
-    padding: 0% 10%;
+    padding: 0 10%;
     background-color: darkgreen;
     color: #fff;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.25));
@@ -86,7 +86,7 @@ nav a {
     text-decoration: none;
 }
 nav a.active {
-    background: rgba(0,0,0,0.25);
+    background-color: rgba(0,0,0,0.25);
     padding-left: 1.75em;
     background-image: url("icon.png");
     background-repeat: no-repeat;
@@ -165,7 +165,7 @@ footer.bar {
         padding: 0.25em 0.5em;
     }
     .bar {
-        padding: 0% 7.5%;
+        padding: 0 7.5%;
     }
 }
 @media screen and (max-width:500px) {
@@ -173,7 +173,7 @@ footer.bar {
         padding: 0 0.5em;
     }
     .bar {
-        padding: 0% 5%;
+        padding: 0 5%;
     }
     li.active ul {
         grid-template-columns: 1fr;
@@ -186,6 +186,9 @@ footer.bar {
     }
     nav li {
         margin: 0.75em;
+    }
+    nav a {
+        width: 100%;
     }
     form {
         grid-template-columns: 1fr;

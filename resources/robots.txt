@@ -1,6 +1,2 @@
 user-agent: *
 allow: /
-disallow: /tickets/*
-disallow: /dashboard
-disallow: /attachments/*
-disallow: /invoices/*

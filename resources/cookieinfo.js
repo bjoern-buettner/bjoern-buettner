@@ -29,7 +29,8 @@ function notifyAboutCookies (message) {
       mod.setAttribute('style', 'position: absolute;top: 10%;right: 0;width: 200px;background: #eee;border:#fff');
       mod.appendChild(document.createElement('p'));
       mod.lastChild.appendChild(document.createTextNode(message));
-      button = document.createElement('button');
+      const button = document.createElement('button');
+      button.appendChild(document.createTextNode('X'));
       mod.appendChild(button);
       button.onclick = () => {
           set();

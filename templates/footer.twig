@@ -1,13 +1,9 @@
         </div>
-        <footer class="bar">&copy; Björn Büttner</footer>
-        {% if loggedIn %}<script src="/ping.js"></script>{% endif %}
+        <footer class="bar">&copy; Björn Büttner - <a href="mailto:service@bjoern-buettner.me">service@bjoern-buettner.me</a> - <a href="mailto:support@bjoern-buettner.me">support@bjoern-buettner.me</a></footer>
         <!-- Matomo -->
         <script>
             var _paq = window._paq = window._paq || [];
             /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-            _paq.push(['setCustomDimension', 1, {{ loggedInUser.aid }}]);
-            _paq.push(['setCustomDimension', 2, {{ loggedInUser.customer }}]);
-            _paq.push(['setCustomDimension', 3, '{{ loggedInUser.role }}']);
             _paq.push(['trackPageView']);
             _paq.push(['enableLinkTracking']);
             (function () {
@@ -19,7 +15,7 @@
                 g.src = u + 'matomo.js';
                 g.onerror = () => {
                     var i = d.createElement('img');
-                    i.setAttribute('src', 'https://tracking.bjoern-buettner.me/matomo.php?idsite=1&amp;rec=1&dimension1={{ loggedInUser.aid }}&dimension2={{ loggedInUser.customer }}&dimension3={{ loggedInUser.role }}');
+                    i.setAttribute('src', 'https://tracking.bjoern-buettner.me/matomo.php?idsite=1&amp;rec=1');
                     i.setAttribute('alt', '');
                     i.setAttribute('style', 'border:0');
                     document.body.appendChild(i);
@@ -27,7 +23,7 @@
                 s.parentNode.insertBefore(g, s);
             })();
         </script>
-        <noscript><img src="https://tracking.bjoern-buettner.me/matomo.php?idsite=1&amp;rec=1&dimension1={{ loggedInUser.aid }}&dimension2={{ loggedInUser.customer }}&dimension3={{ loggedInUser.role }}" style="border:0;" alt="" /></noscript>
+        <noscript><img src="https://tracking.bjoern-buettner.me/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></noscript>
         <!-- End Matomo Code -->
         <script src="/cookieinfo.js"></script>
         <script>

@@ -20,7 +20,7 @@ class Home
                             'As a software engineer with over ten years of work experience, I like to expand my knowledge and abilities by taking on additional projects in my time off work.',
                             'My absolute favourite topic are performance optimizations in collaboration with other developers. Not only does that provide better solution, it also increases all participant\'s knowledge.',
                             'If my favourite topic is not available, I spend time on quite a few other topics. NodeJS, Java, Browser-Extensions and Userscripts are among the projects I work on.',
-                            'During that open source applications and libraries start their existance and sometimes some smaller tasks in software engineering and web-hosting are achieved.',
+                            'During that open source applications and libraries start their existence and sometimes some smaller tasks in software engineering and web-hosting are achieved.',
                             'I value and choose projects on their challenge and my interest in them, since this is just a side-job.',
                             'Obviously I don\'t do tasks that are in the same general sphere as my employer\'s, the JTL Software GmbH, business. I am not competing with my employer, please respect that in your inquieries.',
                         ],

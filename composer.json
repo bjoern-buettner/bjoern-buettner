@@ -12,7 +12,8 @@
         "nikic/fast-route": "^1.3.0",
         "zonuexe/http-accept-language": "^0.4.1",
         "voku/html-min": "^4.5.0",
-        "vlucas/phpdotenv": "^5.5.0"
+        "vlucas/phpdotenv": "^5.5.0",
+        "ext-pdo": "*"
     },
     "autoload": {
         "psr-4": {
