@@ -1,20 +1,19 @@
         </div>
-        <footer class="bar">&copy; Björn Büttner - <a href="mailto:service@bjoern-buettner.me">service@bjoern-buettner.me</a> - <a href="mailto:support@bjoern-buettner.me">support@bjoern-buettner.me</a></footer>
+        <footer class="bar">&copy; 2023 Björn Büttner - <a href="mailto:service@bjoern-buettner.me">{% if lang=='en' %}Quotes &amp; Contracts{% else %}Kostenvoranschläge &amp; Verträge{% endif %}</a> - <a href="mailto:support@bjoern-buettner.me">{% if lang=='en' %}Customer Support{% else %}Kundensupport{% endif %}support@bjoern-buettner.me</a></footer>
         <!-- Matomo -->
         <script>
             var _paq = window._paq = window._paq || [];
-            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
             _paq.push(['trackPageView']);
             _paq.push(['enableLinkTracking']);
             (function () {
-                var u = "https://tracking.bjoern-buettner.me/";
+                const u = "https://tracking.bjoern-buettner.me/";
                 _paq.push(['setTrackerUrl', u + 'matomo.php']);
                 _paq.push(['setSiteId', '1']);
-                var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+                const d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
                 g.async = true;
                 g.src = u + 'matomo.js';
                 g.onerror = () => {
-                    var i = d.createElement('img');
+                    const i = d.createElement('img');
                     i.setAttribute('src', 'https://tracking.bjoern-buettner.me/matomo.php?idsite=1&amp;rec=1');
                     i.setAttribute('alt', '');
                     i.setAttribute('style', 'border:0');

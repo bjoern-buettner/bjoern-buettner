@@ -43,6 +43,10 @@ echo (new Application())
         header('Content-Type: application/javascript', true);
         return file_get_contents(__DIR__ . '/../resources/cookieinfo.js');
     })
+    ->res('/hosted-by-bjoern-buettner.js', function (): string {
+        header('Content-Type: application/javascript', true);
+        return file_get_contents(__DIR__ . '/../resources/hosted-by-bjoern-buettner.js');
+    })
     ->res('/sitemap.xml', function (): string {
         header('Content-Type: text/xml', true);
         return file_get_contents(__DIR__ . '/../resources/sitemap.xml');
