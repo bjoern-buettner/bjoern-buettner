@@ -152,6 +152,13 @@ footer.bar {
     font-size: 125%;
     padding: 1.5em;
 }
+footer a,
+footer a:hover,
+footer a:active,
+footer a:visited,
+footer a:focus {
+    color: #fff;
+}
 .small:last-of-type {
     margin-left: -68px;
     margin-bottom: -4px;
