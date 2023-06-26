@@ -26,7 +26,7 @@ function notifyAboutCookies (message) {
       }
       const mod = document.createElement('div');
       document.body.appendChild(mod);
-      mod.setAttribute('style', 'position: absolute;top: 10%;right: 0;width: 200px;background: #eee;border:#fff');
+      mod.setAttribute('style', 'position: absolute;top: 10%;right: 0;width: 200px;background: #eee;border:#fff; border-radius: 3px;');
       mod.appendChild(document.createElement('p'));
       mod.lastChild.appendChild(document.createTextNode(message));
       const button = document.createElement('button');
@@ -34,6 +34,6 @@ function notifyAboutCookies (message) {
       mod.appendChild(button);
       button.onclick = () => {
           set();
-          document.body.removeChild(mod.lastChild);
+          document.body.removeChild(mod);
       };
 };
