@@ -10,7 +10,7 @@ class OfferList
     {
         $data = [];
         $database = Database::get();
-        foreach ($database->query('SELECT * FROM category')->fetchAll(PDO::FETCH_ASSOC) as $category) {
+        foreach ($database->query('SELECT * FROM category ORDER BY chooseable DESC,aid ASC')->fetchAll(PDO::FETCH_ASSOC) as $category) {
             $cat = [
                 'de' => $category['de'],
                 'en' => $category['en'],
