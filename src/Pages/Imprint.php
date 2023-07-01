@@ -13,13 +13,14 @@ class Imprint
                 return $twig->render('imprint-en.twig', [
                     'title' => 'Imprint',
                     'active' => '/imprint',
-                    'description' => 'Björn Büttner\'s imprint',
+                    'description' => 'Björn Büttner\'s imprint, if you got any legal issues with the site or domain this is where you want to go',
                 ]);
             case 'de':
+            default:
                 return $twig->render('imprint-de.twig', [
                     'title' => 'Impressum',
                     'active' => '/imprint',
-                    'description' => 'Björn Büttners Impressum',
+                    'description' => 'Björn Büttners Impressum, bei rechtlichen Fragen zur Seite oder Domain ist dies die richtige Anlaufstelle',
                 ]);
         }
     }

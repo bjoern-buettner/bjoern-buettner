@@ -13,7 +13,7 @@ class Home
                 return $twig->render('home.twig', [
                     'title' => 'Home',
                     'active' => '/',
-                    'description' => 'A bit about Björn Büttner',
+                    'description' => 'A bit about Björn Büttner, the founder of bjoern-buettner.me',
                     'content' => [
                         'title' => 'About me',
                         'paragraphs' => [
@@ -27,10 +27,11 @@ class Home
                     ]
                 ]);
             case 'de':
+            default:
                 return $twig->render('home.twig', [
                     'title' => 'Home',
                     'active' => '/',
-                    'description' => 'Ein wenig über Björn Büttner',
+                    'description' => 'Ein wenig über Björn Büttner, den Gründer von bjoern-buettner.me',
                     'content' => [
                         'title' => 'Über Mich',
                         'paragraphs' => [
@@ -39,7 +40,7 @@ class Home
                             'Sollte mein Lieblingsthema gerade nicht verfügbar sein, so beschäftige ich mich auch mit diversen anderen Themen. NodeJS, Java, Browser-Extensions und Userscripts sind nur einige der Projekte mit denen ich mich befasse.',
                             'Dabei entstehen sowohl Open-Source Anwendungen und Bibliotheken, als auch kleinere Dienstleistungen im Bereich Webhosting und Softwareentwicklung.',
                             'Projekte bewerte ich primär nach meinem Interesse an der jeweiligen Herausforderung, da es sich hierbei nur um eine Nebentätigkeit handelt.',
-                            'Selbstverständlich trete ich nicht mit meinem derzeitigen Arbeitgeber, der JTL Software GmbH, in Konkurenz, bitte beachten Sie dies bei Anfragen.',
+                            'Selbstverständlich trete ich nicht mit meinem derzeitigen Arbeitgeber, der JTL Software GmbH, in Konkurrenz, bitte beachten Sie dies bei Anfragen.',
                         ],
                     ]
                 ]);

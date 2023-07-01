@@ -3,17 +3,20 @@
 <p>{{ content.reasoning }}</p>
 <p>{{ content.prices }}</p>
 {% if lang == 'en' %}
+    <h2>Customers recruiting customers</h2>
     <p>If you are a customer trying to get the customer recruiting bonus, feel free to include the advert-script on your site! <a href="/hosted-by-bjoern-buettner.js">https://bjoern-buettner.me/hosted-by-bjoern-buettner.js</a></p>
 {% else %}
+    <h2>Kundenrekrutierung durch Kunden</h2>
     <p>Falls Sie ein Kunde sind, der den Werbebonus nutzen will, binden Sie einfach das Werbe-Script auf Ihrer Seite ein! <a href="/hosted-by-bjoern-buettner.js">https://bjoern-buettner.me/hosted-by-bjoern-buettner.js</a></p>
 {% endif %}
+<h2>{{ content.title2 }}</h2>
 <ul>
     {% for offergroup in offers %}
         <li>
             <h3 onclick="this.parentNode.classList.toggle('active');">{{ offergroup[lang] }}</h3>
             <ul>
                 {% for task in offergroup.tasks %}
-                    <li>
+                    <li data-fee="{{ task.fee_type }}" data-price="{{ task.price }}" data-name="{{ task.title[lang] }}">
                         <h4>{{ task.title[lang] }}</h4>
                         <p>{{ task.description[lang] }}</p>
                         {% if lang=='en' %}
