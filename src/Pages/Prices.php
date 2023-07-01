@@ -23,6 +23,7 @@ class Prices
                     'offers' => OfferList::get(),
                 ]);
             case 'de':
+            default:
                 return $twig->render('prices.twig', [
                     'title' => 'Leistungen',
                     'active' => '/prices',

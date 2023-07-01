@@ -8,6 +8,12 @@
         <meta name="author" content="Björn Büttner"/>
         <meta name="description" content="{{ description }}"/>
         {% if google_site_verification %}<meta name="google-site-verification" content="{{ google_site_verification }}" />{% endif %}
+        <link rel="canonical" href="{% if active != '/' %}{{ active }}{% endi+ %}/{{ lang }}"/>
+        {% if lang == 'de' %}
+            <link rel="alternate" lang="en" href="{% if active != '/' %}{{ active }}/en"/>
+        {% else %}
+            <link rel="alternate" lang="de" href="{% if active != '/' %}{{ active }}/en"/>
+        {% endif %}
     </head>
     <body>
         <div id="header" class="bar" style="display: flex;">
