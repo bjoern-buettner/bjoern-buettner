@@ -57,7 +57,7 @@ class Blog
             default:
                 return $twig->render('blogpost.twig', [
                     'title' => $post['title_de'],
-                    'active' => '/blog/' . $slug,
+                    'active' => '/blog/' . $args['slug'],
                     'description' => $post['extract_de'],
                     'content' => $post['content_de'],
                 ]);
