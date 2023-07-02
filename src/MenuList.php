@@ -10,6 +10,7 @@ class MenuList
         'booking' => 'Booking',
         'prices' => 'Offers',
         'solutions' => 'Used Solutions',
+        'ratings' => 'Reviews & Ratings',
     ];
     public static array $de = [
         'home' => 'Home',
@@ -17,5 +18,6 @@ class MenuList
         'booking' => 'Termine',
         'prices' => 'Leistungen',
         'solutions' => 'Genutzte Lösungen',
+        'ratings' => 'Bewertungen',
     ];
 }
