@@ -2,7 +2,6 @@
 
 namespace Me\BjoernBuettner;
 
-use PDO;
 use Twig\Environment;
 use Twig\Loader\LoaderInterface;
 use voku\helper\HtmlMin;

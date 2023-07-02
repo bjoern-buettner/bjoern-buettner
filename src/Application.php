@@ -30,10 +30,6 @@ class Application
                     $lang = 'de';
                     break;
                 }
-                if ($language['language'] === 'en') {
-                    $lang = 'en';
-                    break;
-                }
             }
             header("Location: $subroute/$lang", true, 303);
             return '';
@@ -81,6 +77,9 @@ class Application
                 $twig = new TwigWrapper(new FilesystemLoader(dirname(__DIR__) . '/templates'), $routeInfo[2]['lang'] ?? '');
                 $handler = $routeInfo[1];
                 return call_user_func($handler, $twig, $routeInfo[2]['lang'] ?? '', $routeInfo[2]);
+            default:
+                header('', true, 500);
+                return "500 SERVER ERROR";
         }
     }
 }

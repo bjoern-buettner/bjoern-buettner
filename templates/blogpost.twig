@@ -1,0 +1,5 @@
+{% include 'header.twig' %}
+<h1>{{ content.title }}</h1>
+<em>{{ post.created }}</em>
+{{ content.content|markdown }}
+{% include 'footer.twig' %}

@@ -13,7 +13,9 @@
         "zonuexe/http-accept-language": "^0.4.1",
         "voku/html-min": "^4.5.0",
         "vlucas/phpdotenv": "^5.5.0",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "scssphp/scssphp": "^1.2.1",
+        "erusev/parsedown": "^1.7.4"
     },
     "autoload": {
         "psr-4": {

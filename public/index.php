@@ -13,9 +13,9 @@ require_once (__DIR__ . '/../vendor/autoload.php');
 Dotenv::createImmutable(dirname(__DIR__))->load();
 
 echo (new Application())
-    ->res('/styles.css', function (): string {
+    ->res('/styles.scss', function (): string {
         header('Content-Type: text/css', true);
-        return file_get_contents(__DIR__ . '/../resources/styles.css');
+        return file_get_contents(__DIR__ . '/../resources/styles.scss');
     })
     ->res('/me.jpg', function (): string {
         header('Content-Type: image/jpeg', true);
@@ -49,6 +49,10 @@ echo (new Application())
         header('Content-Type: application/javascript', true);
         return file_get_contents(__DIR__ . '/../resources/hosted-by-bjoern-buettner.js');
     })
+    ->res('/hosted-by-bjoern-buettner.css', function (): string {
+        header('Content-Type: text/css', true);
+        return file_get_contents(__DIR__ . '/../resources/hosted-by-bjoern-buettner.css');
+    })
     ->res('/sitemap.xml', function (): string {
         header('Content-Type: text/xml', true);
         return file_get_contents(__DIR__ . '/../resources/sitemap.xml');
@@ -61,4 +65,6 @@ echo (new Application())
     ->get('/imprint', [Imprint::class, 'get'])
     ->get('/prices', [Prices::class, 'get'])
     ->get('/solutions', [Solutions::class, 'get'])
+    ->get('/blog', [Blog::class, 'get'])
+    ->get('/blog/{slug}', [Blog::class, 'detail'])
     ->run();
