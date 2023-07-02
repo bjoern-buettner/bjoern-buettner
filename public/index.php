@@ -58,7 +58,7 @@ echo (new Application())
         header('Content-Type: text/plain', true);
         return file_get_contents(__DIR__ . '/../resources/robots.txt');
     })
-    ->res('/styles.scss', [Styles::class, 'get'])
+    ->res('/styles.css', [Styles::class, 'get'])
     ->get('/', [Home::class, 'get'])
     ->get('/imprint', [Imprint::class, 'get'])
     ->get('/prices', [Prices::class, 'get'])
