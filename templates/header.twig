@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ lang }}">
+<html lang="{{ lang }}" prefix="og: http://ogp.me/ns#">
     <head>
         <title>{{ title }} | Björn Büttner</title>
         <meta charset="UTF-8"/>
@@ -7,6 +7,13 @@
         <link rel="stylesheet" href="/styles.css"/>
         <meta name="author" content="Björn Büttner"/>
         <meta name="description" content="{{ description }}"/>
+        <meta name="og:title" content="{{ title }}"/>
+        <meta name="og:description" content="{{ description }}"/>
+        <meta name="og:image" content="https://bjoern-buettner.me/logo.png"/>
+        <meta name="og:url" content="https://bjoern-buettner.me{% if active != '/' %}{{ active }}{% endif %}/{{ lang }}"/>
+        <meta name="og:site_name" content="Björn Büttner"/>
+        <meta name="og:locale" content="{{ lang }}"/>
+        <meta name="og:type" content="website"/>
         {% if google_site_verification %}<meta name="google-site-verification" content="{{ google_site_verification }}" />{% endif %}
         <link rel="canonical" href="https://bjoern-buettner.me{% if active != '/' %}{{ active }}{% endif %}/{{ lang }}"/>
         <link rel="alternate" hreflang="en" href="https://bjoern-buettner.me{% if active != '/' %}{{ active }}{% endif %}/en"/>
@@ -36,6 +43,7 @@
                 <li><a href="https://www.linkedin.com/in/bjoern-idrinth-buettner/" target="_blank">Linkedin</a></li>
                 <li><a href="https://github.com/idrinth" target="_blank">Github</a></li>
                 <li><a href="https://outlook.office365.com/owa/calendar/Bjoern-Buettner-Booking@bjoern-buettner.me/bookings/" target="_blank">{{ menu.booking }}</a></li>
+                <li><a href="https://g.page/r/CS4pRy6j56DUEB0/review" target="_blank">{{ menu.ratings }}</a></li>
             </ul>
         </nav>
         <div id="body">
