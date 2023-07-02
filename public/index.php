@@ -2,9 +2,11 @@
 
 use Dotenv\Dotenv;
 use Me\BjoernBuettner\Application;
+use Me\BjoernBuettner\Pages\Blog;
 use Me\BjoernBuettner\Pages\Home;
 use Me\BjoernBuettner\Pages\Imprint;
 use Me\BjoernBuettner\Pages\Prices;
+use Me\BjoernBuettner\Pages\Solutions;
 
 require_once (__DIR__ . '/../vendor/autoload.php');
 
@@ -51,11 +53,12 @@ echo (new Application())
         header('Content-Type: text/xml', true);
         return file_get_contents(__DIR__ . '/../resources/sitemap.xml');
     })
-    ->res('/robots.xml', function (): string {
+    ->res('/robots.txt', function (): string {
         header('Content-Type: text/plain', true);
         return file_get_contents(__DIR__ . '/../resources/robots.txt');
     })
     ->get('/', [Home::class, 'get'])
     ->get('/imprint', [Imprint::class, 'get'])
     ->get('/prices', [Prices::class, 'get'])
+    ->get('/solutions', [Solutions::class, 'get'])
     ->run();

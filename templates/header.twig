@@ -13,7 +13,7 @@
         <meta name="og:url" content="https://bjoern-buettner.me{% if active != '/' %}{{ active }}{% endif %}/{{ lang }}"/>
         <meta name="og:site_name" content="Björn Büttner"/>
         <meta name="og:locale" content="{{ lang }}"/>
-        <meta name="og:type" content="website"/>
+        <meta name="og:type" content="{% if active=='/blog' %}blog{% else %}website{% endif %}"/>
         {% if google_site_verification %}<meta name="google-site-verification" content="{{ google_site_verification }}" />{% endif %}
         <link rel="canonical" href="https://bjoern-buettner.me{% if active != '/' %}{{ active }}{% endif %}/{{ lang }}"/>
         <link rel="alternate" hreflang="en" href="https://bjoern-buettner.me{% if active != '/' %}{{ active }}{% endif %}/en"/>
@@ -40,6 +40,7 @@
                 <li><a {% if active=='/' %}class="active" {% endif %}href="/{{ lang }}">{{ menu.home }}</a></li>
                 <li><a {% if active=='/prices' %}class="active" {% endif %} href="/prices/{{ lang }}">{{ menu.prices }}</a></li>
                 <li><a {% if active=='/imprint' %}class="active" {% endif %} href="/imprint/{{ lang }}">{{ menu.imprint }}</a></li>
+                <li><a {% if active=='/solutions' %}class="active" {% endif %} href="/solutions/{{ lang }}">{{ menu.solutions }}</a></li>
                 <li><a href="https://www.linkedin.com/in/bjoern-idrinth-buettner/" target="_blank">Linkedin</a></li>
                 <li><a href="https://github.com/idrinth" target="_blank">Github</a></li>
                 <li><a href="https://outlook.office365.com/owa/calendar/Bjoern-Buettner-Booking@bjoern-buettner.me/bookings/" target="_blank">{{ menu.booking }}</a></li>
