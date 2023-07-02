@@ -9,13 +9,13 @@ class MenuList
         'imprint' => 'Imprint',
         'booking' => 'Booking',
         'prices' => 'Offers',
-        'solution' => 'Used Solutions',
+        'solutions' => 'Used Solutions',
     ];
     public static array $de = [
         'home' => 'Home',
         'imprint' => 'Impressum',
         'booking' => 'Termine',
         'prices' => 'Leistungen',
-        'solution' => 'Genutzte Lösungen',
+        'solutions' => 'Genutzte Lösungen',
     ];
 }
