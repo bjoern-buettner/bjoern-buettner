@@ -31,11 +31,11 @@ class Blog
                 ]);
         }
     }
-    public static function detail(Environment $twig, string $lang, string $slug): string
+    public static function detail(Environment $twig, string $lang, array $args): string
     {
         $database = Database::get();
-        $stmt = $database->query('SELECT * FROM post WHERE slug=:slug AND created < NOW() DESC LIMIT 1');
-        $stmt->execute(['slug' => $slug]);
+        $stmt = $database->prepare('SELECT * FROM post WHERE slug=:slug AND created < NOW() DESC LIMIT 1');
+        $stmt->execute(['slug' => $args['slug']]);
         $post = $stmt->fetch();
         if (!$post) {
             header('', true, 404);
@@ -49,7 +49,7 @@ class Blog
             case 'en':
                 return $twig->render('blogpost.twig', [
                     'title' => $post['title_en'],
-                    'active' => '/blog/' . $slug,
+                    'active' => '/blog/' . $args['slug'],
                     'description' => $post['extract_en'],
                     'content' => $post['content_en'],
                 ]);
