@@ -7,16 +7,13 @@ use Me\BjoernBuettner\Pages\Home;
 use Me\BjoernBuettner\Pages\Imprint;
 use Me\BjoernBuettner\Pages\Prices;
 use Me\BjoernBuettner\Pages\Solutions;
+use Me\BjoernBuettner\Resources\Styles;
 
 require_once (__DIR__ . '/../vendor/autoload.php');
 
 Dotenv::createImmutable(dirname(__DIR__))->load();
 
 echo (new Application())
-    ->res('/styles.scss', function (): string {
-        header('Content-Type: text/css', true);
-        return file_get_contents(__DIR__ . '/../resources/styles.scss');
-    })
     ->res('/me.jpg', function (): string {
         header('Content-Type: image/jpeg', true);
         return file_get_contents(__DIR__ . '/../resources/me.jpg');
@@ -61,6 +58,7 @@ echo (new Application())
         header('Content-Type: text/plain', true);
         return file_get_contents(__DIR__ . '/../resources/robots.txt');
     })
+    ->res('/styles.scss', [Styles::class, 'get'])
     ->get('/', [Home::class, 'get'])
     ->get('/imprint', [Imprint::class, 'get'])
     ->get('/prices', [Prices::class, 'get'])

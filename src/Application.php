@@ -45,15 +45,6 @@ class Application
     }
     public function run(): string
     {
-        session_set_cookie_params([
-            'path' => '/',
-            'domain' => $_ENV['SYSTEM_HOSTNAME'],
-            'secure' => true,
-            'httponly' => true,
-            'samesite' => 'Strict',
-        ]);
-        session_start();
-        $_SESSION['_time'] = microtime();
         $dispatcher = simpleDispatcher(function(RouteCollector $r) {
             foreach ($this->routes as $method => $routes) {
                 foreach ($routes as $route => $func) {
