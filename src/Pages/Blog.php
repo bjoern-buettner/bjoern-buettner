@@ -22,6 +22,7 @@ class Blog
                     'posts' => $posts,
                     'content' => [
                         'title' => 'Newest blogposts',
+                        'description' => 'Here are all blog posts, with the newest one at top. I hope you enjoy reading them and learn something from them.',
                     ],
                 ]);
             case 'de':
@@ -33,6 +34,7 @@ class Blog
                     'posts' => $posts,
                     'content' => [
                         'title' => 'Neuste Blogbeiträge',
+                        'description' => 'Hier sind alle Blogbeiträge, mit dem Neusten zuerst. Ich hoffe, Sie haben Spaß beim Lesen und lernen etwas dabei.'
                     ],
                 ]);
         }
