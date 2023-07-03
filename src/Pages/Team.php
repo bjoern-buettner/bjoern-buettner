@@ -40,7 +40,7 @@ class Team
                 ]);
         }
     }
-    public function image(Environment $twig, string $lang, array $args): string
+    public static function image(Environment $twig, string $lang, array $args): string
     {
         if (!isset($args['slug']) || !preg_match('/^[a-z0-9-]+$/', $args['slug'])) {
             header('HTTP/1.1 404 Not Found', true, 404)   ;
