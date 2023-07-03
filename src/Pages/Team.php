@@ -19,7 +19,7 @@ class Team
         switch ($lang) {
             case 'en':
                 return $twig->render('team.twig', [
-                    'title' => 'Team',
+                    'title' => 'Team & About Us',
                     'active' => '/team',
                     'description' => 'A little bit about the team behind bjoern-buettner.me',
                     'content' => [
@@ -30,7 +30,7 @@ class Team
             case 'de':
             default:
                 return $twig->render('team.twig', [
-                    'title' => 'Team',
+                    'title' => 'Team & Über Uns',
                     'active' => '/team',
                     'description' => 'Ein wenig über das Team hinter bjoern-buettner.me',
                     'content' => [

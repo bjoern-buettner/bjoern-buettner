@@ -16,12 +16,13 @@ class Blog
         switch ($lang) {
             case 'en':
                 return $twig->render('blog.twig', [
-                    'title' => 'Blog',
+                    'title' => 'Blog Post Overview',
                     'active' => '/blog',
                     'description' => 'Björn Büttner\'s blog about web development',
                     'posts' => $posts,
                     'content' => [
-                        'title' => 'Newest blogposts',
+                        'title' => 'Newest blog posts',
+                        'if_missing' => 'If your desired topic is not in the list yet, just send a mail to blog@bjoern-buettner.me - we will take care of it quickly.',
                         'description' => 'Here are all blogposts, with the newest one at top. I hope you enjoy reading them and learn something from them. The topics of the blog are about web development in every form and vary from week to week.',
                     ],
                     'og_type' => 'blog',
@@ -29,12 +30,13 @@ class Blog
             case 'de':
             default:
                 return $twig->render('blog.twig', [
-                    'title' => 'Blog',
+                    'title' => 'Blogpostübersicht',
                     'active' => '/blog',
                     'description' => 'Björn Büttners Blog über Webentwicklung',
                     'posts' => $posts,
                     'content' => [
                         'title' => 'Neuste Blogbeiträge',
+                        'if_missing' => 'Falls Ihr Wunschthema noch nicht in der Liste steht, schicken Sie doch einfach eine Mail an blog@bjoern-buettner.me - wir kümmern uns schnell darum.',
                         'description' => 'Hier sind alle Blogbeiträge, mit dem Neusten zuerst. Ich hoffe, Sie haben Spaß beim Lesen und lernen etwas dabei. Die Themen des Blogs drehen sich um Webentwicklung in jeder Form und variieren von Woche zu Woche.',
                     ],
                     'og_type' => 'blog',

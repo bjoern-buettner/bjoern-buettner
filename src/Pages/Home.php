@@ -11,14 +11,14 @@ class Home
         switch ($lang) {
             case 'en':
                 return $twig->render('home-en.twig', [
-                    'title' => 'Home',
+                    'title' => 'Home & Welcome',
                     'active' => '/',
                     'description' => 'A bit about Björn Büttner, the founder of bjoern-buettner.me',
                 ]);
             case 'de':
             default:
                 return $twig->render('home-de.twig', [
-                    'title' => 'Home',
+                    'title' => 'Start & Willkommen',
                     'active' => '/',
                     'description' => 'Ein wenig über Björn Büttner, den Gründer von bjoern-buettner.me',
                 ]);

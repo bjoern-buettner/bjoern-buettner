@@ -21,6 +21,7 @@ class TwigWrapper extends Environment
         $context['lang'] = $this->lang;
         $context['menu'] = $this->lang === 'en' ? MenuList::$en : MenuList::$de;
         $context['og_type'] = $context['og_type'] ?? 'website';
+        $context['author'] = $context['author'] ?? 'Björn Büttner';
         $data = parent::render($template, $context);
         try {
             $htmlMin = new HtmlMin();
