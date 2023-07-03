@@ -20,6 +20,9 @@ class Blog
                     'active' => '/blog',
                     'description' => 'Björn Büttner\'s blogposts about web development',
                     'posts' => $posts,
+                    'content' => [
+                        'title' => 'Newest blogposts',
+                    ],
                 ]);
             case 'de':
             default:
@@ -28,6 +31,9 @@ class Blog
                     'active' => '/blog',
                     'description' => 'Björn Büttners Blog über Webentwicklung',
                     'posts' => $posts,
+                    'content' => [
+                        'title' => 'Neuste Blogbeiträge',
+                    ],
                 ]);
         }
     }
