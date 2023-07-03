@@ -3,12 +3,18 @@
 namespace Me\BjoernBuettner\Pages;
 
 use Me\BjoernBuettner\Database;
+use Parsedown;
 use Twig\Environment;
+use Twig\TwigFilter;
 
 class Team
 {
     public static function get(Environment $twig, string $lang): string
     {
+        $parsedown = new Parsedown();
+        $twig->addFilter(new TwigFilter('markdown', function ($markdown) use ($parsedown) {
+            return $parsedown->text($markdown);
+        }, ['is_safe' => ['html']]));
         $team = Database::get()->query('SELECT * FROM teammember')->fetchAll();
         switch ($lang) {
             case 'en':

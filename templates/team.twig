@@ -1,7 +1,7 @@
 {% include 'header.twig' %}
 <h1>{{ content.title }}</h1>
 <p>{{ content.description }}</p>
-{% for member in teammembers %}
+{% for member in team %}
     <section class="teammember">
         <h2 id="member-{{ member.slug }}">{{ member.name }}</h2>
         <img class="me" src="/team/{{ member.slug }}.jpg" alt="{{ member.name }}"/>
