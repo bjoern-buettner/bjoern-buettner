@@ -12,7 +12,7 @@ class Blog
     public static function get(Environment $twig, string $lang): string
     {
         $database = Database::get();
-        $posts = $database->query('SELECT * FROM post ORDER BY created DESC LIMIT 5')->fetchAll();
+        $posts = $database->query('SELECT * FROM post WHERE created < NOW() ORDER BY created DESC LIMIT 5')->fetchAll();
         switch ($lang) {
             case 'en':
                 return $twig->render('blog.twig', [
@@ -31,10 +31,28 @@ class Blog
                 ]);
         }
     }
+    public static function sitemap(Environment $twig, string $lang): string
+    {
+        $database = Database::get();
+        $posts = $database->query('SELECT slug,created FROM post WHERE created < NOW() ORDER BY created DESC')->fetchAll();
+        header('Content-Type: application/xml');
+        return $twig->render('sitemap.twig', [
+            'slugs' => $posts,
+        ]);
+    }
+    public static function rss(Environment $twig, string $lang): string
+    {
+        $database = Database::get();
+        $posts = $database->query('SELECT * FROM post WHERE created < NOW() ORDER BY created DESC LIMIT 5')->fetchAll();
+        header('Content-Type: application/rss+xml');
+        return $twig->render('rss.twig', [
+            'posts' => $posts,
+        ]);
+    }
     public static function detail(Environment $twig, string $lang, array $args): string
     {
         $database = Database::get();
-        $stmt = $database->prepare('SELECT * FROM post WHERE slug=:slug AND created < NOW() DESC LIMIT 1');
+        $stmt = $database->prepare('SELECT * FROM post WHERE slug=:slug AND created < NOW() LIMIT 1');
         $stmt->execute(['slug' => $args['slug']]);
         $post = $stmt->fetch();
         if (!$post) {

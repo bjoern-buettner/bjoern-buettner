@@ -65,4 +65,6 @@ echo (new Application())
     ->get('/solutions', [Solutions::class, 'get'])
     ->get('/blog', [Blog::class, 'get'])
     ->get('/blog/{slug}', [Blog::class, 'detail'])
+    ->res('/blog_sitemap_{lang:de|en}.xml', [Blog::class, 'sitemap'])
+    ->res('/rss.xml', [Blog::class, 'rss'])
     ->run();

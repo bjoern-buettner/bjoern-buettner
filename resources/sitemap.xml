@@ -1,12 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+	<sitemap>
+		<loc>https://bjoern-buettner.me/blog_sitemap_en.xml</loc>
+	</sitemap>
+	<sitemap>
+		<loc>https://bjoern-buettner.me/blog_sitemap_de.xml</loc>
+	</sitemap>
 	<!-- English -->
 	<url>
-		<loc>https://bjoern-buettner.me/en</loc>
+		<loc>https://bjoern-buettner.me/blog/en</loc>
 		<priority>1.0</priority>
-		<xhtml:link rel="alternate" hreflang="x-default" href="https://bjoern-buettner.me/en"/>
-		<xhtml:link rel="alternate" hreflang="de" href="https://bjoern-buettner.me/de"/>
-		<xhtml:link rel="alternate" hreflang="en" href="https://bjoern-buettner.me/en"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://bjoern-buettner.me/blog/en"/>
+		<xhtml:link rel="alternate" hreflang="de" href="https://bjoern-buettner.me/blog/de"/>
+		<xhtml:link rel="alternate" hreflang="en" href="https://bjoern-buettner.me/blog/en"/>
 	</url>
 	<url>
 		<loc>https://bjoern-buettner.me/prices/en</loc>
@@ -14,6 +20,13 @@
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://bjoern-buettner.me/prices/en"/>
 		<xhtml:link rel="alternate" hreflang="de" href="https://bjoern-buettner.me/prices/de"/>
 		<xhtml:link rel="alternate" hreflang="en" href="https://bjoern-buettner.me/prices/en"/>
+	</url>
+	<url>
+		<loc>https://bjoern-buettner.me/en</loc>
+		<priority>0.8</priority>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://bjoern-buettner.me/en"/>
+		<xhtml:link rel="alternate" hreflang="de" href="https://bjoern-buettner.me/de"/>
+		<xhtml:link rel="alternate" hreflang="en" href="https://bjoern-buettner.me/en"/>
 	</url>
 	<url>
 		<loc>https://bjoern-buettner.me/solutions/en</loc>
@@ -31,11 +44,11 @@
 	</url>
 	<!-- Deutsch -->
 	<url>
-		<loc>https://bjoern-buettner.me/de</loc>
+		<loc>https://bjoern-buettner.me/blog/de</loc>
 		<priority>1.0</priority>
-		<xhtml:link rel="alternate" hreflang="x-default" href="https://bjoern-buettner.me/en"/>
-		<xhtml:link rel="alternate" hreflang="de" href="https://bjoern-buettner.me/de"/>
-		<xhtml:link rel="alternate" hreflang="en" href="https://bjoern-buettner.me/en"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://bjoern-buettner.me/blog/en"/>
+		<xhtml:link rel="alternate" hreflang="de" href="https://bjoern-buettner.me/blog/de"/>
+		<xhtml:link rel="alternate" hreflang="en" href="https://bjoern-buettner.me/blog/en"/>
 	</url>
 	<url>
 		<loc>https://bjoern-buettner.me/prices/de</loc>
@@ -43,6 +56,13 @@
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://bjoern-buettner.me/prices/en"/>
 		<xhtml:link rel="alternate" hreflang="de" href="https://bjoern-buettner.me/prices/de"/>
 		<xhtml:link rel="alternate" hreflang="en" href="https://bjoern-buettner.me/prices/en"/>
+	</url>
+	<url>
+		<loc>https://bjoern-buettner.me/de</loc>
+		<priority>0.8</priority>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://bjoern-buettner.me/en"/>
+		<xhtml:link rel="alternate" hreflang="de" href="https://bjoern-buettner.me/de"/>
+		<xhtml:link rel="alternate" hreflang="en" href="https://bjoern-buettner.me/en"/>
 	</url>
 	<url>
 		<loc>https://bjoern-buettner.me/solutions/de</loc>

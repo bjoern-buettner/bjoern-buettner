@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Björn Büttner - English Blog</title>
+        <link>https://bjoern-buettner.me</link>
+        <description>Blogposts of Björn Büttner in english</description>
+        <language>en</language>
+        <copyright>Björn Büttner</copyright>
+        <pubDate>{{ now }}</pubDate>
+        <image>
+            <url>https://bjoern-buettner.me/logo.png</url>
+            <title>Björn Büttner</title>
+            <link>https://bjoern-buettner.de/en</link>
+        </image>
+        {% for post in posts %}
+            <item>
+                <title>{{ post.title_en }}</title>
+                <description>{{ post.excerp_en }}</description>
+                <link>https://bjoern-buettner.em/blog/{{ post.slug }}/en</link>
+                <author>Björn Büttner</author>
+                <guid>{{ post.aid }}</guid>
+                <pubDate>{{ post.created }}</pubDate>
+            </item>
+        {% endfor %}
+    </channel>
+    <channel>
+        <title>Björn Büttner - Deutscher Blog</title>
+        <link>https://bjoern-buettner.me</link>
+        <description>Blogposts von Björn Büttner in deutsch</description>
+        <language>de</language>
+        <copyright>Björn Büttner</copyright>
+        <pubDate>{{ now }}</pubDate>
+        <image>
+            <url>https://bjoern-buettner.me/logo.png</url>
+            <title>Björn Büttner</title>
+            <link>https://bjoern-buettner.de/de</link>
+        </image>
+        {% for post in posts %}
+            <item>
+                <title>{{ post.title_de }}</title>
+                <description>{{ post.excerp_de }}</description>
+                <link>https://bjoern-buettner.em/blog/{{ post.slug }}/de</link>
+                <author>Björn Büttner</author>
+                <guid>{{ post.aid }}</guid>
+                <pubDate>{{ post.created }}</pubDate>
+            </item>
+        {% endfor %}
+    </channel>
+</rss>
