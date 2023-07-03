@@ -41,11 +41,10 @@ class Team
             return '404 Not Found';
         }
         $path = __DIR__ . '/../../resources/team/' . $args['slug'] . '.jpg';
-        if (!file_exists($path)) {
-            header('HTTP/1.1 404 Not Found', true, 404)   ;
-            return '404 Not Found';
-        }
         header('Content-Type: image/jpeg', true, 200);
+        if (!file_exists($path)) {
+            return file_get_contents(__DIR__ . '/../../resources/team/placeholder.jpg');
+        }
         return file_get_contents($path) ?: '';
     }
 }

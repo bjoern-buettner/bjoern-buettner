@@ -4,7 +4,7 @@
 {% for member in teammembers %}
     <section class="teammember">
         <h2 id="member-{{ member.slug }}">{{ member.name }}</h2>
-        <img src="/team/{{ member.slug }}.jpg" alt="{{ member.name }}"/>
+        <img class="me" src="/team/{{ member.slug }}.jpg" alt="{{ member.name }}"/>
         <em>{% if lang=='en' %}{{ member.title_en }}{% else %}{{ member.title_de }}{% endif %}</em>
         {% if lang=='en' %}{{ member.description_en|markdown }}{% else %}{{ member.description_de|markdown }}{% endif %}
         {% if member.linkedin or member.github %}
