@@ -18,11 +18,11 @@ class Blog
                 return $twig->render('blog.twig', [
                     'title' => 'Blog',
                     'active' => '/blog',
-                    'description' => 'Björn Büttner\'s blogposts about web development',
+                    'description' => 'Björn Büttner\'s blog about web development',
                     'posts' => $posts,
                     'content' => [
                         'title' => 'Newest blogposts',
-                        'description' => 'Here are all blog posts, with the newest one at top. I hope you enjoy reading them and learn something from them. The topics of the blog are about web development in every form and vary from week to week.',
+                        'description' => 'Here are all blogposts, with the newest one at top. I hope you enjoy reading them and learn something from them. The topics of the blog are about web development in every form and vary from week to week.',
                     ],
                     'og_type' => 'blog',
                 ]);
