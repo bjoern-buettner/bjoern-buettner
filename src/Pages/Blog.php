@@ -12,7 +12,7 @@ class Blog
     public static function get(Environment $twig, string $lang): string
     {
         $database = Database::get();
-        $posts = $database->query('SELECT * FROM post WHERE created < NOW() ORDER BY created DESC LIMIT 5')->fetchAll();
+        $posts = $database->query('SELECT * FROM post WHERE created < NOW() ORDER BY created DESC')->fetchAll();
         switch ($lang) {
             case 'en':
                 return $twig->render('blog.twig', [

@@ -54,6 +54,10 @@ echo (new Application())
         header('Content-Type: text/xml', true);
         return file_get_contents(__DIR__ . '/../resources/sitemap.xml');
     })
+    ->res('/static_sitemap_{lang:en|de}.xml', function (string $lang): string {
+        header('Content-Type: text/xml', true);
+        return file_get_contents(__DIR__ . "/../resources/static_sitemap_$lang.xml");
+    })
     ->res('/robots.txt', function (): string {
         header('Content-Type: text/plain', true);
         return file_get_contents(__DIR__ . '/../resources/robots.txt');

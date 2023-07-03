@@ -1,2 +1,3 @@
 user-agent: *
 allow: /
+sitemap: https://bjoern-buettner.me/sitemap.xml
