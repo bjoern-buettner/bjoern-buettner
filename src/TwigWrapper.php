@@ -20,7 +20,7 @@ class TwigWrapper extends Environment
     {
         $context['lang'] = $this->lang;
         $context['menu'] = $this->lang === 'en' ? MenuList::$en : MenuList::$de;
-        $context['google_site_verification'] = $_ENV['GOOGLE_SITE_VERIFICATION'];
+        $context['og_type'] = $context['og_type'] ?? 'website';
         $data = parent::render($template, $context);
         try {
             $htmlMin = new HtmlMin();

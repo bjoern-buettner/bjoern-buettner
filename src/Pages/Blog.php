@@ -22,8 +22,9 @@ class Blog
                     'posts' => $posts,
                     'content' => [
                         'title' => 'Newest blogposts',
-                        'description' => 'Here are all blog posts, with the newest one at top. I hope you enjoy reading them and learn something from them.',
+                        'description' => 'Here are all blog posts, with the newest one at top. I hope you enjoy reading them and learn something from them. The topics of the blog are about web development in every form and vary from week to week.',
                     ],
+                    'og_type' => 'blog',
                 ]);
             case 'de':
             default:
@@ -34,8 +35,9 @@ class Blog
                     'posts' => $posts,
                     'content' => [
                         'title' => 'Neuste Blogbeiträge',
-                        'description' => 'Hier sind alle Blogbeiträge, mit dem Neusten zuerst. Ich hoffe, Sie haben Spaß beim Lesen und lernen etwas dabei.'
+                        'description' => 'Hier sind alle Blogbeiträge, mit dem Neusten zuerst. Ich hoffe, Sie haben Spaß beim Lesen und lernen etwas dabei. Die Themen des Blogs drehen sich um Webentwicklung in jeder Form und variieren von Woche zu Woche.',
                     ],
+                    'og_type' => 'blog',
                 ]);
         }
     }
@@ -76,16 +78,20 @@ class Blog
                 return $twig->render('blogpost.twig', [
                     'title' => $post['title_en'],
                     'active' => '/blog/' . $args['slug'],
+                    'author' => $post['author'],
                     'description' => $post['extract_en'],
                     'content' => $post['content_en'],
+                    'og_type' => 'article',
                 ]);
             case 'de':
             default:
                 return $twig->render('blogpost.twig', [
                     'title' => $post['title_de'],
                     'active' => '/blog/' . $args['slug'],
+                    'author' => $post['author'],
                     'description' => $post['extract_de'],
                     'content' => $post['content_de'],
+                    'og_type' => 'article',
                 ]);
         }
     }

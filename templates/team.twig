@@ -1,0 +1,19 @@
+{% include 'header.twig' %}
+<h1>{{ content.title }}</h1>
+<p>{{ content.description }}</p>
+{% for member in teammembers %}
+    <section class="teammember">
+        <h2 id="member-{{ member.slug }}">{{ member.name }}</h2>
+        <img src="/team/{{ member.slug }}.jpg" alt="{{ member.name }}"/>
+        <em>{% if lang=='en' %}{{ member.title_en }}{% else %}{{ member.title_de }}{% endif %}</em>
+        {% if lang=='en' %}{{ member.description_en|markdown }}{% else %}{{ member.description_de|markdown }}{% endif %}
+        {% if member.linkedin or member.github %}
+            <h3>Links</h3>
+            <ul>
+                {% if member.linkedin %}<li><a target="_blank" href="https://www.linkedin.com/in/{{ member.linkedin }}/">LinkedIn</a></li>{% endif %}
+                {% if member.github %}<li><a target="_blank" href="https://github.com/{{ member.github }}">GitHub</a></li>{% endif %}
+            </ul>
+        {% endif %}
+    </section>
+{% endfor %}
+{% include 'footer.twig' %}

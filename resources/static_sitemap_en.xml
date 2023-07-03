@@ -29,6 +29,13 @@
 		<xhtml:link rel="alternate" hreflang="en" href="https://bjoern-buettner.me/solutions/en"/>
 	</url>
 	<url>
+		<loc>https://bjoern-buettner.me/team/en</loc>
+		<priority>0.6</priority>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://bjoern-buettner.me/team/en"/>
+		<xhtml:link rel="alternate" hreflang="de" href="https://bjoern-buettner.me/team/de"/>
+		<xhtml:link rel="alternate" hreflang="en" href="https://bjoern-buettner.me/team/en"/>
+	</url>
+	<url>
 		<loc>https://bjoern-buettner.me/imprint/en</loc>
 		<priority>0.5</priority>
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://bjoern-buettner.me/imprint/en"/>
