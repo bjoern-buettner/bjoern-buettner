@@ -8,6 +8,7 @@ use Me\BjoernBuettner\Pages\Imprint;
 use Me\BjoernBuettner\Pages\Prices;
 use Me\BjoernBuettner\Pages\Solutions;
 use Me\BjoernBuettner\Pages\Team;
+use Me\BjoernBuettner\Resources\Javascript;
 use Me\BjoernBuettner\Resources\Styles;
 
 require_once (__DIR__ . '/../vendor/autoload.php');
@@ -35,18 +36,6 @@ echo (new Application())
         header('Content-Type: image/x-icon', true);
         return file_get_contents(__DIR__ . '/../resources/favicon.ico');
     })
-    ->res('/cookieinfo.js', function (): string {
-        header('Content-Type: application/javascript', true);
-        return file_get_contents(__DIR__ . '/../resources/cookieinfo.js');
-    })
-    ->res('/hosted-by-bjoern-buettner.js', function (): string {
-        header('Content-Type: application/javascript', true);
-        return file_get_contents(__DIR__ . '/../resources/hosted-by-bjoern-buettner.js');
-    })
-    ->res('/hosted-by-bjoern-buettner.css', function (): string {
-        header('Content-Type: text/css', true);
-        return file_get_contents(__DIR__ . '/../resources/hosted-by-bjoern-buettner.css');
-    })
     ->res('/sitemap.xml', function (): string {
         header('Content-Type: text/xml', true);
         return file_get_contents(__DIR__ . '/../resources/sitemap.xml');
@@ -59,7 +48,8 @@ echo (new Application())
         header('Content-Type: text/plain', true);
         return file_get_contents(__DIR__ . '/../resources/robots.txt');
     })
-    ->res('/styles.css', [Styles::class, 'get'])
+    ->res('/{file}.css', [Styles::class, 'get'])
+    ->res('/{file}.js', [Javascript::class, 'get'])
     ->res('/blog_sitemap_{lang:de|en}.xml', [Blog::class, 'sitemap'])
     ->res('/rss.xml', [Blog::class, 'rss'])
     ->res('/team/{slug}.jpg', [Team::class, 'image'])

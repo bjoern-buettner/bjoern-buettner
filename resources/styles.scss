@@ -1,6 +1,9 @@
 * {
     box-sizing: border-box;
 }
+img {
+    border: 0;
+}
 body, html {
     background: #f0f9f0;
     color: #111;
@@ -139,6 +142,9 @@ footer.bar {
     padding-bottom: 0.25em;
 }
 #header {
+    display: flex;
+    background-color: #f0f9f0;
+    color: #111;
     img {
         width: 106px;
         height: 64px;
@@ -167,9 +173,13 @@ footer a:focus {
     margin-left: -68px;
     margin-bottom: -4px;
 }
-#header {
-    background-color: #f0f9f0;
-    color: #111;
+@media screen and (max-width: 1100px) {
+    nav > ul {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+    nav > ul > li {
+        margin: 0.2em 0;
+    }
 }
 @media screen and (max-width:700px) {
     div > div {

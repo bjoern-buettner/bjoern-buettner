@@ -2,6 +2,7 @@
 
 namespace Me\BjoernBuettner;
 
+use Exception;
 use Twig\Environment;
 use Twig\Loader\LoaderInterface;
 use voku\helper\HtmlMin;
@@ -21,12 +22,12 @@ class TwigWrapper extends Environment
         $context['lang'] = $this->lang;
         $context['menu'] = $this->lang === 'en' ? MenuList::$en : MenuList::$de;
         $context['og_type'] = $context['og_type'] ?? 'website';
-        $context['author'] = $context['author'] ?? 'Björn Büttner';
+        $context['author'] = $context['author'] ?? ['name' => 'Björn Büttner'];
         $data = parent::render($template, $context);
         try {
             $htmlMin = new HtmlMin();
             return $htmlMin->minify($data);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return $data;
         }
     }

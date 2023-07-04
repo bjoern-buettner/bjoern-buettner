@@ -1,14 +1,17 @@
 {% include 'header.twig' %}
 <h1>{{ content.title }}</h1>
 <p>{{ content.description }}</p>
+<p>{{ content.costs }}</p>
+<br/>
 <ul>
 {% for post in posts %}
     <li>
-        <a href="/blog/{{ post.slug }}/{{ lang }}"><strong>{% if lang=='en' %}{{ post.title_en }}{% else %}{{ post.title_de }}{% endif %}</strong></a>
+        <a href="/blog/{{ post.slug }}/{{ lang }}"><h2>{% if lang=='en' %}{{ post.title_en }}{% else %}{{ post.title_de }}{% endif %}</h2></a>
         <em>{{ post.created }}</em>
         <p>{% if lang=='en' %}{{ post.extract_en }}{% else %}{{ post.extract_de }}{% endif %}</p>
     </li>
 {% endfor %}
 </ul>
+<br/>
 <p>{{ content.if_missing }}</p>
 {% include 'footer.twig' %}

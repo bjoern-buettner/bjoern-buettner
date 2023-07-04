@@ -12,7 +12,7 @@ class Prices
         switch ($lang) {
             case 'en':
                 return $twig->render('prices.twig', [
-                    'title' => 'Offers',
+                    'title' => 'Offers & Prices',
                     'active' => '/prices',
                     'description' => 'Offers by Björn Büttner in a well sorted overview',
                     'content' => [

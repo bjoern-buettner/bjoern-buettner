@@ -22,6 +22,7 @@ class Blog
                     'posts' => $posts,
                     'content' => [
                         'title' => 'Newest blog posts',
+                        'costs' => 'Of course all our content is free to access. If you want to support us, just share the blogpost with your friends and family. Thank you!',
                         'if_missing' => 'If your desired topic is not in the list yet, just send a mail to blog@bjoern-buettner.me - we will take care of it quickly.',
                         'description' => 'Here is an overview over all blogposts, with the newest one at top. I hope you enjoy reading them and learn something from them. The topics of the blog are about web development in every form and vary from week to week.',
                     ],
@@ -36,6 +37,7 @@ class Blog
                     'posts' => $posts,
                     'content' => [
                         'title' => 'Neuste Blogbeiträge',
+                        'costs' => 'Selbstverständlich sind alle unsere Inhalte kostenlos erreichbar. Wenn Sie uns unterstützen wollen, so teilen Sie den jeweiligen Blogpost doch einfach mit Ihren Freunden und Bekannten. Vielen Dank!',
                         'if_missing' => 'Falls Ihr Wunschthema noch nicht in der Liste steht, schicken Sie doch einfach eine Mail an blog@bjoern-buettner.me - wir kümmern uns schnell darum.',
                         'description' => 'Hier ist eine Übersicht über alle Blogbeiträge, mit jeweils dem Neusten zuerst. Ich hoffe, Sie haben Spaß beim Lesen und lernen etwas dabei. Die Themen des Blogs drehen sich um Webentwicklung in jeder Form und variieren von Woche zu Woche.',
                     ],
@@ -75,12 +77,15 @@ class Blog
         $twig->addFilter(new TwigFilter('markdown', function ($markdown) use ($parsedown) {
             return $parsedown->text($markdown);
         }, ['is_safe' => ['html']]));
+        $stmt = $database->prepare('SELECT * FROM post WHERE aid=:aid AND created < NOW() LIMIT 1');
+        $stmt->execute(['slug' => $post['author']]);
+        $author = $stmt->fetch();
         switch ($lang) {
             case 'en':
                 return $twig->render('blogpost.twig', [
                     'title' => $post['title_en'],
                     'active' => '/blog/' . $args['slug'],
-                    'author' => $post['author'],
+                    'author' => $author,
                     'description' => $post['extract_en'],
                     'content' => $post['content_en'],
                     'og_type' => 'article',
@@ -90,7 +95,7 @@ class Blog
                 return $twig->render('blogpost.twig', [
                     'title' => $post['title_de'],
                     'active' => '/blog/' . $args['slug'],
-                    'author' => $post['author'],
+                    'author' => $author,
                     'description' => $post['extract_de'],
                     'content' => $post['content_de'],
                     'og_type' => 'article',
