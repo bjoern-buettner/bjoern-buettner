@@ -27,11 +27,11 @@
             </a>
             <strong>Björn Büttner</strong>
             {% if lang != 'de' %}
-                <a hreflanf="de" href="/de" title="Zu Deutsch wechseln">
+                <a hreflang="de" href="{% if active != '/' %}{{ active }}{% endif %}/de" title="Zu Deutsch wechseln">
                     <img class="small" src="/de.jpg" alt="Deutsch"/><img class="small" src="/en.jpg" alt="English"/>
                 </a>
             {% else %}
-                <a hreflanf="de" href="/en" title="Switch to english">
+                <a hreflang="de" href="{% if active != '/' %}{{ active }}{% endif %}/en" title="Switch to english">
                     <img class="small" src="/en.jpg" alt="English"/><img class="small" src="/de.jpg" alt="Deutsch"/>
                 </a>
             {% endif %}

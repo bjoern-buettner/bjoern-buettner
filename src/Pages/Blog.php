@@ -77,8 +77,8 @@ class Blog
         $twig->addFilter(new TwigFilter('markdown', function ($markdown) use ($parsedown) {
             return $parsedown->text($markdown);
         }, ['is_safe' => ['html']]));
-        $stmt = $database->prepare('SELECT * FROM post WHERE aid=:aid AND created < NOW() LIMIT 1');
-        $stmt->execute(['slug' => $post['author']]);
+        $stmt = $database->prepare('SELECT * FROM teammember WHERE aid=:aid LIMIT 1');
+        $stmt->execute(['aid' => $post['author']]);
         $author = $stmt->fetch();
         switch ($lang) {
             case 'en':

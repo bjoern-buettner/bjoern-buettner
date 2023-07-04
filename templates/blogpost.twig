@@ -1,5 +1,5 @@
 {% include 'header.twig' %}
 <h1>{{ title }}</h1>
-<em>{{ created }}</em>
+<em>{{ created }} {% if lang=='en' %}by{% else %}von{% endif %} <a href="/team/{{ lang }}#{{ author.slug }}">{{ author.name }}</a></em>
 {{ content|markdown }}
 {% include 'footer.twig' %}
