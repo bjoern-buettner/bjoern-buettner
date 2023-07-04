@@ -173,6 +173,11 @@ footer a:focus {
     margin-left: -68px;
     margin-bottom: -4px;
 }
+.teammember {
+    height: auto;
+    width: auto;
+    overflow: hidden;
+}
 @media screen and (max-width: 1100px) {
     nav > ul {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
