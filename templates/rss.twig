@@ -2,7 +2,7 @@
 <rss version="2.0">
     <channel>
         <title>Björn Büttner - English Blog</title>
-        <link>https://bjoern-buettner.me</link>
+        <link>https://bjoern-buettner.me/blog/en</link>
         <description>Blogposts of Björn Büttner in english</description>
         <language>en</language>
         <copyright>Björn Büttner</copyright>
@@ -10,39 +10,45 @@
         <image>
             <url>https://bjoern-buettner.me/logo.png</url>
             <title>Björn Büttner</title>
-            <link>https://bjoern-buettner.de/en</link>
+            <link>https://bjoern-buettner.me/en</link>
         </image>
         {% for post in posts %}
             <item>
                 <title>{{ post.title_en }}</title>
-                <description>{{ post.excerp_en }}</description>
-                <link>https://bjoern-buettner.em/blog/{{ post.slug }}/en</link>
-                <author>Björn Büttner</author>
+                <description>{{ post.exctract_en }}</description>
+                <link>https://bjoern-buettner.me/blog/{{ post.slug }}/en</link>
+                <author>{{ post.author.name }}</author>
                 <guid>{{ post.aid }}</guid>
                 <pubDate>{{ post.created }}</pubDate>
+                {% for tag in post.tags %}
+                    <category>{{ tag.name }}</category>
+                {% endfor %}
             </item>
         {% endfor %}
     </channel>
     <channel>
         <title>Björn Büttner - Deutscher Blog</title>
-        <link>https://bjoern-buettner.me</link>
-        <description>Blogposts von Björn Büttner in deutsch</description>
+        <link>https://bjoern-buettner.me/blog/de</link>
+        <description>Blogposts von Björn Büttner auf Deutsch</description>
         <language>de</language>
         <copyright>Björn Büttner</copyright>
         <pubDate>{{ now }}</pubDate>
         <image>
             <url>https://bjoern-buettner.me/logo.png</url>
             <title>Björn Büttner</title>
-            <link>https://bjoern-buettner.de/de</link>
+            <link>https://bjoern-buettner.me/de</link>
         </image>
         {% for post in posts %}
             <item>
                 <title>{{ post.title_de }}</title>
-                <description>{{ post.excerp_de }}</description>
-                <link>https://bjoern-buettner.em/blog/{{ post.slug }}/de</link>
-                <author>Björn Büttner</author>
+                <description>{{ post.extract_de }}</description>
+                <link>https://bjoern-buettner.me/blog/{{ post.slug }}/de</link>
+                <author>{{ post.author.name }}</author>
                 <guid>{{ post.aid }}</guid>
                 <pubDate>{{ post.created }}</pubDate>
+                {% for tag in post.tags %}
+                    <category>{{ tag.name }}</category>
+                {% endfor %}
             </item>
         {% endfor %}
     </channel>

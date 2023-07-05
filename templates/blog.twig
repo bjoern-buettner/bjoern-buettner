@@ -9,6 +9,14 @@
         <a href="/blog/{{ post.slug }}/{{ lang }}"><h2>{% if lang=='en' %}{{ post.title_en }}{% else %}{{ post.title_de }}{% endif %}</h2></a>
         <em>{{ post.created }}</em>
         <p>{% if lang=='en' %}{{ post.extract_en }}{% else %}{{ post.extract_de }}{% endif %}</p>
+        <aside class="tags">
+            <h3>{% if lang=='en' %}Tagged as{% else %}Getaggt als{% endif %}:</h3>
+            <ul>
+                {% for tag in tags %}
+                    <li>{{ tag.name }}</li>
+                {% endfor %}
+            </ul>
+        </aside>
     </li>
 {% endfor %}
 </ul>

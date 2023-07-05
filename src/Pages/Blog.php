@@ -3,9 +3,8 @@
 namespace Me\BjoernBuettner\Pages;
 
 use Me\BjoernBuettner\Database;
-use Parsedown;
+use Me\BjoernBuettner\TwigWrapper;
 use Twig\Environment;
-use Twig\TwigFilter;
 
 class Blog
 {
@@ -13,6 +12,18 @@ class Blog
     {
         $database = Database::get();
         $posts = $database->query('SELECT * FROM post WHERE created < NOW() ORDER BY created DESC')->fetchAll();
+        $authors = [];
+        foreach ($posts as &$post) {
+            if (!isset($authors[$post['author']])) {
+                $stmt = $database->prepare('SELECT * FROM teammember WHERE aid=:aid LIMIT 1');
+                $stmt->execute(['aid' => $post['author']]);
+                $authors[$post['author']] = $stmt->fetch();
+            }
+            $post['author'] = $authors[$post['author']];
+            $stmt = $database->prepare('SELECT keywords.* FROM post_keyword INNER JOIN keyword ON keyword.id=post_keyword.keyword WHERE post_keyword.post=:aid LIMIT 1');
+            $stmt->execute(['aid' => $post['id']]);
+            $post['keywords'] = $stmt->fetchAll();
+        }
         switch ($lang) {
             case 'en':
                 return $twig->render('blog.twig', [
@@ -45,21 +56,30 @@ class Blog
                 ]);
         }
     }
-    public static function sitemap(Environment $twig, string $lang): string
+    public static function sitemap(TwigWrapper $twig, string $lang): string
     {
         $database = Database::get();
         $posts = $database->query('SELECT slug,created FROM post WHERE created < NOW() ORDER BY created DESC')->fetchAll();
         header('Content-Type: application/xml');
-        return $twig->render('sitemap.twig', [
+        return $twig->renderUnminified('sitemap.twig', [
             'slugs' => $posts,
         ]);
     }
-    public static function rss(Environment $twig, string $lang): string
+    public static function rss(TwigWrapper $twig, string $lang): string
     {
         $database = Database::get();
         $posts = $database->query('SELECT * FROM post WHERE created < NOW() ORDER BY created DESC LIMIT 5')->fetchAll();
-        header('Content-Type: application/rss+xml');
-        return $twig->render('rss.twig', [
+        $authors = [];
+        foreach ($posts as &$post) {
+            if (!isset($authors[$post['author']])) {
+                $stmt = $database->prepare('SELECT * FROM teammember WHERE aid=:aid LIMIT 1');
+                $stmt->execute(['aid' => $post['author']]);
+                $authors[$post['author']] = $stmt->fetch();
+            }
+            $post['author'] = $authors[$post['author']];
+        }
+        header('Content-Type: application/rss+xml; charset=utf-8');
+        return $twig->renderUnminified('rss.twig', [
             'posts' => $posts,
         ]);
     }
@@ -73,13 +93,12 @@ class Blog
             header('', true, 404);
             return "404 NOT FOUND";
         }
-        $parsedown = new Parsedown();
-        $twig->addFilter(new TwigFilter('markdown', function ($markdown) use ($parsedown) {
-            return $parsedown->text($markdown);
-        }, ['is_safe' => ['html']]));
         $stmt = $database->prepare('SELECT * FROM teammember WHERE aid=:aid LIMIT 1');
         $stmt->execute(['aid' => $post['author']]);
         $author = $stmt->fetch();
+        $stmt = $database->prepare('SELECT keywords.* FROM post_keyword INNER JOIN keyword ON keyword.id=post_keyword.keyword WHERE post_keyword.post=:aid LIMIT 1');
+        $stmt->execute(['aid' => $post['id']]);
+        $post['keywords'] = $stmt->fetchAll();
         switch ($lang) {
             case 'en':
                 return $twig->render('blogpost.twig', [
