@@ -10,6 +10,7 @@ use Me\BjoernBuettner\Pages\Solutions;
 use Me\BjoernBuettner\Pages\Team;
 use Me\BjoernBuettner\Resources\Javascript;
 use Me\BjoernBuettner\Resources\Styles;
+use Me\BjoernBuettner\TwigWrapper;
 
 require_once (__DIR__ . '/../vendor/autoload.php');
 
@@ -40,7 +41,7 @@ echo (new Application())
         header('Content-Type: text/xml', true);
         return file_get_contents(__DIR__ . '/../resources/sitemap.xml');
     })
-    ->res('/static_sitemap_{lang:en|de}.xml', function (string $lang): string {
+    ->res('/static_sitemap_{lang:en|de}.xml', function (TwigWrapper $twig, string $lang): string {
         header('Content-Type: text/xml', true);
         return file_get_contents(__DIR__ . "/../resources/static_sitemap_$lang.xml");
     })
