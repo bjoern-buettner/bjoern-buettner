@@ -20,7 +20,7 @@ class Blog
                 $authors[$post['author']] = $stmt->fetch();
             }
             $post['author'] = $authors[$post['author']];
-            $stmt = $database->prepare('SELECT keyword.* FROM post_keyword INNER JOIN keyword ON keyword.id=post_keyword.keyword WHERE post_keyword.post=:aid LIMIT 1');
+            $stmt = $database->prepare('SELECT keyword.* FROM post_keyword INNER JOIN keyword ON keyword.id=post_keyword.keyword WHERE post_keyword.post=:aid');
             $stmt->execute(['aid' => $post['id']]);
             $post['keywords'] = $stmt->fetchAll();
         }
@@ -96,9 +96,9 @@ class Blog
         $stmt = $database->prepare('SELECT * FROM teammember WHERE aid=:aid LIMIT 1');
         $stmt->execute(['aid' => $post['author']]);
         $author = $stmt->fetch();
-        $stmt = $database->prepare('SELECT keyword.* FROM post_keyword INNER JOIN keyword ON keyword.id=post_keyword.keyword WHERE post_keyword.post=:aid LIMIT 1');
+        $stmt = $database->prepare('SELECT keyword.* FROM post_keyword INNER JOIN keyword ON keyword.id=post_keyword.keyword WHERE post_keyword.post=:aid');
         $stmt->execute(['aid' => $post['id']]);
-        $post['keywords'] = $stmt->fetchAll();
+        $keywords = $stmt->fetchAll();
         switch ($lang) {
             case 'en':
                 return $twig->render('blogpost.twig', [
@@ -108,6 +108,7 @@ class Blog
                     'description' => $post['extract_en'],
                     'content' => $post['content_en'],
                     'og_type' => 'article',
+                    'keywords' => $keywords,
                 ]);
             case 'de':
             default:
@@ -118,6 +119,7 @@ class Blog
                     'description' => $post['extract_de'],
                     'content' => $post['content_de'],
                     'og_type' => 'article',
+                    'keywords' => $keywords,
                 ]);
         }
     }

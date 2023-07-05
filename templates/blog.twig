@@ -13,7 +13,7 @@
             <h3>{% if lang=='en' %}Tagged as{% else %}Getaggt als{% endif %}:</h3>
             <ul>
                 {% for tag in tags %}
-                    <li>{{ tag.name }}</li>
+                    <li>{{ tag[lang] }}</li>
                 {% endfor %}
             </ul>
         </aside>
