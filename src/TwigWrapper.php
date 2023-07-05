@@ -6,7 +6,6 @@ use Exception;
 use Parsedown;
 use Twig\Environment;
 use Twig\Loader\LoaderInterface;
-use Twig\TemplateWrapper;
 use Twig\TwigFilter;
 use voku\helper\HtmlMin;
 
