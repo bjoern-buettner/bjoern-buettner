@@ -10,14 +10,14 @@
         <meta name="og:title" content="{{ title }}"/>
         <meta name="og:description" content="{{ description }}"/>
         <meta name="og:image" content="https://bjoern-buettner.me/logo.png"/>
-        <meta name="og:url" content="https://bjoern-buettner.me{% if active != '/' %}{{ active }}{% endif %}/{{ lang }}"/>
+        <meta name="og:url" content="https://bjoern-buettner.me{{ (active ~ '/' ~ lang)|fixurl }}"/>
         <meta name="og:site_name" content="Björn Büttner"/>
         <meta name="og:locale" content="{{ lang }}"/>
         <meta name="og:type" content="{{ og_type }}"/>
-        <link rel="canonical" href="https://bjoern-buettner.me{% if active != '/' %}{{ active }}{% endif %}/{{ lang }}"/>
-        <link rel="alternate" hreflang="x-default" href="https://bjoern-buettner.me{% if active != '/' %}{{ active }}{% endif %}/en"/>
-        <link rel="alternate" hreflang="en" href="https://bjoern-buettner.me{% if active != '/' %}{{ active }}{% endif %}/en"/>
-        <link rel="alternate" hreflang="de" href="https://bjoern-buettner.me{% if active != '/' %}{{ active }}{% endif %}/de"/>
+        <link rel="canonical" href="https://bjoern-buettner.me{{ (active ~ '/' ~ lang)|fixurl }}"/>
+        <link rel="alternate" hreflang="x-default" href="https://bjoern-buettner.me{{ (active ~ '/en')|fixurl }}"/>
+        <link rel="alternate" hreflang="en" href="https://bjoern-buettner.me{{ (active ~ '/en')|fixurl }}"/>
+        <link rel="alternate" hreflang="de" href="https://bjoern-buettner.me{{ (active ~ '/de')|fixurl }}"/>
         <link rel="alternate" type="application/rss+xml" href="https://bjoern-buettner.me/rss-{{ lang }}.xml"/>
     </head>
     <body>

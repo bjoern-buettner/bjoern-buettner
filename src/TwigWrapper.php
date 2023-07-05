@@ -21,11 +21,14 @@ class TwigWrapper extends Environment
         $this->addFilter(new TwigFilter('markdown', function ($markdown) use ($parsedown) {
             return $parsedown->text($markdown);
         }, ['is_safe' => ['html']]));
+        $this->addFilter(new TwigFilter('fixurl', function ($url) {
+            return str_replace(':/', '://', str_replace('//', '/', $url));
+        }));
     }
 
     private function getCacheKey(string $template, array $context): string
     {
-        return $this->lang . md5(filemtime($template)) . md5($template) . sha1(json_encode($context));
+        return $this->lang . md5(filemtime(dirname(__DIR__) . '/templates/' . $template)) . md5($template) . sha1(json_encode($context));
     }
 
     public function render($template, array $context = []): string
