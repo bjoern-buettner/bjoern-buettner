@@ -27,5 +27,8 @@
     },
     "scripts": {
         "start": "php -S 127.0.0.1:8080 public/index.php"
+    },
+    "config": {
+        "optimize-autoloader": true
     }
 }
