@@ -13,14 +13,14 @@ class Home
                 return $twig->render('home-en.twig', [
                     'title' => 'Home & Welcome',
                     'active' => '/',
-                    'description' => 'A bit about Björn Büttner, the founder of bjoern-buettner.me',
+                    'description' => 'A warm welcome to our site and some basic information about bjoern-buettner.me',
                 ]);
             case 'de':
             default:
                 return $twig->render('home-de.twig', [
                     'title' => 'Start & Willkommen',
                     'active' => '/',
-                    'description' => 'Ein wenig über Björn Büttner, den Gründer von bjoern-buettner.me',
+                    'description' => 'Ein herzliches willkommen auf unserer Seite und ein par Grundinformationen über bjoern-buettner.me',
                 ]);
         }
     }
