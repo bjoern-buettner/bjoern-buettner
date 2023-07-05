@@ -20,7 +20,7 @@ class Blog
                 $authors[$post['author']] = $stmt->fetch();
             }
             $post['author'] = $authors[$post['author']];
-            $stmt = $database->prepare('SELECT keywords.* FROM post_keyword INNER JOIN keyword ON keyword.id=post_keyword.keyword WHERE post_keyword.post=:aid LIMIT 1');
+            $stmt = $database->prepare('SELECT keyword.* FROM post_keyword INNER JOIN keyword ON keyword.id=post_keyword.keyword WHERE post_keyword.post=:aid LIMIT 1');
             $stmt->execute(['aid' => $post['id']]);
             $post['keywords'] = $stmt->fetchAll();
         }
