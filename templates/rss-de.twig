@@ -6,7 +6,7 @@
         <description>Blogposts von Björn Büttner auf Deutsch</description>
         <language>de</language>
         <copyright>Björn Büttner</copyright>
-        <pubDate>{{ now }} 00:00:00 UTC</pubDate>
+        <pubDate>{{ now }}</pubDate>
         <image>
             <url>https://bjoern-buettner.me/logo.png</url>
             <title>Björn Büttner</title>
@@ -19,7 +19,7 @@
                 <link>https://bjoern-buettner.me/blog/{{ post.slug }}/de</link>
                 <author>{{ post.author.name }} &lt;blog@bjoern-buettner.me&gt;</author>
                 <guid>https://bjoern-buettner.me/blog/{{ post.slug }}/de</guid>
-                <pubDate>{{ post.created }} 00:00:00 UTC</pubDate>
+                <pubDate>{{ post.created }}</pubDate>
                 {% for tag in post.tags %}
                     <category>{{ tag.name }}</category>
                 {% endfor %}

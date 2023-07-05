@@ -70,7 +70,6 @@ class Blog
         $database = Database::get();
         $posts = $database->query('SELECT * FROM post WHERE created < NOW() ORDER BY created DESC LIMIT 5')->fetchAll();
         $authors = [];
-        $latest = $posts[0]['created'];
         foreach ($posts as &$post) {
             if (!isset($authors[$post['author']])) {
                 $stmt = $database->prepare('SELECT * FROM teammember WHERE aid=:aid LIMIT 1');
@@ -78,7 +77,9 @@ class Blog
                 $authors[$post['author']] = $stmt->fetch();
             }
             $post['author'] = $authors[$post['author']];
+            $post['created'] = date('r', strtotime($post['created']));
         }
+        $latest = $posts[0]['created'];
         header('Content-Type: application/rss+xml; charset=utf-8');
         return $twig->renderUnminified("rss-$lang.twig", [
             'posts' => $posts,
