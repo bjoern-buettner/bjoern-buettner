@@ -22,8 +22,12 @@ class Styles
         header('Content-Type: text/css; charset=utf-8', true, 200);
         $scss = new Compiler(['cacheDir' => __DIR__ . '/../../cache', 'prefix' => 'scss_']);
         $scss->setOutputStyle('compressed');
+        $file = dirname(__DIR__, 2) . '/resources/' . $args['file'] . '.scss';
+        if (DIRECTORY_SEPARATOR === '\\') {
+            $file = str_replace('\\', '/', $file);
+        }
         return $scss
-            ->compileString('@import("' . dirname(__DIR__, 2) . '/resources/' . $args['file'] . '.scss")')
+            ->compileString('@import("' . $file . '")')
             ->getCss();
     }
 }
