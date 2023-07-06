@@ -12,17 +12,21 @@
 <h2>{{ content.title2 }}</h2>
 <ul>
     {% for offergroup in offers %}
-        <li>
-            <h3 onclick="this.parentNode.classList.toggle('active');">{{ offergroup[lang] }}</h3>
+        <li itemscope itemtype="https://schema.org/OffersList">
+            <h3 itemprop="category" onclick="this.parentNode.classList.toggle('active');">{{ offergroup[lang] }}</h3>
             <ul>
                 {% for task in offergroup.tasks %}
-                    <li data-fee="{{ task.fee_type }}" data-price="{{ task.price }}" data-name="{{ task.title[lang] }}">
-                        <h4>{{ task.title[lang] }}</h4>
-                        <p>{{ task.description[lang] }}</p>
+                    <li itemprop="itemListElement"  itemscope itemtype="https://schema.org/Service">
+                        <h4 itemprop="name">{{ task.title[lang] }}</h4>
+                        <p itemprop="description">{{ task.description[lang] }}</p>
                         {% if lang=='en' %}
-                            <em>{{ task.price | number_format(2, '.', ',') }}€{% if task.fee_type=='hourly' %}/hour{% elseif task.fee_type=='monthly' %}/month{% elseif task.fee_type=='item' %} each{% endif %}</em>
+                            <em itemprop="offer" itemscope itemtype="https://schema.org/Offer">
+                                <span itemprop="price">{{ task.price | number_format(2, '.', ',') }}</span><span itemprop="priceCurrency">€</span>{% if task.fee_type=='hourly' %}/hour{% elseif task.fee_type=='monthly' %}/month{% elseif task.fee_type=='item' %} each{% endif %}
+                            </em>
                         {% else %}
-                            <em>{{ task.price | number_format(2, ',', '.') }}€{% if task.fee_type=='hourly' %}/Stunde{% elseif task.fee_type=='monthly' %}/Monat{% elseif task.fee_type=='item' %} jeweils{% endif %}</em>
+                            <em itemprop="offer" itemscope itemtype="https://schema.org/Offer">
+                                <span itemprop="price">{{ task.price | number_format(2, ',', '.') }}</span><span itemprop="priceCurrency">€</span{% if task.fee_type=='hourly' %}/Stunde{% elseif task.fee_type=='monthly' %}/Monat{% elseif task.fee_type=='item' %} jeweils{% endif %}
+                            </em>
                         {% endif %}
                     </li>
                 {% endfor %}

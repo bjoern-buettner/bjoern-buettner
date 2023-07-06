@@ -1,25 +1,30 @@
 {% include 'header.twig' %}
-<h1>{{ content.title }}</h1>
-<p>{{ content.description }}</p>
-<p>{{ content.costs }}</p>
-<br/>
-<ul>
-{% for post in posts %}
-    <li>
-        <a href="/blog/{{ post.slug }}/{{ lang }}"><h2>{% if lang=='en' %}{{ post.title_en }}{% else %}{{ post.title_de }}{% endif %}</h2></a>
-        <em>{{ post.created }}</em>
-        <p>{% if lang=='en' %}{{ post.extract_en }}{% else %}{{ post.extract_de }}{% endif %}</p>
-        <aside class="tags">
-            <h3>{% if lang=='en' %}Tagged as{% else %}Getaggt als{% endif %}:</h3>
-            <ul>
-                {% for tag in tags %}
-                    <li>{{ tag[lang] }}</li>
-                {% endfor %}
-            </ul>
-        </aside>
-    </li>
-{% endfor %}
-</ul>
-<br/>
-<p>{{ content.if_missing }}</p>
+<div itemscope itemtype="https://schema.org/Blog">
+    <meta itemprop="name" content="Blog">
+    <meta itemprop="inLanguage" content="{{ lang }}">
+    <meta itemprop="image" content="https://www.bjoern-buettner.me/logo.png">
+    <h1>{{ content.title }}</h1>
+    <p>{{ content.description }}</p>
+    <p>{{ content.costs }}</p>
+    <br/>
+    <ul>
+    {% for post in posts %}
+        <li>
+            <a href="/blog/{{ post.slug }}/{{ lang }}"><h2>{% if lang=='en' %}{{ post.title_en }}{% else %}{{ post.title_de }}{% endif %}</h2></a>
+            <em>{{ post.created }} {% if lang=='en' %}by{% else %}von{% endif %} {{ post.author.name }}</em>
+            <p>{% if lang=='en' %}{{ post.extract_en }}{% else %}{{ post.extract_de }}{% endif %}</p>
+            <aside class="tags">
+                <h3>{% if lang=='en' %}Tagged as{% else %}Getaggt als{% endif %}:</h3>
+                <ul>
+                    {% for tag in tags %}
+                        <li>{{ tag[lang] }}</li>
+                    {% endfor %}
+                </ul>
+            </aside>
+        </li>
+    {% endfor %}
+    </ul>
+    <br/>
+    <p>{{ content.if_missing }}</p>
+</div>
 {% include 'footer.twig' %}
