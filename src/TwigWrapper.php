@@ -29,7 +29,10 @@ class TwigWrapper extends Environment
 
     private function getCacheKey(string $template, array $context): string
     {
-        return $this->lang . md5((string) filemtime(dirname(__DIR__) . '/templates/' . $template)) . md5($template) . sha1(json_encode($context));
+        return $this->lang
+            . md5((string) filemtime(dirname(__DIR__) . '/templates/' . $template))
+            . md5($template)
+            . sha1(json_encode($context));
     }
 
     public function render($template, array $context = []): string
