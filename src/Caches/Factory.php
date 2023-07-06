@@ -7,7 +7,7 @@ use Me\BjoernBuettner\Cache;
 
 class Factory
 {
-    private static ?Cache $cache;
+    private static ?Cache $cache = null;
     public static function get(): Cache
     {
         if (self::$cache !== null) {
