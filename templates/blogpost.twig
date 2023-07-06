@@ -1,13 +1,19 @@
 {% include 'header.twig' %}
-<h1>{{ title }}</h1>
-<em>{{ created }} {% if lang=='en' %}by{% else %}von{% endif %} <a href="/team/{{ lang }}#{{ author.slug }}">{{ author.name }}</a></em>
-{{ content|markdown }}
-<aside class="tags">
-    <h2>{% if lang=='en' %}Tagged as{% else %}Getaggt als{% endif %}:</h2>
-    <ul>
-    {% for tag in tags %}
-        <li>{{ tag[lang] }}</li>
-    {% endfor %}
-    </ul>
-</aside>
+<div itemscope itemtype="https://schema.org/BlogPost">
+    <meta itemprop="datePublished" content="{{ created }}">
+    <meta itemprop="author" content="{{ author.name }}">
+    <meta itemprop="headline" content="{{ title }}">
+    <meta itemprop="inLanguage" content="{{ lang }}">
+    <h1>{{ title }}</h1>
+    <em>{{ created }} {% if lang=='en' %}by{% else %}von{% endif %} <a rel="author" itemscope itemtype="https://scheam.org/Person" itemprop="author" href="/team/{{ lang }}#{{ author.slug }}">{{ author.name }}</a></em>
+    <article itemprop="articleBody">{{ content|markdown }}</article>
+    <aside class="tags">
+        <h2>{% if lang=='en' %}Tagged as{% else %}Getaggt als{% endif %}:</h2>
+        <ul>
+        {% for tag in tags %}
+            <li>{{ tag[lang] }}</li>
+        {% endfor %}
+        </ul>
+    </aside>
+</div>
 {% include 'footer.twig' %}
