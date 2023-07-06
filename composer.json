@@ -1,6 +1,8 @@
 {
     "name": "idrinth/bjoern-buettner",
     "description": "My freelancing website.",
+    "type": "project",
+    "license": "MIT",
     "authors": [
         {
             "name": "Björn Büttner",
