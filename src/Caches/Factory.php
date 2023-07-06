@@ -13,7 +13,7 @@ class Factory
         if (self::$cache !== null) {
             return self::$cache;
         }
-        if (extension_loaded('memcached') && $_ENV['USE_MEMCACHED'] === 'true') {
+        if (extension_loaded('memcached') && ($_ENV['ENABLE_MEMCACHED'] ?? 'false') === 'true') {
             return self::$cache = new Memcache();
         }
         return self::$cache = new File();
