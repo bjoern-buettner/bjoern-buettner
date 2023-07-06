@@ -190,6 +190,56 @@ footer a:focus {
         padding: 0.25em;
     }
 }
+ul#share-buttons{
+    list-style: none;
+    padding: 0;
+    position: fixed;
+    right: 0;
+    width: auto;
+    height: auto;
+    text-align: center;
+    font-weight: bold;
+    > li {
+        display: block;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        top: 25%;
+        > a,
+        > a:hover,
+        > a:active,
+        > a:visited,
+        > a:focus {
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            width: 32px;
+            height: 32px;
+            display: block;
+        }
+        &.facebook {
+            background: blue;
+        }
+        &.twitter {
+            background: lightblue;
+        }
+        &.linkedin {
+            background: darkblue;
+        }
+        &.reddit {
+            background: red;
+        }
+        &.email {
+            background: grey;
+        }
+        &:first-of-type {
+            border-radius: 16px 0 0 0;
+        }
+        &:last-of-type {
+            border-radius: 0 0 0 16px;
+        }
+    }
+}
 @media screen and (max-width: 1100px) {
     nav > ul {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;

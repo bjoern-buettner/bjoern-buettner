@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     {% for slug in slugs %}
         <url>
-            <loc>https://bjoernbuettner.de/blog/{{ slug.slug }}/{{ lang }}</loc>
+            <loc>https://bjoern-buettner.me/blog/{{ slug.slug }}/{{ lang }}</loc>
             <priority>0.6</priority>
-            <xhtml:link rel="alternate" hreflang="x-default" href="https://bjoernbuettner.de/blog/{{ slug.slug }}/en"/>
-            <xhtml:link rel="alternate" hreflang="de" href="https://bjoernbuettner.de/blog/{{ slug.slug }}/de"/>
-            <xhtml:link rel="alternate" hreflang="en" href="https://bjoernbuettner.de/blog/{{ slug.slug }}/en"/>
+            <xhtml:link rel="alternate" hreflang="x-default" href="https://bjoern-buettner.me/blog/{{ slug.slug }}/en"/>
+            <xhtml:link rel="alternate" hreflang="de" href="https://bjoern-buettner.me/blog/{{ slug.slug }}/de"/>
+            <xhtml:link rel="alternate" hreflang="en" href="https://bjoern-buettner.me/blog/{{ slug.slug }}/en"/>
             <lastmod>{{ slug.created }}</lastmod>
         </url>
     {% endfor %}

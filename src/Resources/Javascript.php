@@ -20,8 +20,14 @@ class Javascript
             return '404 Not Found';
         }
         header('Content-Type: text/javascript; charset=utf-8', true, 200);
+        $cache = dirname(__DIR__, 2) . '/cache/' . md5($args['file']) . md5((string) filemtime($file)) . '.min.js';
+        if (is_file($cache)) {
+            return file_get_contents($cache);
+        }
         $js = file_get_contents(dirname(__DIR__, 2) . '/resources/' . $args['file'] . '.js') ?: '';
         $minifier = new JS();
-        return $minifier->add($js)->minify();
+        $data = $minifier->add($js)->minify();
+        file_put_contents($cache, $data);
+        return $data;
     }
 }
