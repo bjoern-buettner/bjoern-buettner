@@ -2,9 +2,11 @@ name: Stylelint
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+    - master
   pull_request:
-    branches: [ "master" ]
+    branches:
+    - master
 
 jobs:
   build:
@@ -16,5 +18,5 @@ jobs:
       with:
         node-version: 18.x
         cache: 'npm'
-    - run: npm install stylelint stylelint-config-standard-scss postcss-scss
+    - run: npm install
     - run: npx stylelint resources/*.scss

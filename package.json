@@ -1,0 +1,10 @@
+{
+  "name": "@bjoern-buettner/bjoern-buettner",
+  "version": "1.0.0",
+  "dependencies": {
+    "eslint": "*",
+    "stylelint": "*",
+    "stylelint-config-standard-scss": "*",
+    "postcss-scss": "*"
+  }
+}
