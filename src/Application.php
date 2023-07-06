@@ -6,6 +6,7 @@ use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
 use Teto\HTTP\AcceptLanguage;
 use Twig\Loader\FilesystemLoader;
+
 use function FastRoute\simpleDispatcher;
 
 class Application
@@ -25,7 +26,7 @@ class Application
         $subroute = rtrim($route, '/');
         $this->routes['GET'][$route] = function () use ($subroute): string {
             $lang = 'en';
-            foreach(AcceptLanguage::get() as $language) {
+            foreach (AcceptLanguage::get() as $language) {
                 if ($language['language'] === 'de') {
                     $lang = 'de';
                     break;
@@ -45,7 +46,7 @@ class Application
     }
     public function run(): string
     {
-        $dispatcher = simpleDispatcher(function(RouteCollector $r) {
+        $dispatcher = simpleDispatcher(function (RouteCollector $r) {
             foreach ($this->routes as $method => $routes) {
                 foreach ($routes as $route => $func) {
                     $r->addRoute($method, $route, $func);
@@ -65,7 +66,12 @@ class Application
                 header('', true, 405);
                 return "405 METHOD NOT ALLOWED";
             case Dispatcher::FOUND:
-                $twig = new TwigWrapper(new FilesystemLoader(dirname(__DIR__) . '/templates'), $routeInfo[2]['lang'] ?? '');
+                $twig = new TwigWrapper(
+                    new FilesystemLoader(
+                        dirname(__DIR__) . '/templates'
+                    ),
+                    $routeInfo[2]['lang'] ?? ''
+                );
                 $handler = $routeInfo[1];
                 return call_user_func($handler, $twig, $routeInfo[2]['lang'] ?? '', $routeInfo[2]);
             default:
