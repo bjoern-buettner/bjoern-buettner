@@ -10,11 +10,11 @@
     <ul>
     {% for post in posts %}
         <li>
-            <a href="/blog/{{ post.slug }}/{{ lang }}"><h2>{% if lang=='en' %}{{ post.title_en }}{% else %}{{ post.title_de }}{% endif %}</h2></a>
-            <em>{{ post.created }} {% if lang=='en' %}by{% else %}von{% endif %} {{ post.author.name }}</em>
-            <p>{% if lang=='en' %}{{ post.extract_en }}{% else %}{{ post.extract_de }}{% endif %}</p>
+            <a href="/blog/{{ post.slug }}/{{ lang }}"><h2>{{ lang=='en' ? post.title_en : post.title_de }}</h2></a>
+            <em>{{ post.created }} {{ lang=='en' ? 'by' : 'von' }} {{ post.author.name }}</em>
+            <p>{{ lang=='en' ? post.extract_en : post.extract_de }}</p>
             <aside class="tags">
-                <h3>{% if lang=='en' %}Tagged as{% else %}Getaggt als{% endif %}:</h3>
+                <h3>{{ lang=='en' ? 'Tagged as' : 'Getaggt als' }}:</h3>
                 <ul>
                     {% for tag in tags %}
                         <li>{{ tag[lang] }}</li>
