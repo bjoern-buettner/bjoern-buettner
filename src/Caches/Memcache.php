@@ -24,7 +24,7 @@ class Memcache implements Cache
         $this->cache->set($key, $value);
     }
 
-    public function __destruct(): void
+    public function __destruct()
     {
         $this->cache->quit();
     }
