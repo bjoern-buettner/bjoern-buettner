@@ -1,4 +1,5 @@
-{% include 'header.twig' %}
+{% extends '_base.html.twig' %}
+{% block body %}
 <h1>{{ content.title }}</h1>
 <p>Fall Sie daran interessiert sind, wo ich meine Lösungen beziehe, sind Sie hier auf der richtigen Seite!</p>
 <h2>eMail-Postfächer</h2>
@@ -25,4 +26,4 @@
 <p><a href="https://paypal.com" target="_blank">PayPal</a> wird fast ausschließlich genutzt, damit alle Kunden die Sicherheit haben ihr Geld zurückfordern zu können.</p>
 <h2>Suchmaschienenoptimierung(SEO)</h2>
 <p>Um diese Seite und Kundenseiten zu optimieren wird <a href="https://www.seobility.net" target="_blank">Seobility</a> neben einigen zusätzlichen Werkzeugen genutzt.</p>
-{% include 'footer.twig' %}
+{% endblock %}

@@ -1,4 +1,5 @@
-{% include 'header.twig' %}
+{% extends '_base.html.twig' %}
+{% block body %}
 <div itemscope itemtype="https://schema.org/Blog">
     <meta itemprop="name" content="Blog">
     <meta itemprop="inLanguage" content="{{ lang }}">
@@ -27,4 +28,4 @@
     <br/>
     <p>{{ content.if_missing }}</p>
 </div>
-{% include 'footer.twig' %}
+{% endblock %}

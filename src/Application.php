@@ -45,13 +45,15 @@ class Application
     }
     public function run(): string
     {
-        $dispatcher = simpleDispatcher(function(RouteCollector $r) {
-            foreach ($this->routes as $method => $routes) {
-                foreach ($routes as $route => $func) {
-                    $r->addRoute($method, $route, $func);
+        $dispatcher = simpleDispatcher(
+            function (RouteCollector $r) {
+                foreach ($this->routes as $method => $routes) {
+                    foreach ($routes as $route => $func) {
+                        $r->addRoute($method, $route, $func);
+                    }
                 }
             }
-        });
+        );
         $uri = $_SERVER['REQUEST_URI'];
         if (false !== $pos = strpos($uri, '?')) {
             $uri = substr($uri, 0, $pos);
@@ -65,7 +67,10 @@ class Application
                 header('', true, 405);
                 return "405 METHOD NOT ALLOWED";
             case Dispatcher::FOUND:
-                $twig = new TwigWrapper(new FilesystemLoader(dirname(__DIR__) . '/templates'), $routeInfo[2]['lang'] ?? '');
+                $twig = new TwigWrapper(
+                    new FilesystemLoader(dirname(__DIR__) . '/templates'),
+                    $routeInfo[2]['lang'] ?? ''
+                );
                 $handler = $routeInfo[1];
                 return call_user_func($handler, $twig, $routeInfo[2]['lang'] ?? '', $routeInfo[2]);
             default:
