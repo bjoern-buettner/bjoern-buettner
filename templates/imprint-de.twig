@@ -1,4 +1,5 @@
-{% include 'header.twig' %}
+{% extends '_base.html.twig' %}
+{% block body %}
 <h1>Impressum</h1>
 <div itemtype="https://schema.org/Organization" itemscope>
     <meta itemprop="name" content="Björn Büttner">
@@ -28,4 +29,4 @@
 <p>Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen.<br />
     Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.</p>
 <p>Quelle: <em><a href="https://www.e-recht24.de/muster-disclaimer.htm" target="_blank" rel="noopener">Disclaimer</a> von eRecht24, dem Portal zum Internetrecht von <a href="http://www.e-recht24.de/" target="_blank" rel="noopener">Rechtsanwalt</a> Sören Siebert.</em></p>
-{% include 'footer.twig' %}
+{% endblock %}

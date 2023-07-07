@@ -46,13 +46,15 @@ class Application
     }
     public function run(): string
     {
-        $dispatcher = simpleDispatcher(function (RouteCollector $r) {
-            foreach ($this->routes as $method => $routes) {
-                foreach ($routes as $route => $func) {
-                    $r->addRoute($method, $route, $func);
+        $dispatcher = simpleDispatcher(
+            function (RouteCollector $r) {
+                foreach ($this->routes as $method => $routes) {
+                    foreach ($routes as $route => $func) {
+                        $r->addRoute($method, $route, $func);
+                    }
                 }
             }
-        });
+        );
         $uri = $_SERVER['REQUEST_URI'];
         if (false !== $pos = strpos($uri, '?')) {
             $uri = substr($uri, 0, $pos);

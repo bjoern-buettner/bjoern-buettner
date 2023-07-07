@@ -1,4 +1,5 @@
-{% include 'header.twig' %}
+{% extends '_base.html.twig' %}
+{% block body %}
 <h1>{{ content.title }}</h1>
 <p>{{ content.description }}</p>
 {% for member in team %}
@@ -16,4 +17,4 @@
         {% endif %}
     </section>
 {% endfor %}
-{% include 'footer.twig' %}
+{% endblock %}
