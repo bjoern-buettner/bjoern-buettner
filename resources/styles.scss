@@ -151,17 +151,15 @@ input, button, select, textarea {
         border: none;
         padding-bottom: 0.5em;
     }
-}
-#body a {
-    color: darkblue;
-    background: rgba(0,0,0,0.1);
-    border-radius: 0.1em;
+    a {
+        color: darkblue;
+        background: rgba(0,0,0,0.1);
+        border-radius: 0.1em;
+    }
 }
 
-footer {
-    text-align: center;
-}
 footer.bar {
+    text-align: center;
     position: fixed;
     bottom: 0;
     width: 100%;
