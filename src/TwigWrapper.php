@@ -40,13 +40,13 @@ class TwigWrapper extends Environment
         ) . md5($template) . sha1(json_encode($context));
     }
 
-    public function render($name, array $context = []): string
+    public function render($template, array $context = []): string
     {
         $cache = $this->getCacheKey($template, $context) . '.min.twig';
         if ($data = Factory::get()->get($cache)) {
             return $data;
         }
-        $data = $this->renderUnminified($name, $context);
+        $data = $this->renderUnminified($template, $context);
         try {
             $htmlMin = new HtmlMin();
             $data = $htmlMin->minify($data);
