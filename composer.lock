@@ -4,8 +4,48 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "482612b5df053ce8423238a5effa914d",
+    "content-hash": "cb5798a192ec8d40971de60c33803acb",
     "packages": [
+        {
+            "name": "bjoern-buettner/session",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bjoern-buettner/session.git",
+                "reference": "4b4a02d3d0bfa629ce7a336c8ff57ced11016a96"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bjoern-buettner/session/zipball/4b4a02d3d0bfa629ce7a336c8ff57ced11016a96",
+                "reference": "4b4a02d3d0bfa629ce7a336c8ff57ced11016a96",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "10.2.3"
+            },
+            "suggest": {
+                "ext-memcached": "For faster session handling using the Memcached backend"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Me\\BjoernBuettner\\\\Session\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A simple session handler for PHP 8.1 and newer, configurable via environment variables.",
+            "support": {
+                "issues": "https://github.com/bjoern-buettner/session/issues",
+                "source": "https://github.com/bjoern-buettner/session/tree/1.0.0"
+            },
+            "time": "2023-07-07T21:55:19+00:00"
+        },
         {
             "name": "erusev/parsedown",
             "version": "1.7.4",
