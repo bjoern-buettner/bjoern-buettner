@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Me\BjoernBuettner;
 
 use PDO;
@@ -10,11 +12,15 @@ class OfferList
     {
         $data = [];
         $database = Database::get();
-        foreach ($database->query('SELECT * FROM category ORDER BY chooseable DESC,aid ASC')->fetchAll(PDO::FETCH_ASSOC) as $category) {
+        foreach (
+            $database
+                 ->query('SELECT * FROM category ORDER BY chooseable DESC,aid ASC')
+                 ->fetchAll(PDO::FETCH_ASSOC) as $category
+        ) {
             $cat = [
                 'de' => $category['de'],
                 'en' => $category['en'],
-                'chooseable' => $category['chooseable']==='1',
+                'chooseable' => $category['chooseable'] === '1',
                 'tasks' => []
             ];
             $stmt = $database->prepare('SELECT * FROM task WHERE category=:category');

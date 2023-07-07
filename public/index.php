@@ -12,7 +12,7 @@ use Me\BjoernBuettner\Resources\Javascript;
 use Me\BjoernBuettner\Resources\Styles;
 use Me\BjoernBuettner\TwigWrapper;
 
-require_once (__DIR__ . '/../vendor/autoload.php');
+require_once(__DIR__ . '/../vendor/autoload.php');
 
 Dotenv::createImmutable(dirname(__DIR__))->load();
 

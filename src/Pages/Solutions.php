@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Me\BjoernBuettner\Pages;
 
 use Twig\Environment;
