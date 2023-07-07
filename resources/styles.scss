@@ -216,12 +216,12 @@ ul#share-buttons{
             width: 32px;
             height: 32px;
             display: block;
-            background-image: linear-gradient(to bottom, rgba(255,255,255,0.125), rgba(255,255,255,0.25), rgba(255,255,255,0.125));
+            background-image: linear-gradient(to bottom, rgba(255,255,255,0.125), rgba(255,255,255,0.25), rgba(255,255,255,0.125)), linear-gradient(to right, rgba(255,255,255,0.125), rgba(255,255,255,0.25), rgba(255,255,255,0.125));
         }
         > a:hover,
         > a:active,
         > a:focus {
-            background-image: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.5), rgba(0,0,0,0.25));
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0.125), rgba(0,0,0,0.25), rgba(0,0,0,0.125)), linear-gradient(to right, rgba(0,0,0,0.125), rgba(0,0,0,0.25), rgba(0,0,0,0.125));
         }
         &.facebook {
             background-color: blue;
