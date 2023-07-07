@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Me\BjoernBuettner\Pages;
 
 use Twig\Environment;
@@ -20,7 +22,8 @@ class Home
                 return $twig->render('home-de.twig', [
                     'title' => 'Start & Willkommen',
                     'active' => '/',
-                    'description' => 'Ein herzliches willkommen auf unserer Seite und ein par Grundinformationen über bjoern-buettner.me',
+                    'description' => 'Ein herzliches willkommen auf unserer Seite'
+                        . ' und ein par Grundinformationen über bjoern-buettner.me',
                 ]);
         }
     }
