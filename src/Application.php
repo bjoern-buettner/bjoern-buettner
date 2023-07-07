@@ -6,6 +6,8 @@ namespace Me\BjoernBuettner;
 
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
+use Me\BjoernBuettner\Pages\Login;
+use Me\BjoernBuettner\Session\Factory;
 use Teto\HTTP\AcceptLanguage;
 use Twig\Loader\FilesystemLoader;
 
@@ -77,6 +79,7 @@ class Application
                     $routeInfo[2]['lang'] ?? ''
                 );
                 $handler = $routeInfo[1];
+                Factory::start(is_array($handler) && $handler[0] instanceof Login);
                 return call_user_func($handler, $twig, $routeInfo[2]['lang'] ?? '', $routeInfo[2]);
             default:
                 header('', true, 500);
