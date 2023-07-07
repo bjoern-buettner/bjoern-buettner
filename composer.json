@@ -25,6 +25,9 @@
     "require-dev": {
         "squizlabs/php_codesniffer": "*"
     },
+    "suggest": {
+        "ext-memcached": "For faster caching"
+    },
     "autoload": {
         "psr-4": {
             "Me\\BjoernBuettner\\": "src"
