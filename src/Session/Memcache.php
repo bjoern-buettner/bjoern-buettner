@@ -40,7 +40,7 @@ class Memcache extends Base
 
     public function write(string $id, string $data): bool
     {
-        $this->memcached->set($this->getIPKey() . $id, $data, 7200);
+        return $this->memcached->set($this->getIPKey() . $id, $data, 7200);
     }
 
     public function updateTimestamp(string $id, string $data): bool
