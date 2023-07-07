@@ -3,6 +3,7 @@
 namespace Me\BjoernBuettner;
 
 use Exception;
+use Me\BjoernBuettner\Caches\Factory;
 use Parsedown;
 use Twig\Environment;
 use Twig\Loader\LoaderInterface;
@@ -28,14 +29,17 @@ class TwigWrapper extends Environment
 
     private function getCacheKey(string $template, array $context): string
     {
-        return $this->lang . md5((string) filemtime(dirname(__DIR__) . '/templates/' . $template)) . md5($template) . sha1(json_encode($context));
+        return $this->lang
+            . md5((string) filemtime(dirname(__DIR__) . '/templates/' . $template))
+            . md5($template)
+            . sha1(json_encode($context));
     }
 
     public function render($template, array $context = []): string
     {
-        $cache = dirname(__DIR__) . '/cache/' . $this->getCacheKey($template, $context) . '.min.twig';
-        if (is_file($cache)) {
-            return file_get_contents($cache);
+        $cache = $this->getCacheKey($template, $context) . '.min.twig';
+        if ($data = Factory::get()->get($cache)) {
+            return $data;
         }
         $data = $this->renderUnminified($template, $context);
         try {
@@ -44,22 +48,22 @@ class TwigWrapper extends Environment
         } catch (Exception $e) {
             // ignore
         }
-        file_get_contents($cache, $data);
+        Factory::get()->set($cache, $data);
         return $data;
     }
 
     public function renderUnminified(string $template, array $context = []): string
     {
-        $cache = dirname(__DIR__) . '/cache/' . $this->getCacheKey($template, $context) . '.twig';
-        if (is_file($cache)) {
-            return file_get_contents($cache);
+        $cache = $this->getCacheKey($template, $context) . '.twig';
+        if ($data = Factory::get()->get($cache)) {
+            return $data;
         }
         $context['lang'] = $this->lang;
         $context['menu'] = $this->lang === 'en' ? MenuList::$en : MenuList::$de;
         $context['og_type'] = $context['og_type'] ?? 'website';
         $context['author'] = $context['author'] ?? ['name' => 'Björn Büttner'];
         $data = parent::render($template, $context);
-        file_put_contents($cache, $data);
+        Factory::get()->set($cache, $data);
         return $data;
     }
 }

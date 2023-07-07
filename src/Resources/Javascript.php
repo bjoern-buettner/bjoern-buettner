@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Me\BjoernBuettner\Resources;
 
 use MatthiasMullie\Minify\JS;
+use Me\BjoernBuettner\Caches\Factory;
 use Twig\Environment;
 
 class Javascript
@@ -20,14 +21,14 @@ class Javascript
             return '404 Not Found';
         }
         header('Content-Type: text/javascript; charset=utf-8', true, 200);
-        $cache = dirname(__DIR__, 2) . '/cache/' . md5($args['file']) . md5((string) filemtime($file)) . '.min.js';
-        if (is_file($cache)) {
-            return file_get_contents($cache);
+        $cache = md5($args['file']) . md5((string) filemtime($file)) . '.min.js';
+        if ($data = Factory::get()->get($cache)) {
+            return $data;
         }
         $js = file_get_contents(dirname(__DIR__, 2) . '/resources/' . $args['file'] . '.js') ?: '';
         $minifier = new JS();
         $data = $minifier->add($js)->minify();
-        file_put_contents($cache, $data);
+        Factory::get()->set($cache, $data);
         return $data;
     }
 }
