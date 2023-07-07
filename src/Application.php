@@ -77,7 +77,7 @@ class Application
                     $routeInfo[2]['lang'] ?? ''
                 );
                 $handler = $routeInfo[1];
-                Factory::start((is_array($handler) ? $handler[0] : $handler) instanceof Login);
+                Factory::start(is_array($handler) && $handler[0] instanceof Login);
                 return call_user_func($handler, $twig, $routeInfo[2]['lang'] ?? '', $routeInfo[2]);
             default:
                 header('', true, 500);
