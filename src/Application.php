@@ -20,12 +20,12 @@ class Application
         'POST' => [],
     ];
 
-    public function res(string $route, array|callable $func): self
+    public function res(string $route, array $func): self
     {
         $this->routes['GET'][$route] = $func;
         return $this;
     }
-    public function get(string $route, array|callable $func): self
+    public function get(string $route, array $func): self
     {
         $subroute = rtrim($route, '/');
         $this->routes['GET'][$route] = function () use ($subroute): string {
@@ -42,7 +42,7 @@ class Application
         $this->routes['GET']["$subroute/{lang:en|de}"] = $func;
         return $this;
     }
-    public function post(string $route, array|callable $func): self
+    public function post(string $route, array $func): self
     {
         $subroute = rtrim($route, '/');
         $this->routes['POST']["$subroute/{lang:en|de}"] = $func;
@@ -72,14 +72,17 @@ class Application
                 header('', true, 405);
                 return "405 METHOD NOT ALLOWED";
             case Dispatcher::FOUND:
+                $handler = $routeInfo[1];
+                if (is_callable($handler)) {
+                    return $handler();
+                }
                 $twig = new TwigWrapper(
                     new FilesystemLoader(
                         dirname(__DIR__) . '/templates'
                     ),
                     $routeInfo[2]['lang'] ?? ''
                 );
-                $handler = $routeInfo[1];
-                Factory::start(is_array($handler) && $handler[0] instanceof Login);
+                Factory::start($handler[0] instanceof Login);
                 return call_user_func($handler, $twig, $routeInfo[2]['lang'] ?? '', $routeInfo[2]);
             default:
                 header('', true, 500);
