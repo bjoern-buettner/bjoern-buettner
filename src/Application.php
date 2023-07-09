@@ -8,6 +8,7 @@ use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
 use Me\BjoernBuettner\Pages\Login;
 use Me\BjoernBuettner\Session\Factory;
+use ReflectionException;
 use Teto\HTTP\AcceptLanguage;
 use Twig\Loader\FilesystemLoader;
 
@@ -19,7 +20,19 @@ class Application
         'GET' => [],
         'POST' => [],
     ];
+    private array $interfaces = [];
+    private array $params = [];
 
+    public function interface(string $interface, string $class): self
+    {
+        $this->interfaces[$interface] = $class;
+        return $this;
+    }
+    public function param(string $class, string $param, mixed $value): self
+    {
+        $this->params[$class . '.' . $param] = $value;
+        return $this;
+    }
     public function res(string $route, array|callable $func): self
     {
         $this->routes['GET'][$route] = $func;
@@ -72,15 +85,18 @@ class Application
                 header('', true, 405);
                 return "405 METHOD NOT ALLOWED";
             case Dispatcher::FOUND:
-                $twig = new TwigWrapper(
-                    new FilesystemLoader(
-                        dirname(__DIR__) . '/templates'
-                    ),
-                    $routeInfo[2]['lang'] ?? ''
-                );
                 $handler = $routeInfo[1];
-                Factory::start(is_array($handler) && $handler[0] instanceof Login);
-                return call_user_func($handler, $twig, $routeInfo[2]['lang'] ?? '', $routeInfo[2]);
+                if (!is_array($handler)) {
+                    return $handler();
+                }
+                $builder = new DependencyBuilder($this->params, $this->interfaces);
+                Factory::start($handler[0] instanceof Login);
+                try {
+                    return $builder->call($builder->build($handler[0]), $handler[1], $routeInfo[2]);
+                } catch (ReflectionException $e) {
+                    header('', true, 500);
+                    return "500 SERVER ERROR";
+                }
             default:
                 header('', true, 500);
                 return "500 SERVER ERROR";
