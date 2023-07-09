@@ -1,4 +1,4 @@
-#bjoern-buettner-advertisement {
+body > #bjoern-buettner-advertisement {
     position: fixed;
     bottom: 0;
     right: 0;
@@ -17,5 +17,14 @@
          display: block;
          width: 53px;
          height: 32px;
+    }
+    &:hover {
+        > span {
+            font-size: 0.75em;
+        }
+        > img {
+            width: 106px;
+            height: 64px;
+        }
     }
 }
