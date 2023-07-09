@@ -92,7 +92,7 @@ class Application
                 $builder = new DependencyBuilder($this->params, $this->interfaces);
                 Factory::start($handler[0] instanceof Login);
                 try {
-                    return $builder->call($builder->build($handler[0]), $handler[1], $routeInfo[2]);
+                    return $builder->call($handler[0], $handler[1], $routeInfo[2]);
                 } catch (ReflectionException $e) {
                     header('Content-Type: text/plain', true, 500);
                     return "500 SERVER ERROR";
