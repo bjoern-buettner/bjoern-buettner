@@ -26,7 +26,7 @@ class Styles
         if ($data = Factory::get()->get($cache)) {
             return $data;
         }
-        $scss = new Compiler(['cacheDir' => __DIR__ . '/../../cache', 'prefix' => 'scss_']);
+        $scss = new Compiler();
         $scss->setOutputStyle('compressed');
         if (DIRECTORY_SEPARATOR === '\\') {
             $file = str_replace('\\', '/', $file);
