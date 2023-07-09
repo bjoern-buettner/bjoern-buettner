@@ -11,7 +11,7 @@
     <aside class="tags">
         <h2>{% if lang=='en' %}Tagged as{% else %}Getaggt als{% endif %}:</h2>
         <ul>
-        {% for tag in tags %}
+        {% for tag in keywords %}
             <li>{{ tag[lang] }}</li>
         {% endfor %}
         </ul>
