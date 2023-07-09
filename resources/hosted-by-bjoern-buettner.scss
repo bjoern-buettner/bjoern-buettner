@@ -18,4 +18,13 @@
          width: 53px;
          height: 32px;
     }
+    &:hover {
+        > span {
+            font-size: 0.75em;
+        }
+        > img {
+            width: 106px;
+            height: 64px;
+        }
+    }
 }
