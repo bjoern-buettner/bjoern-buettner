@@ -79,10 +79,10 @@ class Application
         $routeInfo = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], rawurldecode($uri));
         switch ($routeInfo[0]) {
             case Dispatcher::NOT_FOUND:
-                header('', true, 404);
+                header('Content-Type: text/plain', true, 404);
                 return "404 NOT FOUND";
             case Dispatcher::METHOD_NOT_ALLOWED:
-                header('', true, 405);
+                header('Content-Type: text/plain', true, 405);
                 return "405 METHOD NOT ALLOWED";
             case Dispatcher::FOUND:
                 $handler = $routeInfo[1];
@@ -94,11 +94,11 @@ class Application
                 try {
                     return $builder->call($builder->build($handler[0]), $handler[1], $routeInfo[2]);
                 } catch (ReflectionException $e) {
-                    header('', true, 500);
+                    header('Content-Type: text/plain', true, 500);
                     return "500 SERVER ERROR";
                 }
             default:
-                header('', true, 500);
+                header('Content-Type: text/plain', true, 500);
                 return "500 SERVER ERROR";
         }
     }
