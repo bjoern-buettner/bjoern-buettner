@@ -17,7 +17,7 @@
             <aside class="tags">
                 <h3>{{ lang=='en' ? 'Tagged as' : 'Getaggt als' }}:</h3>
                 <ul>
-                    {% for tag in tags %}
+                    {% for tag in post.keywords %}
                         <li>{{ tag[lang] }}</li>
                     {% endfor %}
                 </ul>
