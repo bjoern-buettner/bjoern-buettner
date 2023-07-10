@@ -33,12 +33,12 @@ class Application
         $this->params[$class . '.' . $param] = $value;
         return $this;
     }
-    public function res(string $route, array|callable $func): self
+    public function res(string $route, array $func): self
     {
         $this->routes['GET'][$route] = $func;
         return $this;
     }
-    public function get(string $route, array|callable $func): self
+    public function get(string $route, array $func): self
     {
         $subroute = rtrim($route, '/');
         $this->routes['GET'][$route] = function () use ($subroute): string {
@@ -55,7 +55,7 @@ class Application
         $this->routes['GET']["$subroute/{lang:en|de}"] = $func;
         return $this;
     }
-    public function post(string $route, array|callable $func): self
+    public function post(string $route, array $func): self
     {
         $subroute = rtrim($route, '/');
         $this->routes['POST']["$subroute/{lang:en|de}"] = $func;
