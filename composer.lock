@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb5798a192ec8d40971de60c33803acb",
+    "content-hash": "bdf4347aedb9c9b05675140bc6645d77",
     "packages": [
         {
             "name": "bjoern-buettner/session",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bjoern-buettner/session.git",
-                "reference": "4b4a02d3d0bfa629ce7a336c8ff57ced11016a96"
+                "reference": "d89debf7c6f4fbcc4334405012b8a613ec10cfab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bjoern-buettner/session/zipball/4b4a02d3d0bfa629ce7a336c8ff57ced11016a96",
-                "reference": "4b4a02d3d0bfa629ce7a336c8ff57ced11016a96",
+                "url": "https://api.github.com/repos/bjoern-buettner/session/zipball/d89debf7c6f4fbcc4334405012b8a613ec10cfab",
+                "reference": "d89debf7c6f4fbcc4334405012b8a613ec10cfab",
                 "shasum": ""
             },
             "require": {
@@ -42,9 +42,9 @@
             "description": "A simple session handler for PHP 8.1 and newer, configurable via environment variables.",
             "support": {
                 "issues": "https://github.com/bjoern-buettner/session/issues",
-                "source": "https://github.com/bjoern-buettner/session/tree/1.0.0"
+                "source": "https://github.com/bjoern-buettner/session/tree/1.0.1"
             },
-            "time": "2023-07-07T21:55:19+00:00"
+            "time": "2023-07-10T10:42:17+00:00"
         },
         {
             "name": "erusev/parsedown",
