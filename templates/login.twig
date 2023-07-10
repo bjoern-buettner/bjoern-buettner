@@ -1,0 +1,19 @@
+{% extends '_base.html.twig' %}
+{% block body %}
+<form method="post">
+    <fieldset>
+        <legend>Login</legend>
+        <div>
+            <label for="email">{{ translations.email }}</label>
+            <input type="email" id="email" name="email" required="required" placeholder="someone@bjoern-buettner.me"/>
+        </div>
+        <div>
+            <label for="password">{{ translations.password }}</label>
+            <input type="password" id="password" name="password" required="required"/>
+        </div>
+        <div>
+            <button type="submit">{{ translations.sign_in }}</button>
+        </div>
+    </fieldset>
+</form>
+{% endblock %}

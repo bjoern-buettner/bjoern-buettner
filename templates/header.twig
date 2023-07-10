@@ -49,5 +49,8 @@
                 <li><a href="https://github.com/bjoern-buettner" target="_blank" title="{{ menu.github[1] }}">{{ menu.github[0] }}</a></li>
                 <li><a href="https://www.linkedin.com/company/bjoern-buettner/" target="_blank" title="{{ menu.linkedin[1] }}">{{ menu.linkedin[0] }}</a></li>
                 <li><a {% if active=='/imprint' %}class="active" {% endif %} href="/imprint/{{ lang }}" title="{{ menu.imprint[1] }}">{{ menu.imprint[0] }}</a></li>
+                <li><a {% if active=='/login' %}class="active" {% endif %} href="/login/{{ lang }}" title="{{ menu.login[1] }}">{{ menu.login[0] }}</a></li>
+                <li><a {% if active=='/admin ' %}class="active" {% endif %} href="/admin/{{ lang }}" title="{{ menu.dashboard[1] }}">{{ menu.dashboard[0] }}</a></li>
+                <li><a {% if active=='/admin/self' %}class="active" {% endif %} href="/admin/self/{{ lang }}" title="{{ menu.self[1] }}">{{ menu.self[0] }}</a></li>
             </ul>
         </nav>
