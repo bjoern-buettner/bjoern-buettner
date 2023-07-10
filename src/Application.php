@@ -10,7 +10,6 @@ use Me\BjoernBuettner\Pages\Login;
 use Me\BjoernBuettner\Session\Factory;
 use ReflectionException;
 use Teto\HTTP\AcceptLanguage;
-use Twig\Loader\FilesystemLoader;
 
 use function FastRoute\simpleDispatcher;
 
