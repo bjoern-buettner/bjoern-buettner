@@ -12,10 +12,29 @@ abstract class Base implements SessionHandlerInterface, SessionIdInterface, Sess
 {
     private string $prefix = '';
 
+    private function sidPart(): string
+    {
+        return substr(str_pad(base_convert((string) random_int(0, PHP_INT_MAX), 10, 32), 8, '0', STR_PAD_LEFT), 0, 8);
+    }
     // phpcs:ignore
     public function create_sid(): string
     {
-        return substr(str_pad(base_convert((string) random_int(0, PHP_INT_MAX), 10, 32), 128, '0'), 0, 128);
+        return $this->sidPart()
+            . $this->sidPart()
+            . $this->sidPart()
+            . $this->sidPart()
+            . $this->sidPart()
+            . $this->sidPart()
+            . $this->sidPart()
+            . $this->sidPart()
+            . $this->sidPart()
+            . $this->sidPart()
+            . $this->sidPart()
+            . $this->sidPart()
+            . $this->sidPart()
+            . $this->sidPart()
+            . $this->sidPart()
+            . $this->sidPart();
     }
 
     final protected function getIPKey(): string

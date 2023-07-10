@@ -10,7 +10,7 @@ use Twig\Environment;
 
 class Javascript
 {
-    public static function get(string $file): string
+    public function get(string $file): string
     {
         if (!preg_match('/^[a-z0-9-]+$/', $file)) {
             header('HTTP/1.1 404 Not Found', true, 404)   ;
