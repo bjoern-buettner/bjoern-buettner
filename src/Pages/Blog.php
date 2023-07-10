@@ -37,7 +37,7 @@ WHERE post_keyword.post=:aid'
         }
         switch ($lang) {
             case 'en':
-                return $this->twig->renderMinfied('blog.twig', [
+                return $this->twig->renderMinified('blog.twig', [
                     'title' => 'Blog Post Overview',
                     'active' => '/blog',
                     'description' => 'Björn Büttner\'s blog about web development',
@@ -56,7 +56,7 @@ form and vary from week to week.',
                 ], $lang);
             case 'de':
             default:
-                return $this->twig->renderMinfied('blog.twig', [
+                return $this->twig->renderMinified('blog.twig', [
                     'title' => 'Blogpostübersicht',
                     'active' => '/blog',
                     'description' => 'Björn Büttners Blog über Webentwicklung',
@@ -134,7 +134,7 @@ WHERE post_keyword.post=:aid'
         $keywords = $stmt->fetchAll();
         switch ($lang) {
             case 'en':
-                return $this->twig->renderMinfied('blogpost.twig', [
+                return $this->twig->renderMinified('blogpost.twig', [
                     'title' => $post['title_en'],
                     'active' => '/blog/' . $slug,
                     'author' => $author,
@@ -145,7 +145,7 @@ WHERE post_keyword.post=:aid'
                 ], $lang);
             case 'de':
             default:
-                return $this->twig->renderMinfied('blogpost.twig', [
+                return $this->twig->renderMinified('blogpost.twig', [
                     'title' => $post['title_de'],
                     'active' => '/blog/' . $slug,
                     'author' => $author,

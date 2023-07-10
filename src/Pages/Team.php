@@ -16,7 +16,7 @@ class Team
         $team = Database::get()->query('SELECT * FROM teammember')->fetchAll();
         switch ($lang) {
             case 'en':
-                return $this->twig->renderMinfied('team.twig', [
+                return $this->twig->renderMinified('team.twig', [
                     'title' => 'Team & About Us',
                     'active' => '/team',
                     'description' => 'A little bit about the team behind bjoern-buettner.me',
@@ -27,7 +27,7 @@ class Team
                 ], $lang);
             case 'de':
             default:
-                return $this->twig->renderMinfied('team.twig', [
+                return $this->twig->renderMinified('team.twig', [
                     'title' => 'Team & Über Uns',
                     'active' => '/team',
                     'description' => 'Ein wenig über das Team hinter bjoern-buettner.me',
