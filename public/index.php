@@ -23,7 +23,7 @@ Dotenv::createImmutable(dirname(__DIR__))->load();
 echo (new Application())
     ->res('/{file}.{ext:jpg|jpeg|png|gif}', [Images::class, 'get'])
     ->res('/favicon.ico', [Favicon::class, 'get'])
-    ->res('/sitemap.xml', Sitemap::class, 'get')
+    ->res('/sitemap.xml', [Sitemap::class, 'get'])
     ->res('/static_sitemap_{lang:en|de}.xml', [Sitemap::class, 'get'])
     ->res('/robots.txt', [Robots::class, 'get'])
     ->res('/{file}.css', [Styles::class, 'get'])
