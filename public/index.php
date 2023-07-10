@@ -2,6 +2,8 @@
 
 use Dotenv\Dotenv;
 use Me\BjoernBuettner\Application;
+use Me\BjoernBuettner\Cache;
+use Me\BjoernBuettner\Caches\Factory;
 use Me\BjoernBuettner\Pages\Blog;
 use Me\BjoernBuettner\Pages\Home;
 use Me\BjoernBuettner\Pages\Imprint;
@@ -15,7 +17,6 @@ use Me\BjoernBuettner\Resources\Javascript;
 use Me\BjoernBuettner\Resources\Robots;
 use Me\BjoernBuettner\Resources\Sitemap;
 use Me\BjoernBuettner\Resources\Styles;
-use Me\BjoernBuettner\TwigWrapper;
 use Twig\Loader\FilesystemLoader;
 use Twig\Loader\LoaderInterface;
 
@@ -26,6 +27,7 @@ Dotenv::createImmutable(dirname(__DIR__))->load();
 echo (new Application())
     ->param(FilesystemLoader::class, 'paths', __DIR__ . '/../templates')
     ->interface(LoaderInterface::class, FilesystemLoader::class)
+    ->factory(Cache::class, Factory::class . '::get')
     ->res('/{file}.{ext:jpg|jpeg|png|gif}', [Images::class, 'get'])
     ->res('/favicon.ico', [Favicon::class, 'get'])
     ->res('/sitemap.xml', [Sitemap::class, 'get'])

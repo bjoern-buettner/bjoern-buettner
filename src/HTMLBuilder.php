@@ -5,15 +5,14 @@ declare(strict_types=1);
 namespace Me\BjoernBuettner;
 
 use Exception;
-use Me\BjoernBuettner\Caches\Factory;
 use Parsedown;
 use Twig\Environment;
 use Twig\TwigFilter;
 use voku\helper\HtmlMin;
 
-class TwigWrapper
+class HTMLBuilder
 {
-    public function __construct(private Environment $twig)
+    public function __construct(private readonly Environment $twig, private readonly Cache $cache)
     {
         $parsedown = new Parsedown();
         $twig->addFilter(new TwigFilter('markdown', function ($markdown) use ($parsedown) {
@@ -40,7 +39,7 @@ class TwigWrapper
     public function renderMinified($template, array $context, string $lang): string
     {
         $cache = $this->getCacheKey($template, $context, $lang) . '.min';
-        if ($data = Factory::get()->get($cache)) {
+        if ($data = $this->cache->get($cache)) {
             return $data;
         }
         $data = $this->renderUnminified($template, $context, $lang);
@@ -50,14 +49,14 @@ class TwigWrapper
         } catch (Exception $e) {
             // ignore
         }
-        Factory::get()->set($cache, $data);
+        $this->cache->set($cache, $data);
         return $data;
     }
 
     public function renderUnminified(string $template, array $context, string $lang): string
     {
         $cache = $this->getCacheKey($template, $context, $lang);
-        if ($data = Factory::get()->get($cache)) {
+        if ($data = $this->cache->get($cache)) {
             return $data;
         }
         $context['lang'] = $lang;
@@ -65,7 +64,7 @@ class TwigWrapper
         $context['og_type'] = $context['og_type'] ?? 'website';
         $context['author'] = $context['author'] ?? ['name' => 'Björn Büttner'];
         $data = $this->twig->render($template, $context);
-        Factory::get()->set($cache, $data);
+        $this->cache->set($cache, $data);
         return $data;
     }
 }
