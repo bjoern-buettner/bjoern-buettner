@@ -81,7 +81,7 @@ class DependencyBuilder
                 $args[] = $variables[$param->getName()];
                 continue;
             }
-            if ($param->getType() && $param->getType()->isBuiltin()) {
+            if ($param->getType() && !$param->getType()->isBuiltin()) {
                 $args[] = $this->build($param->getType()->getName());
                 continue;
             }
