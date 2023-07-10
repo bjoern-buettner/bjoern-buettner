@@ -37,7 +37,7 @@ class TwigWrapper
         ) . md5($template) . sha1(json_encode($context)) . '.twig';
     }
 
-    public function renderMinfied($template, array $context, string $lang): string
+    public function renderMinified($template, array $context, string $lang): string
     {
         $cache = $this->getCacheKey($template, $context, $lang) . '.min';
         if ($data = Factory::get()->get($cache)) {
