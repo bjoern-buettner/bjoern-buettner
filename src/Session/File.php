@@ -29,24 +29,27 @@ class File extends Base
     {
         return true;
     }
+    private function getSessionFile(string $id): string
+    {
+        return dirname(__DIR__, 2) . '/cache/' . $this->getIPKey() . $id . '.session';
+    }
 
     public function read(string $id): string|false
     {
-        $file = dirname(__DIR__, 2) . '/cache/' . $this->getIPKey() . $id . '.session';
+        $file = $this->getSessionFile($id);
         if (is_file($file)) {
-            return file_get_contents($file);
+            return file_get_contents($file) ?: '';
         }
-        return false;
+        return '';
     }
 
     public function write(string $id, string $data): bool
     {
-        $file = dirname(__DIR__, 2) . '/cache/' . $this->getIPKey() . $id . '.session';
-        return strlen($data) === file_put_contents($file, $data);
+        return strlen($data) === file_put_contents($this->getSessionFile($id), $data);
     }
 
     public function updateTimestamp(string $id, string $data): bool
     {
-        return touch(dirname(__DIR__, 2) . '/cache/' . $this->getIPKey() . $id . '.session');
+        return touch($this->getSessionFile($id));
     }
 }
