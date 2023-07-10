@@ -17,7 +17,7 @@ class Styles
             return '404 Not Found';
         }
         $fullfile = dirname(__DIR__, 2) . '/resources/' . $file . '.scss';
-        if (!is_file($file)) {
+        if (!is_file($fullfile)) {
             header('HTTP/1.1 404 Not Found', true, 404)   ;
             return '404 Not Found';
         }

@@ -39,20 +39,8 @@ class DependencyBuilder
         $params = $constructor->getParameters();
         $args = [];
         foreach ($params as $param) {
-            $type = $param->getType();
-            if (!$type) {
-                throw new RuntimeException("Cannot resolve parameter {$param->getName()} of $class.");
-            }
-            if (!$type->isBuiltin()) {
-                $args[] = $this->build($type->getName());
-                continue;
-            }
             if (isset($this->params[$class . '.' . $param->getName()])) {
                 $args[] = $this->params[$class . '.' . $param->getName()];
-                continue;
-            }
-            if ($type->allowsNull()) {
-                $args[] = null;
                 continue;
             }
             if ($param->isDefaultValueAvailable()) {
@@ -61,6 +49,18 @@ class DependencyBuilder
             }
             if ($param->isOptional()) {
                 break;
+            }
+            $type = $param->getType();
+            if (!$type) {
+                throw new RuntimeException("Cannot resolve parameter {$param->getName()} of $class.");
+            }
+            if (!$type->isBuiltin()) {
+                $args[] = $this->build($type->getName());
+                continue;
+            }
+            if ($type->allowsNull()) {
+                $args[] = null;
+                continue;
             }
             throw new RuntimeException("Cannot resolve parameter {$param->getName()} of $class.");
         }

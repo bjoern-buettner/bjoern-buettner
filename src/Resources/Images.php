@@ -8,22 +8,22 @@ use Twig\Environment;
 
 class Images
 {
-    public static function get(Environment $twig, string $lang, array $args): string
+    public function get(string $file, string $ext): string
     {
-        if (!isset($args['file']) || !preg_match('/^[a-z0-9-]+$/', $args['file'])) {
+        if (!preg_match('/^[a-z0-9-]+$/', $file)) {
             header('HTTP/1.1 404 Not Found', true, 404)   ;
             return '404 Not Found';
         }
-        $file = dirname(__DIR__, 2) . '/resources/' . $args['file'] . '.' . $args['ext'];
-        if (!is_file($file)) {
+        $fullfile = dirname(__DIR__, 2) . '/resources/' . $file . '.' . $ext;
+        if (!is_file($fullfile)) {
             header('HTTP/1.1 404 Not Found', true, 404)   ;
             return '404 Not Found';
         }
         header(
-            'Content-Type: image/' . ($args['ext'] === 'jpg' ? 'jpeg' : $args['ext']),
+            'Content-Type: image/' . ($ext === 'jpg' ? 'jpeg' : $ext),
             true,
             200
         );
-        return file_get_contents($file) ?: '';
+        return file_get_contents($fullfile) ?: '';
     }
 }

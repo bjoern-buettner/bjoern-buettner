@@ -8,7 +8,7 @@ use Me\BjoernBuettner\TwigWrapper;
 
 class Sitemap
 {
-    public static function get(TwigWrapper $twig, string $lang): string
+    public static function get(string $lang = ''): string
     {
         header('Content-Type: text/xml; charset=utf-8', true, 200);
         if ($lang) {
