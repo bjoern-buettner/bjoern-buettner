@@ -12,12 +12,16 @@ use Me\BjoernBuettner\Pages\Team;
 use Me\BjoernBuettner\Resources\Javascript;
 use Me\BjoernBuettner\Resources\Styles;
 use Me\BjoernBuettner\TwigWrapper;
+use Twig\Loader\FilesystemLoader;
+use Twig\Loader\LoaderInterface;
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 
 Dotenv::createImmutable(dirname(__DIR__))->load();
 
 echo (new Application())
+    ->param(FilesystemLoader::class, 'paths', __DIR__ . '/../templates')
+    ->interface(LoaderInterface::class, FilesystemLoader::class)
     ->res('/de.jpg', function (): string {
         header('Content-Type: image/jpeg', true);
         return file_get_contents(__DIR__ . '/../resources/de.jpg');

@@ -3,16 +3,20 @@
 namespace Me\BjoernBuettner\Pages;
 
 use Me\BjoernBuettner\Database;
+use Me\BjoernBuettner\TwigWrapper;
 use Twig\Environment;
 
 class Team
 {
-    public static function get(Environment $twig, string $lang): string
+    public function __construct(private readonly TwigWrapper $twig)
+    {
+    }
+    public function get(string $lang): string
     {
         $team = Database::get()->query('SELECT * FROM teammember')->fetchAll();
         switch ($lang) {
             case 'en':
-                return $twig->render('team.twig', [
+                return $this->twig->renderMinfied('team.twig', [
                     'title' => 'Team & About Us',
                     'active' => '/team',
                     'description' => 'A little bit about the team behind bjoern-buettner.me',
@@ -20,10 +24,10 @@ class Team
                         'title' => 'About us - the team',
                     ],
                     'team' => $team,
-                ]);
+                ], $lang);
             case 'de':
             default:
-                return $twig->render('team.twig', [
+                return $this->twig->renderMinfied('team.twig', [
                     'title' => 'Team & Über Uns',
                     'active' => '/team',
                     'description' => 'Ein wenig über das Team hinter bjoern-buettner.me',
@@ -31,16 +35,16 @@ class Team
                         'title' => 'Über Uns - Das Team',
                     ],
                     'team' => $team,
-                ]);
+                ], $lang);
         }
     }
-    public static function image(Environment $twig, string $lang, array $args): string
+    public function image(string $slug): string
     {
-        if (!isset($args['slug']) || !preg_match('/^[a-z0-9-]+$/', $args['slug'])) {
+        if (!preg_match('/^[a-z0-9-]+$/', $slug)) {
             header('HTTP/1.1 404 Not Found', true, 404)   ;
             return '404 Not Found';
         }
-        $path = __DIR__ . '/../../resources/team/' . $args['slug'] . '.jpg';
+        $path = __DIR__ . '/../../resources/team/' . $slug . '.jpg';
         header('Content-Type: image/jpeg', true, 200);
         if (!file_exists($path)) {
             return file_get_contents(__DIR__ . '/../../resources/team/placeholder.jpg');

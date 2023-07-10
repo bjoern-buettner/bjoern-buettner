@@ -10,29 +10,29 @@ use Twig\Environment;
 
 class Styles
 {
-    public static function get(Environment $twig, string $lang, array $args): string
+    public function get(string $file): string
     {
-        if (!isset($args['file']) || !preg_match('/^[a-z0-9-]+$/', $args['file'])) {
+        if (!preg_match('/^[a-z0-9-]+$/', $file)) {
             header('HTTP/1.1 404 Not Found', true, 404)   ;
             return '404 Not Found';
         }
-        $file = dirname(__DIR__, 2) . '/resources/' . $args['file'] . '.scss';
+        $fullfile = dirname(__DIR__, 2) . '/resources/' . $file . '.scss';
         if (!is_file($file)) {
             header('HTTP/1.1 404 Not Found', true, 404)   ;
             return '404 Not Found';
         }
         header('Content-Type: text/css; charset=utf-8', true, 200);
-        $cache = md5($args['file']) . md5((string) filemtime($file)) . '.css';
+        $cache = md5($file) . md5((string) filemtime($fullfile)) . '.css';
         if ($data = Factory::get()->get($cache)) {
             return $data;
         }
         $scss = new Compiler();
         $scss->setOutputStyle('compressed');
         if (DIRECTORY_SEPARATOR === '\\') {
-            $file = str_replace('\\', '/', $file);
+            $fullfile = str_replace('\\', '/', $fullfile);
         }
         $data = $scss
-            ->compileString('@import("' . $file . '")')
+            ->compileString('@import("' . $fullfile . '")')
             ->getCss();
         Factory::get()->set($cache, $data);
         return $data;
