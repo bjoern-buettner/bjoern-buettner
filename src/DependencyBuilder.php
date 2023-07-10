@@ -23,7 +23,7 @@ class DependencyBuilder
     /**
      * @throws ReflectionException
      */
-    public function build(string $class): object
+    private function build(string $class): object
     {
         if (isset($this->interfaces[$class])) {
             return $this->build($this->interfaces[$class]);
@@ -66,8 +66,9 @@ class DependencyBuilder
     /**
      * @throws ReflectionException
      */
-    public function call(object $object, string $method, array $variables): string
+    public function call(string $class, string $method, array $variables): string
     {
+        $object = $this->build($class);
         $rm = new ReflectionMethod($object, $method);
         $params = $rm->getParameters();
         $args = [];
@@ -78,6 +79,10 @@ class DependencyBuilder
             }
             if ($param->isOptional()) {
                 break;
+            }
+            if ($param->getType()) {
+                $args[] = $this->build($param->getType()->getName());
+                continue;
             }
             throw new RuntimeException("Cannot resolve parameter {$param->getName()} of $method.");
         }
