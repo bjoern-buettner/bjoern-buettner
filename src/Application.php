@@ -86,17 +86,6 @@ class Application
                 return "405 METHOD NOT ALLOWED";
             case Dispatcher::FOUND:
                 $handler = $routeInfo[1];
-                if (is_callable($handler)) {
-                    return $handler();
-                }
-                $twig = new TwigWrapper(
-                    new FilesystemLoader(
-                        dirname(__DIR__) . '/templates'
-                    ),
-                    $routeInfo[2]['lang'] ?? ''
-                );
-                Factory::start($handler[0] instanceof Login);
-                return call_user_func($handler, $twig, $routeInfo[2]['lang'] ?? '', $routeInfo[2]);
                 if (!is_array($handler)) {
                     return $handler();
                 }
