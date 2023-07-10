@@ -15,12 +15,17 @@ use Me\BjoernBuettner\Resources\Javascript;
 use Me\BjoernBuettner\Resources\Robots;
 use Me\BjoernBuettner\Resources\Sitemap;
 use Me\BjoernBuettner\Resources\Styles;
+use Me\BjoernBuettner\TwigWrapper;
+use Twig\Loader\FilesystemLoader;
+use Twig\Loader\LoaderInterface;
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 
 Dotenv::createImmutable(dirname(__DIR__))->load();
 
 echo (new Application())
+    ->param(FilesystemLoader::class, 'paths', __DIR__ . '/../templates')
+    ->interface(LoaderInterface::class, FilesystemLoader::class)
     ->res('/{file}.{ext:jpg|jpeg|png|gif}', [Images::class, 'get'])
     ->res('/favicon.ico', [Favicon::class, 'get'])
     ->res('/sitemap.xml', [Sitemap::class, 'get'])

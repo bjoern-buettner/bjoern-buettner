@@ -5,15 +5,20 @@ declare(strict_types=1);
 namespace Me\BjoernBuettner\Pages;
 
 use Me\BjoernBuettner\OfferList;
+use Me\BjoernBuettner\TwigWrapper;
 use Twig\Environment;
 
 class Prices
 {
-    public static function get(Environment $twig, string $lang): string
+    public function __construct(private readonly TwigWrapper $twig)
+    {
+    }
+
+    public function get(string $lang): string
     {
         switch ($lang) {
             case 'en':
-                return $twig->render('prices.twig', [
+                return $this->twig->renderMinfied('prices.twig', [
                     'title' => 'Offers & Prices',
                     'active' => '/prices',
                     'description' => 'Offers by Björn Büttner in a well sorted overview',
@@ -26,10 +31,10 @@ tasks. Individual prices will be provided on request.',
 offers is, if not agreed on differently, is 30 days until the end of the month.',
                     ],
                     'offers' => OfferList::get(),
-                ]);
+                ], $lang);
             case 'de':
             default:
-                return $twig->render('prices.twig', [
+                return $this->twig->renderMinfied('prices.twig', [
                     'title' => 'Leistungen',
                     'active' => '/prices',
                     'description' => 'Leistungen von Björn Büttner in einem gut sortierten Überblick',
@@ -42,7 +47,7 @@ der Tätigkeiten. Individuelle Angebote erhalten Sie auf Anfrage.',
 Kündigungsfrist für monatliche Angebote ist, falls nicht anders abgesprochen, 30 Tage zum Monatsende.',
                     ],
                     'offers' => OfferList::get(),
-                ]);
+                ], $lang);
         }
     }
 }
