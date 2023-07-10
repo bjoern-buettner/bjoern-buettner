@@ -18,7 +18,7 @@ class Prices
     {
         switch ($lang) {
             case 'en':
-                return $this->twig->renderMinfied('prices.twig', [
+                return $this->twig->renderMinified('prices.twig', [
                     'title' => 'Offers & Prices',
                     'active' => '/prices',
                     'description' => 'Offers by Björn Büttner in a well sorted overview',
@@ -34,7 +34,7 @@ offers is, if not agreed on differently, is 30 days until the end of the month.'
                 ], $lang);
             case 'de':
             default:
-                return $this->twig->renderMinfied('prices.twig', [
+                return $this->twig->renderMinified('prices.twig', [
                     'title' => 'Leistungen',
                     'active' => '/prices',
                     'description' => 'Leistungen von Björn Büttner in einem gut sortierten Überblick',
