@@ -35,7 +35,7 @@ class Memcache extends Base
 
     public function read(string $id): string|false
     {
-        return $this->memcached->get($this->getIPKey() . $id);
+        return $this->memcached->get($this->getIPKey() . $id) ?: '';
     }
 
     public function write(string $id, string $data): bool
