@@ -14,6 +14,9 @@ class Factory
         if (self::$cache !== null) {
             return self::$cache;
         }
+        if (($_ENV['ENABLE_CACHE'] ?? 'true') === 'false') {
+            return self::$cache = new NoCache();
+        }
         if (extension_loaded('memcached') && ($_ENV['ENABLE_MEMCACHED'] ?? 'false') === 'true') {
             return self::$cache = new Memcache();
         }
