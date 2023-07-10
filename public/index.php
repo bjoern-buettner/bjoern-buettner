@@ -9,47 +9,23 @@ use Me\BjoernBuettner\Pages\Login;
 use Me\BjoernBuettner\Pages\Prices;
 use Me\BjoernBuettner\Pages\Solutions;
 use Me\BjoernBuettner\Pages\Team;
+use Me\BjoernBuettner\Resources\Favicon;
+use Me\BjoernBuettner\Resources\Images;
 use Me\BjoernBuettner\Resources\Javascript;
+use Me\BjoernBuettner\Resources\Robots;
+use Me\BjoernBuettner\Resources\Sitemap;
 use Me\BjoernBuettner\Resources\Styles;
-use Me\BjoernBuettner\TwigWrapper;
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 
 Dotenv::createImmutable(dirname(__DIR__))->load();
 
 echo (new Application())
-    ->res('/de.jpg', function (): string {
-        header('Content-Type: image/jpeg', true);
-        return file_get_contents(__DIR__ . '/../resources/de.jpg');
-    })
-    ->res('/en.jpg', function (): string {
-        header('Content-Type: image/jpeg', true);
-        return file_get_contents(__DIR__ . '/../resources/en.jpg');
-    })
-    ->res('/logo.png', function (): string {
-        header('Content-Type: image/png', true);
-        return file_get_contents(__DIR__ . '/../resources/logo.png');
-    })
-    ->res('/icon.png', function (): string {
-        header('Content-Type: image/png', true);
-        return file_get_contents(__DIR__ . '/../resources/icon.png');
-    })
-    ->res('/favicon.ico', function (): string {
-        header('Content-Type: image/x-icon', true);
-        return file_get_contents(__DIR__ . '/../resources/favicon.ico');
-    })
-    ->res('/sitemap.xml', function (): string {
-        header('Content-Type: text/xml', true);
-        return file_get_contents(__DIR__ . '/../resources/sitemap.xml');
-    })
-    ->res('/static_sitemap_{lang:en|de}.xml', function (TwigWrapper $twig, string $lang): string {
-        header('Content-Type: text/xml', true);
-        return file_get_contents(__DIR__ . "/../resources/static_sitemap_$lang.xml");
-    })
-    ->res('/robots.txt', function (): string {
-        header('Content-Type: text/plain', true);
-        return file_get_contents(__DIR__ . '/../resources/robots.txt');
-    })
+    ->res('/{file}.{ext:jpg|jpeg|png|gif}', [Images::class, 'get'])
+    ->res('/favicon.ico', [Favicon::class, 'get'])
+    ->res('/sitemap.xml', Sitemap::class, 'get')
+    ->res('/static_sitemap_{lang:en|de}.xml', [Sitemap::class, 'get'])
+    ->res('/robots.txt', [Robots::class, 'get'])
     ->res('/{file}.css', [Styles::class, 'get'])
     ->res('/{file}.js', [Javascript::class, 'get'])
     ->res('/blog_sitemap_{lang:de|en}.xml', [Blog::class, 'sitemap'])
@@ -62,10 +38,10 @@ echo (new Application())
     ->get('/blog', [Blog::class, 'get'])
     ->get('/blog/{slug}', [Blog::class, 'detail'])
     ->get('/team', [Team::class, 'get'])
-    ->get('/admin/blog', [AdminBlog::class, 'get'])
-    ->post('/admin/blog', [AdminBlog::class, 'post'])
-    ->get('/admin/blog/{slug}', [AdminBlog::class, 'detail'])
-    ->post('/admin/blog/{slug}', [AdminBlog::class, 'modify'])
+#    ->get('/admin/blog', [AdminBlog::class, 'get'])
+#    ->post('/admin/blog', [AdminBlog::class, 'post'])
+#    ->get('/admin/blog/{slug}', [AdminBlog::class, 'detail'])
+#    ->post('/admin/blog/{slug}', [AdminBlog::class, 'modify'])
 #    ->get('/admin/team', [AdminTeam::class, 'get'])
 #    ->post('/admin/team', [AdminTeam::class, 'post'])
 #    ->get('/admin/team/{slug}', [AdminTeam::class, 'get'])
