@@ -16,6 +16,15 @@ class MenuList
         'github' => ['GitHub', 'Our open-source projects including this website\'s code.',],
         'linkedin' => ['LinkedIn', 'Our business page with the option of receiving news from us.',],
         'team' => ['Team', 'Get to know a bit about us.',],
+        'support' => [
+            'Customer Support',
+            'Get in touch with us if one of the services we delivered doesn\'t work as expected.',
+        ],
+        'service' => ['Contracts & Quotes', 'Get in touch with us if you desire a contract or a quote.',],
+        'contact' => ['Contact', 'Get in touch with us.',],
+        'products' => ['Services', 'Our services and prices.',],
+        'about' => ['About us', 'Information about us.',],
+        'socials' => ['Socials', 'Our social media profiles.',],
     ];
     public static array $de = [
         'home' =>  ['Home', 'Unsere Startseite mit einem herzlichen Willkommen!',],
@@ -29,5 +38,15 @@ class MenuList
         'github' => ['GitHub', 'Unsere Opensource-Projekte, inklusive des Codes dieser Webseite.',],
         'linkedin' => ['LinkedIn', 'Unsere Unternehmensseite mit der Option auf News von uns.',],
         'team' => ['Team', 'Lernen Sie unser Team kennen.',],
+        'support' => [
+            'Kundensupport',
+            'Kontaktieren Sie uns, falls einer unserer Dienste nicht wie gewünscht funktioniert.',
+        ],
+        'service' => [
+            'Verträge & Kostenvoranschläge',
+            'Kontaktieren Sie uns, falls sie ein Angebot oder einen Vertrag wünschen.',
+        ],
+        'about' => ['Über uns', 'Informationen über uns.',],
+        'socials' => ['Soziales', 'Unsere Profile in sozialen Medien.',],
     ];
 }
