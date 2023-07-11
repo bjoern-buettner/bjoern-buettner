@@ -15,7 +15,6 @@ use Me\BjoernBuettner\Resources\Javascript;
 use Me\BjoernBuettner\Resources\Robots;
 use Me\BjoernBuettner\Resources\Sitemap;
 use Me\BjoernBuettner\Resources\Styles;
-use Me\BjoernBuettner\TwigWrapper;
 use Twig\Loader\FilesystemLoader;
 use Twig\Loader\LoaderInterface;
 

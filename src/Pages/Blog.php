@@ -76,7 +76,7 @@ drehen sich um Webentwicklung in jeder Form und variieren von Woche zu Woche.',
                 ], $lang);
         }
     }
-    public function sitemap(): string
+    public function sitemap(string $lang): string
     {
         $database = Database::get();
         $posts = $database
@@ -85,7 +85,7 @@ drehen sich um Webentwicklung in jeder Form und variieren von Woche zu Woche.',
         header('Content-Type: application/xml');
         return $this->twig->renderUnminified('sitemap.twig', [
             'slugs' => $posts,
-        ], 'en');
+        ], $lang);
     }
     public function rss(string $lang): string
     {
