@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bdf4347aedb9c9b05675140bc6645d77",
+    "content-hash": "1061106c41f6bf40d343bda63b0ace5e",
     "packages": [
         {
             "name": "bjoern-buettner/session",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bjoern-buettner/session.git",
-                "reference": "d89debf7c6f4fbcc4334405012b8a613ec10cfab"
+                "reference": "da945030a747476583cfca63cda5c9a4a1c9e1e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bjoern-buettner/session/zipball/d89debf7c6f4fbcc4334405012b8a613ec10cfab",
-                "reference": "d89debf7c6f4fbcc4334405012b8a613ec10cfab",
+                "url": "https://api.github.com/repos/bjoern-buettner/session/zipball/da945030a747476583cfca63cda5c9a4a1c9e1e8",
+                "reference": "da945030a747476583cfca63cda5c9a4a1c9e1e8",
                 "shasum": ""
             },
             "require": {
@@ -32,7 +32,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Me\\BjoernBuettner\\\\Session\\": "src/"
+                    "Me\\BjoernBuettner\\Session\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -42,9 +42,9 @@
             "description": "A simple session handler for PHP 8.1 and newer, configurable via environment variables.",
             "support": {
                 "issues": "https://github.com/bjoern-buettner/session/issues",
-                "source": "https://github.com/bjoern-buettner/session/tree/1.0.1"
+                "source": "https://github.com/bjoern-buettner/session/tree/1.0.2"
             },
-            "time": "2023-07-10T10:42:17+00:00"
+            "time": "2023-07-10T15:00:59+00:00"
         },
         {
             "name": "erusev/parsedown",

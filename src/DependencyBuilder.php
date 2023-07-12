@@ -15,6 +15,11 @@ class DependencyBuilder
      * @var array<string, object>
      */
     private array $cache = [];
+
+    /**
+     * @param array<string, mixed> $params
+     * @param array<string, callable|string> $interfaces
+     */
     public function __construct(
         private readonly array $params = [],
         private readonly array $interfaces = [],
@@ -25,11 +30,14 @@ class DependencyBuilder
      */
     private function build(string $class): object
     {
-        if (isset($this->interfaces[$class])) {
-            return $this->build($this->interfaces[$class]);
-        }
         if (isset($this->cache[$class])) {
             return $this->cache[$class];
+        }
+        if (isset($this->interfaces[$class])) {
+            if (is_callable($this->interfaces[$class])) {
+                return $this->cache[$class] = $this->interfaces[$class]();
+            }
+            return $this->cache[$class] = $this->build($this->interfaces[$class]);
         }
         $rc = new ReflectionClass($class);
         $constructor = $rc->getConstructor();

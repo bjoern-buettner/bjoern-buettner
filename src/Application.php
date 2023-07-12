@@ -27,6 +27,11 @@ class Application
         $this->interfaces[$interface] = $class;
         return $this;
     }
+    public function factory(string $interface, callable $call): self
+    {
+        $this->interfaces[$interface] = $call;
+        return $this;
+    }
     public function param(string $class, string $param, mixed $value): self
     {
         $this->params[$class . '.' . $param] = $value;
