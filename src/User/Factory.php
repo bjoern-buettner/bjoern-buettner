@@ -10,7 +10,7 @@ use PDO;
 
 class Factory
 {
-    public function create(): User
+    public static function get(): User
     {
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
