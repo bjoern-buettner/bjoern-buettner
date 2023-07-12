@@ -42,4 +42,11 @@
 		<xhtml:link rel="alternate" hreflang="de" href="https://bjoern-buettner.me/imprint/de"/>
 		<xhtml:link rel="alternate" hreflang="en" href="https://bjoern-buettner.me/imprint/en"/>
 	</url>
+	<url>
+		<loc>https://bjoern-buettner.me/login/en</loc>
+		<priority>0.1</priority>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://bjoern-buettner.me/login/en"/>
+		<xhtml:link rel="alternate" hreflang="de" href="https://bjoern-buettner.me/login/de"/>
+		<xhtml:link rel="alternate" hreflang="en" href="https://bjoern-buettner.me/login/en"/>
+	</url>
 </urlset>

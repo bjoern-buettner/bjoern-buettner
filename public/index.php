@@ -19,6 +19,13 @@ use Me\BjoernBuettner\Resources\Sitemap;
 use Me\BjoernBuettner\Resources\Styles;
 use Twig\Loader\FilesystemLoader;
 use Twig\Loader\LoaderInterface;
+use Me\BjoernBuettner\Pages\Admin\Dashboard as AdminDashboard;
+use Me\BjoernBuettner\Pages\Admin\Blog as AdminBlog;
+use Me\BjoernBuettner\Pages\Admin\Invoice as AdminInvoice;
+use Me\BjoernBuettner\Pages\Admin\Quote as AdminQuote;
+use Me\BjoernBuettner\Pages\Admin\Customer as AdminCustomer;
+use Me\BjoernBuettner\Pages\Admin\Cases as AdminCases;
+use Me\BjoernBuettner\Pages\Admin\Profile as AdminSelf;
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 
@@ -45,12 +52,17 @@ echo (new Application())
     ->get('/blog', [Blog::class, 'get'])
     ->get('/blog/{slug}', [Blog::class, 'detail'])
     ->get('/team', [Team::class, 'get'])
+    ->get('/admin', [AdminDashboard::class, 'get'])
 #    ->get('/admin/blog', [AdminBlog::class, 'get'])
+#    ->post('/admin/blog', [AdminBlog::class, 'post'])
+    ->get('/admin/customer/{id}', [AdminCustomer::class, 'get'])
 #    ->post('/admin/blog', [AdminBlog::class, 'post'])
 #    ->get('/admin/blog/{slug}', [AdminBlog::class, 'detail'])
 #    ->post('/admin/blog/{slug}', [AdminBlog::class, 'modify'])
 #    ->get('/admin/team', [AdminTeam::class, 'get'])
 #    ->post('/admin/team', [AdminTeam::class, 'post'])
+    ->get('/admin/self', [AdminSelf::class, 'get'])
+#    ->post('/admin/self', [AdminSelf::class, 'post'])
 #    ->get('/admin/team/{slug}', [AdminTeam::class, 'get'])
 #    ->post('/admin/team/{slug}', [AdminTeam::class, 'post'])
 #    ->get('/admin/prices', [AdminPrices::class, 'get'])
@@ -59,9 +71,9 @@ echo (new Application())
 #    ->post('/admin/prices/{id}', [AdminPrices::class, 'post'])
 #    ->get('/admin/user/{id}', [AdminUser::class, 'get'])
 #    ->post('/admin/user/{id}', [AdminUser::class, 'post'])
-#    ->get('/admin/invoice/{id}', [AdminInvoice::class, 'get'])
+    ->get('/admin/invoice/{id}', [AdminInvoice::class, 'get'])
 #    ->post('/admin/invoice/{id}', [AdminInvoice::class, 'post'])
-#    ->get('/admin/quote/{id}', [AdminQuote::class, 'get'])
+    ->get('/admin/quote/{id}', [AdminQuote::class, 'get'])
 #    ->post('/admin/quote/{id}', [AdminQuote::class, 'post'])
 #    ->get('/customer', [Customer::class, 'get'])
 #    ->get('/customer/backup/{uuid}', [CustomerBackup::class, 'get'])

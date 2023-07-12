@@ -1,0 +1,81 @@
+{% extends '_base.html.twig' %}
+{% block body %}
+<h1>Case #12213234</h1>
+<h2>Details</h2>
+<table>
+    <tr>
+        <th>Subject</th>
+        <td>Beispielanfrage</td>
+    </tr>
+    <tr>
+        <th>Created</th>
+        <td>2012-01-01 23:40:21</td>
+    </tr>
+    <tr>
+        <th>Created by</th>
+        <td>Mustermann, Max (Admin)</td>
+    </tr>
+    <tr>
+        <th>Customer</th>
+        <td>Mustermann AG</td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>Lorem ipsum...</td>
+    </tr>
+    <tr>
+        <th>Status</th>
+        <td>
+            <form method="post">
+                <select name="status">
+                    <option>Open</option>
+                    <option>Feedback</option>
+                    <option>Resolved</option>
+                    <option>Rejected</option>
+                </select>
+                <button type="submit">Save</button>
+            </form>
+        </td>
+    </tr>
+</table>
+    <h2>Kommentare</h2>
+    <ul>
+        <li>
+            <h3>2012-01-01 23:40:21</h3>
+            <p>Mustermann, Max (Admin)</p>
+            <p>Lorem ipsum...</p>
+        </li>
+        <li>
+            <h3>2012-01-01 23:41:21</h3>
+            <p>Musterfrau, Max (Support)</p>
+            <p>Lorem ipsum...</p>
+        </li>
+        <li>
+            <h3>2012-01-01 23:42:21</h3>
+            <p>Mustermann, Max (Admin)</p>
+            <p>Lorem ipsum...</p>
+        </li>
+        <li>
+            <h3>2012-01-01 23:43:21</h3>
+            <p>Musterfrau, Max (Support)</p>
+            <p>Lorem ipsum...</p>
+        </li>
+    </ul>
+<h2>Neuer Kommentar</h2>
+<form method="post">
+    <fieldset>
+        <legend>Basisdaten</legend>
+        <div>
+            <label for="english">Kommentar(English, Markdown)</label>
+            <textarea required></textarea>
+        </div>
+        <div>
+            <label for="image">Bild</label>
+            <input type="file" accept="image/jpeg" name="image">
+        </div>
+        <div>
+            <button type="submit">Hinzufügen</button>
+        </div>
+    </fieldset>
+</form>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends '_base.html.twig' %}
+{% block body %}
+<h1>About You</h1>
+<form method="post" enctype="multipart/form-data">
+    <fieldset>
+        <legend>Basisdaten</legend>
+        <div>
+            <label for="name">Name</label>
+            <input type="text" name="name" placeholder="Max Mustermann" required/>
+        </div>
+        <div>
+            <label for="english">Englisch(Markdown)</label>
+            <textarea required></textarea>
+        </div>
+        <div>
+            <label for="german">Deutsch(Markdown)</label>
+            <textarea required></textarea>
+        </div>
+        <div>
+            <label for="image">Bild</label>
+            <input type="file" accept="image/jpeg" name="image">
+        </div>
+        <div>
+            <button type="submit">Ändern</button>
+        </div>
+    </fieldset>
+</form>
+{% endblock %}

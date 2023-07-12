@@ -1,3 +1,5 @@
 user-agent: *
 allow: /
+disallow: /admin/
+disallow: /customer/
 sitemap: https://bjoern-buettner.me/sitemap.xml

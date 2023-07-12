@@ -1,4 +1,11 @@
         <footer class="bar">&copy;2023 Björn Büttner</footer>
+        <ul id="share-buttons">
+            <li class="facebook" title="Share on Facebook"><a href="https://www.facebook.com/sharer/sharer.php?u={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode  }}&quote={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode  }}" target="_blank">f</a></li>
+            <li class="twitter" title="Tweet"><a href="https://twitter.com/intent/tweet?source={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode  }}&text={{ title|url_encode }}" target="_blank">t</a></li>
+            <li class="reddit" title="Submit to Reddit"><a href="https://www.reddit.com/submit?url={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode  }}&title={{ title|url_encode }}" target="_blank">r</a></li>
+            <li class="linkedin" title="Share on LinkedIn"><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode  }}&title={{ title|url_encode }}&summary={{ description|url_encode }}&source={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode  }}" target="_blank">li</a></li>
+            <li class="email" title="Send email"><a href="mailto:?subject={{ title|url_encode }}&body={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode  }}" target="_blank">✉</a></li>
+        </ul>
         <!-- Matomo -->
         <script>
             var _paq = window._paq = window._paq || [];
@@ -26,12 +33,6 @@
         <script>
             notifyAboutCookies("{% if lang=='en' %}We are using cookies to provide this site's functionality and improve the user experience.{% elseif lang=='de' %}Wir nutzen Cookies um die Funktionalität dieser Seite bereitzustellen und die Nutzererfahrung zu verbessern.{% endif %}");
         </script>
-        <ul id="share-buttons">
-            <li class="facebook" title="Share on Facebook"><a href="https://www.facebook.com/sharer/sharer.php?u={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode  }}&quote={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode  }}" target="_blank">f</a></li>
-            <li class="twitter" title="Tweet"><a href="https://twitter.com/intent/tweet?source={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode  }}&text={{ title|url_encode }}" target="_blank">t</a></li>
-            <li class="reddit" title="Submit to Reddit"><a href="https://www.reddit.com/submit?url={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode  }}&title={{ title|url_encode }}" target="_blank">r</a></li>
-            <li class="linkedin" title="Share on LinkedIn"><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode  }}&title={{ title|url_encode }}&summary={{ description|url_encode }}&source={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode  }}" target="_blank">li</a></li>
-            <li class="email" title="Send email"><a href="mailto:?subject={{ title|url_encode }}&body={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode  }}" target="_blank">✉</a></li>
-        </ul>
+        {% if user %}<script src="/ping.js"></script>{% endif %}
     </body>
 </html>

@@ -3,12 +3,12 @@
 namespace Me\BjoernBuettner\Pages;
 
 use Me\BjoernBuettner\Database;
-use Me\BjoernBuettner\HTMLBuilder;
+use Me\BjoernBuettner\TextOutputBuilder;
 use Twig\Environment;
 
 class Team
 {
-    public function __construct(private readonly HTMLBuilder $twig)
+    public function __construct(private readonly TextOutputBuilder $twig)
     {
     }
     public function get(string $lang): string
@@ -16,7 +16,7 @@ class Team
         $team = Database::get()->query('SELECT * FROM teammember')->fetchAll();
         switch ($lang) {
             case 'en':
-                return $this->twig->renderMinified('team.twig', [
+                return $this->twig->renderHTML('team.twig', [
                     'title' => 'Team & About Us',
                     'active' => '/team',
                     'description' => 'A little bit about the team behind bjoern-buettner.me',
@@ -27,7 +27,7 @@ class Team
                 ], $lang);
             case 'de':
             default:
-                return $this->twig->renderMinified('team.twig', [
+                return $this->twig->renderHTML('team.twig', [
                     'title' => 'Team & Über Uns',
                     'active' => '/team',
                     'description' => 'Ein wenig über das Team hinter bjoern-buettner.me',

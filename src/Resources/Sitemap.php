@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Me\BjoernBuettner\Resources;
 
-use Me\BjoernBuettner\HTMLBuilder;
+use Me\BjoernBuettner\TextOutputBuilder;
 
 class Sitemap
 {
