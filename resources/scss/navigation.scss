@@ -1,0 +1,96 @@
+nav#main-navigation {
+  height: 35px;
+  background-color: darkgreen;
+  color: #fff;
+  border-bottom: 3px solid var(--bb-darkgrey);
+  background-image: linear-gradient(
+                  to bottom,
+                  rgba(255, 255, 255, 0.15),
+                  rgba(255, 255, 255, 0.2),
+                  rgba(0, 0, 0, 0)
+  ),
+  linear-gradient(
+                  to top,
+                  rgba(255, 255, 255, 0),
+                  rgba(255, 255, 255, 0.1)
+  );
+
+  > ul {
+    margin: 0;
+
+    > li {
+      height:35px;
+      float: left;
+      list-style: none;
+      position: relative;
+
+      &:hover {
+        > ul {
+          display: block;
+          position: absolute;
+          top: 38px;
+        }
+      }
+
+      > ul {
+        display: none;
+        padding: 0;
+        background-color: var(--bb-darkgrey);
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+
+        > li {
+          float: none;
+
+          > a {
+            font-size: 11px;
+            color: var(--bb-white);
+            text-decoration: none;
+            width: auto;
+            padding: 0.75em;
+            display: block;
+            height: 25px;
+            line-height: 25px;
+            transition: 0.5s;
+
+            &:hover {
+              background-color: var(--bb-green);
+              border-bottom-left-radius: 5px;
+              border-bottom-right-radius: 5px;
+            }
+
+            &:active {
+              color: var(--bb-black);
+            }
+          }
+        }
+      }
+
+      > a {
+        width: auto;
+        height: 35px;
+
+        border-bottom: 3px solid var(--bb-darkgrey);
+        display: block;
+        color: var(--bb-white);
+        padding: 0 0.75em;
+        line-height: 35px;
+        text-decoration: none;
+        font-size: 10px;
+        text-transform: uppercase;
+        transition: 0.5s;
+        text-shadow: var(--bb-black) 1px 0;
+
+        &:hover {
+          border-radius: 5px;
+          background-color: var(--bb-green);
+        }
+
+        &:active {
+          color: var(--bb-black);
+          text-shadow: none;
+        }
+      }
+    }
+  }
+}

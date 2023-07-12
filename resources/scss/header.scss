@@ -1,0 +1,29 @@
+#header {
+  padding: 10px 0 0 0;
+  display: flex;
+  justify-content: center;
+  background-color: #f0f9f0;
+
+  > a {
+    display: inline-block;
+    text-decoration: none;
+
+    > img {
+      &.small {
+        width: 32px;
+        padding: 16px;
+        border-radius: 24px;
+
+        &:last-of-type {
+          margin-left: -56px;
+          margin-bottom: -8px;
+        }
+      }
+    }
+  }
+
+  > h1 {
+    font-size: 22px;
+    padding:20px 20px 0 20px;
+  }
+}

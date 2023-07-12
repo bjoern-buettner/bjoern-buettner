@@ -1,0 +1,23 @@
+div#share-menu {
+  position:fixed;
+  right: 0;
+  top: 50%;
+  > ul {
+    list-style:none;
+    > li.facebook {
+      background-color: blue;
+    }
+    > li.twitter {
+      background-color: dodgerblue;
+    }
+    > li.reddit {
+      background-color: red;
+    }
+    > li.linkedin {
+      background-color: darkcyan;
+    }
+    > li.email {
+      background-color: dimgrey;
+    }
+  }
+}

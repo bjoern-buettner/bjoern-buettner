@@ -1,0 +1,36 @@
+footer#main-footer {
+  position: fixed;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  font-size: 10px;
+  background-color: darkgreen;
+  color: #fff;
+  border-top: 3px solid var(--bb-darkgrey);
+  background-image: linear-gradient(
+                  to bottom,
+                  rgba(255, 255, 255, 0.15),
+                  rgba(255, 255, 255, 0.2),
+                  rgba(0, 0, 0, 0)
+  ),
+  linear-gradient(
+                  to top,
+                  rgba(255, 255, 255, 0),
+                  rgba(255, 255, 255, 0.1)
+  );
+
+  a {
+    text-decoration: none;
+    color: var(--bb-white);
+
+    &:hover {
+      color: var(--bb-darkgrey);
+    }
+
+    &:active {
+      text-decoration: underline;
+    }
+  }
+}
