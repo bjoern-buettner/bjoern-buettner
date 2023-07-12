@@ -10,12 +10,15 @@ class Factory
 {
     public static function get(): Cache
     {
+        if (isset($_SESSION['user']) && $_SESSION['user']->active()) {
+            return new NoCache();
+        }
         if (($_ENV['ENABLE_CACHE'] ?? 'true') === 'false') {
-            return self::$cache = new NoCache();
+            return new NoCache();
         }
         if (extension_loaded('memcached') && ($_ENV['ENABLE_MEMCACHED'] ?? 'false') === 'true') {
-            return self::$cache = new Memcache();
+            return new Memcache();
         }
-        return self::$cache = new File();
+        return new File();
     }
 }
