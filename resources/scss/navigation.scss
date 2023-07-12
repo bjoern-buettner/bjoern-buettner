@@ -1,25 +1,18 @@
 nav#main-navigation {
   height: 35px;
-  background-color: darkgreen;
   color: #fff;
-  border-bottom: 3px solid var(--bb-darkgrey);
-  background-image: linear-gradient(
-                  to bottom,
-                  rgba(255, 255, 255, 0.15),
-                  rgba(255, 255, 255, 0.2),
-                  rgba(0, 0, 0, 0)
-  ),
-  linear-gradient(
-                  to top,
-                  rgba(255, 255, 255, 0),
-                  rgba(255, 255, 255, 0.1)
-  );
+  border-top: 0.5px solid #000;
+  border-bottom: 0.5px solid #000;
+  background: linear-gradient(180deg, #8ABB86 0%, #289548 8.33%), #289548;
 
   > ul {
-    margin: 0;
+    width: 1024px;
+    height: 35px;
+    margin: auto;
+    padding: 0;
 
     > li {
-      height:35px;
+      cursor: pointer;
       float: left;
       list-style: none;
       position: relative;
@@ -28,7 +21,6 @@ nav#main-navigation {
         > ul {
           display: block;
           position: absolute;
-          top: 38px;
         }
       }
 
@@ -43,6 +35,7 @@ nav#main-navigation {
           float: none;
 
           > a {
+            white-space: nowrap;
             font-size: 11px;
             color: var(--bb-white);
             text-decoration: none;
@@ -69,8 +62,6 @@ nav#main-navigation {
       > a {
         width: auto;
         height: 35px;
-
-        border-bottom: 3px solid var(--bb-darkgrey);
         display: block;
         color: var(--bb-white);
         padding: 0 0.75em;
@@ -83,7 +74,9 @@ nav#main-navigation {
 
         &:hover {
           border-radius: 5px;
-          background-color: var(--bb-green);
+          background-color: var(--bb-lightgreen);
+          color: var(--bb-darkgrey);
+          text-shadow: none;
         }
 
         &:active {
