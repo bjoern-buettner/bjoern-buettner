@@ -13,7 +13,7 @@ class Quote
     }
     public function get(string $lang): string
     {
-        return $this->twig->renderMinified('admin/quote.twig', [
+        return $this->twig->renderHTML('admin/quote.twig', [
             'title' => 'Quote 2023BB0001',
             'active' => '/admin/quote/1',
             'description' => 'Short quote description',

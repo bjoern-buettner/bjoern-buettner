@@ -13,7 +13,7 @@ class Profile
     }
     public function get(string $lang): string
     {
-        return $this->twig->renderMinified('admin/self.twig', [
+        return $this->twig->renderHTML('admin/self.twig', [
             'title' => 'Max Mustermann',
             'active' => '/admin/self',
             'description' => 'Short self description',

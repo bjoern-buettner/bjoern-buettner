@@ -13,7 +13,7 @@ class Invoice
     }
     public function get(string $lang): string
     {
-        return $this->twig->renderMinified('admin/invoice.twig', [
+        return $this->twig->renderHTML('admin/invoice.twig', [
             'title' => 'Invoice 2023BB0001',
             'active' => '/admin/invoice/1',
             'description' => 'Short invoice description',

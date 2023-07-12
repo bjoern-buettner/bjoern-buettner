@@ -13,7 +13,7 @@ class Dashboard
     }
     public function get(string $lang): string
     {
-        return $this->twig->renderMinified('admin/dashboard.twig', [
+        return $this->twig->renderHTML('admin/dashboard.twig', [
             'title' => 'Dashboard',
             'active' => '/admin',
             'description' => 'Dashboard here',
