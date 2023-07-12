@@ -73,7 +73,8 @@ p {
     margin: 0;
     padding: 0.25em;
 }
-nav a {
+nav a,
+nav span {
     color: #fff;
     background: rgba(255,255,255,0.25);
     border-radius: 0.25em;
@@ -96,7 +97,7 @@ nav a {
 }
 nav > ul {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
     text-align: center;
     padding: 0.25em 0;
 }
@@ -105,7 +106,8 @@ input, button, select, textarea {
     padding: 0.2em;
 }
 #header {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     background-color: #f0f9f0;
     color: #111;
     img {
@@ -124,14 +126,15 @@ input, button, select, textarea {
     a {
         padding: 1em;
     }
-    strong {
-        font-size: 125%;
-        padding: 1.5em;
+    :last-child {
+        text-align: right;
+    }
+    :first-child {
+        text-align: left;
     }
 }
 #body {
     max-width: 1024px;
-    min-width: 360px;
     width: 80%;
     margin: 1em auto 3em;
     background: #eee;
@@ -173,7 +176,6 @@ footer a:visited,
 footer a:focus {
     color: #fff;
 }
-
 
 .teammember {
     height: auto;
@@ -255,13 +257,20 @@ ul#share-buttons{
         }
     }
 }
+nav > ul > li:hover > ul {
+    display: block;
+    position: absolute;
+}
+nav > ul > li > ul > li {
+    background: green;
+}
 
 @media screen and (max-width: 1100px) {
-    nav > ul {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    }
     nav > ul > li {
         margin: 0.2em 0;
+    }
+    #body {
+        width: 85%;
     }
 }
 @media screen and (max-width:700px) {
@@ -270,6 +279,9 @@ ul#share-buttons{
     }
     .bar {
         padding: 0 7.5%;
+    }
+    #body {
+        width: 90%;
     }
 }
 @media screen and (max-width:500px) {
@@ -291,11 +303,18 @@ ul#share-buttons{
     nav li {
         margin: 0.75em;
     }
-    nav a {
+    nav > ul > li:hover > ul {
+        position: relative;
+    }
+    nav a,
+    nav span {
         width: 100%;
     }
     form {
         grid-template-columns: 1fr;
+    }
+    #body {
+        width: 95%;
     }
 }
 @media screen and (max-width:400px) {
@@ -304,6 +323,9 @@ ul#share-buttons{
     }
     .me {
         float: none;
+    }
+    #body {
+        width: 100%;
     }
 }
 @media print {

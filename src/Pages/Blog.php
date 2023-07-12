@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Me\BjoernBuettner\Pages;
 
 use Me\BjoernBuettner\Database;
-use Me\BjoernBuettner\TwigWrapper;
+use Me\BjoernBuettner\HTMLBuilder;
 use Twig\Environment;
 
 class Blog
 {
-    public function __construct(private readonly TwigWrapper $twig)
+    public function __construct(private readonly HTMLBuilder $twig)
     {
     }
     public function get(string $lang): string

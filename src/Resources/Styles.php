@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Me\BjoernBuettner\Resources;
 
-use Me\BjoernBuettner\Caches\Factory;
+use Me\BjoernBuettner\Cache;
 use ScssPhp\ScssPhp\Compiler;
-use Twig\Environment;
 
 class Styles
 {
+    public function __construct(private readonly Cache $cache)
+    {
+    }
     public function get(string $file): string
     {
         if (!preg_match('/^[a-z0-9-]+$/', $file)) {
@@ -23,7 +25,7 @@ class Styles
         }
         header('Content-Type: text/css; charset=utf-8', true, 200);
         $cache = md5($file) . md5((string) filemtime($fullfile)) . '.css';
-        if ($data = Factory::get()->get($cache)) {
+        if ($data = $this->cache->get($cache)) {
             return $data;
         }
         $scss = new Compiler();
@@ -34,7 +36,7 @@ class Styles
         $data = $scss
             ->compileString('@import("' . $fullfile . '")')
             ->getCss();
-        Factory::get()->set($cache, $data);
+        $this->cache->set($cache, $data);
         return $data;
     }
 }
