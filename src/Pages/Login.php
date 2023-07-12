@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Me\BjoernBuettner\Pages;
 
-use Me\BjoernBuettner\TwigWrapper;
+use Me\BjoernBuettner\TextOutputBuilder;
 
 class Login
 {
-    public function __construct(private readonly TwigWrapper $twig)
+    public function __construct(private readonly TextOutputBuilder $twig)
     {
     }
     public function get(string $lang): string

@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Me\BjoernBuettner\Pages;
 
 use Me\BjoernBuettner\Database;
-use Me\BjoernBuettner\HTMLBuilder;
+use Me\BjoernBuettner\TextOutputBuilder;
 use Twig\Environment;
 
 class Blog
 {
-    public function __construct(private readonly HTMLBuilder $twig)
+    public function __construct(private readonly TextOutputBuilder $twig)
     {
     }
     public function get(string $lang): string
@@ -37,7 +37,7 @@ WHERE post_keyword.post=:aid'
         }
         switch ($lang) {
             case 'en':
-                return $this->twig->renderMinified('blog.twig', [
+                return $this->twig->renderHTML('blog.twig', [
                     'title' => 'Blog Post Overview',
                     'active' => '/blog',
                     'description' => 'Björn Büttner\'s blog about web development',
@@ -56,7 +56,7 @@ form and vary from week to week.',
                 ], $lang);
             case 'de':
             default:
-                return $this->twig->renderMinified('blog.twig', [
+                return $this->twig->renderHTML('blog.twig', [
                     'title' => 'Blogpostübersicht',
                     'active' => '/blog',
                     'description' => 'Björn Büttners Blog über Webentwicklung',
@@ -83,7 +83,7 @@ drehen sich um Webentwicklung in jeder Form und variieren von Woche zu Woche.',
             ->query('SELECT slug,created FROM post WHERE created < NOW() ORDER BY created DESC')
             ->fetchAll();
         header('Content-Type: application/xml');
-        return $this->twig->renderUnminified('sitemap.twig', [
+        return $this->twig->renderXML('sitemap.twig', [
             'slugs' => $posts,
         ], $lang);
     }
@@ -105,7 +105,7 @@ drehen sich um Webentwicklung in jeder Form und variieren von Woche zu Woche.',
         }
         $latest = $posts[0]['created'];
         header('Content-Type: application/rss+xml; charset=utf-8');
-        return $this->twig->renderUnminified("rss-$lang.twig", [
+        return $this->twig->renderXML("rss-$lang.twig", [
             'posts' => $posts,
             'now' => $latest,
         ], $lang);
@@ -134,7 +134,7 @@ WHERE post_keyword.post=:aid'
         $keywords = $stmt->fetchAll();
         switch ($lang) {
             case 'en':
-                return $this->twig->renderMinified('blogpost.twig', [
+                return $this->twig->renderHTML('blogpost.twig', [
                     'title' => $post['title_en'],
                     'active' => '/blog/' . $slug,
                     'author' => $author,
@@ -145,7 +145,7 @@ WHERE post_keyword.post=:aid'
                 ], $lang);
             case 'de':
             default:
-                return $this->twig->renderMinified('blogpost.twig', [
+                return $this->twig->renderHTML('blogpost.twig', [
                     'title' => $post['title_de'],
                     'active' => '/blog/' . $slug,
                     'author' => $author,

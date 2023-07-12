@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Me\BjoernBuettner\Pages;
 
 use Me\BjoernBuettner\OfferList;
-use Me\BjoernBuettner\HTMLBuilder;
+use Me\BjoernBuettner\TextOutputBuilder;
 use Twig\Environment;
 
 class Prices
 {
-    public function __construct(private readonly HTMLBuilder $twig)
+    public function __construct(private readonly TextOutputBuilder $twig)
     {
     }
 
@@ -18,7 +18,7 @@ class Prices
     {
         switch ($lang) {
             case 'en':
-                return $this->twig->renderMinified('prices.twig', [
+                return $this->twig->renderHTML('prices.twig', [
                     'title' => 'Offers & Prices',
                     'active' => '/prices',
                     'description' => 'Offers by Björn Büttner in a well sorted overview',
@@ -34,7 +34,7 @@ offers is, if not agreed on differently, is 30 days until the end of the month.'
                 ], $lang);
             case 'de':
             default:
-                return $this->twig->renderMinified('prices.twig', [
+                return $this->twig->renderHTML('prices.twig', [
                     'title' => 'Leistungen',
                     'active' => '/prices',
                     'description' => 'Leistungen von Björn Büttner in einem gut sortierten Überblick',

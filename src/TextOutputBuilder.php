@@ -10,7 +10,7 @@ use Twig\Environment;
 use Twig\TwigFilter;
 use voku\helper\HtmlMin;
 
-class HTMLBuilder
+class TextOutputBuilder
 {
     public function __construct(private readonly Environment $twig, private readonly Cache $cache)
     {
@@ -36,13 +36,13 @@ class HTMLBuilder
         ) . md5($template) . sha1(json_encode($context)) . '.twig';
     }
 
-    public function renderMinified($template, array $context, string $lang): string
+    public function renderHTML($template, array $context, string $lang): string
     {
         $cache = $this->getCacheKey($template, $context, $lang) . '.min';
         if ($data = $this->cache->get($cache)) {
             return $data;
         }
-        $data = $this->renderUnminified($template, $context, $lang);
+        $data = $this->renderXML($template, $context, $lang);
         try {
             $htmlMin = new HtmlMin();
             $data = $htmlMin->minify($data);
@@ -53,7 +53,7 @@ class HTMLBuilder
         return $data;
     }
 
-    public function renderUnminified(string $template, array $context, string $lang): string
+    public function renderXML(string $template, array $context, string $lang): string
     {
         $cache = $this->getCacheKey($template, $context, $lang);
         if ($data = $this->cache->get($cache)) {
