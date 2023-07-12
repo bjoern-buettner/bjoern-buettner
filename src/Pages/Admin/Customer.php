@@ -13,7 +13,7 @@ class Customer
     }
     public function get(string $lang): string
     {
-        return $this->twig->renderMinified('admin/customer.twig', [
+        return $this->twig->renderHTML('admin/customer.twig', [
             'title' => 'Customer #1',
             'active' => '/admin/customer/1',
             'description' => 'Short customer description',

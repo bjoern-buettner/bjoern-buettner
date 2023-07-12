@@ -13,7 +13,7 @@ class Login
     }
     public function get(string $lang): string
     {
-        return $this->twig->renderMinified('login.twig', [
+        return $this->twig->renderHTML('login.twig', [
             'title' => $lang === 'en' ? 'Login' : 'Anmelden',
             'description' => $lang === 'en' ? 'Login to your account.' : 'Melde dich in deinem Account an.',
             'active' => '/login',

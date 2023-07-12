@@ -13,7 +13,7 @@ class Cases
     }
     public function get(string $lang): string
     {
-        return $this->twig->renderMinified('admin/case.twig', [
+        return $this->twig->renderHTML('admin/case.twig', [
             'title' => 'Case #1',
             'active' => '/admin/case/1',
             'description' => 'Short case description',
