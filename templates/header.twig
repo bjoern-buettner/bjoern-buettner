@@ -25,7 +25,6 @@
             <a href="/{{ lang }}">
                 <img src="/logo.png" alt="Logo"/>
             </a>
-            <strong>Björn Büttner</strong>
             {% if lang != 'de' %}
                 <a hreflang="de" href="{% if active != '/' %}{{ active }}{% endif %}/de" title="Zu Deutsch wechseln">
                     <img class="small" src="/de.jpg" alt="Deutsch"/><img class="small" src="/en.jpg" alt="English"/>
@@ -39,15 +38,37 @@
         <nav class="bar">
             <ul>
                 <li><a {% if active=='/' %}class="active" {% endif %}href="/{{ lang }}" title="{{ menu.home[1] }}">{{ menu.home[0] }}</a></li>
-                <li><a {% if active=='/prices' %}class="active" {% endif %} href="/prices/{{ lang }}" title="{{ menu.prices[1] }}">{{ menu.prices[0] }}</a></li>
-                <li><a {% if active=='/solutions' %}class="active" {% endif %} href="/solutions/{{ lang }}" title="{{ menu.solutions[1] }}">{{ menu.solutions[0] }}</a></li>
-                <li><a {% if active=='/team' %}class="active" {% endif %} href="/team/{{ lang }}" title="{{ menu.team[1] }}">{{ menu.team[0] }}</a></li>
-                <li><a {% if active=='/blog' %}class="active" {% endif %} href="/blog/{{ lang }}" title="{{ menu.blog[1] }}">{{ menu.blog[0] }}</a></li>
-                <li><a target="_blank" href="https://presentations.bjoern-buettner.me" title="{{ menu.presentations[1] }}">{{ menu.presentations[0] }}</a></li>
-                <li><a href="https://outlook.office365.com/owa/calendar/Bjoern-Buettner-Booking@bjoern-buettner.me/bookings/" target="_blank" title="{{ menu.booking[1] }}">{{ menu.booking[0] }}</a></li>
-                <li><a href="https://www.google.com/maps/place/Bj%C3%B6rn+B%C3%BCttner/@51.4168451,6.8539511,15z/data=!4m8!3m7!1s0x47b8c181aa157c71:0xd4a0e7a32e47292e!8m2!3d51.4168451!4d6.8539511!9m1!1b1!16s%2Fg%2F11v17jpq5g" target="_blank">{{ menu.ratings[0] }}</a></li>
-                <li><a href="https://github.com/bjoern-buettner" target="_blank" title="{{ menu.github[1] }}">{{ menu.github[0] }}</a></li>
-                <li><a href="https://www.linkedin.com/company/bjoern-buettner/" target="_blank" title="{{ menu.linkedin[1] }}">{{ menu.linkedin[0] }}</a></li>
+                <li>
+                    <span{% if active=='/prices' %}class="active"{% elseif active=='/blog' %}class="active"{% endif %} title="{{ menu.products[1] }}">{{ menu.products[0] }}</span>
+                    <ul>
+                        <li><a {% if active=='/prices' %}class="active" {% endif %} href="/prices/{{ lang }}" title="{{ menu.prices[1] }}">{{ menu.prices[0] }}</a></li>
+                        <li><a {% if active=='/blog' %}class="active" {% endif %} href="/blog/{{ lang }}" title="{{ menu.blog[1] }}">{{ menu.blog[0] }}</a></li>
+                        <li><a target="_blank" href="https://presentations.bjoern-buettner.me" title="{{ menu.presentations[1] }}">{{ menu.presentations[0] }}</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <span title="{{ menu.contact[1] }}">{{ menu.contact[0] }}</span>
+                    <ul>
+                        <li><a href="https://outlook.office365.com/owa/calendar/Bjoern-Buettner-Booking@bjoern-buettner.me/bookings/" target="_blank" title="{{ menu.booking[1] }}">{{ menu.booking[0] }}</a></li>
+                        <li><a title="{{ menu.service[1] }}" href="mailto:service@bjoern-buettner.me">{{ menu.service[0]}}</a></li>
+                        <li><a title="{{ menu.support[1] }}" href="mailto:support@bjoern-buettner.me">{{ menu.support[0]}}</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <span {% if active=='/solutions' %}class="active"{% elseif active=='/team' %}class="active"{% endif %} title="{{ menu.about[1] }}">{{ menu.about[0] }}</span>
+                    <ul>
+                        <li><a {% if active=='/solutions' %}class="active" {% endif %} href="/solutions/{{ lang }}" title="{{ menu.solutions[1] }}">{{ menu.solutions[0] }}</a></li>
+                        <li><a {% if active=='/team' %}class="active" {% endif %} href="/team/{{ lang }}" title="{{ menu.team[1] }}">{{ menu.team[0] }}</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <span title="{{ menu.socials[1] }}">{{ menu.socials[0] }}</span>
+                    <ul>
+                        <li><a href="https://www.google.com/maps/place/Bj%C3%B6rn+B%C3%BCttner/@51.4168451,6.8539511,15z/data=!4m8!3m7!1s0x47b8c181aa157c71:0xd4a0e7a32e47292e!8m2!3d51.4168451!4d6.8539511!9m1!1b1!16s%2Fg%2F11v17jpq5g" target="_blank" title="{{ menu.ratings[1] }}">{{ menu.ratings[0] }}</a></li>
+                        <li><a href="https://github.com/bjoern-buettner" target="_blank" title="{{ menu.github[1] }}">{{ menu.github[0] }}</a></li>
+                        <li><a href="https://www.linkedin.com/company/bjoern-buettner/" target="_blank" title="{{ menu.linkedin[1] }}">{{ menu.linkedin[0] }}</a></li>
+                    </ul>
+                </li>
                 <li><a {% if active=='/imprint' %}class="active" {% endif %} href="/imprint/{{ lang }}" title="{{ menu.imprint[1] }}">{{ menu.imprint[0] }}</a></li>
             </ul>
         </nav>
