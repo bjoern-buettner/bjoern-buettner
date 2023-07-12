@@ -38,8 +38,8 @@
         <nav class="bar">
             <ul>
                 <li><a {% if active=='/' %}class="active" {% endif %}href="/{{ lang }}" title="{{ menu.home[1] }}">{{ menu.home[0] }}</a></li>
-                <li {% if active=='/prices' %}class="active"{% elseif active=='/blog' %}class="active"{% endif %}>
-                    <span title="{{ menu.products[1] }}">{{ menu.products[0] }}</span>
+                <li>
+                    <span{% if active=='/prices' %}class="active"{% elseif active=='/blog' %}class="active"{% endif %} title="{{ menu.products[1] }}">{{ menu.products[0] }}</span>
                     <ul>
                         <li><a {% if active=='/prices' %}class="active" {% endif %} href="/prices/{{ lang }}" title="{{ menu.prices[1] }}">{{ menu.prices[0] }}</a></li>
                         <li><a {% if active=='/blog' %}class="active" {% endif %} href="/blog/{{ lang }}" title="{{ menu.blog[1] }}">{{ menu.blog[0] }}</a></li>
@@ -54,8 +54,8 @@
                         <li><a title="{{ menu.support[1] }}" href="mailto:support@bjoern-buettner.me">{{ menu.support[0]}}</a></li>
                     </ul>
                 </li>
-                <li {% if active=='/solutions' %}class="active"{% elseif active=='/team' %}class="active"{% endif %}>
-                    <span title="{{ menu.about[1] }}">{{ menu.about[0] }}</span>
+                <li>
+                    <span {% if active=='/solutions' %}class="active"{% elseif active=='/team' %}class="active"{% endif %} title="{{ menu.about[1] }}">{{ menu.about[0] }}</span>
                     <ul>
                         <li><a {% if active=='/solutions' %}class="active" {% endif %} href="/solutions/{{ lang }}" title="{{ menu.solutions[1] }}">{{ menu.solutions[0] }}</a></li>
                         <li><a {% if active=='/team' %}class="active" {% endif %} href="/team/{{ lang }}" title="{{ menu.team[1] }}">{{ menu.team[0] }}</a></li>
