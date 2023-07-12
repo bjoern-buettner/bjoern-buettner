@@ -46,6 +46,8 @@ class MenuList
             'Verträge & Kostenvoranschläge',
             'Kontaktieren Sie uns, falls sie ein Angebot oder einen Vertrag wünschen.',
         ],
+        'contact' => ['Kontakt', 'Hier erreichen Sie und.',],
+        'products' => ['Dienstleistungen', 'Unsere Dienstleistungen und Preise.',],
         'about' => ['Über uns', 'Informationen über uns.',],
         'socials' => ['Soziales', 'Unsere Profile in sozialen Medien.',],
     ];
