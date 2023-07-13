@@ -16,8 +16,8 @@
 
 h1 {
   color: var(--bb-green);
-  border-bottom:1px solid var(--bb-green);
-  margin:0 0 5px 0;
+  border-bottom: 1px solid var(--bb-green);
+  margin: 0 0 5px 0;
 }
 
 h2, h3, h4, h5 {
@@ -44,10 +44,52 @@ body, html {
 }
 
 #sidebar {
-  .inner {
+  > div.inner {
     padding: 10px;
     border: 1px solid rgba(0, 0, 0, 0.15);
     box-shadow: 0 4px 4px 0 rgba(203, 203, 203, 0.25);
+    margin: 0 0 10px 0;
+
+    > h4 {
+      color: var(--bb-green);
+      border-bottom: 1px solid var(--bb-lightgreen);
+    }
+
+    > form {
+      margin: 5px 0 0 0;
+      text-align: right;
+
+      > input, > button {
+        width: 100%;
+        height: 30px;
+        color: var(--bb-white);
+        margin: 0 0 5px 0;
+      }
+
+      > input[type=email], input[type=password] {
+        background: #8ABB86;
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.25);
+        border: none;
+        padding: 0 5px;
+      }
+
+      > button[type=submit] {
+        background-color: var(--bb-green);
+      }
+
+      a {
+        font-size: 0.75em;
+        color: var(--bb-black);
+
+        &:hover {
+          color: var(--bb-blue);
+        }
+
+        &:active {
+          text-decoration: underline;
+        }
+      }
+    }
   }
 }
 
@@ -70,7 +112,7 @@ body, html {
     margin: 10px 0;
     padding: 0 10px;
 
-    .inner {
+    > div.inner {
       padding: 10px;
       border: 1px solid rgba(0, 0, 0, 0.15);
       box-shadow: 0 4px 4px 0 rgba(203, 203, 203, 0.25);
@@ -78,16 +120,15 @@ body, html {
   }
 }
 
+a {
+  text-decoration: none;
+  color: var(--bb-blue);
 
-//a {
-//  text-decoration: none;
-//  color: var(--bb-blue);
-//
-//  &:hover {
-//    color: var(--bb-darkgrey);
-//  }
-//
-//  &:active {
-//    text-decoration: underline;
-//  }
-//}
+  &:hover {
+    color: var(--bb-darkgrey);
+  }
+
+  &:active {
+    text-decoration: underline;
+  }
+}

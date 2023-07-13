@@ -105,71 +105,83 @@
         {% endblock %}
     </div>
     <div id="sidebar" class="col-4">
-        <div class="inner">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse laboriosam placeat possimus
-            rem sed. Aperiam assumenda commodi consectetur eaque enim, illo itaque nihil ratione repellat similique sit
-            sunt voluptates voluptatum?
+        <div class="inner">
+            <h4>Login</h4>
+            <form method="post">
+                <label for="email"></label><input type="email" id="email" name="email" required="required"
+                                                  placeholder="E-Mail Adresse"/><br>
+                <label for="password"></label><input type="password" id="password" name="password"
+                                                     placeholder="Passwort" required="required"/><br>
+                <button type="submit">Login</button>
+                <br>
+                <a href="#">Zugangsdaten vergessen?</a>
+            </form>
+        </div>
+
+        <div class="inner">
+            <h4>Letzte Blogposts</h4>
         </div>
     </div>
 </div>
-{# <div style="clear:both;"></div>#}
-{# <footer id="main-footer">#}
-{#    <div id="inner">#}
-{#        &copy; 2023 Björn Büttner -#}
-{#        <a href="mailto:service@bjoern-buettner.me">#}
-{#            {% if lang=='en' %}Quotes &amp; Contracts{% else %}Kostenvoranschläge &amp; Verträge{% endif %}#}
-{#        </a>#}
-{#        -#}
-{#        <a href="mailto:support@bjoern-buettner.me">#}
-{#            {% if lang=='en' %}Customer Support{% else %}Kundensupport{% endif %}#}
-{#        </a>#}
-{#    </div>#}
-{# </footer>#}
-{# <!-- Matomo --> #}
-{# <script> #}
-{#    var _paq = window._paq = window._paq || []; #}
-{#    _paq.push(['trackPageView']); #}
-{#    _paq.push(['enableLinkTracking']); #}
-{#    (function () { #}
-{#        const u = "https://tracking.bjoern-buettner.me/"; #}
-{#        _paq.push(['setTrackerUrl', u + 'matomo.php']); #}
-{#        _paq.push(['setSiteId', '1']); #}
-{#        const d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0]; #}
-{#        g.async = true; #}
-{#        g.src = u + 'matomo.js'; #}
-{#        g.onerror = () => { #}
-{#            const i = d.createElement('img'); #}
-{#            i.setAttribute('src', 'https://tracking.bjoern-buettner.me/matomo.php?idsite=1&amp;rec=1'); #}
-{#            i.setAttribute('alt', 'tracking pixel'); #}
-{#            document.body.appendChild(i); #}
-{#        }; #}
-{#        s.parentNode.insertBefore(g, s); #}
-{#    })(); #}
-{# </script> #}
-{# <noscript> #}
-{#    <img src="https://tracking.bjoern-buettner.me/matomo.php?idsite=1&amp;rec=1" alt="tracking pixel"/> #}
-{# </noscript> #}
-{# <!-- End Matomo Code --> #}
-{# <script src="/cookieinfo.js"></script> #}
-{# <script> #}
-{#    notifyAboutCookies("{% if lang=='en' %}We are using cookies to provide this site's functionality and improve the user experience.{% elseif lang=='de' %}Wir nutzen Cookies um die Funktionalität dieser Seite bereitzustellen und die Nutzererfahrung zu verbessern.{% endif %}"); #}
-{# </script> #}
-{# <div id="share-menu"> #}
-{#    <ul> #}
-{#        <li class="facebook" title="Share on Facebook"><a #}
-{#                href="https://www.facebook.com/sharer/sharer.php?u={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&quote={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}" #}
-{#                target="_blank">f</a></li> #}
-{#        <li class="twitter" title="Tweet"><a #}
-{#                href="https://twitter.com/intent/tweet?source={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&text={{ title|url_encode }}" #}
-{#                target="_blank">t</a></li> #}
-{#        <li class="reddit" title="Submit to Reddit"><a #}
-{#                href="https://www.reddit.com/submit?url={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&title={{ title|url_encode }}" #}
-{#                target="_blank">r</a></li> #}
-{#        <li class="linkedin" title="Share on LinkedIn"><a #}
-{#                href="https://www.linkedin.com/shareArticle?mini=true&url={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&title={{ title|url_encode }}&summary={{ description|url_encode }}&source={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}" #}
-{#                target="_blank">li</a></li> #}
-{#        <li class="email" title="Send email"><a #}
-{#                href="mailto:?subject={{ title|url_encode }}&body={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}" #}
-{#                target="_blank">✉</a></li> #}
-{#    </ul> #}
+<footer id="main-footer">
+    <div id="inner">
+        &copy; 2023 Björn Büttner -
+        <a href="mailto:service@bjoern-buettner.me">
+            {% if lang=='en' %}Quotes &amp; Contracts{% else %}Kostenvoranschläge &amp; Verträge{% endif %}
+        </a>
+        -
+        <a href="mailto:support@bjoern-buettner.me">
+            {% if lang=='en' %}Customer Support{% else %}Kundensupport{% endif %}
+        </a>
+    </div>
+</footer>
+<!-- Matomo -->
+<script>
+    var _paq = window._paq = window._paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function () {
+        const u = "https://tracking.bjoern-buettner.me/";
+        _paq.push(['setTrackerUrl', u + 'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        const d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+        g.async = true;
+        g.src = u + 'matomo.js';
+        g.onerror = () => {
+            const i = d.createElement('img');
+            i.setAttribute('src', 'https://tracking.bjoern-buettner.me/matomo.php?idsite=1&amp;rec=1');
+            i.setAttribute('alt', 'tracking pixel');
+            document.body.appendChild(i);
+        };
+        s.parentNode.insertBefore(g, s);
+    })();
+</script>
+<noscript>
+    <img src="https://tracking.bjoern-buettner.me/matomo.php?idsite=1&amp;rec=1" alt="tracking pixel"/>
+</noscript>
+<!-- End Matomo Code -->
+<script src="/cookieinfo.js"></script>
+<script>
+    notifyAboutCookies("{% if lang=='en' %}We are using cookies to provide this site's functionality and improve the user experience.{% elseif lang=='de' %}Wir nutzen Cookies um die Funktionalität dieser Seite bereitzustellen und die Nutzererfahrung zu verbessern.{% endif %}");
+</script>
+<div id="share-buttons">
+    <ul>
+        <li class="facebook" title="Share on Facebook"><a
+                href="https://www.facebook.com/sharer/sharer.php?u={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&quote={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}"
+                target="_blank">f</a></li>
+        <li class="twitter" title="Tweet"><a
+                href="https://twitter.com/intent/tweet?source={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&text={{ title|url_encode }}"
+                target="_blank">t</a></li>
+        <li class="reddit" title="Submit to Reddit"><a
+                href="https://www.reddit.com/submit?url={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&title={{ title|url_encode }}"
+                target="_blank">r</a></li>
+        <li class="linkedin" title="Share on LinkedIn"><a
+                href="https://www.linkedin.com/shareArticle?mini=true&url={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&title={{ title|url_encode }}&summary={{ description|url_encode }}&source={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}"
+                target="_blank">li</a></li>
+        <li class="email" title="Send email"><a
+                href="mailto:?subject={{ title|url_encode }}&body={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}"
+                target="_blank">✉</a></li>
+    </ul>
+</div>
 </body>
 </html>
