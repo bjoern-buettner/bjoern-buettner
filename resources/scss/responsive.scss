@@ -1,5 +1,4 @@
 [class*="col-"] {
-  border: 1px solid red;
   width: 100%;
 }
 
@@ -48,7 +47,6 @@
   }
 
   [class*="col-"] {
-    border: 1px solid red;
     float: left;
   }
 }

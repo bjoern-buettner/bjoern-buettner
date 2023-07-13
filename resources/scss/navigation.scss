@@ -90,6 +90,10 @@ nav#main-navigation {
         }
 
         &:hover {
+          > a, > span {
+            background: var(--bb-lightgreen);
+          }
+
           > ul {
             display: block;
             position: absolute;

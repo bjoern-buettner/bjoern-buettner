@@ -98,29 +98,32 @@
                title="{{ menu.self[1] }}">{{ menu.self[0] }}</a></li>
     </ul>
 </nav>
-{# <div id="wrapper"> #}
-{#    <div id="content"> #}
-{#        {% block body %} #}
+<div id="wrapper" class="row">
+    <div id="content" class="col-8">
+        {% block body %}
 
-{#        {% endblock %} #}
-{#    </div> #}
-{#    <div id="sidebar"> #}
-
-{#    </div> #}
-{# </div> #}
-{# <div style="clear:both;"></div> #}
-{# <footer id="main-footer"> #}
-{#    <div id="inner"> #}
+        {% endblock %}
+    </div>
+    <div id="sidebar" class="col-4">
+        <div class="inner">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse laboriosam placeat possimus
+            rem sed. Aperiam assumenda commodi consectetur eaque enim, illo itaque nihil ratione repellat similique sit
+            sunt voluptates voluptatum?
+        </div>
+    </div>
+</div>
+{# <div style="clear:both;"></div>#}
+{# <footer id="main-footer">#}
+{#    <div id="inner">#}
 {#        &copy; 2023 Björn Büttner -#}
-{#        <a href="mailto:service@bjoern-buettner.me"> #}
-{#            {% if lang=='en' %}Quotes &amp; Contracts{% else %}Kostenvoranschläge &amp; Verträge{% endif %} #}
-{#        </a> #}
+{#        <a href="mailto:service@bjoern-buettner.me">#}
+{#            {% if lang=='en' %}Quotes &amp; Contracts{% else %}Kostenvoranschläge &amp; Verträge{% endif %}#}
+{#        </a>#}
 {#        -#}
-{#        <a href="mailto:support@bjoern-buettner.me"> #}
-{#            {% if lang=='en' %}Customer Support{% else %}Kundensupport{% endif %} #}
-{#        </a> #}
-{#    </div> #}
-{# </footer> #}
+{#        <a href="mailto:support@bjoern-buettner.me">#}
+{#            {% if lang=='en' %}Customer Support{% else %}Kundensupport{% endif %}#}
+{#        </a>#}
+{#    </div>#}
+{# </footer>#}
 {# <!-- Matomo --> #}
 {# <script> #}
 {#    var _paq = window._paq = window._paq || []; #}
