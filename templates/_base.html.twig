@@ -21,7 +21,7 @@
     <link rel="alternate" type="application/rss+xml" href="https://bjoern-buettner.me/rss-{{ lang }}.xml"/>
 </head>
 <body>
-<div id="header">
+<div class="header">
     <a href="/{{ lang }}"><img src="/logo.png" alt="Logo"/></a>
     <h1>Bj&ouml;rn B&uuml;ttner</h1>
     {% if lang != 'de' %}
@@ -38,114 +38,135 @@
 </div>
 <nav id="main-navigation">
     <ul>
-        <li><a {% if active=='/' %}class="active" {% endif %}href="/{{ lang }}" title="{{ menu.home[1] }}">{{ menu.home[0] }}</a></li>
+        <li><a {% if active=='/' %}class="active" {% endif %}href="/{{ lang }}"
+               title="{{ menu.home[1] }}">{{ menu.home[0] }}</a></li>
         <li>
-            <a {% if active=='/prices' %}class="active"{% elseif active=='/blog' %}class="active"{% endif %} title="{{ menu.products[1] }}">{{ menu.products[0] }}</a>
+            <span {% if active=='/prices' %}class="active" {% elseif active=='/blog' %}class="active"{% endif %}
+               title="{{ menu.products[1] }}">{{ menu.products[0] }}</span>
             <ul>
-                <li><a {% if active=='/prices' %}class="active" {% endif %} href="/prices/{{ lang }}" title="{{ menu.prices[1] }}">{{ menu.prices[0] }}</a></li>
-                <li><a {% if active=='/blog' %}class="active" {% endif %} href="/blog/{{ lang }}" title="{{ menu.blog[1] }}">{{ menu.blog[0] }}</a></li>
-                <li><a target="_blank" href="https://presentations.bjoern-buettner.me" title="{{ menu.presentations[1] }}">{{ menu.presentations[0] }}</a></li>
+                <li><a {% if active=='/prices' %}class="active-sub" {% endif %} href="/prices/{{ lang }}"
+                       title="{{ menu.prices[1] }}">{{ menu.prices[0] }}</a></li>
+                <li><a {% if active=='/blog' %}class="active-sub" {% endif %} href="/blog/{{ lang }}"
+                       title="{{ menu.blog[1] }}">{{ menu.blog[0] }}</a></li>
+                <li><a target="_blank" href="https://presentations.bjoern-buettner.me"
+                       title="{{ menu.presentations[1] }}">{{ menu.presentations[0] }}</a></li>
             </ul>
         </li>
         <li>
-            <a title="{{ menu.contact[1] }}">{{ menu.contact[0] }}</a>
+            <span title="{{ menu.contact[1] }}">{{ menu.contact[0] }}</span>
             <ul>
-                <li><a href="https://outlook.office365.com/owa/calendar/Bjoern-Buettner-Booking@bjoern-buettner.me/bookings/" target="_blank" title="{{ menu.booking[1] }}">{{ menu.booking[0] }}</a></li>
-                <li><a title="{{ menu.service[1] }}" href="mailto:service@bjoern-buettner.me">{{ menu.service[0]}}</a></li>
-                <li><a title="{{ menu.support[1] }}" href="mailto:support@bjoern-buettner.me">{{ menu.support[0]}}</a></li>
+                <li>
+                    <a href="https://outlook.office365.com/owa/calendar/Bjoern-Buettner-Booking@bjoern-buettner.me/bookings/"
+                       target="_blank" title="{{ menu.booking[1] }}">{{ menu.booking[0] }}</a></li>
+                <li><a title="{{ menu.service[1] }}"
+                       href="mailto:service@bjoern-buettner.me">{{ menu.service[0] }}</a>
+                </li>
+                <li><a title="{{ menu.support[1] }}"
+                       href="mailto:support@bjoern-buettner.me">{{ menu.support[0] }}</a>
+                </li>
             </ul>
         </li>
         <li>
-            <a {% if active=='/solutions' %}class="active"{% elseif active=='/team' %}class="active"{% endif %} title="{{ menu.about[1] }}">{{ menu.about[0] }}</a>
+            <span {% if active=='/solutions' %}class="active" {% elseif active=='/team' %}class="active"{% endif %}
+               title="{{ menu.about[1] }}">{{ menu.about[0] }}</span>
             <ul>
-                <li><a {% if active=='/solutions' %}class="active" {% endif %} href="/solutions/{{ lang }}" title="{{ menu.solutions[1] }}">{{ menu.solutions[0] }}</a></li>
-                <li><a {% if active=='/team' %}class="active" {% endif %} href="/team/{{ lang }}" title="{{ menu.team[1] }}">{{ menu.team[0] }}</a></li>
+                <li><a {% if active=='/solutions' %}class="active-sub" {% endif %} href="/solutions/{{ lang }}"
+                       title="{{ menu.solutions[1] }}">{{ menu.solutions[0] }}</a></li>
+                <li><a {% if active=='/team' %}class="active-sub" {% endif %} href="/team/{{ lang }}"
+                       title="{{ menu.team[1] }}">{{ menu.team[0] }}</a></li>
             </ul>
         </li>
         <li>
-            <a title="{{ menu.socials[1] }}">{{ menu.socials[0] }}</a>
+            <span title="{{ menu.socials[1] }}">{{ menu.socials[0] }}</span>
             <ul>
-                <li><a href="https://www.google.com/maps/place/Bj%C3%B6rn+B%C3%BCttner/@51.4168451,6.8539511,15z/data=!4m8!3m7!1s0x47b8c181aa157c71:0xd4a0e7a32e47292e!8m2!3d51.4168451!4d6.8539511!9m1!1b1!16s%2Fg%2F11v17jpq5g" target="_blank" title="{{ menu.ratings[1] }}">{{ menu.ratings[0] }}</a></li>
-                <li><a href="https://github.com/bjoern-buettner" target="_blank" title="{{ menu.github[1] }}">{{ menu.github[0] }}</a></li>
-                <li><a href="https://www.linkedin.com/company/bjoern-buettner/" target="_blank" title="{{ menu.linkedin[1] }}">{{ menu.linkedin[0] }}</a></li>
+                <li>
+                    <a href="https://www.google.com/maps/place/Bj%C3%B6rn+B%C3%BCttner/@51.4168451,6.8539511,15z/data=!4m8!3m7!1s0x47b8c181aa157c71:0xd4a0e7a32e47292e!8m2!3d51.4168451!4d6.8539511!9m1!1b1!16s%2Fg%2F11v17jpq5g"
+                       target="_blank" title="{{ menu.ratings[1] }}">{{ menu.ratings[0] }}</a></li>
+                <li><a href="https://github.com/bjoern-buettner" target="_blank"
+                       title="{{ menu.github[1] }}">{{ menu.github[0] }}</a></li>
+                <li><a href="https://www.linkedin.com/company/bjoern-buettner/" target="_blank"
+                       title="{{ menu.linkedin[1] }}">{{ menu.linkedin[0] }}</a></li>
             </ul>
         </li>
-        <li><a {% if active=='/imprint' %}class="active" {% endif %} href="/imprint/{{ lang }}" title="{{ menu.imprint[1] }}">{{ menu.imprint[0] }}</a></li>
-        <li><a {% if active=='/login' %}class="active" {% endif %} href="/login/{{ lang }}" title="{{ menu.login[1] }}">{{ menu.login[0] }}</a></li>
-        <li><a {% if active=='/admin ' %}class="active" {% endif %} href="/admin/{{ lang }}" title="{{ menu.dashboard[1] }}">{{ menu.dashboard[0] }}</a></li>
-        <li><a {% if active=='/admin/self' %}class="active" {% endif %} href="/admin/self/{{ lang }}" title="{{ menu.self[1] }}">{{ menu.self[0] }}</a></li>
+        <li><a {% if active=='/imprint' %}class="active" {% endif %} href="/imprint/{{ lang }}"
+               title="{{ menu.imprint[1] }}">{{ menu.imprint[0] }}</a></li>
+        <li><a {% if active=='/login' %}class="active" {% endif %} href="/login/{{ lang }}"
+               title="{{ menu.login[1] }}">{{ menu.login[0] }}</a></li>
+        <li><a {% if active=='/admin ' %}class="active" {% endif %} href="/admin/{{ lang }}"
+               title="{{ menu.dashboard[1] }}">{{ menu.dashboard[0] }}</a></li>
+        <li><a {% if active=='/admin/self' %}class="active" {% endif %} href="/admin/self/{{ lang }}"
+               title="{{ menu.self[1] }}">{{ menu.self[0] }}</a></li>
     </ul>
 </nav>
-<div id="wrapper">
-    <div id="content">
-        {% block body %}
+{# <div id="wrapper"> #}
+{#    <div id="content"> #}
+{#        {% block body %} #}
 
-        {% endblock %}
-    </div>
-    <div id="sidebar">
+{#        {% endblock %} #}
+{#    </div> #}
+{#    <div id="sidebar"> #}
 
-    </div>
-</div>
-<div style="clear:both;"></div>
-<footer id="main-footer">
-    <div id="inner">
-        &copy; 2023 Björn Büttner -
-        <a href="mailto:service@bjoern-buettner.me">
-            {% if lang=='en' %}Quotes &amp; Contracts{% else %}Kostenvoranschläge &amp; Verträge{% endif %}
-        </a>
-        -
-        <a href="mailto:support@bjoern-buettner.me">
-            {% if lang=='en' %}Customer Support{% else %}Kundensupport{% endif %}
-        </a>
-    </div>
-</footer>
-<!-- Matomo -->
-<script>
-    var _paq = window._paq = window._paq || [];
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function () {
-        const u = "https://tracking.bjoern-buettner.me/";
-        _paq.push(['setTrackerUrl', u + 'matomo.php']);
-        _paq.push(['setSiteId', '1']);
-        const d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
-        g.async = true;
-        g.src = u + 'matomo.js';
-        g.onerror = () => {
-            const i = d.createElement('img');
-            i.setAttribute('src', 'https://tracking.bjoern-buettner.me/matomo.php?idsite=1&amp;rec=1');
-            i.setAttribute('alt', 'tracking pixel');
-            document.body.appendChild(i);
-        };
-        s.parentNode.insertBefore(g, s);
-    })();
-</script>
-<noscript>
-    <img src="https://tracking.bjoern-buettner.me/matomo.php?idsite=1&amp;rec=1" alt="tracking pixel"/>
-</noscript>
-<!-- End Matomo Code -->
-<script src="/cookieinfo.js"></script>
-<script>
-    notifyAboutCookies("{% if lang=='en' %}We are using cookies to provide this site's functionality and improve the user experience.{% elseif lang=='de' %}Wir nutzen Cookies um die Funktionalität dieser Seite bereitzustellen und die Nutzererfahrung zu verbessern.{% endif %}");
-</script>
-<div id="share-menu">
-    <ul>
-        <li class="facebook" title="Share on Facebook"><a
-                href="https://www.facebook.com/sharer/sharer.php?u={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&quote={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}"
-                target="_blank">f</a></li>
-        <li class="twitter" title="Tweet"><a
-                href="https://twitter.com/intent/tweet?source={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&text={{ title|url_encode }}"
-                target="_blank">t</a></li>
-        <li class="reddit" title="Submit to Reddit"><a
-                href="https://www.reddit.com/submit?url={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&title={{ title|url_encode }}"
-                target="_blank">r</a></li>
-        <li class="linkedin" title="Share on LinkedIn"><a
-                href="https://www.linkedin.com/shareArticle?mini=true&url={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&title={{ title|url_encode }}&summary={{ description|url_encode }}&source={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}"
-                target="_blank">li</a></li>
-        <li class="email" title="Send email"><a
-                href="mailto:?subject={{ title|url_encode }}&body={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}"
-                target="_blank">✉</a></li>
-    </ul>
-</div>
+{#    </div> #}
+{# </div> #}
+{# <div style="clear:both;"></div> #}
+{# <footer id="main-footer"> #}
+{#    <div id="inner"> #}
+{#        &copy; 2023 Björn Büttner -#}
+{#        <a href="mailto:service@bjoern-buettner.me"> #}
+{#            {% if lang=='en' %}Quotes &amp; Contracts{% else %}Kostenvoranschläge &amp; Verträge{% endif %} #}
+{#        </a> #}
+{#        -#}
+{#        <a href="mailto:support@bjoern-buettner.me"> #}
+{#            {% if lang=='en' %}Customer Support{% else %}Kundensupport{% endif %} #}
+{#        </a> #}
+{#    </div> #}
+{# </footer> #}
+{# <!-- Matomo --> #}
+{# <script> #}
+{#    var _paq = window._paq = window._paq || []; #}
+{#    _paq.push(['trackPageView']); #}
+{#    _paq.push(['enableLinkTracking']); #}
+{#    (function () { #}
+{#        const u = "https://tracking.bjoern-buettner.me/"; #}
+{#        _paq.push(['setTrackerUrl', u + 'matomo.php']); #}
+{#        _paq.push(['setSiteId', '1']); #}
+{#        const d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0]; #}
+{#        g.async = true; #}
+{#        g.src = u + 'matomo.js'; #}
+{#        g.onerror = () => { #}
+{#            const i = d.createElement('img'); #}
+{#            i.setAttribute('src', 'https://tracking.bjoern-buettner.me/matomo.php?idsite=1&amp;rec=1'); #}
+{#            i.setAttribute('alt', 'tracking pixel'); #}
+{#            document.body.appendChild(i); #}
+{#        }; #}
+{#        s.parentNode.insertBefore(g, s); #}
+{#    })(); #}
+{# </script> #}
+{# <noscript> #}
+{#    <img src="https://tracking.bjoern-buettner.me/matomo.php?idsite=1&amp;rec=1" alt="tracking pixel"/> #}
+{# </noscript> #}
+{# <!-- End Matomo Code --> #}
+{# <script src="/cookieinfo.js"></script> #}
+{# <script> #}
+{#    notifyAboutCookies("{% if lang=='en' %}We are using cookies to provide this site's functionality and improve the user experience.{% elseif lang=='de' %}Wir nutzen Cookies um die Funktionalität dieser Seite bereitzustellen und die Nutzererfahrung zu verbessern.{% endif %}"); #}
+{# </script> #}
+{# <div id="share-menu"> #}
+{#    <ul> #}
+{#        <li class="facebook" title="Share on Facebook"><a #}
+{#                href="https://www.facebook.com/sharer/sharer.php?u={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&quote={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}" #}
+{#                target="_blank">f</a></li> #}
+{#        <li class="twitter" title="Tweet"><a #}
+{#                href="https://twitter.com/intent/tweet?source={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&text={{ title|url_encode }}" #}
+{#                target="_blank">t</a></li> #}
+{#        <li class="reddit" title="Submit to Reddit"><a #}
+{#                href="https://www.reddit.com/submit?url={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&title={{ title|url_encode }}" #}
+{#                target="_blank">r</a></li> #}
+{#        <li class="linkedin" title="Share on LinkedIn"><a #}
+{#                href="https://www.linkedin.com/shareArticle?mini=true&url={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&title={{ title|url_encode }}&summary={{ description|url_encode }}&source={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}" #}
+{#                target="_blank">li</a></li> #}
+{#        <li class="email" title="Send email"><a #}
+{#                href="mailto:?subject={{ title|url_encode }}&body={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}" #}
+{#                target="_blank">✉</a></li> #}
+{#    </ul> #}
 </body>
 </html>

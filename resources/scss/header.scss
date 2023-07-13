@@ -1,4 +1,4 @@
-#header {
+.header {
   padding: 10px 0 0 0;
   display: flex;
   justify-content: center;
@@ -11,11 +11,11 @@
     > img {
       &.small {
         width: 32px;
-        padding: 16px;
-        border-radius: 24px;
+        height: 32px;
+        border-radius: 12px;
 
         &:last-of-type {
-          margin-left: -56px;
+          margin-left: -48px;
           margin-bottom: -8px;
         }
       }
@@ -24,6 +24,6 @@
 
   > h1 {
     font-size: 22px;
-    padding:20px 20px 0 20px;
+    padding: 20px 20px 0 20px;
   }
 }

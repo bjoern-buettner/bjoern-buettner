@@ -1,88 +1,137 @@
 nav#main-navigation {
-  height: 35px;
-  color: #fff;
-  border-top: 0.5px solid #000;
-  border-bottom: 0.5px solid #000;
-  background: linear-gradient(180deg, #8ABB86 0%, #289548 8.33%), #289548;
+  font-size: 0.75em;
 
   > ul {
-    width: 1024px;
-    height: 35px;
-    margin: auto;
-    padding: 0;
+    list-style: none;
 
     > li {
-      cursor: pointer;
-      float: left;
-      list-style: none;
-      position: relative;
+      > a.active, > span.active {
+        background: var(--bb-darkgrey);
+      }
+    }
+
+    > li, > ul > li {
+      width: 100%;
+      height: 35px;
 
       &:hover {
+        height: auto;
+
         > ul {
           display: block;
-          position: absolute;
-        }
-      }
 
-      > ul {
-        display: none;
-        padding: 0;
-        background-color: var(--bb-darkgrey);
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
+          > li > a, > li > span {
+            background-color: var(--bb-darkgrey);
 
-        > li {
-          float: none;
-
-          > a {
-            white-space: nowrap;
-            font-size: 11px;
-            color: var(--bb-white);
-            text-decoration: none;
-            width: auto;
-            padding: 0.75em;
-            display: block;
-            height: 25px;
-            line-height: 25px;
-            transition: 0.5s;
-
-            &:hover {
-              background-color: var(--bb-green);
-              border-bottom-left-radius: 5px;
-              border-bottom-right-radius: 5px;
+            &.active-sub {
+              background-color: var(--bb-lightgreen);
             }
 
-            &:active {
-              color: var(--bb-black);
+            &:hover {
+              background-color: var(--bb-lightgreen);
             }
           }
         }
       }
 
-      > a {
-        width: auto;
-        height: 35px;
+      > a, > span, > ul > li > a {
+        width: inherit;
+        height: inherit;
         display: block;
-        color: var(--bb-white);
-        padding: 0 0.75em;
+        text-align: center;
         line-height: 35px;
-        text-decoration: none;
-        font-size: 10px;
+        border-bottom: 1px solid var(--bb-darkgrey);
+        background-color: var(--bb-green);
+        color: var(--bb-white);
         text-transform: uppercase;
-        transition: 0.5s;
-        text-shadow: var(--bb-black) 1px 0;
+        text-decoration: none;
+        cursor: pointer;
+        transition: 0.3s;
 
         &:hover {
-          border-radius: 5px;
           background-color: var(--bb-lightgreen);
-          color: var(--bb-darkgrey);
-          text-shadow: none;
         }
 
         &:active {
-          color: var(--bb-black);
-          text-shadow: none;
+          background-color: var(--bb-darkgrey);
         }
+      }
+
+      > ul {
+        display: none;
+      }
+    }
+
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  nav#main-navigation {
+    width: 100%;
+    height: 37px;
+    background: linear-gradient(180deg, #8ABB86 0%, #289548 8.33%), #289548;
+    border-top: 0.5px solid #000;
+    border-bottom: 0.5px solid #000;
+
+    > ul {
+      width: 1024px;
+      height: 35px;
+      margin: 0 auto;
+      list-style: none;
+
+      > li {
+        width: auto;
+        height: 35px;
+        float: left;
+        position: relative;
+        white-space: nowrap;
+
+        > ul {
+          display: none;
+        }
+
+        &:hover {
+          > ul {
+            display: block;
+            position: absolute;
+            list-style: none;
+
+            > li {
+              &:last-of-type {
+                > a {
+                  border-bottom-left-radius: 5px;
+                  border-bottom-right-radius: 5px;
+                }
+              }
+
+              > a {
+                background-color: var(--bb-darkgrey);
+                padding: 0 10px;
+                border: none;
+
+                &:hover {
+                  background-color: var(--bb-lightgreen);
+                }
+              }
+            }
+          }
+        }
+
+        > a, > span {
+          background: linear-gradient(180deg, #8ABB86 0%, #289548 8.33%), #289548;
+          border: none;
+          padding: 0 10px;
+
+          &:hover {
+            background-color: var(--bb-lightgreen);
+          }
+
+          &:active {
+            background-color: var(--bb-darkgrey);
+          }
+        }
+
+
       }
     }
   }
