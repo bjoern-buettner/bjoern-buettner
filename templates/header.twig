@@ -27,11 +27,11 @@
             </a>
             {% if lang != 'de' %}
                 <a hreflang="de" href="{% if active != '/' %}{{ active }}{% endif %}/de" title="Zu Deutsch wechseln">
-                    <img class="small" src="/de.jpg" alt="Deutsch"/><img class="small" src="/en.jpg" alt="English"/>
+                    <img class="small" src="/german.png" alt="Deutsch"/><img class="small" src="/english.png" alt="English"/>
                 </a>
             {% else %}
                 <a hreflang="de" href="{% if active != '/' %}{{ active }}{% endif %}/en" title="Switch to english">
-                    <img class="small" src="/en.jpg" alt="English"/><img class="small" src="/de.jpg" alt="Deutsch"/>
+                    <img class="small" src="/english.png" alt="English"/><img class="small" src="/german.png" alt="Deutsch"/>
                 </a>
             {% endif %}
         </div>
