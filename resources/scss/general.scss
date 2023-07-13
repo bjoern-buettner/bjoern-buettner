@@ -73,8 +73,9 @@ body, html {
         padding: 0 5px;
       }
 
-      > button[type=submit] {
+      > input[type=submit] {
         background-color: var(--bb-green);
+        cursor: pointer;
       }
 
       a {
