@@ -39,7 +39,7 @@
             <ul>
                 <li><a {% if active=='/' %}class="active" {% endif %}href="/{{ lang }}" title="{{ menu.home[1] }}">{{ menu.home[0] }}</a></li>
                 <li>
-                    <span{% if active=='/prices' %}class="active"{% elseif active=='/blog' %}class="active"{% endif %} title="{{ menu.products[1] }}">{{ menu.products[0] }}</span>
+                    <span {% if active=='/prices' %}class="active"{% elseif active=='/blog' %}class="active"{% endif %} title="{{ menu.products[1] }}">{{ menu.products[0] }}</span>
                     <ul>
                         <li><a {% if active=='/prices' %}class="active" {% endif %} href="/prices/{{ lang }}" title="{{ menu.prices[1] }}">{{ menu.prices[0] }}</a></li>
                         <li><a {% if active=='/blog' %}class="active" {% endif %} href="/blog/{{ lang }}" title="{{ menu.blog[1] }}">{{ menu.blog[0] }}</a></li>
@@ -71,7 +71,17 @@
                 </li>
                 <li><a {% if active=='/imprint' %}class="active" {% endif %} href="/imprint/{{ lang }}" title="{{ menu.imprint[1] }}">{{ menu.imprint[0] }}</a></li>
                 <li><a {% if active=='/login' %}class="active" {% endif %} href="/login/{{ lang }}" title="{{ menu.login[1] }}">{{ menu.login[0] }}</a></li>
-                <li><a {% if active=='/admin ' %}class="active" {% endif %} href="/admin/{{ lang }}" title="{{ menu.dashboard[1] }}">{{ menu.dashboard[0] }}</a></li>
-                <li><a {% if active=='/admin/self' %}class="active" {% endif %} href="/admin/self/{{ lang }}" title="{{ menu.self[1] }}">{{ menu.self[0] }}</a></li>
+                {% if isAdmin %}<li>
+                    <span title="{{ menu.administration[1] }}">{{ menu.administration[1] }}</span>
+                    <ul>
+                        <li><a {% if active=='/admin ' %}class="active" {% endif %} href="/admin/{{ lang }}" title="{{ menu.dashboard[1] }}">{{ menu.dashboard[0] }}</a></li>
+                        <li><a {% if active=='/admin/self' %}class="active" {% endif %} href="/admin/self/{{ lang }}" title="{{ menu.self[1] }}">{{ menu.self[0] }}</a></li>
+                    </ul>
+                </li>{% elseif isCustomer %}<li>
+                    <span title="{{ menu.customer[1] }}">{{ menu.customer[1] }}</span>
+                    <ul>
+                        <li><a {% if active=='/customer ' %}class="active" {% endif %} href="/customer/{{ lang }}" title="{{ menu.dashboard[1] }}">{{ menu.dashboard[0] }}</a></li>
+                    </ul>
+                </li>{% endif %}
             </ul>
         </nav>

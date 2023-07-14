@@ -27,6 +27,7 @@ class MenuList
         'products' => ['Services', 'Our services and prices.',],
         'about' => ['About us', 'Information about us.',],
         'socials' => ['Socials', 'Our social media profiles.',],
+        'dashboard' => ['Dashboard', 'Use additional services.',],
     ];
     public static array $de = [
         'home' =>  ['Home', 'Unsere Startseite mit einem herzlichen Willkommen!',],
@@ -54,5 +55,6 @@ class MenuList
         'products' => ['Dienstleistungen', 'Unsere Dienstleistungen und Preise.',],
         'about' => ['Über uns', 'Informationen über uns.',],
         'socials' => ['Soziales', 'Unsere Profile in sozialen Medien.',],
+        'dashboard' => ['Dashboard', 'Nutzen Sie weiterführende Services.',],
     ];
 }
