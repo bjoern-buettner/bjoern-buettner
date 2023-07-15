@@ -26,7 +26,7 @@
                             </em>
                         {% else %}
                             <em itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-                                <span itemprop="price">{{ task.price | number_format(2, ',', '.') }}</span><span itemprop="priceCurrency">€</span{% if task.fee_type=='hourly' %}/Stunde{% elseif task.fee_type=='monthly' %}/Monat{% elseif task.fee_type=='item' %} jeweils{% endif %}
+                                <span itemprop="price">{{ task.price | number_format(2, ',', '.') }}</span><span itemprop="priceCurrency">€</span>{% if task.fee_type=='hourly' %}/Stunde{% elseif task.fee_type=='monthly' %}/Monat{% elseif task.fee_type=='item' %} jeweils{% endif %}
                             </em>
                         {% endif %}
                     </li>
