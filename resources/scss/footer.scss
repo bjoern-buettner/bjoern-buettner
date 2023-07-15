@@ -25,6 +25,7 @@
       width: 1024px;
       margin: auto;
       height: 100%;
+
       > .row {
         height: 100%;
         padding: 10px 0;
@@ -44,7 +45,7 @@
         }
 
         > .col-8 {
-          border-right:1px solid $bb-white;
+          border-right: 1px solid $bb-white;
         }
       }
     }
