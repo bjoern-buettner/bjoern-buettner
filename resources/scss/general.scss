@@ -12,10 +12,16 @@ $bb-blue: #1E90FF;
   padding: 0;
 }
 
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: Inter, Arial, sans-serif;
+}
+
 h1 {
   color: $bb-green;
   border-bottom: 1px solid $bb-green;
-  margin: 0 0 5px 0;
+  margin: 0 0 20px 0;
 }
 
 h2, h3, h4, h5 {
@@ -38,12 +44,6 @@ a {
 p {
   margin: 10px 0;
   font-size: 0.85em;
-}
-
-body, html {
-  width: 100%;
-  height: 100%;
-  font-family: Inter, Arial, sans-serif;
 }
 
 #content {

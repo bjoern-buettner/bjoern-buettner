@@ -11,7 +11,7 @@
     <p>Falls Sie ein Kunde sind, der den Werbebonus nutzen will, binden Sie einfach das Werbe-Script auf Ihrer Seite ein! <a href="/hosted-by-bjoern-buettner.js">https://bjoern-buettner.me/hosted-by-bjoern-buettner.js</a></p>
 {% endif %}
 <h2>{{ content.title2 }}</h2>
-<ul>
+<ul id="prices-wrapper">
     {% for offergroup in offers %}
         <li itemscope itemtype="https://schema.org/ItemList">
             <h3 itemprop="name" onclick="this.parentNode.classList.toggle('active');">{{ offergroup[lang] }}</h3>

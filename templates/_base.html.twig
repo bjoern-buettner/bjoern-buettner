@@ -129,14 +129,24 @@
 </div>
 <footer id="main-footer">
     <div id="inner">
-        &copy; 2023 Björn Büttner -
-        <a href="mailto:service@bjoern-buettner.me">
-            {% if lang=='en' %}Quotes &amp; Contracts{% else %}Kostenvoranschläge &amp; Verträge{% endif %}
-        </a>
-        -
-        <a href="mailto:support@bjoern-buettner.me">
-            {% if lang=='en' %}Customer Support{% else %}Kundensupport{% endif %}
-        </a>
+        <div class="row">
+            <div class="col-8"><p>Google Bewertungen</p></div>
+            <div class="col-4">
+                <p>Bj&ouml;rn B&uuml;ttner</p><br>
+                <a href="/imprint/{{ lang }}" title="{{ menu.imprint[1] }}">{{ menu.imprint[0] }}</a><br>
+                <a href="/team/{{ lang }}" title="{{ menu.team[1] }}">{{ menu.team[0] }}</a><br><br>
+                <a title="{{ menu.service[1] }}" href="mailto:service@bjoern-buettner.me">{{ menu.service[0] }}</a><br>
+                <a title="{{ menu.support[1] }}" href="mailto:support@bjoern-buettner.me">{{ menu.support[0] }}</a>
+            </div>
+        </div>
+{#        &copy; 2023 Björn Büttner -#}
+{#        <a href="mailto:service@bjoern-buettner.me">#}
+{#            {% if lang=='en' %}Quotes &amp; Contracts{% else %}Kostenvoranschläge &amp; Verträge{% endif %}#}
+{#        </a>#}
+{#        -#}
+{#        <a href="mailto:support@bjoern-buettner.me">#}
+{#            {% if lang=='en' %}Customer Support{% else %}Kundensupport{% endif %}#}
+{#        </a>#}
     </div>
 </footer>
 <div id="share-buttons">
