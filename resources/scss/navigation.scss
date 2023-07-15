@@ -6,29 +6,27 @@ nav#main-navigation {
 
     > li {
       > a.active, > span.active {
-        background: var(--bb-darkgrey);
+        background: $bb-darkgrey;
       }
     }
 
     > li, > ul > li {
       width: 100%;
-      height: 35px;
 
       &:hover {
-        height: auto;
 
         > ul {
           display: block;
 
           > li > a, > li > span {
-            background-color: var(--bb-darkgrey);
+            background-color: $bb-darkgrey;
 
             &.active-sub {
-              background-color: var(--bb-lightgreen);
+              background-color: $bb-lightgreen;
             }
 
             &:hover {
-              background-color: var(--bb-lightgreen);
+              background-color: $bb-lightgreen;
             }
           }
         }
@@ -39,21 +37,21 @@ nav#main-navigation {
         height: inherit;
         display: block;
         text-align: center;
-        line-height: 35px;
-        border-bottom: 1px solid var(--bb-darkgrey);
-        background-color: var(--bb-green);
-        color: var(--bb-white);
+        line-height: 3em;
+        border-bottom: 1px solid $bb-darkgrey;
+        background-color: $bb-green;
+        color: $bb-white;
         text-transform: uppercase;
         text-decoration: none;
         cursor: pointer;
         transition: 0.3s;
 
         &:hover {
-          background-color: var(--bb-lightgreen);
+          background-color: $bb-lightgreen;
         }
 
         &:active {
-          background-color: var(--bb-darkgrey);
+          background-color: $bb-darkgrey;
         }
       }
 
@@ -65,22 +63,22 @@ nav#main-navigation {
 }
 
 @media only screen and (min-width: 768px) {
+  $gradient: linear-gradient(180deg, $bb-lightgreen 0%, $bb-green 8.33%), $bb-green;
   nav#main-navigation {
     width: 100%;
-    height: 37px;
-    background: linear-gradient(180deg, #8ABB86 0%, #289548 8.33%), #289548;
-    border-top: 0.5px solid #000;
-    border-bottom: 0.5px solid #000;
+    background: $gradient;
+    border-top: 1px solid $bb-black;
+    border-bottom: 1px solid $bb-black;
 
     > ul {
       width: 1024px;
-      height: 35px;
+      height: 3em;
       margin: 0 auto;
       list-style: none;
 
       > li {
         width: auto;
-        height: 35px;
+        height: 3em;
         float: left;
         position: relative;
         white-space: nowrap;
@@ -91,7 +89,7 @@ nav#main-navigation {
 
         &:hover {
           > a, > span {
-            background: var(--bb-lightgreen);
+            background: $bb-lightgreen;
           }
 
           > ul {
@@ -108,12 +106,12 @@ nav#main-navigation {
               }
 
               > a {
-                background-color: var(--bb-darkgrey);
+                background-color: $bb-darkgrey;
                 padding: 0 10px;
                 border: none;
 
                 &:hover {
-                  background-color: var(--bb-lightgreen);
+                  background-color: $bb-lightgreen;
                 }
               }
             }
@@ -121,16 +119,16 @@ nav#main-navigation {
         }
 
         > a, > span {
-          background: linear-gradient(180deg, #8ABB86 0%, #289548 8.33%), #289548;
+          background: $gradient;
           border: none;
           padding: 0 10px;
 
           &:hover {
-            background-color: var(--bb-lightgreen);
+            background-color: $bb-lightgreen;
           }
 
           &:active {
-            background-color: var(--bb-darkgrey);
+            background-color: $bb-darkgrey;
           }
         }
       }

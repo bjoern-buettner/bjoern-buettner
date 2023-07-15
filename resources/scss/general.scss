@@ -1,12 +1,10 @@
-:root {
-  --bb-green: #289548;
-  --bb-lightgreen: #8ABB86;
-  --bb-black: #111111;
-  --bb-darkgrey: #333333;
-  --bb-lightgrey: #EEEEEE;
-  --bb-white: #FFFFFF;
-  --bb-blue: #1E90FF;
-}
+$bb-green: #289548;
+$bb-lightgreen: #8ABB86;
+$bb-black: #111111;
+$bb-darkgrey: #333333;
+$bb-lightgrey: #EEEEEE;
+$bb-white: #FFFFFF;
+$bb-blue: #1E90FF;
 
 * {
   box-sizing: border-box;
@@ -15,13 +13,26 @@
 }
 
 h1 {
-  color: var(--bb-green);
-  border-bottom: 1px solid var(--bb-green);
+  color: $bb-green;
+  border-bottom: 1px solid $bb-green;
   margin: 0 0 5px 0;
 }
 
 h2, h3, h4, h5 {
-  color: var(--bb-lightgreen);
+  color: $bb-lightgreen;
+}
+
+a {
+  text-decoration: none;
+  color: $bb-blue;
+
+  &:hover {
+    color: $bb-darkgrey;
+  }
+
+  &:active {
+    text-decoration: underline;
+  }
 }
 
 p {
@@ -35,12 +46,15 @@ body, html {
   font-family: Inter, Arial, sans-serif;
 }
 
-
 #content {
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: 0 4px 4px 0 rgba(203, 203, 203, 0.25);
   padding: 10px;
   margin: 10px 0;
+}
+
+#wrapper {
+  margin: 0 auto 150px auto;
 }
 
 #sidebar {
@@ -51,8 +65,8 @@ body, html {
     margin: 0 0 10px 0;
 
     > h4 {
-      color: var(--bb-green);
-      border-bottom: 1px solid var(--bb-lightgreen);
+      color: $bb-green;
+      border-bottom: 1px solid $bb-lightgreen;
     }
 
     > form {
@@ -62,7 +76,7 @@ body, html {
       > input, > button {
         width: 100%;
         height: 30px;
-        color: var(--bb-white);
+        color: $bb-white;
         margin: 0 0 5px 0;
       }
 
@@ -74,16 +88,16 @@ body, html {
       }
 
       > input[type=submit] {
-        background-color: var(--bb-green);
+        background-color: $bb-green;
         cursor: pointer;
       }
 
       a {
         font-size: 0.75em;
-        color: var(--bb-black);
+        color: $bb-black;
 
         &:hover {
-          color: var(--bb-blue);
+          color: $bb-blue;
         }
 
         &:active {
@@ -97,12 +111,10 @@ body, html {
 @media only screen and (min-width: 768px) {
   #wrapper {
     width: 1024px;
-    margin: 0 auto;
+    margin: 0 auto 150px auto;
   }
 
   #content {
-    height: auto !important;
-    min-height: 100%;
     border: 1px solid rgba(0, 0, 0, 0.15);
     box-shadow: 0 4px 4px 0 rgba(203, 203, 203, 0.25);
     padding: 10px;
@@ -118,18 +130,5 @@ body, html {
       border: 1px solid rgba(0, 0, 0, 0.15);
       box-shadow: 0 4px 4px 0 rgba(203, 203, 203, 0.25);
     }
-  }
-}
-
-a {
-  text-decoration: none;
-  color: var(--bb-blue);
-
-  &:hover {
-    color: var(--bb-darkgrey);
-  }
-
-  &:active {
-    text-decoration: underline;
   }
 }

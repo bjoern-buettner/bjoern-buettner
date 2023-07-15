@@ -16,7 +16,6 @@ class MenuList
         'github' => ['GitHub', 'Our open-source projects including this website\'s code.',],
         'linkedin' => ['LinkedIn', 'Our business page with the option of receiving news from us.',],
         'team' => ['Team', 'Get to know a bit about us.',],
-        'login' => ['Login', 'Sign in with your existing account.',],
         'self' => ['Self', 'Edit your About Me.',],
         'support' => [
             'Customer Support',
@@ -41,7 +40,6 @@ class MenuList
         'github' => ['GitHub', 'Unsere Opensource-Projekte, inklusive des Codes dieser Webseite.',],
         'linkedin' => ['LinkedIn', 'Unsere Unternehmensseite mit der Option auf News von uns.',],
         'team' => ['Team', 'Lernen Sie unser Team kennen.',],
-        'login' => ['Anmelden', 'Melden Sie sich mit Ihrem existierenden Account an.',],
         'self' => ['Selbst', 'Bearbeiten Sie das Über mich.',],
         'support' => [
             'Kundensupport',

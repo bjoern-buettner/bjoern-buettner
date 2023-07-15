@@ -4,14 +4,15 @@ footer#main-footer {
   height: 145px;
   line-height: 35px;
   font-size: 10px;
-  background-color: var(--bb-green);
+  background-color: $bb-green;
+  position: fixed;
 
   a {
     text-decoration: none;
-    color: var(--bb-white);
+    color: $bb-white;
 
     &:hover {
-      color: var(--bb-darkgrey);
+      color: $bb-darkgrey;
     }
 
     &:active {
