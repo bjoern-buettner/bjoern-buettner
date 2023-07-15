@@ -1,26 +1,28 @@
-div#blog-wrapper {
-  ul, li {
-    display: block;
-    padding: 0;
-    margin: 0;
-  }
-
-  > ul > li > .tags {
-    > ul {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+@media only screen and (min-width: 768px) {
+  div#blog-wrapper {
+    ul, li {
+      display: block;
       padding: 0;
-      margin: 0 0 10px 0;
-      list-style: none;
+      margin: 0;
+    }
 
-      > li {
-        margin: 0.25em;
-        padding: 0.25em;
-        text-align: center;
-        border: 1px solid #ccc;
-        border-radius: 0.25em;
-        box-shadow: 3px 3px 5px #ccc;
+    > ul > li > .tags {
+      > ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
+        margin: 0 0 10px 0;
+        list-style: none;
+
+        > li {
+          margin: 0.25em;
+          padding: 0.25em;
+          text-align: center;
+          border: 1px solid #ccc;
+          border-radius: 0.25em;
+          box-shadow: 3px 3px 5px #ccc;
+        }
       }
     }
   }
