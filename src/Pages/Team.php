@@ -3,17 +3,18 @@
 namespace Me\BjoernBuettner\Pages;
 
 use Me\BjoernBuettner\Database;
+use Me\BjoernBuettner\Entity\Teammember;
 use Me\BjoernBuettner\TextOutputBuilder;
 use Twig\Environment;
 
 class Team
 {
-    public function __construct(private readonly TextOutputBuilder $twig)
+    public function __construct(private readonly TextOutputBuilder $twig, private readonly Database $database)
     {
     }
     public function get(string $lang): string
     {
-        $team = Database::get()->query('SELECT * FROM teammember')->fetchAll();
+        $team = $this->database->load(Teammember::class);
         switch ($lang) {
             case 'en':
                 return $this->twig->renderHTML('team.twig', [
