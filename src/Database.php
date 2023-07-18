@@ -2,11 +2,15 @@
 
 namespace Me\BjoernBuettner;
 
+use DateTime;
+use DateTimeImmutable;
+use Exception;
 use Me\BjoernBuettner\Exceptions\InvalidEntityException;
 use PDO;
 use PDOStatement;
 use ReflectionClass;
 use ReflectionException;
+use ReflectionProperty;
 use Symfony\Component\String\UnicodeString;
 
 class Database
@@ -55,6 +59,8 @@ class Database
                             'float' => (float)$assoc[$name],
                             'bool' => $assoc[$name] === '1',
                             'array' => explode(',', $assoc[$name]),
+                            'DateTime' => new DateTime($assoc[$name]),
+                            'DateTimeImmutable' => new DateTimeImmutable($assoc[$name]),
                             default => (string)$assoc[$name],
                         };
                     }
@@ -62,26 +68,23 @@ class Database
                 },
                 $statement->fetchAll(PDO::FETCH_ASSOC) ?: []
             );
-        } catch (ReflectionException $e) {
+        } catch (Exception $e) {
             throw new InvalidEntityException("unable to construct class $class", 0, $e);
         }
     }
     public function store(object $object): void
     {
-        $rc = new ReflectionClass($object);
-        $properties = $rc->getProperties();
-        $columns = [];
-        foreach ($properties as $property) {
-            $columns[] = (new UnicodeString($property->getName()))->snake()->toString();
+        try {
+            $rc = new ReflectionClass($object);
+            $aid = $rc->getProperty('aid');
+            if (is_integer($aid->getValue($object))) {
+                $this->insert($object, $rc, $aid);
+                return;
+            }
+            $this->update($object, $rc, $aid);
+        } catch (ReflectionException $e) {
+            throw new InvalidEntityException("Unable to store object", 0, $e);
         }
-        $name = (new UnicodeString($rc->getShortName()))->snake()->toString();
-        $sql = "INSERT INTO {$name} (" . implode(',', $columns) . ") VALUES (:" . implode(',:', $columns) . ")";
-        $statement = $this->get()->prepare($sql);
-        foreach ($properties as $property) {
-            $this->bindValue($statement, $property->getValue($object), $property->getName());
-        }
-        $statement->execute();
-        $rc->getProperty('id')?->setValue($object, $this->get()->lastInsertId());
     }
     private function bindValue(PDOStatement $statement, mixed $value, string $name): void
     {
@@ -111,5 +114,48 @@ class Database
             );
         }
         return $this->database;
+    }
+
+    private function insert(object $object, ReflectionClass $rc, ReflectionProperty $aid): void
+    {
+        $properties = $rc->getProperties();
+        $columns = [];
+        foreach ($properties as $property) {
+            if ($property->getName() === 'aid') {
+                continue;
+            }
+            $columns[] = (new UnicodeString($property->getName()))->snake()->toString();
+        }
+        $name = (new UnicodeString($rc->getShortName()))->snake()->toString();
+        $sql = "INSERT INTO {$name} (" . implode(',', $columns) . ") VALUES (:" . implode(',:', $columns) . ")";
+        $statement = $this->get()->prepare($sql);
+        foreach ($properties as $property) {
+            if ($property->getName() === 'aid') {
+                continue;
+            }
+            $this->bindValue($statement, $property->getValue($object), $property->getName());
+        }
+        $statement->execute();
+        $aid->setValue($object, $this->get()->lastInsertId());
+    }
+
+    private function update(object $object, ReflectionClass $rc, ReflectionProperty $aid): void
+    {
+        $properties = $rc->getProperties();
+        $columns = [];
+        foreach ($properties as $property) {
+            if ($property->getName() === 'aid') {
+                continue;
+            }
+            $column = (new UnicodeString($property->getName()))->snake()->toString();
+            $columns[] = "{$column} = :{$column}";
+        }
+        $name = (new UnicodeString($rc->getShortName()))->snake()->toString();
+        $sql = "UPDATE {$name} SET " . implode(',', $columns) . " WHERE aid = :aid";
+        $statement = $this->get()->prepare($sql);
+        foreach ($properties as $property) {
+            $this->bindValue($statement, $property->getValue($object), $property->getName());
+        }
+        $statement->execute();
     }
 }

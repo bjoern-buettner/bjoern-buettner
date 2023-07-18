@@ -4,28 +4,27 @@ declare(strict_types=1);
 
 namespace Me\BjoernBuettner\Entity;
 
-class User
+use Me\BjoernBuettner\Entity;
+
+class User extends Entity
 {
     public function __construct(
-        private ?int $id,
-        private ?int $customerId,
-        private ?int $teamMateId,
-        private string $name,
-        private string $email,
-        private string $password
+        ?int $aid,
+        private readonly ?int $customer,
+        private readonly ?int $teammember,
+        private readonly string $name,
+        private readonly string $email,
+        private readonly string $password
     ) {
+        parent::__construct($aid);
     }
-    public function getId(): ?int
+    public function getCustomer(): ?int
     {
-        return $this->id;
+        return $this->customer;
     }
-    public function getCustomerId(): ?int
+    public function getTeammember(): ?int
     {
-        return $this->customerId;
-    }
-    public function getTeamMateId(): ?int
-    {
-        return $this->teamMateId;
+        return $this->teammember;
     }
     public function getName(): string
     {
