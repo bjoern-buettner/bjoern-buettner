@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phive xmlns="https://phar.io/phive">
+  <phar name="phpcs" version="^3.7.2" installed="3.7.2" location="./tools/phpcs" copy="false"/>
+  <phar name="phpcbf" version="^3.7.2" installed="3.7.2" location="./tools/phpcbf" copy="false"/>
+  <phar name="composer" version="^2.5.7" installed="2.5.7" location="./tools/composer" copy="false"/>
+  <phar name="infection" version="^0.27.0" installed="0.27.0" location="./tools/infection" copy="false"/>
+  <phar name="phpmd" version="^2.13.0" installed="2.13.0" location="./tools/phpmd" copy="false"/>
+  <phar name="phan" version="^5.4.2" installed="5.4.2" location="./tools/phan" copy="false"/>
+</phive>
