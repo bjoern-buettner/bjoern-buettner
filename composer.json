@@ -38,6 +38,7 @@
         "psr-12-fix": "./tools/phpcbf --standard=PSR12 src public",
         "phpmd": "./tools/phpmd src text cleancode,codesize,controversial,design,naming",
         "phan": "./tools/phan",
+        "infection": "./tools/infection",
         "post-install-cmd": [
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "./phive-install.sh",
