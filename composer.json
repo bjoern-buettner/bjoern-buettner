@@ -41,7 +41,7 @@
         "post-install-cmd": [
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "./phive-install.sh",
-            "phive install"
+            "phive install --trust-gpg-keys 31C7E470E2138192,CBB3D576F2A0946F,C5095986493B4AA0,A4E55EA12C7C085C,8101FB57DD8130F0 --no-output"
         ]
     },
     "config": {
