@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Me\BjoernBuettner\Pages;
 
-use Me\BjoernBuettner\Database;
+use Me\BjoernBuettner\ObjectRelationshipMapping\Database;
 use Me\BjoernBuettner\Entity\Keyword;
 use Me\BjoernBuettner\Entity\Post;
 use Me\BjoernBuettner\Entity\PostKeyword;

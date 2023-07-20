@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Me\BjoernBuettner\User;
 
-use Me\BjoernBuettner\Database;
+use Me\BjoernBuettner\ObjectRelationshipMapping\Database;
 use Me\BjoernBuettner\User;
-use PDO;
 
 class Factory
 {
