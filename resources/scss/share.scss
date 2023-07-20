@@ -12,9 +12,9 @@ div#share-buttons {
 
     > li {
       display: block;
-      width: 32px;
-      height: 32px;
-      line-height: 32px;
+      width: 2em;
+      height: 2em;
+      line-height: 2em;
 
       > a,
       > a:hover,
@@ -24,8 +24,8 @@ div#share-buttons {
         color: white;
         cursor: pointer;
         text-decoration: none;
-        width: 32px;
-        height: 32px;
+        width: 2em;
+        height: 2em;
         display: block;
         background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.125), rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.125)), linear-gradient(to right, rgba(255, 255, 255, 0.125), rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.125));
       }

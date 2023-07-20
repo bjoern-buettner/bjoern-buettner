@@ -71,7 +71,7 @@ nav#main-navigation {
     border-bottom: 1px solid $bb-black;
 
     > ul {
-      width: 1024px;
+      width: 85.3em;
       height: 3em;
       margin: 0 auto;
       list-style: none;
@@ -107,11 +107,15 @@ nav#main-navigation {
 
               > a {
                 background-color: $bb-darkgrey;
-                padding: 0 10px;
+                padding: 0 0.83em;
                 border: none;
 
                 &:hover {
                   background-color: $bb-lightgreen;
+                }
+
+                &:active {
+                  background-color: $bb-green;
                 }
               }
             }
@@ -121,7 +125,7 @@ nav#main-navigation {
         > a, > span {
           background: $gradient;
           border: none;
-          padding: 0 10px;
+          padding: 0 0.83em;
 
           &:hover {
             background-color: $bb-lightgreen;

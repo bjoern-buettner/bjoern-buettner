@@ -26,13 +26,11 @@
     <h1>Bj&ouml;rn B&uuml;ttner</h1>
     {% if lang != 'de' %}
         <a hreflang="en" href="{% if active != '/' %}{{ active }}{% endif %}/de" title="Zu Deutsch wechseln">
-            <img class="small" src="/german.png" alt="Deutsch"/>
-            <img class="small" src="/english.png" alt="English"/>
+            <img class="small" src="/german.png" alt="Deutsch"/><img class="small" src="/english.png" alt="English"/>
         </a>
     {% else %}
         <a hreflang="de" href="{% if active != '/' %}{{ active }}{% endif %}/en" title="Switch to english">
-            <img class="small" src="/english.png" alt="English"/>
-            <img class="small" src="/german.png" alt="Deutsch"/>
+            <img class="small" src="/english.png" alt="English"/><img class="small" src="/german.png" alt="Deutsch"/>
         </a>
     {% endif %}
 </div>
@@ -91,15 +89,15 @@
         <li><a {% if active=='/imprint' %}class="active" {% endif %} href="/imprint/{{ lang }}"
                title="{{ menu.imprint[1] }}">{{ menu.imprint[0] }}</a></li>
         {% if isProvider %}
-        <li>
-            <span>Administration</span>
-            <ul>
-                <li><a {% if active=='/admin ' %}class="active" {% endif %} href="/admin/{{ lang }}"
-                       title="{{ menu.dashboard[1] }}">{{ menu.dashboard[0] }}</a></li>
-                <li><a {% if active=='/admin/self' %}class="active" {% endif %} href="/admin/self/{{ lang }}"
-                       title="{{ menu.self[1] }}">{{ menu.self[0] }}</a></li>
-            </ul>
-        </li>
+            <li>
+                <span>Administration</span>
+                <ul>
+                    <li><a {% if active=='/admin ' %}class="active" {% endif %} href="/admin/{{ lang }}"
+                           title="{{ menu.dashboard[1] }}">{{ menu.dashboard[0] }}</a></li>
+                    <li><a {% if active=='/admin/self' %}class="active" {% endif %} href="/admin/self/{{ lang }}"
+                           title="{{ menu.self[1] }}">{{ menu.self[0] }}</a></li>
+                </ul>
+            </li>
         {% endif %}
     </ul>
 </nav>
@@ -144,20 +142,20 @@
 <div id="share-buttons">
     <ul>
         <li class="facebook" title="Share on Facebook"><a
-                href="https://www.facebook.com/sharer/sharer.php?u={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&quote={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}"
-                target="_blank">f</a></li>
+                    href="https://www.facebook.com/sharer/sharer.php?u={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&quote={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}"
+                    target="_blank">f</a></li>
         <li class="twitter" title="Tweet"><a
-                href="https://twitter.com/intent/tweet?source={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&text={{ title|url_encode }}"
-                target="_blank">t</a></li>
+                    href="https://twitter.com/intent/tweet?source={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&text={{ title|url_encode }}"
+                    target="_blank">t</a></li>
         <li class="reddit" title="Submit to Reddit"><a
-                href="https://www.reddit.com/submit?url={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&title={{ title|url_encode }}"
-                target="_blank">r</a></li>
+                    href="https://www.reddit.com/submit?url={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&title={{ title|url_encode }}"
+                    target="_blank">r</a></li>
         <li class="linkedin" title="Share on LinkedIn"><a
-                href="https://www.linkedin.com/shareArticle?mini=true&url={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&title={{ title|url_encode }}&summary={{ description|url_encode }}&source={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}"
-                target="_blank">li</a></li>
+                    href="https://www.linkedin.com/shareArticle?mini=true&url={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}&title={{ title|url_encode }}&summary={{ description|url_encode }}&source={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}"
+                    target="_blank">li</a></li>
         <li class="email" title="Send email"><a
-                href="mailto:?subject={{ title|url_encode }}&body={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}"
-                target="_blank">✉</a></li>
+                    href="mailto:?subject={{ title|url_encode }}&body={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode }}"
+                    target="_blank">✉</a></li>
     </ul>
 </div>
 <!-- Matomo -->
