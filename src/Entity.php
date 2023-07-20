@@ -34,7 +34,6 @@ abstract class Entity implements JsonSerializable, Stringable, ArrayAccess, Iter
         }
         return in_array($this, $this->properties, true);
     }
-
     final public function offsetGet(mixed $offset): mixed
     {
         if (!$this->offsetExists($offset)) {
@@ -42,23 +41,19 @@ abstract class Entity implements JsonSerializable, Stringable, ArrayAccess, Iter
         }
         return $this->{$offset};
     }
-
     final public function offsetSet(mixed $offset, mixed $value): void
     {
         throw new BadMethodCallException('Entity is immutable.');
     }
-
     final public function offsetUnset(mixed $offset): void
     {
         throw new BadMethodCallException('Entity is immutable.');
     }
-
     final public function __toString(): string
     {
         $identifier = sha1(serialize($this->jsonSerialize()));
         return static::class . "({$identifier})";
     }
-
     final public function jsonSerialize(): array
     {
         $data = get_object_vars($this);
@@ -66,27 +61,22 @@ abstract class Entity implements JsonSerializable, Stringable, ArrayAccess, Iter
         unset($data['properties']);
         return $data;
     }
-
     final public function current(): string
     {
         return $this->{$this->properties[$this->position]};
     }
-
     final public function next(): void
     {
         $this->position++;
     }
-
     final public function key(): mixed
     {
         return $this->properties[$this->position];
     }
-
     final public function valid(): bool
     {
         return $this->position < count($this->properties) && $this->position >= 0;
     }
-
     final public function rewind(): void
     {
         $this->position = 0;
