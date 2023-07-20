@@ -37,7 +37,7 @@ class Application
     }
     public function param(string $class, string $param, mixed $value): self
     {
-        $this->dependencies[] = new ParameterMap($class, $param, $value);
+        $this->dependencies[] = new ParameterMap($param, $class, $value);
         return $this;
     }
     public function res(string $route, array $func): self
