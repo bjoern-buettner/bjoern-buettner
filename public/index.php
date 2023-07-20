@@ -6,7 +6,6 @@ use Dotenv\Dotenv;
 use Me\BjoernBuettner\Application;
 use Me\BjoernBuettner\Cache;
 use Me\BjoernBuettner\Caches\Factory as CacheFactory;
-use Me\BjoernBuettner\Database;
 use Me\BjoernBuettner\Pages\Blog;
 use Me\BjoernBuettner\Pages\Home;
 use Me\BjoernBuettner\Pages\Imprint;
@@ -25,11 +24,9 @@ use Me\BjoernBuettner\User\Factory as UserFactory;
 use Twig\Loader\FilesystemLoader;
 use Twig\Loader\LoaderInterface;
 use Me\BjoernBuettner\Pages\Admin\Dashboard as AdminDashboard;
-use Me\BjoernBuettner\Pages\Admin\Blog as AdminBlog;
 use Me\BjoernBuettner\Pages\Admin\Invoice as AdminInvoice;
 use Me\BjoernBuettner\Pages\Admin\Quote as AdminQuote;
 use Me\BjoernBuettner\Pages\Admin\Customer as AdminCustomer;
-use Me\BjoernBuettner\Pages\Admin\Cases as AdminCases;
 use Me\BjoernBuettner\Pages\Admin\Profile as AdminSelf;
 
 require_once(__DIR__ . '/../vendor/autoload.php');
@@ -39,8 +36,8 @@ Dotenv::createImmutable(dirname(__DIR__))->load();
 echo (new Application())
     ->param(FilesystemLoader::class, 'paths', __DIR__ . '/../templates')
     ->interface(LoaderInterface::class, FilesystemLoader::class)
-    ->factory(Cache::class, CacheFactory::class . '::get')
-    ->factory(User::class, UserFactory::class . '::get')
+    ->factory(Cache::class, CacheFactory::class)
+    ->factory(User::class, UserFactory::class)
     ->res('/{file}.{ext:jpg|jpeg|png|gif}', [Images::class, 'get'])
     ->res('/favicon.ico', [Favicon::class, 'get'])
     ->res('/sitemap.xml', [Sitemap::class, 'get'])
