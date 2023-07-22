@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Me\BjoernBuettner\Pages;
 
 use Me\BjoernBuettner\TextOutputBuilder;
+use Me\BjoernBuettner\User;
 
 class Login
 {
@@ -24,8 +25,11 @@ class Login
             ],
         ], $lang);
     }
-    public function post(string $lang): string
+    public function post(string $lang, User $user): string
     {
-        return 'Hello World!';
+        $_SESSION['user'] = $user;
+        session_write_close();
+        header('Location: /' . $lang, true, 303);
+        return '';
     }
 }

@@ -5,35 +5,38 @@ declare(strict_types=1);
 namespace Me\BjoernBuettner\Pages;
 
 use Me\BjoernBuettner\Database;
+use Me\BjoernBuettner\Entity\Keyword;
+use Me\BjoernBuettner\Entity\Post;
+use Me\BjoernBuettner\Entity\PostKeyword;
+use Me\BjoernBuettner\Entity\Teammember;
 use Me\BjoernBuettner\TextOutputBuilder;
-use Twig\Environment;
 
 class Blog
 {
-    public function __construct(private readonly TextOutputBuilder $twig)
+    public function __construct(private readonly TextOutputBuilder $twig, private readonly Database $database)
     {
     }
     public function get(string $lang): string
     {
-        $database = Database::get();
-        $posts = $database->query('SELECT * FROM post WHERE created < NOW() ORDER BY created DESC')->fetchAll();
+        $posts = $this->database->load(Post::class, ['active' => true]);
         $authors = [];
+        $keywords = [];
         foreach ($posts as &$post) {
             if (!isset($authors[$post['author']])) {
-                $stmt = $database->prepare('SELECT * FROM teammember WHERE aid=:aid LIMIT 1');
-                $stmt->execute(['aid' => $post['author']]);
-                $authors[$post['author']] = $stmt->fetch();
+                $authors[$post['author']] = $this->database->load(TeamMember::class, ['aid' => $post['author']])[0];
             }
             $post['author'] = $authors[$post['author']];
-            $stmt = $database
-                ->prepare(
-                    'SELECT keyword.*
-FROM post_keyword
-INNER JOIN keyword ON keyword.id=post_keyword.keyword
-WHERE post_keyword.post=:aid'
-                );
-            $stmt->execute(['aid' => $post['id']]);
-            $post['keywords'] = $stmt->fetchAll();
+            $postKeywords = $this->database->load(PostKeyword::class, ['post' => $post['id']]);
+            $post['keywords'] = [];
+            foreach ($postKeywords as $postKeyword) {
+                if (!isset($keywords[$postKeyword['keyword']])) {
+                    $keywords[$postKeyword['keyword']] = $this->database->load(
+                        Keyword::class,
+                        ['id' => $postKeyword['keyword']]
+                    )[0];
+                }
+                $post['keywords'][] = $keywords[$postKeyword['keyword']];
+            }
         }
         switch ($lang) {
             case 'en':
@@ -78,10 +81,7 @@ drehen sich um Webentwicklung in jeder Form und variieren von Woche zu Woche.',
     }
     public function sitemap(string $lang): string
     {
-        $database = Database::get();
-        $posts = $database
-            ->query('SELECT slug,created FROM post WHERE created < NOW() ORDER BY created DESC')
-            ->fetchAll();
+        $posts = $this->database->load(Post::class, ['active' => '1']);
         header('Content-Type: application/xml');
         return $this->twig->renderXML('sitemap.twig', [
             'slugs' => $posts,
@@ -89,16 +89,11 @@ drehen sich um Webentwicklung in jeder Form und variieren von Woche zu Woche.',
     }
     public function rss(string $lang): string
     {
-        $database = Database::get();
-        $posts = $database
-            ->query('SELECT * FROM post WHERE created < NOW() ORDER BY created DESC LIMIT 5')
-            ->fetchAll();
+        $posts = $this->database->load(Post::class, ['active' => '1']);
         $authors = [];
         foreach ($posts as &$post) {
             if (!isset($authors[$post['author']])) {
-                $stmt = $database->prepare('SELECT * FROM teammember WHERE aid=:aid LIMIT 1');
-                $stmt->execute(['aid' => $post['author']]);
-                $authors[$post['author']] = $stmt->fetch();
+                $authors[$post['author']] = $this->database->load(TeamMember::class, ['aid' => $post['author']])[0];
             }
             $post['author'] = $authors[$post['author']];
             $post['created'] = date('r', strtotime($post['created']));
@@ -112,26 +107,20 @@ drehen sich um Webentwicklung in jeder Form und variieren von Woche zu Woche.',
     }
     public function detail(string $lang, string $slug): string
     {
-        $database = Database::get();
-        $stmt = $database->prepare('SELECT * FROM post WHERE slug=:slug AND created < NOW() LIMIT 1');
-        $stmt->execute(['slug' => $slug]);
-        $post = $stmt->fetch();
+        $post = $this->database->load(Post::class, ['slug' => $slug, 'active' => true])[0];
         if (!$post) {
             header('', true, 404);
             return "404 NOT FOUND";
         }
-        $stmt = $database->prepare('SELECT * FROM teammember WHERE aid=:aid LIMIT 1');
-        $stmt->execute(['aid' => $post['author']]);
-        $author = $stmt->fetch();
-        $stmt = $database
-            ->prepare(
-                'SELECT keyword.*
-FROM post_keyword 
-INNER JOIN keyword ON keyword.id=post_keyword.keyword
-WHERE post_keyword.post=:aid'
-            );
-        $stmt->execute(['aid' => $post['id']]);
-        $keywords = $stmt->fetchAll();
+        $author = $this->database->prepare(Teammember::class, ['aid' => $post['author']]);
+        $postKeywords = $this->database->load(PostKeyword::class, ['post' => $post['id']]);
+        $keywords = [];
+        foreach ($postKeywords as $postKeyword) {
+            $keywords[] = $this->database->load(
+                Keyword::class,
+                ['id' => $postKeyword['keyword']]
+            )[0];
+        }
         switch ($lang) {
             case 'en':
                 return $this->twig->renderHTML('blogpost.twig', [

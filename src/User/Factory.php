@@ -10,16 +10,21 @@ use PDO;
 
 class Factory
 {
-    public static function get(): User
+    public function __construct(
+        private readonly Database $database
+    ) {
+    }
+    public function get(): User
     {
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
         if (!$email || !$password) {
             return $_SESSION['user'] ?? new Anon();
         }
-        $statement = Database::get()->prepare('SELECT * FROM `user` WHERE `email`=:email');
-        $statement->execute([':email' => $email]);
-        $user = $statement->fetch(PDO::FETCH_ASSOC);
+        $user = $this->database->load(
+            \Me\BjoernBuettner\Entity\User::class,
+            ['email' => $email]
+        )[0] ?? null;
         if (!$user) {
             return $_SESSION['user'] ?? new Anon();
         }

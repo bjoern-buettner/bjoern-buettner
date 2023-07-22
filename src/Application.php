@@ -6,6 +6,10 @@ namespace Me\BjoernBuettner;
 
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
+use Me\BjoernBuettner\DependencyInjector\DependencyBuilder;
+use Me\BjoernBuettner\DependencyInjector\DTOs\FactoryMap;
+use Me\BjoernBuettner\DependencyInjector\DTOs\InterfaceMap;
+use Me\BjoernBuettner\DependencyInjector\DTOs\ParameterMap;
 use Me\BjoernBuettner\Pages\Login;
 use Me\BjoernBuettner\Session\Factory;
 use ReflectionException;
@@ -19,22 +23,21 @@ class Application
         'GET' => [],
         'POST' => [],
     ];
-    private array $interfaces = [];
-    private array $params = [];
+    private array $dependencies = [];
 
     public function interface(string $interface, string $class): self
     {
-        $this->interfaces[$interface] = $class;
+        $this->dependencies[] = new InterfaceMap($interface, $class);
         return $this;
     }
-    public function factory(string $interface, callable $call): self
+    public function factory(string $interface, string $class): self
     {
-        $this->interfaces[$interface] = $call;
+        $this->dependencies[] = new FactoryMap($interface, $class, 'get');
         return $this;
     }
     public function param(string $class, string $param, mixed $value): self
     {
-        $this->params[$class . '.' . $param] = $value;
+        $this->dependencies[] = new ParameterMap($param, $class, $value);
         return $this;
     }
     public function res(string $route, array $func): self
@@ -93,7 +96,7 @@ class Application
                 if (!is_array($handler)) {
                     return $handler();
                 }
-                $builder = new DependencyBuilder($this->params, $this->interfaces);
+                $builder = new DependencyBuilder($_ENV, false, ...$this->dependencies);
                 Factory::start($handler[0] instanceof Login);
                 try {
                     return $builder->call($handler[0], $handler[1], $routeInfo[2]);
