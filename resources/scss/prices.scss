@@ -1,43 +1,49 @@
-@media only screen and (min-width: 768px) {
-  ul#prices-wrapper {
+ul#prices-wrapper {
+  display: block;
+
+  > li {
+    border: 1px solid #ddd;
+    border-radius: 2em;
     display: block;
 
-    > li {
-      border: 1px solid #ddd;
+    > h3 {
+      text-align: center;
+      cursor: pointer;
+      background-color: rgba(0, 125, 0, 0.025);
       border-radius: 2em;
-      display: block;
-
-      > h3 {
-        text-align: center;
-        cursor: pointer;
-        background-color: rgba(0, 125, 0, 0.025);
-        border-radius: 2em;
-        margin: 0.31em 0;
-      }
-
-      > ul {
-        display: none;
-      }
+      margin: 0.31em 0;
     }
 
-    > li.active {
-      border: none;
+    > ul {
+      display: none;
+    }
+  }
 
-      > ul {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        margin-bottom: 20px;
+  > li.active {
+    border: none;
 
-        > li {
-          padding: 0.23em;
-          text-align: center;
-          border: 1px solid #ccc;
-          border-radius: 0.25em;
-          box-shadow: 3px 3px 5px #ccc;
-          margin: 0.25em;
-          display: block;
-        }
+    > ul {
+      display: grid;
+      grid-template-columns: 1fr;
+      margin-bottom: 20px;
+
+      > li {
+        padding: 0.23em;
+        text-align: center;
+        border: 1px solid #ccc;
+        border-radius: 0.25em;
+        box-shadow: 3px 3px 5px #ccc;
+        margin: 0.25em;
+        display: block;
       }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  ul#prices-wrapper {
+    > li.active > ul {
+      grid-template-columns: 1fr 1fr;
     }
   }
 }
