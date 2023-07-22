@@ -1,7 +1,35 @@
+div#team-wrapper {
+  > section.team-member {
+    > div.row.team-member-data {
+      > h2 {
+        text-align: center;
+      }
+
+      > div.col-4 {
+        > img.me {
+          border-radius: 1.25em;
+          width: 12.5%;
+          min-width: 200px;
+          padding: 1.25%;
+          float: left;
+        }
+      }
+    }
+
+    > div.team-member-links {
+      > ul, > ul > li {
+        display: block;
+      }
+    }
+  }
+}
+
 @media only screen and (min-width: 768px) {
   div#team-wrapper {
-    > .teammember > ul, > .teammember ul li {
-      display: block;
+    > section.team-member {
+      > div.team-member-links {
+        margin: 1em 0 0 0;
+      }
     }
   }
 }

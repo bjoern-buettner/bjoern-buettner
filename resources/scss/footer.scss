@@ -1,3 +1,41 @@
+footer#main-footer {
+  width: 100%;
+  font-size: 1em;
+  color: $bb-white;
+  background-color: $bb-green;
+
+  a {
+    text-decoration: none;
+    color: $bb-white;
+
+    &:hover {
+      color: $bb-darkgrey;
+    }
+
+    &:active {
+      text-decoration: underline;
+    }
+  }
+
+  > #inner {
+    padding: 1em;
+
+    > .row {
+      > .col-4 {
+        > p {
+          font-size: 1em;
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      .col-8 {
+
+      }
+    }
+  }
+}
+
 @media only screen and (min-width: 768px) {
   footer#main-footer {
     bottom: 0;
@@ -8,29 +46,17 @@
     position: fixed;
     color: $bb-white;
 
-    a {
-      text-decoration: none;
-      color: $bb-white;
-
-      &:hover {
-        color: $bb-darkgrey;
-      }
-
-      &:active {
-        text-decoration: underline;
-      }
-    }
-
     > #inner {
       width: 64em;
       margin: auto;
       height: 100%;
+      padding: 0;
 
       > .row {
         height: 100%;
         padding: 0.625em 0;
 
-        p {
+        > p {
           font-size: 1em;
           margin: 0;
           padding: 0;
