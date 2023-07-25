@@ -2,10 +2,9 @@
 
 namespace Me\BjoernBuettner\Pages;
 
-use Me\BjoernBuettner\Database;
+use Me\BjoernBuettner\ObjectRelationshipMapping\Database;
 use Me\BjoernBuettner\Entity\Teammember;
 use Me\BjoernBuettner\TextOutputBuilder;
-use Twig\Environment;
 
 class Team
 {

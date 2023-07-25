@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Me\BjoernBuettner\Entity;
 
 use DateTimeImmutable;
-use Me\BjoernBuettner\Entity;
+use Me\BjoernBuettner\ObjectRelationshipMapping\Entity;
 
 class Post extends Entity
 {

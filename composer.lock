@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0c898a2ba71260dd81c03b985f44cca",
+    "content-hash": "471b0c42540951b45498a5641563a9cd",
     "packages": [
         {
             "name": "bjoern-buettner/dependency-injector",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bjoern-buettner/dependency-injector.git",
-                "reference": "e0432daa675e99729ee1ef9233f306f9660647ba"
+                "reference": "64e2a2733de34236ffe4f3ead7bad5843f5db0f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bjoern-buettner/dependency-injector/zipball/e0432daa675e99729ee1ef9233f306f9660647ba",
-                "reference": "e0432daa675e99729ee1ef9233f306f9660647ba",
+                "url": "https://api.github.com/repos/bjoern-buettner/dependency-injector/zipball/64e2a2733de34236ffe4f3ead7bad5843f5db0f1",
+                "reference": "64e2a2733de34236ffe4f3ead7bad5843f5db0f1",
                 "shasum": ""
             },
             "require": {
@@ -47,12 +47,68 @@
                     "email": "email@example.com"
                 }
             ],
-            "description": "description",
+            "description": "A small dependency injection container with simple support for factories, parameters and the environment while autowiring.",
             "support": {
                 "issues": "https://github.com/bjoern-buettner/dependency-injector/issues",
-                "source": "https://github.com/bjoern-buettner/dependency-injector/tree/2.0.0"
+                "source": "https://github.com/bjoern-buettner/dependency-injector/tree/2.0.1"
             },
-            "time": "2023-07-15T13:14:27+00:00"
+            "time": "2023-07-20T19:13:11+00:00"
+        },
+        {
+            "name": "bjoern-buettner/object-relationship-mapping",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bjoern-buettner/object-relationship-mapping.git",
+                "reference": "637cc0d7fba7906cf0d792a6bec8bee6543165d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bjoern-buettner/object-relationship-mapping/zipball/637cc0d7fba7906cf0d792a6bec8bee6543165d4",
+                "reference": "637cc0d7fba7906cf0d792a6bec8bee6543165d4",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-pdo": "*",
+                "php": "^8.1",
+                "psr/cache": "^3.0.0",
+                "psr/simple-cache": "^3.0.0",
+                "symfony/string": "^6.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.6.10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Me\\BjoernBuettner\\ObjectRelationshipMapping\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Björn Büttner",
+                    "email": "bjoernbuettner@bjoern-buettner.me",
+                    "homepage": "https://bjoern-buettner.me"
+                }
+            ],
+            "description": "Object Relationship Mapping",
+            "homepage": "https://github.com/bjoern-buettner/object-relationship-mapping",
+            "keywords": [
+                "mapping",
+                "object",
+                "orm",
+                "relationship"
+            ],
+            "support": {
+                "issues": "https://github.com/bjoern-buettner/object-relationship-mapping/issues",
+                "source": "https://github.com/bjoern-buettner/object-relationship-mapping/tree/1.0.1"
+            },
+            "time": "2023-07-20T22:05:59+00:00"
         },
         {
             "name": "bjoern-buettner/session",
@@ -456,6 +512,55 @@
             "time": "2023-02-25T19:38:58+00:00"
         },
         {
+            "name": "psr/cache",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/cache.git",
+                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
+                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Cache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for caching libraries",
+            "keywords": [
+                "cache",
+                "psr",
+                "psr-6"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/cache/tree/3.0.0"
+            },
+            "time": "2021-02-03T23:26:27+00:00"
+        },
+        {
             "name": "psr/container",
             "version": "1.1.2",
             "source": {
@@ -502,6 +607,57 @@
                 "source": "https://github.com/php-fig/container/tree/1.1.2"
             },
             "time": "2021-11-05T16:50:12+00:00"
+        },
+        {
+            "name": "psr/simple-cache",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/simple-cache.git",
+                "reference": "764e0b3939f5ca87cb904f570ef9be2d78a07865"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/simple-cache/zipball/764e0b3939f5ca87cb904f570ef9be2d78a07865",
+                "reference": "764e0b3939f5ca87cb904f570ef9be2d78a07865",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\SimpleCache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interfaces for simple caching",
+            "keywords": [
+                "cache",
+                "caching",
+                "psr",
+                "psr-16",
+                "simple-cache"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/simple-cache/tree/3.0.0"
+            },
+            "time": "2021-10-29T13:26:27+00:00"
         },
         {
             "name": "scssphp/scssphp",
