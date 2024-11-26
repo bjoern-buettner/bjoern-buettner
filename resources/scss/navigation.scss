@@ -1,0 +1,141 @@
+nav#main-navigation {
+  font-size: 0.75em;
+
+  > ul {
+    list-style: none;
+
+    > li {
+      > a.active, > span.active {
+        background: $bb-darkgrey;
+      }
+    }
+
+    > li, > ul > li {
+      width: 100%;
+
+      &:hover {
+
+        > ul {
+          display: block;
+
+          > li > a, > li > span {
+            background-color: $bb-darkgrey;
+
+            &.active-sub {
+              background-color: $bb-lightgreen;
+            }
+
+            &:hover {
+              background-color: $bb-lightgreen;
+            }
+          }
+        }
+      }
+
+      > a, > span, > ul > li > a {
+        width: inherit;
+        height: inherit;
+        display: block;
+        text-align: center;
+        line-height: 3em;
+        border-bottom: 1px solid $bb-darkgrey;
+        background-color: $bb-green;
+        color: $bb-white;
+        text-transform: uppercase;
+        text-decoration: none;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: $bb-lightgreen;
+        }
+
+        &:active {
+          background-color: $bb-darkgrey;
+        }
+      }
+
+      > ul {
+        display: none;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  $gradient: linear-gradient(180deg, $bb-lightgreen 0%, $bb-green 8.33%), $bb-green;
+  nav#main-navigation {
+    width: 100%;
+    background: $gradient;
+    border-top: 1px solid $bb-black;
+    border-bottom: 1px solid $bb-black;
+
+    > ul {
+      width: 85.3em;
+      height: 3em;
+      margin: 0 auto;
+      list-style: none;
+
+      > li {
+        width: auto;
+        height: 3em;
+        float: left;
+        position: relative;
+        white-space: nowrap;
+
+        > ul {
+          display: none;
+        }
+
+        &:hover {
+          > a, > span {
+            background: $bb-lightgreen;
+          }
+
+          > ul {
+            display: block;
+            position: absolute;
+            list-style: none;
+
+            > li {
+              &:last-of-type {
+                > a {
+                  border-bottom-left-radius: 5px;
+                  border-bottom-right-radius: 5px;
+                }
+              }
+
+              > a {
+                background-color: $bb-darkgrey;
+                padding: 0 0.83em;
+                border: none;
+
+                &:hover {
+                  background-color: $bb-lightgreen;
+                }
+
+                &:active {
+                  background-color: $bb-green;
+                }
+              }
+            }
+          }
+        }
+
+        > a, > span {
+          background: $gradient;
+          border: none;
+          padding: 0 0.83em;
+
+          &:hover {
+            background-color: $bb-lightgreen;
+          }
+
+          &:active {
+            background-color: $bb-darkgrey;
+          }
+        }
+      }
+    }
+  }
+}
