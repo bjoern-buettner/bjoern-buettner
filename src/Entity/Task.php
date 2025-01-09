@@ -35,4 +35,39 @@ class Task extends Entity
         $this->category = $category;
         parent::__construct($aid);
     }
+
+    public function getCategory(): int
+    {
+        return $this->category;
+    }
+
+    public function getFeeType(): string
+    {
+        return $this->feeType;
+    }
+
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
+
+    public function getEnName(): string
+    {
+        return $this->enName;
+    }
+
+    public function getDeName(): string
+    {
+        return $this->deName;
+    }
+
+    public function getDeDescription(): string
+    {
+        return $this->deDescription;
+    }
+
+    public function getEnDescription(): string
+    {
+        return $this->enDescription;
+    }
 }

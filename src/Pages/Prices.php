@@ -30,15 +30,15 @@ class Prices
                 /** @var Task $task */
                 $cat['tasks'][] = [
                     'title' => [
-                        'en' => $task['en_name'],
-                        'de' => $task['de_name'],
+                        'en' => $task->getEnName(),
+                        'de' => $task->getDeName(),
                     ],
                     'description' => [
-                        'en' => $task['en_description'],
-                        'de' => $task['de_description'],
+                        'en' => $task->getEnDescription(),
+                        'de' => $task->getDeDescription(),
                     ],
-                    'price' => $task['price'],
-                    'fee_type' => $task['fee_type'],
+                    'price' => $task->getPrice(),
+                    'fee_type' => $task->getFeeType(),
                 ];
             }
             $data[] = $cat;
