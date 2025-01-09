@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Me\BjoernBuettner\Pages;
 
-use Me\BjoernBuettner\ObjectRelationshipMapping\Database;
 use Me\BjoernBuettner\Entity\Category;
 use Me\BjoernBuettner\Entity\Task;
+use Me\BjoernBuettner\ObjectRelationshipMapping\Database;
 use Me\BjoernBuettner\TextOutputBuilder;
 
 class Prices

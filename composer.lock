@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8f7bfe7b190f527ec6ea7f04e6d259e2",
+    "content-hash": "a361e025e2267d7b4d282f363d3edc34",
     "packages": [
         {
             "name": "bjoern-buettner/dependency-injector",
@@ -56,16 +56,16 @@
         },
         {
             "name": "bjoern-buettner/object-relationship-mapping",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bjoern-buettner/object-relationship-mapping.git",
-                "reference": "9b445ee398b8a3328b7cc1a4435c2e4ffd443e6f"
+                "reference": "cf2f75a76a20884cddbb5ef449dfa690ae34d36d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bjoern-buettner/object-relationship-mapping/zipball/9b445ee398b8a3328b7cc1a4435c2e4ffd443e6f",
-                "reference": "9b445ee398b8a3328b7cc1a4435c2e4ffd443e6f",
+                "url": "https://api.github.com/repos/bjoern-buettner/object-relationship-mapping/zipball/cf2f75a76a20884cddbb5ef449dfa690ae34d36d",
+                "reference": "cf2f75a76a20884cddbb5ef449dfa690ae34d36d",
                 "shasum": ""
             },
             "require": {
@@ -106,9 +106,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bjoern-buettner/object-relationship-mapping/issues",
-                "source": "https://github.com/bjoern-buettner/object-relationship-mapping/tree/1.0.2"
+                "source": "https://github.com/bjoern-buettner/object-relationship-mapping/tree/1.0.3"
             },
-            "time": "2023-07-21T00:56:31+00:00"
+            "time": "2025-01-09T18:40:39+00:00"
         },
         {
             "name": "bjoern-buettner/session",
