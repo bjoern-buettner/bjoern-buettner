@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Me\BjoernBuettner\Resources;
 
-use Me\BjoernBuettner\TextOutputBuilder;
-
 class Sitemap
 {
     public static function get(string $lang = ''): string

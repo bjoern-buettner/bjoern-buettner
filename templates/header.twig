@@ -18,7 +18,6 @@
         <link rel="alternate" hreflang="x-default" href="https://bjoern-buettner.me{{ (active ~ '/en')|fixurl }}"/>
         <link rel="alternate" hreflang="en" href="https://bjoern-buettner.me{{ (active ~ '/en')|fixurl }}"/>
         <link rel="alternate" hreflang="de" href="https://bjoern-buettner.me{{ (active ~ '/de')|fixurl }}"/>
-        <link rel="alternate" type="application/rss+xml" href="https://bjoern-buettner.me/rss-{{ lang }}.xml"/>
     </head>
     <body>
         <div id="header" class="bar">
@@ -42,7 +41,7 @@
                     <span {% if active=='/prices' %}class="active"{% elseif active=='/blog' %}class="active"{% endif %} title="{{ menu.products[1] }}">{{ menu.products[0] }}</span>
                     <ul>
                         <li><a {% if active=='/prices' %}class="active" {% endif %} href="/prices/{{ lang }}" title="{{ menu.prices[1] }}">{{ menu.prices[0] }}</a></li>
-                        <li><a {% if active=='/blog' %}class="active" {% endif %} href="/blog/{{ lang }}" title="{{ menu.blog[1] }}">{{ menu.blog[0] }}</a></li>
+                        <li><a target="_blank" href="https://medium.com/bjoern-buettners-backing" title="{{ menu.blog[1] }}">{{ menu.blog[0] }}</a></li>
                         <li><a target="_blank" href="https://presentations.bjoern-buettner.me" title="{{ menu.presentations[1] }}">{{ menu.presentations[0] }}</a></li>
                     </ul>
                 </li>
@@ -54,13 +53,7 @@
                         <li><a title="{{ menu.support[1] }}" href="mailto:support@bjoern-buettner.me">{{ menu.support[0]}}</a></li>
                     </ul>
                 </li>
-                <li>
-                    <span {% if active=='/solutions' %}class="active"{% elseif active=='/team' %}class="active"{% endif %} title="{{ menu.about[1] }}">{{ menu.about[0] }}</span>
-                    <ul>
-                        <li><a {% if active=='/solutions' %}class="active" {% endif %} href="/solutions/{{ lang }}" title="{{ menu.solutions[1] }}">{{ menu.solutions[0] }}</a></li>
-                        <li><a {% if active=='/team' %}class="active" {% endif %} href="/team/{{ lang }}" title="{{ menu.team[1] }}">{{ menu.team[0] }}</a></li>
-                    </ul>
-                </li>
+                <li><a {% if active=='/solutions' %}class="active" {% endif %} href="/solutions/{{ lang }}" title="{{ menu.solutions[1] }}">{{ menu.solutions[0] }}</a></li>
                 <li>
                     <span title="{{ menu.socials[1] }}">{{ menu.socials[0] }}</span>
                     <ul>
@@ -70,18 +63,5 @@
                     </ul>
                 </li>
                 <li><a {% if active=='/imprint' %}class="active" {% endif %} href="/imprint/{{ lang }}" title="{{ menu.imprint[1] }}">{{ menu.imprint[0] }}</a></li>
-                <li><a {% if active=='/login' %}class="active" {% endif %} href="/login/{{ lang }}" title="{{ menu.login[1] }}">{{ menu.login[0] }}</a></li>
-                {% if isAdmin %}<li>
-                    <span title="{{ menu.administration[1] }}">{{ menu.administration[1] }}</span>
-                    <ul>
-                        <li><a {% if active=='/admin ' %}class="active" {% endif %} href="/admin/{{ lang }}" title="{{ menu.dashboard[1] }}">{{ menu.dashboard[0] }}</a></li>
-                        <li><a {% if active=='/admin/self' %}class="active" {% endif %} href="/admin/self/{{ lang }}" title="{{ menu.self[1] }}">{{ menu.self[0] }}</a></li>
-                    </ul>
-                </li>{% elseif isCustomer %}<li>
-                    <span title="{{ menu.customer[1] }}">{{ menu.customer[1] }}</span>
-                    <ul>
-                        <li><a {% if active=='/customer ' %}class="active" {% endif %} href="/customer/{{ lang }}" title="{{ menu.dashboard[1] }}">{{ menu.dashboard[0] }}</a></li>
-                    </ul>
-                </li>{% endif %}
             </ul>
         </nav>

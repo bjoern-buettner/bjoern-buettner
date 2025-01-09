@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Me\BjoernBuettner;
 
 use Exception;
-use Me\BjoernBuettner\User\Customer;
-use Me\BjoernBuettner\User\Provider;
 use Parsedown;
 use Twig\Environment;
 use Twig\TwigFilter;
@@ -17,7 +15,6 @@ class TextOutputBuilder
     public function __construct(
         private readonly Environment $twig,
         private readonly Cache $cache,
-        private readonly User $user
     ) {
         $parsedown = new Parsedown();
         $twig->addFilter(new TwigFilter('markdown', function ($markdown) use ($parsedown) {
@@ -64,9 +61,6 @@ class TextOutputBuilder
         if ($data = $this->cache->get($cache)) {
             return $data;
         }
-        $context['user'] = $this->user;
-        $context['isProvider'] = $this->user instanceof Provider;
-        $context['isCustomer'] = $this->user instanceof Customer;
         $context['lang'] = $lang;
         $context['menu'] = $lang === 'en' ? MenuList::$en : MenuList::$de;
         $context['og_type'] = $context['og_type'] ?? 'website';

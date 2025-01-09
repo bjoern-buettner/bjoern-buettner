@@ -1,12 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<sitemap>
-		<loc>https://bjoern-buettner.me/blog_sitemap_en.xml</loc>
-	</sitemap>
-	<sitemap>
-		<loc>https://bjoern-buettner.me/blog_sitemap_de.xml</loc>
-	</sitemap>
-	<sitemap>
 		<loc>https://bjoern-buettner.me/static_sitemap_en.xml</loc>
 	</sitemap>
 	<sitemap>

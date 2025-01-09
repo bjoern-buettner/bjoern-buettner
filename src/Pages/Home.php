@@ -25,7 +25,7 @@ class Home
                 return $this->twig->renderHTML('home-de.twig', [
                     'title' => 'Start & Willkommen',
                     'active' => '/',
-                    'description' => 'Ein herzliches willkommen auf unserer Seite'
+                    'description' => 'Ein herzliches Willkommen auf unserer Seite'
                         . ' und ein par Grundinformationen über bjoern-buettner.me',
                 ], $lang);
         }
