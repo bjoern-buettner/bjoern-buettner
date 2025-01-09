@@ -8,13 +8,13 @@ use Me\BjoernBuettner\ObjectRelationshipMapping\Entity;
 
 class Task extends Entity
 {
-    private int $category = 0;
-    private string $feeType = '';
-    private float $price = 0.0;
-    private string $enName = '';
-    private string $deName = '';
-    private string $deDescription = '';
-    private string $enDescription = '';
+    protected int $category = 0;
+    protected string $feeType = '';
+    protected float $price = 0.0;
+    protected string $enName = '';
+    protected string $deName = '';
+    protected string $deDescription = '';
+    protected string $enDescription = '';
 
     public function __construct(
         ?int $aid,

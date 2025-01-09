@@ -8,8 +8,8 @@ use Me\BjoernBuettner\ObjectRelationshipMapping\Entity;
 
 class Category extends Entity
 {
-    private string $en = '';
-    private string $de = '';
+    protected string $en = '';
+    protected string $de = '';
 
     public function __construct(
         ?int $aid,
