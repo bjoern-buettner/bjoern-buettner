@@ -25,6 +25,7 @@ class Prices
                 'chooseable' => $category['chooseable'] === '1',
                 'tasks' => []
             ];
+            var_dump($category);
             foreach ($this->database->load(Task::class, ['category' => $category['aid']]) as $task) {
                 $cat['tasks'][] = [
                     'title' => [
