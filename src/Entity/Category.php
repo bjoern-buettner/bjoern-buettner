@@ -8,11 +8,16 @@ use Me\BjoernBuettner\ObjectRelationshipMapping\Entity;
 
 class Category extends Entity
 {
+    private string $en = '';
+    private string $de = '';
+
     public function __construct(
         ?int $aid,
-        private readonly string $en,
-        private readonly string $de,
+        string $en,
+        string $de,
     ) {
+        $this->de = $de;
+        $this->en = $en;
         parent::__construct($aid);
     }
     public function getEn(): string
