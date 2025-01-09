@@ -19,13 +19,15 @@ class Prices
     {
         $data = [];
         foreach ($this->database->load(Category::class) as $category) {
+            /** @var Category $category */
             $cat = [
-                'de' => $category['de'],
-                'en' => $category['en'],
+                'de' => $category->getDe(),
+                'en' => $category->getEn(),
                 'chooseable' => $category['chooseable'] === '1',
                 'tasks' => []
             ];
             foreach ($this->database->load(Task::class, ['category' => $category['aid']]) as $task) {
+                /** @var Task $task */
                 $cat['tasks'][] = [
                     'title' => [
                         'en' => $task['en_name'],
