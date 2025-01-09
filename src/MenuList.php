@@ -15,13 +15,19 @@ class MenuList
         'blog' => ['Blog', 'Our blog with articles about web-development.',],
         'github' => ['GitHub', 'Our open-source projects including this website\'s code.',],
         'linkedin' => ['LinkedIn', 'Our business page with the option of receiving news from us.',],
+        'team' => ['Team', 'Get to know a bit about us.',],
+        'login' => ['Login', 'Sign in with your existing account.',],
+        'self' => ['Self', 'Edit your About Me.',],
         'support' => [
             'Customer Support',
             'Get in touch with us if one of the services we delivered doesn\'t work as expected.',
         ],
+        'service' => ['Contracts & Quotes', 'Get in touch with us if you desire a contract or a quote.',],
+        'contact' => ['Contact', 'Get in touch with us.',],
         'products' => ['Services', 'Our services and prices.',],
         'about' => ['About us', 'Information about us.',],
         'socials' => ['Socials', 'Our social media profiles.',],
+        'dashboard' => ['Dashboard', 'Use additional services.',],
     ];
     public static array $de = [
         'home' =>  ['Home', 'Unsere Startseite mit einem herzlichen Willkommen!',],
@@ -34,6 +40,9 @@ class MenuList
         'blog' => ['Blog', 'Unser Blog mit Artikeln über Webentwicklung.',],
         'github' => ['GitHub', 'Unsere Opensource-Projekte, inklusive des Codes dieser Webseite.',],
         'linkedin' => ['LinkedIn', 'Unsere Unternehmensseite mit der Option auf News von uns.',],
+        'team' => ['Team', 'Lernen Sie unser Team kennen.',],
+        'login' => ['Anmelden', 'Melden Sie sich mit Ihrem existierenden Account an.',],
+        'self' => ['Selbst', 'Bearbeiten Sie das Über mich.',],
         'support' => [
             'Kundensupport',
             'Kontaktieren Sie uns, falls einer unserer Dienste nicht wie gewünscht funktioniert.',
@@ -42,8 +51,10 @@ class MenuList
             'Verträge & Kostenvoranschläge',
             'Kontaktieren Sie uns, falls sie ein Angebot oder einen Vertrag wünschen.',
         ],
+        'contact' => ['Kontakt', 'Hier erreichen Sie und.',],
         'products' => ['Dienstleistungen', 'Unsere Dienstleistungen und Preise.',],
         'about' => ['Über uns', 'Informationen über uns.',],
         'socials' => ['Soziales', 'Unsere Profile in sozialen Medien.',],
+        'dashboard' => ['Dashboard', 'Nutzen Sie weiterführende Services.',],
     ];
 }
