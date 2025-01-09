@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "354095a00471631ef612b141c2650d2e",
+    "content-hash": "8f7bfe7b190f527ec6ea7f04e6d259e2",
     "packages": [
         {
             "name": "bjoern-buettner/dependency-injector",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bjoern-buettner/dependency-injector.git",
-                "reference": "64e2a2733de34236ffe4f3ead7bad5843f5db0f1"
+                "reference": "1c9a9991d44096dcda40d189f6aa481c037547e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bjoern-buettner/dependency-injector/zipball/64e2a2733de34236ffe4f3ead7bad5843f5db0f1",
-                "reference": "64e2a2733de34236ffe4f3ead7bad5843f5db0f1",
+                "url": "https://api.github.com/repos/bjoern-buettner/dependency-injector/zipball/1c9a9991d44096dcda40d189f6aa481c037547e4",
+                "reference": "1c9a9991d44096dcda40d189f6aa481c037547e4",
                 "shasum": ""
             },
             "require": {
@@ -50,9 +50,9 @@
             "description": "A small dependency injection container with simple support for factories, parameters and the environment while autowiring.",
             "support": {
                 "issues": "https://github.com/bjoern-buettner/dependency-injector/issues",
-                "source": "https://github.com/bjoern-buettner/dependency-injector/tree/2.0.1"
+                "source": "https://github.com/bjoern-buettner/dependency-injector/tree/2.0.2"
             },
-            "time": "2023-07-20T19:13:11+00:00"
+            "time": "2025-01-09T18:27:10+00:00"
         },
         {
             "name": "bjoern-buettner/object-relationship-mapping",
