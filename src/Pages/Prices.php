@@ -23,7 +23,7 @@ class Prices
             $cat = [
                 'de' => $category->getDe(),
                 'en' => $category->getEn(),
-                'chooseable' => $category['chooseable'] === '1',
+                'chooseable' => false,
                 'tasks' => []
             ];
             foreach ($this->database->load(Task::class, ['category' => $category['aid']]) as $task) {
