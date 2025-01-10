@@ -96,21 +96,10 @@ nav > ul {
     text-align: center;
     padding: 0.25em 0;
 }
-#header {
-    background-color: var(--very-light-green);
-    color: var(--very-dark-green);
-    img {
-        width: 106px;
-        height: 64px;
-    }
-    a {
-        padding: 1em;
-    }
-}
 #body {
     max-width: 1024px;
     width: 80%;
-    margin: 1em auto 3em;
+    margin: 3em auto;
     box-shadow: 3px 3px 5px #ccc;
     background: var(--darkened-average);
     padding: 2em 1em;
@@ -150,10 +139,13 @@ footer a:visited,
 footer a:focus {
     color: var(--very-light-green);
 }
+footer img {
+    max-height: 100%;
+}
 footer img.small {
      width: 20px;
      display: none;
- }
+}
 footer img.small:nth-of-type(2),
 footer a:hover img{
     display: block;
@@ -226,6 +218,11 @@ ul#share-buttons{
             }
         }
     }
+}
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 nav > ul > li:hover > ul {
     display: block;

@@ -20,12 +20,7 @@
         <link rel="alternate" hreflang="de" href="https://bjoern-buettner.me{{ (active ~ '/de')|fixurl }}"/>
     </head>
     <body>
-        <div id="header" class="bar">
-            <a href="/{{ lang }}">
-                <img src="/logo.png" alt="Logo"/>
-            </a>
-        </div>
-        <nav class="bar">
+        <nav id="header" class="bar">
             <ul>
                 <li><a {% if active=='/' %}class="active" {% endif %}href="/{{ lang }}" title="{{ menu.home[1] }}">{{ menu.home[0] }}</a></li>
                 <li>
