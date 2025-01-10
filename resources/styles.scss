@@ -176,10 +176,13 @@ nav > ul > li > ul > li {
 }
 a[target="_blank"] {
     padding-right: 1em;
-    background-image: url("external-link-symbol.png");
+    background-image: url("external-link-symbol-black.png");
     background-repeat: no-repeat;
-    background-size: 1em auto;
-    background-position: 50% 100%;
+    background-size: auto 1em;
+    background-position: 100% 50%;
+}
+.bar a[target="_blank"] {
+    background-image: url("external-link-symbol-white.png");
 }
 
 @media screen and (max-width: 1100px) {
