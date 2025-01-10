@@ -3,13 +3,6 @@
 <h1>{{ content.title }}</h1>
 <p>{{ content.reasoning }}</p>
 <p>{{ content.prices }}</p>
-{% if lang == 'en' %}
-    <h2>Customers recruiting customers</h2>
-    <p>If you are a customer trying to get the customer recruiting bonus, feel free to include the advert-script on your site! <a href="/hosted-by-bjoern-buettner.js">https://bjoern-buettner.me/hosted-by-bjoern-buettner.js</a></p>
-{% else %}
-    <h2>Kundenrekrutierung durch Kunden</h2>
-    <p>Falls Sie ein Kunde sind, der den Werbebonus nutzen will, binden Sie einfach das Werbe-Script auf Ihrer Seite ein! <a href="/hosted-by-bjoern-buettner.js">https://bjoern-buettner.me/hosted-by-bjoern-buettner.js</a></p>
-{% endif %}
 <h2>{{ content.title2 }}</h2>
 <ul>
     {% for offergroup in offers %}

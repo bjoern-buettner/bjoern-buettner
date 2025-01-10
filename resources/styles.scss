@@ -158,68 +158,6 @@ footer {
     align-items: center;
 }
 
-ul#share-buttons{
-    list-style: none;
-    padding: 0;
-    position: fixed;
-    top: 25%;
-    right: 0;
-    width: auto;
-    height: auto;
-    text-align: center;
-    font-weight: bold;
-    > li {
-        display: block;
-        width: 32px;
-        height: 32px;
-        line-height: 32px;
-        > a,
-        > a:hover,
-        > a:active,
-        > a:visited,
-        > a:focus {
-            color: white;
-            cursor: pointer;
-            text-decoration: none;
-            width: 32px;
-            height: 32px;
-            display: block;
-            background-image: linear-gradient(to bottom, var(--lightened-average), var(--lightened-max), var(--lightened-min)), linear-gradient(to right, var(--lightened-average), var(--lightened-max), var(--lightened-min));
-        }
-        > a:hover,
-        > a:active,
-        > a:focus {
-            background-image: linear-gradient(to bottom, var(--darkened-min), var(--darkened-max), var(--darkened-average)), linear-gradient(to right, var(--darkened-min), var(--darkened-max), var(--darkened-average));
-        }
-        &.facebook {
-            background-color: blue;
-        }
-        &.twitter {
-            background-color: black;
-        }
-        &.linkedin {
-            background-color: darkblue;
-        }
-        &.reddit {
-            background-color: red;
-        }
-        &.email {
-            background-color: grey;
-        }
-        &:first-of-type {
-            border-radius: 16px 0 0 0;
-            > a {
-                border-radius: 16px 0 0 0;
-            }
-        }
-        &:last-of-type {
-            border-radius: 0 0 0 16px;
-            > a {
-                border-radius: 0 0 0 16px;
-            }
-        }
-    }
-}
 nav {
     position: fixed;
     top: 0;
