@@ -265,6 +265,9 @@ nav > ul > li > ul > li {
     footer.bar {
         position: static;
     }
+    nav {
+        position: static;
+    }
     nav > ul {
         grid-template-columns: 1fr;
     }
@@ -278,9 +281,6 @@ nav > ul > li > ul > li {
     nav span {
         width: 100%;
     }
-    form {
-        grid-template-columns: 1fr;
-    }
     #body {
         width: 95%;
     }
@@ -288,9 +288,6 @@ nav > ul > li > ul > li {
 @media screen and (max-width:400px) {
     .bar {
         padding: 0;
-    }
-    .me {
-        float: none;
     }
     #body {
         width: 100%;
