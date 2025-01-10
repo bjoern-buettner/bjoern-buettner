@@ -47,9 +47,12 @@ ul ul {
         margin: 0.25em;
     }
 }
-li.active ul {
+#body li.active ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    li {
+        background-color: var(--lightened-average);
+    }
 }
 .bar {
     padding: 0 10%;
