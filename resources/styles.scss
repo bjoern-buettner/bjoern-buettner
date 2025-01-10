@@ -141,18 +141,19 @@ footer a:focus {
 }
 footer img {
     max-height: 100%;
+    display: block;
 }
 footer img.small {
      width: 20px;
      display: none;
 }
 footer img.small:nth-of-type(2),
-footer a:hover img{
+footer a:hover img.small{
     display: block;
 }
 footer {
     display: grid;
-    grid-template-columns: auto 50px;
+    grid-template-columns: 100px auto 50px;
     justify-items: center;
     align-items: center;
 }
