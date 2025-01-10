@@ -1,4 +1,15 @@
-        <footer class="bar">&copy;2023-2025 Björn Büttner</footer>
+        <footer class="bar">
+            <p>&copy;2023-2025 Björn Büttner</p>
+            {% if lang != 'de' %}
+                <a hreflang="de" href="{% if active != '/' %}{{ active }}{% endif %}/de" title="Zu Deutsch wechseln">
+                    <img class="small" src="/german.png" alt="Deutsch"/><img class="small" src="/english.png" alt="English"/>
+                </a>
+            {% else %}
+                <a hreflang="de" href="{% if active != '/' %}{{ active }}{% endif %}/en" title="Switch to english">
+                    <img class="small" src="/english.png" alt="English"/><img class="small" src="/german.png" alt="Deutsch"/>
+                </a>
+            {% endif %}
+        </footer>
         <ul id="share-buttons">
             <li class="facebook" title="Share on Facebook"><a href="https://www.facebook.com/sharer/sharer.php?u={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode  }}&quote={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode  }}" target="_blank">f</a></li>
             <li class="twitter" title="Tweet"><a href="https://twitter.com/intent/tweet?source={{ ('https://bjoern-buettner.me' ~ active ~ '/' ~ lang)|fixurl|url_encode  }}&text={{ title|url_encode }}" target="_blank">X</a></li>

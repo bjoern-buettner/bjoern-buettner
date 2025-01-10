@@ -97,31 +97,14 @@ nav > ul {
     padding: 0.25em 0;
 }
 #header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     background-color: var(--very-light-green);
     color: var(--very-dark-green);
     img {
         width: 106px;
         height: 64px;
-        &.small {
-            width: 64px;
-            padding: 16px;
-            border-radius: 24px;
-            &:last-of-type {
-                margin-left: -76px;
-                margin-bottom: -12px;
-            }
-        }
     }
     a {
         padding: 1em;
-    }
-    :last-child {
-        text-align: right;
-    }
-    :first-child {
-        text-align: left;
     }
 }
 #body {
