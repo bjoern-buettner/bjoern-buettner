@@ -1,4 +1,4 @@
-function notifyAboutCookies (message) {
+function notifyAboutCookies (message, close) {
     const cname = 'bbcookie';
     function set() {
         const d = new Date();
@@ -26,12 +26,13 @@ function notifyAboutCookies (message) {
       }
       const mod = document.createElement('div');
       document.body.appendChild(mod);
-      mod.setAttribute('style', 'position: absolute;top: 10%;right: 0;width: 200px;background: #eee;border:#fff; border-radius: 3px;');
+      mod.setAttribute('id', 'cookie-banner');
       mod.appendChild(document.createElement('p'));
       mod.lastChild.appendChild(document.createTextNode(message));
       const button = document.createElement('button');
-      button.appendChild(document.createTextNode('X'));
+      button.appendChild(document.createTextNode(close));
       mod.appendChild(button);
+      button.setAttribute('title', 'Accept & Close Banner');
       button.onclick = () => {
           set();
           document.body.removeChild(mod);
