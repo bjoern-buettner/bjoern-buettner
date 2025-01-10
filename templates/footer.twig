@@ -45,7 +45,7 @@
         <!-- End Matomo Code -->
         <script src="/cookieinfo.js"></script>
         <script>
-            notifyAboutCookies("{% if lang=='en' %}We are using cookies to provide this site's functionality and improve the user experience.{% elseif lang=='de' %}Wir nutzen Cookies um die Funktionalität dieser Seite bereitzustellen und die Nutzererfahrung zu verbessern.{% endif %}");
+            (() => notifyAboutCookies("{% if lang=='en' %}We are using cookies to provide this site's functionality and improve the user experience.{% elseif lang=='de' %}Wir nutzen Cookies um die Funktionalität dieser Seite bereitzustellen und die Nutzererfahrung zu verbessern.{% endif %}"))();
         </script>
         <script src="/menu-hover.js"></script>
     </body>
