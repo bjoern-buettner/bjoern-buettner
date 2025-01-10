@@ -15,7 +15,7 @@ class Task extends Entity
     protected string $deName = '';
     protected string $deDescription = '';
     protected string $enDescription = '';
-    private string $paypalButtonCode = '';
+    protected string $paypalButtonCode = '';
 
     public function __construct(
         ?int $aid,
