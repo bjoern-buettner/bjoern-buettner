@@ -10,9 +10,6 @@ class Factory
 {
     public static function get(): Cache
     {
-        if (isset($_SESSION['user']) && $_SESSION['user']->active()) {
-            return new NoCache();
-        }
         if (($_ENV['ENABLE_CACHE'] ?? 'true') === 'false') {
             return new NoCache();
         }

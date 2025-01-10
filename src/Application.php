@@ -10,11 +10,9 @@ use Me\BjoernBuettner\DependencyInjector\DependencyBuilder;
 use Me\BjoernBuettner\DependencyInjector\DTOs\FactoryMap;
 use Me\BjoernBuettner\DependencyInjector\DTOs\InterfaceMap;
 use Me\BjoernBuettner\DependencyInjector\DTOs\ParameterMap;
-use Me\BjoernBuettner\Pages\Login;
-use Me\BjoernBuettner\Session\Factory;
-use ReflectionException;
 use Teto\HTTP\AcceptLanguage;
 
+use Throwable;
 use function FastRoute\simpleDispatcher;
 
 class Application
@@ -97,10 +95,9 @@ class Application
                     return $handler();
                 }
                 $builder = new DependencyBuilder($_ENV, false, ...$this->dependencies);
-                Factory::start($handler[0] instanceof Login);
                 try {
                     return $builder->call($handler[0], $handler[1], $routeInfo[2]);
-                } catch (ReflectionException $e) {
+                } catch (Throwable $e) {
                     header('Content-Type: text/plain', true, 500);
                     return "500 SERVER ERROR";
                 }
