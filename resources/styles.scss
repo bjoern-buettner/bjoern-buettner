@@ -216,7 +216,7 @@ a[target="_blank"] {
     }
     footer.bar,
     nav {
-        position: static;
+        position: relative;
     }
     nav > ul {
         grid-template-columns: 1fr;
