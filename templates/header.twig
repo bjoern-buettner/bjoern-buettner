@@ -24,9 +24,10 @@
             <ul>
                 <li><a {% if active=='/' %}class="active" {% endif %}href="/{{ lang }}" title="{{ menu.home[1] }}">{{ menu.home[0] }}</a></li>
                 <li>
-                    <span {% if active=='/prices' %}class="active"{% elseif active=='/blog' %}class="active"{% endif %} title="{{ menu.products[1] }}">{{ menu.products[0] }}</span>
+                    <span {% if active=='/prices' %}class="active"{% elseif active=='/solutions' %}class="active"{% endif %} title="{{ menu.products[1] }}">{{ menu.products[0] }}</span>
                     <ul>
                         <li><a {% if active=='/prices' %}class="active" {% endif %} href="/prices/{{ lang }}" title="{{ menu.prices[1] }}">{{ menu.prices[0] }}</a></li>
+                        <li><a {% if active=='/solutions' %}class="active" {% endif %} href="/solutions/{{ lang }}" title="{{ menu.solutions[1] }}">{{ menu.solutions[0] }}</a></li>
                         <li><a target="_blank" href="https://medium.com/bjoern-buettners-backing" title="{{ menu.blog[1] }}">{{ menu.blog[0] }}</a></li>
                         <li><a target="_blank" href="https://presentations.bjoern-buettner.me" title="{{ menu.presentations[1] }}">{{ menu.presentations[0] }}</a></li>
                     </ul>
@@ -39,7 +40,6 @@
                         <li><a title="{{ menu.support[1] }}" href="mailto:support@bjoern-buettner.me">{{ menu.support[0]}}</a></li>
                     </ul>
                 </li>
-                <li><a {% if active=='/solutions' %}class="active" {% endif %} href="/solutions/{{ lang }}" title="{{ menu.solutions[1] }}">{{ menu.solutions[0] }}</a></li>
                 <li>
                     <span title="{{ menu.socials[1] }}">{{ menu.socials[0] }}</span>
                     <ul>
