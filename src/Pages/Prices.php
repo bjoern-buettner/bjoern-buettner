@@ -38,7 +38,7 @@ class Prices
                     ],
                     'price' => $task->getPrice(),
                     'fee_type' => $task->getFeeType(),
-                    'papypal_button_code' => $task->getPaypalButtonCode(),
+                    'paypal_button_code' => $task->getPaypalButtonCode(),
                 ];
             }
             $data[] = $cat;
