@@ -100,11 +100,11 @@ nav > ul {
     max-width: 1024px;
     width: 80%;
     margin: 3em auto;
-    box-shadow: 3px 3px 5px #ccc;
+    box-shadow: 3px 3px 5px var(--darkened-average);
     background: var(--darkened-average);
     padding: 2em 1em;
     > ul > li {
-        border: 1px solid #ddd;
+        border: 1px solid var(--darkened-average);
         border-radius: 2em;
     }
     > ul > li > h3:hover {
