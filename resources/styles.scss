@@ -51,7 +51,8 @@ ul ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
     li {
-        background-color: var(--lightened-average);
+        color: var(--dark-green);
+        background-color: var(--very-light-green);
     }
 }
 .bar {
@@ -61,7 +62,7 @@ ul ul {
     background-image: linear-gradient(to bottom, var(--lightened-average), var(--lightened-max), var(--lightened-min)), linear-gradient(to right, var(--lightened-min), var(--lightened-max));
 }
 
-li h3 {
+#body li h3 {
     cursor: pointer;
     color: var(--dark-green);
     background-color: var(--very-light-green);
