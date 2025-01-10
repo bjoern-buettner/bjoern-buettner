@@ -150,6 +150,20 @@ footer a:visited,
 footer a:focus {
     color: var(--very-light-green);
 }
+footer img.small {
+     width: 20px;
+     display: none;
+ }
+footer img.small:nth-of-type(2),
+footer a:hover img{
+    display: block;
+}
+footer {
+    display: grid;
+    grid-template-columns: auto 50px;
+    justify-items: center;
+    align-items: center;
+}
 
 ul#share-buttons{
     list-style: none;
