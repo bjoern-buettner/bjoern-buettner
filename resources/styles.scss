@@ -1,3 +1,15 @@
+:root {
+    --very-light-green: #f8fff8;
+    --dark-green: rgb(0, 46, 30);
+    --very-dark-green: rgba(0, 2, 1);
+    --highlight: darkblue;
+    --lightened-min: rgba(255, 255, 255, 0);
+    --lightened-max: rgba(255, 255, 255, 0.15);
+    --lightened-average: rgba(255, 255, 255, 0.075);
+    --darkened-min: rgba(0, 0, 0, 0);
+    --darkened-max: rgba(0, 0, 0, 0.15);
+    --darkened-average: rgba(0, 0, 0, 0.075);
+}
 * {
     box-sizing: border-box;
 }
@@ -5,8 +17,8 @@ img {
     border: 0;
 }
 body, html {
-    background-color: #f8fff8;
-    color: #111;
+    background-color: var(--very-light-green);
+    color: var(--very-dark-green);
     padding: 0;
     margin: 0;
     font-size: 18px;
@@ -41,14 +53,14 @@ li.active ul {
 }
 .bar {
     padding: 0 10%;
-    background-color: rgb(0, 46, 30);
-    color: #fff;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0)), linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.125));
+    background-color: var(--dark-green);
+    color: var(--very-light-green);
+    background-image: linear-gradient(to bottom, var(--lightened-average), var(--lightened-max), var(--lightened-min)), linear-gradient(to right, var(--lightened-min), var(--lightened-max));
 }
 
 li h3 {
     cursor: pointer;
-    background-color: rgba(0,125,0,0.025);
+    background-color: var(--very-dark-green);
     border-radius: 2em;
 }
 p {
@@ -57,24 +69,24 @@ p {
 }
 nav a,
 nav span {
-    color: #fff;
-    background: rgba(255,255,255,0.25);
+    color: var(--very-light-green);
+    background: var(--lightened-max);
     border-radius: 0.25em;
     padding: 0.25em;
     display: inline-block;
     text-decoration: none;
     &.active {
-        background-color: rgba(0,0,0,0.25);
+        background-color: var(--darkened-average);
         padding-left: 1.75em;
         background-image: url("icon.png");
         background-repeat: no-repeat;
         background-size: auto 100%;
     }
     &:hover {
-        background: rgba(0,0,0,0.25);
+        background-color: var(--darkened-average);
     }
     &.active:hover {
-        background: rgba(0,0,0,0.5);
+        background-color: var(--darkened-max);
     }
 }
 nav > ul {
@@ -86,8 +98,8 @@ nav > ul {
 #header {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: #f8fff8;
-    color: #111;
+    background-color: var(--very-light-green);
+    color: var(--very-dark-green);
     img {
         width: 106px;
         height: 64px;
@@ -115,27 +127,26 @@ nav > ul {
     max-width: 1024px;
     width: 80%;
     margin: 1em auto 3em;
-    background: #eee;
     box-shadow: 3px 3px 5px #ccc;
-    background: rgba(0,0,0,0.025);
+    background: var(--darkened-average);
     padding: 2em 1em;
     > ul > li {
         border: 1px solid #ddd;
         border-radius: 2em;
     }
     > ul > li > h3:hover {
-        color: darkblue;
+        color: var(--highlight);
     }
     > ul > li.active > h3 {
-        color: darkblue;
+        color: var(--highlight);
     }
     > ul > li.active {
         border: none;
         padding-bottom: 0.5em;
     }
     a {
-        color: darkblue;
-        background: rgba(0,0,0,0.1);
+        color: var(--highlight);
+        background: var(--darkened-average);
         border-radius: 0.1em;
     }
 }
@@ -153,7 +164,7 @@ footer a:hover,
 footer a:active,
 footer a:visited,
 footer a:focus {
-    color: #fff;
+    color: var(--very-light-green);
 }
 
 ul#share-buttons{
@@ -182,18 +193,18 @@ ul#share-buttons{
             width: 32px;
             height: 32px;
             display: block;
-            background-image: linear-gradient(to bottom, rgba(255,255,255,0.125), rgba(255,255,255,0.25), rgba(255,255,255,0.125)), linear-gradient(to right, rgba(255,255,255,0.125), rgba(255,255,255,0.25), rgba(255,255,255,0.125));
+            background-image: linear-gradient(to bottom, var(--lightened-average), var(--lightened-max), var(--lightened-min)), linear-gradient(to right, var(--lightened-average), var(--lightened-max), var(--lightened-min));
         }
         > a:hover,
         > a:active,
         > a:focus {
-            background-image: linear-gradient(to bottom, rgba(0,0,0,0.125), rgba(0,0,0,0.25), rgba(0,0,0,0.125)), linear-gradient(to right, rgba(0,0,0,0.125), rgba(0,0,0,0.25), rgba(0,0,0,0.125));
+            background-image: linear-gradient(to bottom, var(--darkened-min), var(--darkened-max), var(--darkened-average)), linear-gradient(to right, var(--darkened-min), var(--darkened-max), var(--darkened-average));
         }
         &.facebook {
             background-color: blue;
         }
         &.twitter {
-            background-color: lightblue;
+            background-color: black;
         }
         &.linkedin {
             background-color: darkblue;
@@ -223,7 +234,7 @@ nav > ul > li:hover > ul {
     position: absolute;
 }
 nav > ul > li > ul > li {
-    background: green;
+    background: var(--dark-green);
 }
 
 @media screen and (max-width: 1100px) {
