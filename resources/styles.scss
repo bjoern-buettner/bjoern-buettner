@@ -5,18 +5,14 @@ img {
     border: 0;
 }
 body, html {
-    background: #f0f9f0;
+    background-color: #f8fff8;
     color: #111;
     padding: 0;
     margin: 0;
+    font-size: 18px;
 }
 div > div {
     padding: 0.5em;
-}
-form {
-    padding: 1em;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
 }
 h1, h2, h3, h4, h5 {
     text-align: center;
@@ -39,31 +35,17 @@ ul ul {
         margin: 0.25em;
     }
 }
-label {
-    text-align: right;
-    padding-right: 1em;
-}
 li.active ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-input, textarea {
-    background-color: #f0f0f0;
-}
 .bar {
     padding: 0 10%;
-    background-color: darkgreen;
+    background-color: rgb(0, 46, 30);
     color: #fff;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.25));
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0)), linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.125));
 }
 
-.me {
-    border-radius: 1.25em;
-    width: 12.5%;
-    min-width: 200px;
-    padding: 1.25%;
-    float: left;
-}
 li h3 {
     cursor: pointer;
     background-color: rgba(0,125,0,0.025);
@@ -101,14 +83,10 @@ nav > ul {
     text-align: center;
     padding: 0.25em 0;
 }
-input, button, select, textarea {
-    border-radius: 0.2em;
-    padding: 0.2em;
-}
 #header {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: #f0f9f0;
+    background-color: #f8fff8;
     color: #111;
     img {
         width: 106px;
@@ -139,6 +117,7 @@ input, button, select, textarea {
     margin: 1em auto 3em;
     background: #eee;
     box-shadow: 3px 3px 5px #ccc;
+    background: rgba(0,0,0,0.025);
     padding: 2em 1em;
     > ul > li {
         border: 1px solid #ddd;
@@ -177,24 +156,6 @@ footer a:focus {
     color: #fff;
 }
 
-.teammember {
-    height: auto;
-    width: auto;
-    overflow: hidden;
-}
-
-.tags > ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    > li {
-        margin: 0.25em;
-        padding: 0.25em;
-    }
-}
 ul#share-buttons{
     list-style: none;
     padding: 0;
