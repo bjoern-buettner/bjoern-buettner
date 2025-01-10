@@ -23,7 +23,6 @@ class Prices
             $cat = [
                 'de' => $category->getDe(),
                 'en' => $category->getEn(),
-                'chooseable' => false,
                 'tasks' => []
             ];
             foreach ($this->database->load(Task::class, ['category' => $category->getAid()]) as $task) {
@@ -39,6 +38,7 @@ class Prices
                     ],
                     'price' => $task->getPrice(),
                     'fee_type' => $task->getFeeType(),
+                    'papypal_button_code' => $task->getPaypalButtonCode(),
                 ];
             }
             $data[] = $cat;
@@ -62,6 +62,7 @@ tasks. Individual prices will be provided on request.',
 offers is, if not agreed on differently, is 30 days until the end of the month.',
                     ],
                     'offers' => $this->loadOffers(),
+                    'paypal_business_id' => $_ENV['PAYPAL_BUSINESS_ID'],
                 ], $lang);
             case 'de':
             default:
@@ -78,6 +79,7 @@ der Tätigkeiten. Individuelle Angebote erhalten Sie auf Anfrage.',
 Kündigungsfrist für monatliche Angebote ist, falls nicht anders abgesprochen, 30 Tage zum Monatsende.',
                     ],
                     'offers' => $this->loadOffers(),
+                    'paypal_business_id' => $_ENV['PAYPAL_BUSINESS_ID'],
                 ], $lang);
         }
     }

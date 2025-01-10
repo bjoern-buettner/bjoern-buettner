@@ -15,6 +15,7 @@ class Task extends Entity
     protected string $deName = '';
     protected string $deDescription = '';
     protected string $enDescription = '';
+    private string $paypalButtonCode = '';
 
     public function __construct(
         ?int $aid,
@@ -25,6 +26,7 @@ class Task extends Entity
         string $deName,
         string $enDescription,
         string $deDescription,
+        string $paypalButtonCode
     ) {
         $this->enDescription = $enDescription;
         $this->deDescription = $deDescription;
@@ -33,6 +35,7 @@ class Task extends Entity
         $this->price = $price;
         $this->feeType = $feeType;
         $this->category = $category;
+        $this->paypalButtonCode = $paypalButtonCode;
         parent::__construct($aid);
     }
 
@@ -69,5 +72,10 @@ class Task extends Entity
     public function getEnDescription(): string
     {
         return $this->enDescription;
+    }
+
+    public function getPaypalButtonCode(): string
+    {
+        return $this->paypalButtonCode;
     }
 }

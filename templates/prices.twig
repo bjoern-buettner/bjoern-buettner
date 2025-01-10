@@ -4,6 +4,16 @@
 <p>{{ content.reasoning }}</p>
 <p>{{ content.prices }}</p>
 <h2>{{ content.title2 }}</h2>
+<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" >
+    <input type="hidden" name="cmd" value="_cart">
+    <input type="hidden" name="business" value="{{ paypal_business_id }}">
+    <input type="hidden" name="display" value="1">
+    {% if lang=='en' %}
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_viewcart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+    {% else %}
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_viewcart_LG.gif" border="0" name="submit" alt="PayPal - Die sichere, einfachere Art online zu bezahlen!">
+    {% endif %}
+</form>
 <ul>
     {% for offergroup in offers %}
         <li itemscope itemtype="https://schema.org/ItemList">
@@ -21,6 +31,18 @@
                             <em itemprop="offers" itemscope itemtype="https://schema.org/Offer">
                                 <span itemprop="price">{{ task.price | number_format(2, ',', '.') }}</span><span itemprop="priceCurrency">€</span>{% if task.fee_type=='hourly' %}/Stunde{% elseif task.fee_type=='monthly' %}/Monat{% elseif task.fee_type=='item' %} jeweils{% endif %}
                             </em>
+                        {% endif %}
+                        {% if task.paypal_button_code %}
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                                <input type="hidden" name="cmd" value="_s-xclick" />
+                                <input type="hidden" name="hosted_button_id" value="{{ task.paypal_button_code }}" />
+                                <input type="hidden" name="currency_code" value="EUR" />
+                                {% if lang=='en' %}
+                                    <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_cart_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Add to Cart" />
+                                {% else %}
+                                    <input type="image" src="https://www.paypalobjects.com/de_DE/i/btn/btn_cart_SM.gif" border="0" name="submit" title="PayPal - Die sichere, einfachere Art online zu bezahlen!" alt="Zum Warenkorb hinzufügen" />
+                                {% endif %}
+                            </form>
                         {% endif %}
                     </li>
                 {% endfor %}
