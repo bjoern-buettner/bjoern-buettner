@@ -262,9 +262,7 @@ nav > ul > li > ul > li {
     li.active ul {
         grid-template-columns: 1fr;
     }
-    footer.bar {
-        position: static;
-    }
+    footer.bar,
     nav {
         position: static;
     }
