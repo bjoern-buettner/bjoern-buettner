@@ -50,6 +50,7 @@
                                             });
                                         },
                                         onApprove: function(data, actions) {
+                                            console.log(data,actions);
                                             alert('Thank you for the subscription, please send us a mail to let us know what to host.');
                                         }
                                     }).render('#paypal-button-container-{{ task.paypal_button_code }}');
