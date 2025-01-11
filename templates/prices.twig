@@ -1,5 +1,6 @@
 {% extends '_base.html.twig' %}
 {% block body %}
+<script src="https://www.paypal.com/sdk/js?client-id=AW4hAHZ2Y0Ky2GguIv6JWxWp9xmCMLpxcx1bsk-MP1TPRqpLP3wcydrEmz3N7rGJN-O-FVXubcQKVC8p&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
 <h1>{{ content.title }}</h1>
 <p>{{ content.reasoning }}</p>
 <p>{{ content.prices }}</p>
@@ -33,16 +34,38 @@
                             </em>
                         {% endif %}
                         {% if task.paypal_button_code %}
-                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                                <input type="hidden" name="cmd" value="_s-xclick" />
-                                <input type="hidden" name="hosted_button_id" value="{{ task.paypal_button_code }}" />
-                                <input type="hidden" name="currency_code" value="EUR" />
-                                {% if lang=='en' %}
-                                    <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_cart_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Add to Cart" />
-                                {% else %}
-                                    <input type="image" src="https://www.paypalobjects.com/de_DE/i/btn/btn_cart_SM.gif" border="0" name="submit" title="PayPal - Die sichere, einfachere Art online zu bezahlen!" alt="Zum Warenkorb hinzufügen" />
-                                {% endif %}
-                            </form>
+                            {% if task %}
+                                <div id="paypal-button-container-{{ task.paypal_button_code }}"></div>
+                                <script>
+                                    paypal.Buttons({
+                                        style: {
+                                            shape: 'pill',
+                                            color: 'gold',
+                                            layout: 'vertical',
+                                            label: 'subscribe'
+                                        },
+                                        createSubscription: function(data, actions) {
+                                            return actions.subscription.create({
+                                                plan_id: '{{ task.paypal_button_code }}'
+                                            });
+                                        },
+                                        onApprove: function(data, actions) {
+                                            alert('Thank you for the subscription, please send us a mail to let us know what to host.');
+                                        }
+                                    }).render('#paypal-button-container-{{ task.paypal_button_code }}');
+                                </script>
+                            {% else %}
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                                    <input type="hidden" name="cmd" value="_s-xclick" />
+                                    <input type="hidden" name="hosted_button_id" value="{{ task.paypal_button_code }}" />
+                                    <input type="hidden" name="currency_code" value="EUR" />
+                                    {% if lang=='en' %}
+                                        <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_cart_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Add to Cart" />
+                                    {% else %}
+                                        <input type="image" src="https://www.paypalobjects.com/de_DE/i/btn/btn_cart_SM.gif" border="0" name="submit" title="PayPal - Die sichere, einfachere Art online zu bezahlen!" alt="Zum Warenkorb hinzufügen" />
+                                    {% endif %}
+                                </form>
+                            {% endif %}
                         {% endif %}
                     </li>
                 {% endfor %}
