@@ -170,9 +170,13 @@ nav > ul > li:hover > ul {
     display: block;
     position: absolute;
     background: var(--dark-green);
+    border: 1px solid #ccc;
+    border-radius: 0.25em;
+    box-shadow: 3px 3px 5px #ccc;
 }
 nav > ul > li > ul > li {
     background: var(--darkened-average);
+    border-width: 0;
 }
 a[target="_blank"] {
     padding-right: 1em;
