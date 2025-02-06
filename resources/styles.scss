@@ -175,7 +175,7 @@ nav > ul > li:hover > ul {
     box-shadow: 3px 3px 5px #ccc;
 }
 nav > ul > li > ul > li {
-    background: var(--darkened-average);
+    background: transparent;
     border-width: 0;
 }
 a[target="_blank"] {
