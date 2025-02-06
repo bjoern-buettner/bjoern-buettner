@@ -1,7 +1,7 @@
 :root {
     --very-light-green: #f8fff8;
     --dark-green: rgb(0, 46, 30);
-    --very-dark-green: rgba(0, 2, 1);
+    --very-dark-green: rgb(0, 2, 1);
     --highlight: darkblue;
     --lightened-min: rgba(255, 255, 255, 0);
     --lightened-max: rgba(255, 255, 255, 0.15);
@@ -17,7 +17,6 @@ img {
     border: 0;
 }
 body, html {
-    background-color: var(--very-light-green);
     color: var(--very-dark-green);
     padding: 0;
     margin: 0;
@@ -105,7 +104,7 @@ nav > ul {
     width: 80%;
     margin: 3em auto;
     box-shadow: 3px 3px 5px var(--darkened-average);
-    background: var(--darkened-average);
+    background-color: var(--very-light-green);
     padding: 2em 1em;
     > ul > li {
         border: 1px solid var(--darkened-average);
