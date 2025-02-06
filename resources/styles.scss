@@ -169,9 +169,10 @@ nav {
 nav > ul > li:hover > ul {
     display: block;
     position: absolute;
+    background: var(--dark-green);
 }
 nav > ul > li > ul > li {
-    background: var(--dark-green);
+    background: var(--darkened-average);
 }
 a[target="_blank"] {
     padding-right: 1em;
