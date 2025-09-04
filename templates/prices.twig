@@ -1,20 +1,9 @@
 {% extends '_base.html.twig' %}
 {% block body %}
-<script src="https://www.paypal.com/sdk/js?client-id=AW4hAHZ2Y0Ky2GguIv6JWxWp9xmCMLpxcx1bsk-MP1TPRqpLP3wcydrEmz3N7rGJN-O-FVXubcQKVC8p&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
 <h1>{{ content.title }}</h1>
 <p>{{ content.reasoning }}</p>
 <p>{{ content.prices }}</p>
 <h2>{{ content.title2 }}</h2>
-<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" >
-    <input type="hidden" name="cmd" value="_cart">
-    <input type="hidden" name="business" value="{{ paypal_business_id }}">
-    <input type="hidden" name="display" value="1">
-    {% if lang=='en' %}
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_viewcart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-    {% else %}
-        <input type="image" src="https://www.paypalobjects.com/de_DE/i/btn/btn_viewcart_LG.gif" border="0" name="submit" alt="PayPal - Die sichere, einfachere Art online zu bezahlen!">
-    {% endif %}
-</form>
 <ul>
     {% for offergroup in offers %}
         <li itemscope itemtype="https://schema.org/ItemList">
@@ -33,41 +22,7 @@
                                 <span itemprop="price">{{ task.price | number_format(2, ',', '.') }}</span><span itemprop="priceCurrency">€</span>{% if task.fee_type=='hourly' %}/Stunde{% elseif task.fee_type=='monthly' %}/Monat{% elseif task.fee_type=='item' %} jeweils{% endif %}
                             </em>
                         {% endif %}
-                        {% if task.paypal_button_code %}
-                            {% if task.fee_type == 'monthly' %}
-                                <div id="paypal-button-container-{{ task.paypal_button_code }}"></div>
-                                <script>
-                                    paypal.Buttons({
-                                        style: {
-                                            shape: 'pill',
-                                            color: 'silver',
-                                            layout: 'horizontal',
-                                            label: 'subscribe'
-                                        },
-                                        createSubscription: function(data, actions) {
-                                            return actions.subscription.create({
-                                                plan_id: '{{ task.paypal_button_code }}'
-                                            });
-                                        },
-                                        onApprove: function(data, actions) {
-                                            alert('Thank you for the subscription, please send us a mail to let us know what exactly you need!');
-                                        }
-                                    }).render('#paypal-button-container-{{ task.paypal_button_code }}');
-                                </script>
-                            {% elseif task.fee_type == 'once' or task.fee_type == 'item' %}
-                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                                    <input type="hidden" name="cmd" value="_s-xclick" />
-                                    <input type="hidden" name="hosted_button_id" value="{{ task.paypal_button_code }}" />
-                                    <input type="hidden" name="currency_code" value="EUR" />
-                                    {% if lang=='en' %}
-                                        <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_cart_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Add to Cart" />
-                                    {% else %}
-                                        <input type="image" src="https://www.paypalobjects.com/de_DE/i/btn/btn_cart_SM.gif" border="0" name="submit" title="PayPal - Die sichere, einfachere Art online zu bezahlen!" alt="Zum Warenkorb hinzufügen" />
-                                    {% endif %}
-                                </form>
-                            {% endif %}
-                        {% endif %}
-                    </li>
+                     </li>
                 {% endfor %}
             </ul>
         </li>
